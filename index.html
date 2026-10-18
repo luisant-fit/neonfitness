@@ -1230,7 +1230,9 @@ function initSyncFirebase() {
     const finish = () => { if (!done) { done = true; resolve(); } };
     setTimeout(finish, 3500);
     let gotServer = false;
-    sync.unsub = ref.onSnapshot({ includeMetadataChanges: false }, s => {
+    /* includeMetadataChanges : sans ça, quand la copie locale est déjà à jour, Firebase ne prévient
+       jamais que le serveur a confirmé (seules les métadonnées changent) et le voyant restait sur CONNEXION. */
+    sync.unsub = ref.onSnapshot({ includeMetadataChanges: true }, s => {
       const initial = !gotServer && !(s.metadata && s.metadata.fromCache);
       if (initial) gotServer = true;
       applyRemote(s, initial);
