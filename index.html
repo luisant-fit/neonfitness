@@ -152,7 +152,7 @@ p{margin:0}
 .cat:hover{border-color:var(--line-hi)}
 .cat.sel{border-color:var(--neon);background:var(--neon-soft)}
 .cat .code{font-family:var(--f-display);font-size:9px;letter-spacing:.2em;color:var(--muted)}
-.cat .lab{font-family:var(--f-display);font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--text)}
+.cat .lab{font-family:var(--f-display);font-size:clamp(12px,3.5vw,14px);font-weight:700;letter-spacing:.06em;color:var(--text);overflow-wrap:anywhere;line-height:1.25}
 .cat.sel .lab{color:var(--neon)}
 .cat .meta{font-size:12px;color:var(--muted);margin-top:auto}
 
@@ -240,7 +240,10 @@ p{margin:0}
 @keyframes bump{40%{transform:scale(1.5);text-shadow:0 0 10px var(--neon)}}
 .timer{font-family:var(--f-display);font-size:13px;color:var(--neon);font-variant-numeric:tabular-nums;letter-spacing:.08em}
 
-.filters{display:flex;gap:8px;overflow-x:auto;padding-block:14px 4px;scrollbar-width:none;margin-left:calc(-1 * var(--gut-l));margin-right:calc(-1 * var(--gut-r));padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;padding-block:14px 4px}
+.filt.pdc{border-style:dashed}
+.filt.pdc.on{border-style:solid}
+.tag-pdc{font-family:var(--f-display);font-size:8px;letter-spacing:.14em;color:var(--neon);border:1px solid var(--line-hi);border-radius:2px;padding:1px 4px;margin-right:6px;vertical-align:1px}
 .filters::-webkit-scrollbar{display:none}
 .filt{font-family:var(--f-display);font-size:10px;letter-spacing:.14em;padding:9px 12px;border:1px solid var(--line);border-radius:3px;color:var(--muted);white-space:nowrap;background:var(--panel)}
 .filt.on{border-color:var(--neon);color:var(--neon);background:var(--neon-soft)}
@@ -401,6 +404,83 @@ p{margin:0}
 .btn-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .code-box{width:100%;min-height:120px;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;line-height:1.4;background:var(--panel);color:var(--text);border:1px solid var(--line-hi);border-radius:4px;padding:10px;word-break:break-all;resize:vertical}
 .code-box:focus{outline:2px solid var(--neon);outline-offset:1px}
+
+/* ---------- matériel disponible ---------- */
+.eq-bar{margin-top:10px;display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px dashed var(--line-hi);border-radius:4px;background:var(--panel)}
+.eq-bar.on{border-style:solid;border-color:var(--neon);background:var(--neon-soft)}
+.eq-toggle{flex:1;min-width:0;display:flex;align-items:center;gap:12px;text-align:left}
+.sw{width:38px;height:22px;border:2px solid var(--neon);border-radius:12px;position:relative;flex:none}
+.sw i{position:absolute;top:3px;left:3px;width:12px;height:12px;border-radius:50%;background:var(--muted);transition:transform .15s,background .15s}
+.eq-bar.on .sw i{transform:translateX(16px);background:var(--neon);box-shadow:0 0 8px var(--neon)}
+.eq-lab{display:flex;flex-direction:column;min-width:0;gap:2px}
+.eq-lab b{font-family:var(--f-display);font-size:10px;letter-spacing:.14em;color:var(--text);font-weight:700}
+.eq-bar.on .eq-lab b{color:var(--neon)}
+.eq-lab small{font-size:12px;color:var(--muted)}
+.eq-sum{display:flex;align-items:baseline;gap:10px}
+.eq-sum b{font-family:var(--f-display);font-size:26px;color:var(--neon);font-variant-numeric:tabular-nums}
+.eq-sum span{color:var(--muted);font-size:13px}
+.eq-list{display:flex;flex-direction:column}
+.eq-item{border-bottom:1px solid var(--line)}
+.eq-item:last-child{border-bottom:0}
+.eq-row{display:flex;align-items:center;gap:14px;padding:12px 14px;width:100%;text-align:left}
+.eq-row .check{flex:none}
+.eq-name{display:flex;flex-direction:column;gap:2px;font-size:15px;color:var(--text);font-weight:500;min-width:0}
+.eq-name small{font-size:12px;color:var(--muted);font-weight:400}
+.eq-item.on .eq-name{color:var(--neon)}
+.eq-max{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 14px 12px 52px;font-size:13px;color:var(--muted)}
+.eq-max input{width:72px;background:var(--panel-2);border:1px solid var(--line-hi);border-radius:4px;padding:7px 8px;color:var(--text);font-family:var(--f-display);font-size:14px;text-align:center}
+.mtags .miss{border-color:var(--alert);color:var(--alert)}
+.eq-hq{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:var(--panel);text-align:left;width:100%}
+.eq-hq:hover{border-color:var(--line-hi)}
+.eq-hq span{font-family:var(--f-display);font-size:9.5px;letter-spacing:.16em;color:var(--muted)}
+.eq-hq b{font-weight:500;font-size:13.5px;color:var(--text);flex:1;min-width:0}
+.eq-hq em{font-style:normal;font-family:var(--f-display);font-size:10px;letter-spacing:.14em;color:var(--neon)}
+
+/* ---------- schéma du mouvement ---------- */
+.illus-wrap{border:1px solid var(--line-hi);border-radius:4px;background:#030603;overflow:hidden}
+.illus{display:block;width:100%;height:auto;max-width:100%}
+.illus .ig{stroke:rgba(57,255,20,.06);stroke-width:.5;fill:none}
+.illus .ifloor{stroke:var(--dim);stroke-width:1.5}
+.illus .ighost path,.illus .ighost circle{fill:none;stroke:rgba(128,144,123,.6);stroke-width:1.5;stroke-dasharray:3 3}
+.illus .ifig{filter:drop-shadow(0 0 3px rgba(57,255,20,.7))}
+.illus .ifig path,.illus .ifig circle{fill:none;stroke:var(--neon);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.illus .ifig circle{fill:#030603}
+.illus .ifig .idim{opacity:.38}
+.illus .ip{fill:none;stroke:#3f5e39;stroke-width:1.5}
+.illus .ip-heavy{fill:none;stroke:#86c46f;stroke-width:2.4;stroke-linecap:round}
+.illus .ip-cable{stroke-dasharray:2 3}
+.illus-cap{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 10px;border-top:1px solid var(--line);font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;color:var(--muted)}
+.illus-cap [data-phase]{color:var(--neon)}
+.ex-link{display:flex;align-items:center;gap:8px;text-align:left;font-size:16.5px;font-weight:600;margin-top:3px;color:var(--text)}
+.ex-link:hover{color:var(--neon)}
+.ex-link .i{font-family:var(--f-display);font-size:9px;color:var(--muted);border:1px solid var(--dim);border-radius:50%;width:16px;height:16px;display:inline-grid;place-items:center;flex:none}
+.tip .btn{flex:none}
+.cmdbar .title-neon{flex:1 1 auto;min-width:max-content}
+
+/* ---------- escouades (version autonome) ---------- */
+.sq-banner{background:var(--panel);border-color:var(--line-hi)}
+.sq-intro{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.sq-panel{padding:16px;display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.sq-head{padding:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 16px;align-items:center;margin-top:16px}
+.sq-head .btn{grid-column:1/-1}
+.sq-name{font-family:var(--f-display);font-size:18px;font-weight:700;letter-spacing:.06em;color:var(--neon);overflow-wrap:anywhere;margin-top:4px}
+.sq-code{text-align:right}
+.sq-code b{display:block;font-family:var(--f-display);font-size:20px;letter-spacing:.12em;color:var(--text);font-variant-numeric:tabular-nums}
+.seg.seg4{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:14px}
+.seg.seg4 button{font-size:8.5px;letter-spacing:.08em;padding:12px 2px}
+.board{display:flex;flex-direction:column;margin-top:10px;overflow:hidden}
+.sq-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;width:100%}
+.sq-row:last-child{border-bottom:0}
+button.sq-row:hover{background:var(--panel-2)}
+.sq-row.me{background:var(--neon-soft)}
+.sq-row .pos{font-family:var(--f-display);font-weight:900;font-size:15px;color:var(--muted);text-align:center}
+.sq-row .pos.p1{color:var(--ink);background:var(--neon);border-radius:3px;padding:4px 0;box-shadow:0 0 12px var(--neon-glow)}
+.sq-row .pos.p2,.sq-row .pos.p3{color:var(--neon)}
+.sq-row .who{min-width:0;display:flex;flex-direction:column;gap:2px}
+.sq-row .who b{font-weight:600;font-size:15px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sq-row .who em{font-style:normal;font-family:var(--f-display);font-size:8px;letter-spacing:.16em;color:var(--ink);background:var(--neon);padding:2px 5px;border-radius:2px;margin-left:8px;vertical-align:middle}
+.sq-row .who small{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sq-row .val{font-family:var(--f-display);font-size:13px;color:var(--neon);white-space:nowrap;font-variant-numeric:tabular-nums}
 
 /* ---------- connexion (version autonome) ---------- */
 .auth{position:fixed;inset:0;z-index:95;background:var(--void);overflow-y:auto;padding:calc(28px + env(safe-area-inset-top,0px)) var(--gut-r) calc(24px + env(safe-area-inset-bottom,0px)) var(--gut-l)}
@@ -597,9 +677,120 @@ const EXERCISES = [
   ex("ab_wheel","Roue abdominale","abdos","bw",1.3,{core:0.9,armor:0.1},75,0,10,["Grand droit","Transverse","Grand dorsal"],"Anti-extension dynamique : rouler vers l'avant en gardant le dos neutre, puis revenir en contractant les abdos.",0.5),
   ex("cable_crunch","Crunch à la poulie","abdos","load",0.9,{core:1},60,30,12,["Grand droit"],"À genoux face à la poulie haute, enroulement de la colonne vers le bassin. Les hanches restent fixes."),
   ex("russian","Russian twist","abdos","load",0.8,{core:1},45,5,20,["Obliques","Transverse"],"Assis, buste incliné, rotations contrôlées du tronc avec un disque. Répétitions totales des deux côtés."),
-  ex("pallof","Pallof press","abdos","load",0.85,{core:1},45,10,12,["Obliques","Transverse"],"Anti-rotation : poignée de poulie poussée devant le sternum en résistant à la traction latérale.")
+  ex("pallof","Pallof press","abdos","load",0.85,{core:1},45,10,12,["Obliques","Transverse"],"Anti-rotation : poignée de poulie poussée devant le sternum en résistant à la traction latérale."),
+
+  /* ---- Poids du corps (PDC) ---- */
+  // PECTORAUX
+  ex("pushup_incline","Pompes inclinées","pecs","bw",0.85,{power:0.9,core:0.1},60,0,15,["Pectoral inférieur","Triceps","Deltoïde antérieur"],"Mains surélevées sur un banc ou une marche : environ la moitié du poids du corps est déplacée. Version d'accès aux pompes, idéale pour le volume ou l'échauffement.",0.5),
+  ex("pushup_wide","Pompes prise large","pecs","bw",1.0,{power:0.9,core:0.1},75,0,12,["Grand pectoral","Deltoïde antérieur"],"Mains nettement plus larges que les épaules, coudes à 45°. L'écartement augmente l'étirement des pectoraux et réduit la part des triceps.",0.65),
+  ex("pushup_decline","Pompes déclinées","pecs","bw",1.1,{power:0.9,core:0.1},75,0,12,["Faisceau claviculaire du pectoral","Deltoïde antérieur","Triceps"],"Pieds surélevés sur un banc : la charge augmente et l'accent se déplace vers le haut des pectoraux et l'avant des épaules.",0.72),
+  ex("pushup_archer","Pompes archer","pecs","bw",1.3,{power:0.9,core:0.1},90,0,8,["Grand pectoral (unilatéral)","Triceps","Gainage"],"Mains très écartées, on descend vers un bras pendant que l'autre reste tendu. Étape vers la pompe sur un bras ; répétitions comptées par côté.",0.8),
+  ex("pushup_plyo","Pompes explosives","pecs","bw",1.35,{power:1},90,0,8,["Grand pectoral","Triceps","Fibres rapides"],"Poussée assez violente pour décoller les mains du sol, réception amortie. Développe la puissance et la vitesse de contraction.",0.65),
+  ex("dips_rings","Dips aux anneaux","pecs","bw",1.5,{power:0.9,core:0.1},120,0,6,["Pectoral inférieur","Triceps","Stabilisateurs de l'épaule"],"Les anneaux instables obligent à contrôler chaque centimètre. Nettement plus exigeant que les dips aux barres parallèles.",0.92),
+  // DOS
+  ex("chinup","Tractions supination","dos","bw",1.35,{armor:0.6,power:0.4},120,0,6,["Grand dorsal","Biceps","Brachial antérieur"],"Paumes vers soi, mains à largeur d'épaules. Le biceps participe davantage qu'en pronation, ce qui permet souvent quelques répétitions de plus.",1.0),
+  ex("pullup_neutral","Tractions prise neutre","dos","bw",1.4,{armor:0.8,power:0.2},120,0,6,["Grand dorsal","Brachio-radial","Grand rond"],"Paumes face à face sur des poignées parallèles. Position la plus confortable pour les épaules et les coudes.",1.0),
+  ex("inverted_row","Rowing inversé","dos","bw",1.0,{armor:1},75,0,10,["Rhomboïdes","Trapèze moyen","Grand dorsal","Biceps"],"Suspendu sous une barre basse, corps gainé, on tire la poitrine vers la barre. Plus les pieds sont avancés, plus c'est difficile.",0.6),
+  ex("muscle_up","Muscle-up","dos","bw",1.7,{armor:0.5,power:0.5},150,0,3,["Grand dorsal","Triceps","Pectoraux","Gainage"],"Traction explosive enchaînée d'un passage au-dessus de la barre puis d'un dips. Mouvement technique réservé aux opérateurs confirmés.",1.0),
+  ex("scap_pull","Tractions scapulaires","dos","bw",0.6,{armor:1},60,0,10,["Trapèze inférieur","Grand dorsal","Rhomboïdes"],"Suspendu bras tendus, on abaisse et rapproche les omoplates sans plier les coudes. Renforce le contrôle scapulaire avant les tractions.",1.0),
+  ex("superman","Superman","dos","bw",0.7,{armor:0.7,core:0.3},45,0,15,["Érecteurs du rachis","Fessiers","Trapèze inférieur"],"Allongé sur le ventre, on décolle bras et jambes en même temps avec une pause en haut. Renforce toute la chaîne arrière sans matériel.",0.3),
+  ex("dead_hang","Suspension à la barre","dos","time",0.8,{armor:0.6,power:0.4},60,0,40,["Avant-bras","Grand dorsal","Coiffe des rotateurs"],"Suspension bras tendus, épaules actives. Développe la force de préhension et décompresse la colonne. Saisir la durée en secondes."),
+  // ÉPAULES
+  ex("pike_pushup","Pompes piquées","epaules","bw",1.15,{power:1},90,0,10,["Deltoïde antérieur","Triceps","Trapèze supérieur"],"Corps en V inversé, hanches hautes, la tête descend entre les mains. Transforme la pompe en poussée verticale.",0.6),
+  ex("hspu","Pompes en équilibre","epaules","bw",1.6,{power:0.9,core:0.1},150,0,5,["Deltoïdes","Triceps","Trapèzes","Gainage"],"Handstand push-up contre un mur : on descend la tête jusqu'au sol puis on repousse. Équivalent d'un développé militaire au poids du corps.",0.95),
+  ex("wall_walk","Wall walk","epaules","bw",1.2,{power:0.7,core:0.3},90,0,5,["Deltoïdes","Triceps","Gainage"],"Depuis la position de pompe, pieds contre le mur, on remonte en marchant avec les mains jusqu'à l'équilibre puis on redescend.",0.7),
+  ex("handstand_hold","Équilibre contre le mur","epaules","time",1.1,{power:0.6,core:0.4},75,0,30,["Deltoïdes","Trapèzes","Gainage"],"Maintien en appui renversé, ventre face au mur, bras verrouillés. Saisir la durée en secondes."),
+  ex("ytw","Y-T-W au sol","epaules","bw",0.6,{armor:0.6,power:0.4},45,0,10,["Deltoïde postérieur","Trapèze inférieur","Coiffe des rotateurs"],"Allongé sur le ventre, bras levés en Y, puis en T, puis en W. Un cycle = une répétition. Excellent pour la santé des épaules.",0.15),
+  // BRAS
+  ex("pushup_diamond","Pompes diamant","bras","bw",1.1,{power:1},75,0,10,["Triceps","Pectoral","Deltoïde antérieur"],"Pouces et index se touchent sous la poitrine. Les coudes restent près du corps : la poussée repose surtout sur les triceps.",0.65),
+  ex("dips_bars","Dips barres parallèles","bras","bw",1.3,{power:1},105,0,8,["Triceps","Pectoral inférieur","Deltoïde antérieur"],"Buste droit et coudes serrés pour cibler les triceps. Ajoutez du lest une fois 15 répétitions atteintes.",0.92),
+  ex("bw_tri_ext","Extensions triceps au poids du corps","bras","bw",1.0,{power:1},75,0,10,["Triceps, chef long"],"Mains sur une barre basse, corps gainé : on plie les coudes pour amener le front sous la barre puis on repousse. Barre au front sans matériel.",0.5),
+  ex("chinup_close","Tractions supination serrées","bras","bw",1.3,{power:0.6,armor:0.4},105,0,6,["Biceps","Brachial antérieur","Grand dorsal"],"Mains rapprochées, paumes vers soi. La version des tractions qui sollicite le plus les biceps.",1.0),
+  ex("bw_curl","Curl au poids du corps","bras","bw",0.9,{power:0.7,armor:0.3},60,0,10,["Biceps","Brachial antérieur"],"Suspendu sous une barre basse en supination, on fléchit les coudes sans bouger les épaules pour amener le front vers la barre.",0.5),
+  // JAMBES
+  ex("air_squat","Squat au poids du corps","jambes","bw",0.8,{propulsion:1},60,0,20,["Quadriceps","Fessiers","Adducteurs"],"Squat sans charge, talons au sol, descente sous la parallèle. Base du travail des jambes, idéale en volume ou en échauffement.",0.7),
+  ex("jump_squat","Squats sautés","jambes","bw",1.2,{propulsion:1},75,0,12,["Quadriceps","Fessiers","Mollets"],"Squat suivi d'une extension explosive jusqu'au saut, réception amortie et enchaînée. Développe la puissance.",0.7),
+  ex("pistol","Pistol squat","jambes","bw",1.6,{propulsion:0.85,core:0.15},120,0,5,["Quadriceps","Fessiers","Stabilisateurs de cheville et de hanche"],"Squat complet sur une jambe, l'autre tendue devant. Force, mobilité et équilibre ; répétitions par jambe.",0.9),
+  ex("bw_lunge","Fentes au poids du corps","jambes","bw",0.9,{propulsion:0.9,core:0.1},60,0,12,["Quadriceps","Fessiers","Adducteurs"],"Fentes alternées, genou arrière proche du sol, buste droit. Répétitions comptées par jambe.",0.6),
+  ex("step_up","Montées sur banc","jambes","bw",0.95,{propulsion:1},60,0,10,["Quadriceps","Fessiers"],"Un pied sur un banc ou une marche haute, on monte en poussant uniquement avec la jambe d'appui. Répétitions par jambe.",0.85),
+  ex("glute_bridge","Pont fessier","jambes","bw",0.75,{propulsion:0.9,core:0.1},45,0,15,["Grand fessier","Ischio-jambiers"],"Allongé sur le dos, pieds au sol, on monte le bassin jusqu'à l'alignement épaules-genoux avec une pause en haut.",0.4),
+  ex("nordic","Nordic curl","jambes","bw",1.5,{propulsion:1},120,0,5,["Ischio-jambiers (excentrique)"],"À genoux, chevilles bloquées, on descend le buste vers le sol le plus lentement possible. Excellent renforcement et prévention des blessures.",0.6),
+  ex("wall_sit","Chaise contre le mur","jambes","time",0.9,{propulsion:1},60,0,45,["Quadriceps"],"Dos contre le mur, cuisses parallèles au sol, genoux à 90°. Isométrie brûlante pour les quadriceps. Saisir la durée en secondes."),
+  ex("bw_calf","Mollets unilatéral","jambes","bw",0.6,{propulsion:1},45,0,15,["Gastrocnémien","Soléaire"],"Sur une jambe au bord d'une marche, amplitude complète et pause en haut. Répétitions par jambe.",0.9),
+  // ABDOS
+  ex("crunch","Crunch au sol","abdos","bw",0.6,{core:1},45,0,20,["Grand droit"],"Enroulement du haut du dos en décollant les omoplates, bas du dos plaqué au sol. Le cou reste détendu.",0.25),
+  ex("bicycle","Crunch bicyclette","abdos","bw",0.65,{core:1},45,0,20,["Obliques","Grand droit"],"Coude vers le genou opposé en alternance, jambes en pédalage. Répétitions totales des deux côtés.",0.25),
+  ex("floor_leg_raise","Relevés de jambes au sol","abdos","bw",0.8,{core:1},45,0,12,["Grand droit (portion basse)","Fléchisseurs de hanche"],"Allongé, jambes tendues, on les monte à la verticale puis on redescend sans toucher le sol, bas du dos plaqué.",0.3),
+  ex("v_up","V-ups","abdos","bw",1.0,{core:1},60,0,12,["Grand droit","Fléchisseurs de hanche"],"Mains et pieds se rejoignent au-dessus du bassin, corps en V, puis retour contrôlé en position allongée.",0.4),
+  ex("dead_bug","Dead bug","abdos","bw",0.6,{core:1},45,0,12,["Transverse","Grand droit"],"Sur le dos, bras et genoux levés, on allonge un bras et la jambe opposée sans décoller le bas du dos. Contrôle du tronc.",0.2),
+  ex("mountain","Mountain climbers","abdos","bw",0.6,{core:0.7,propulsion:0.3},45,0,30,["Gainage","Fléchisseurs de hanche","Épaules"],"En position de pompe, genoux ramenés vers la poitrine en alternance rapide. Répétitions totales.",0.3),
+  ex("shoulder_taps","Planche touchers d'épaules","abdos","bw",0.7,{core:0.7,power:0.3},45,0,20,["Transverse","Obliques","Épaules"],"En position de pompe, une main touche l'épaule opposée sans que le bassin ne tourne. Répétitions totales.",0.6),
+  ex("hollow","Hollow body","abdos","time",1.1,{core:1},60,0,30,["Grand droit","Transverse"],"Allongé, bas du dos plaqué, bras et jambes tendus décollés du sol : le corps forme une banane. Saisir la durée en secondes."),
+  ex("l_sit","L-sit","abdos","time",2.0,{core:0.8,power:0.2},90,0,15,["Grand droit","Fléchisseurs de hanche","Triceps"],"En appui sur les mains (barres ou sol), jambes tendues à l'horizontale. Isométrie très exigeante. Saisir la durée en secondes."),
+  ex("dragon_flag","Dragon flag","abdos","bw",1.8,{core:1},120,0,4,["Grand droit","Transverse","Grand dorsal"],"Allongé sur un banc, mains derrière la tête, corps gainé en planche levé à la verticale puis redescendu lentement.",0.6)
 ];
 const EX = Object.fromEntries(EXERCISES.map(e => [e.id, e]));
+
+/* ---- Matériel disponible ---- */
+const EQUIP_GROUPS = [
+  { label: "POIDS LIBRES", items: [
+    { id: "db", name: "Haltères", hint: "Développés, curls, rowing, fentes", max: true },
+    { id: "bb", name: "Barre et disques", hint: "Squat, soulevé de terre, développé couché", max: true } ] },
+  { label: "BANCS ET SUPPORTS", items: [
+    { id: "bench", name: "Banc de musculation", hint: "Développés, dips entre bancs, hip thrust" },
+    { id: "step", name: "Marche, box ou chaise solide", hint: "Montées, squat bulgare, pompes inclinées" } ] },
+  { label: "BARRES ET SUSPENSION", items: [
+    { id: "pullbar", name: "Barre de traction", hint: "Tractions, relevés de jambes, suspension" },
+    { id: "dipbars", name: "Barres parallèles (dips)", hint: "Dips pectoraux et triceps" },
+    { id: "rings", name: "Anneaux", hint: "Dips et rowing aux anneaux" },
+    { id: "lowbar", name: "Barre basse ou table solide", hint: "Rowing inversé, curl et triceps au poids du corps" } ] },
+  { label: "MACHINES ET ACCESSOIRES", items: [
+    { id: "cable", name: "Poulie / câbles", hint: "Tirages, crossover, face pull, crunch" },
+    { id: "legpress", name: "Presse à cuisses", hint: "" },
+    { id: "legext", name: "Leg extension", hint: "" },
+    { id: "legcurl", name: "Leg curl", hint: "" },
+    { id: "pecdeck", name: "Pec deck (butterfly)", hint: "" },
+    { id: "tbar", name: "T-bar / landmine", hint: "" },
+    { id: "roman", name: "Banc à lombaires (45°)", hint: "" },
+    { id: "wheel", name: "Roue abdominale", hint: "" } ] }
+];
+const EQUIP = Object.fromEntries(EQUIP_GROUPS.flatMap(g => g.items).map(i => [i.id, i]));
+const EQUIP_IDS = Object.keys(EQUIP);
+const PLACES = { home: "MAISON", gym: "SALLE" };
+/* Matériel requis : liste de groupes, chaque groupe = « au moins un de ». Absent = poids du corps. */
+const EX_REQ = {
+  bench: [["bb"], ["bench"]], incline_db: [["db"], ["bench"]], decline: [["bb"], ["bench"]], close_bench: [["bb"], ["bench"]],
+  fly: [["db"], ["bench"]], cable_cross: [["cable"]], pec_deck: [["pecdeck"]], dips_chest: [["dipbars", "rings"]],
+  deadlift: [["bb"]], row_bb: [["bb"]], row_db: [["db"]], lat_pd: [["cable"]], seated_row: [["cable"]], tbar: [["tbar"]],
+  shrug: [["db", "bb"]], hyperext: [["roman"]], ohp: [["bb"]], db_press: [["db"]], arnold: [["db"]], lat_raise: [["db", "cable"]],
+  face_pull: [["cable"]], rear_fly: [["db"]], skull: [["bb", "db"], ["bench"]], tri_pushdown: [["cable"]], dips_bench: [["bench", "step"]],
+  curl_bb: [["bb"]], curl_hammer: [["db"]], curl_incline: [["db"], ["bench"]], squat: [["bb"]], front_squat: [["bb"]],
+  leg_press: [["legpress"]], rdl: [["bb", "db"]], bulgarian: [["db"], ["bench", "step"]], lunge: [["db"]], hip_thrust: [["bb"], ["bench"]],
+  leg_ext: [["legext"]], leg_curl: [["legcurl"]], calf: [["db", "bb"]], hanging_raise: [["pullbar", "rings"]], ab_wheel: [["wheel"]],
+  cable_crunch: [["cable"]], russian: [["db", "bb"]], pallof: [["cable"]],
+  pushup_incline: [["bench", "step"]], pushup_decline: [["bench", "step"]], dips_rings: [["rings"]],
+  chinup: [["pullbar"]], pullup_neutral: [["pullbar"]], scap_pull: [["pullbar"]], dead_hang: [["pullbar"]], muscle_up: [["pullbar", "rings"]],
+  pullup: [["pullbar"]], inverted_row: [["lowbar", "rings"]], dips_bars: [["dipbars"]], bw_tri_ext: [["lowbar", "rings"]],
+  chinup_close: [["pullbar"]], bw_curl: [["lowbar", "rings"]], step_up: [["step", "bench"]], dragon_flag: [["bench"]]
+};
+const exReq = id => EX_REQ[id] || [];
+function defaultEquip() {
+  return { active: "home", filter: false, places: { home: { items: [], maxDb: 0, maxBb: 0 }, gym: { items: EQUIP_IDS.slice(), maxDb: 0, maxBb: 0 } } };
+}
+const curPlace = () => state.equip.places[state.equip.active] || state.equip.places.home;
+const canDo = (id, place) => exReq(id).every(g => g.some(x => place.items.includes(x)));
+/* Charge libre utilisée par l'exercice, pour appliquer la charge max déclarée. */
+function loadKind(id) {
+  const r = exReq(id);
+  if (r.some(g => g.length === 1 && g[0] === "db")) return "db";
+  if (r.some(g => g.length === 1 && g[0] === "bb")) return "bb";
+  return null;
+}
+function reqText(id) {
+  const r = exReq(id);
+  if (!r.length) return [];
+  return r.map(g => g.map(x => EQUIP[x] ? EQUIP[x].name : x).join(" ou "));
+}
 
 const SLOTS = {
   neural: "IMPLANT NEURAL",
@@ -764,7 +955,8 @@ function defaultState() {
     gear: { unlocked: ["neural_civ", "arms_mk0"], equipped: { neural: "neural_civ", dorsal: null, arms: "arms_mk0", core: null, legs: null } },
     missions: 0, tonnage: 0, records: {}, history: [], lastSets: {},
     category: "pecs", loadoutSession: [], mission: null,
-    updatedAt: 0, onboarded: false, tips: { catalog: false, briefing: false }
+    updatedAt: 0, onboarded: false, tips: { catalog: false, briefing: false },
+    squads: [], equip: defaultEquip()
   };
 }
 const num = (v, def, min = -Infinity, max = Infinity) => { v = Number(v); return Number.isFinite(v) ? Math.min(max, Math.max(min, v)) : def; };
@@ -780,6 +972,23 @@ function sanitize(s) {
   o.updatedAt = num(s.updatedAt, 0, 0);
   o.onboarded = s.onboarded === true;
   if (isObj(s.tips)) Object.keys(o.tips).forEach(k => { o.tips[k] = s.tips[k] === true; });
+  if (isObj(s.equip)) {
+    const e = s.equip;
+    o.equip.active = e.active in PLACES ? e.active : "home";
+    o.equip.filter = e.filter === true;
+    if (isObj(e.places)) Object.keys(PLACES).forEach(k => {
+      const p = e.places[k]; if (!isObj(p)) return;
+      o.equip.places[k] = {
+        items: Array.isArray(p.items) ? [...new Set(p.items.filter(x => EQUIP[x]))] : o.equip.places[k].items,
+        maxDb: num(p.maxDb, 0, 0, 200), maxBb: num(p.maxBb, 0, 0, 500)
+      };
+    });
+  }
+  if (Array.isArray(s.squads)) {
+    const seen = new Set();
+    o.squads = s.squads.filter(x => isObj(x) && typeof x.code === "string" && /^[A-Z0-9]{6}$/.test(x.code) && !seen.has(x.code) && seen.add(x.code))
+      .slice(0, 10).map(x => ({ code: x.code, name: typeof x.name === "string" ? x.name.slice(0, 30) : "" }));
+  }
   o.level = Math.floor(num(s.level, 1, 1, 999));
   o.xp = num(s.xp, 0, 0);
   o.totalXp = num(s.totalXp, 0, 0);
@@ -843,6 +1052,7 @@ function save() {
   state.updatedAt = Date.now();
   writeLocal();
   scheduleCloud();
+  scheduleCards();
 }
 
 /* ---- Synchronisation du profil sur le compte Claude (db, sous-arbre privé par personne) ---- */
@@ -1100,6 +1310,7 @@ function renderHQ() {
     </div>
   </section>
   ${st.mission ? `<button class="banner" data-act="go" data-to="briefing"><div><div class="d">MISSION EN COURS · ${hms(Date.now() - st.mission.start)}</div><p>${plural(mSets, "série").toLowerCase()} validée${mSets > 1 ? "s" : ""}, ${state.loadoutSession.length} exercice${state.loadoutSession.length > 1 ? "s" : ""} au loadout</p></div><span class="go">REPRENDRE →</span></button>` : ""}
+  ${STANDALONE && fb.user ? `<button class="banner sq-banner" data-act="go" data-to="squad"><div><div class="d">ESCOUADES</div><p>${st.squads.length ? `${st.squads.length} escouade${st.squads.length > 1 ? "s" : ""} · classement de la semaine` : "Comparez vos progressions avec vos amis"}</p></div><span class="go">OUVRIR →</span></button>` : ""}
   <nav class="tabs" role="tablist">
     ${tabs.map(([id, l]) => `<button class="tab" role="tab" aria-selected="${ui.tab === id}" data-act="tab" data-tab="${id}">${l}${id === "aptitudes" && st.perkPoints > 0 && availPerks ? '<span class="pip" aria-label="points disponibles"></span>' : ""}</button>`).join("")}
   </nav>
@@ -1113,6 +1324,7 @@ function tabFiche(b) {
   <section class="block">
     <h2 class="h2">${rookie ? "PREMIÈRE MISSION" : "CIBLE DE MISSION"}</h2>
     <p class="hint">${rookie ? "Choisissez le système musculaire à travailler aujourd'hui. Le catalogue d'exercices s'ouvre directement dessus." : "Sélectionnez le système à travailler. Vous pourrez mélanger plusieurs systèmes dans le loadout."}</p>
+    <button class="eq-hq" data-act="eq-open"><span>MATÉRIEL · ${PLACES[st.equip.active]}</span><b>${curPlace().items.length ? `${curPlace().items.length} équipement${curPlace().items.length > 1 ? "s" : ""} + poids du corps` : "Poids du corps uniquement"}${st.equip.filter ? " · filtre actif" : ""}</b><em>RÉGLER →</em></button>
     <div class="cat-grid">
       ${CATS.map(c => {
         const list = exByCat(c.id), aff = {};
@@ -1268,11 +1480,536 @@ function tabArchives() {
 }
 
 /* =====================================================================
+   Schémas de mouvement : squelette filaire animé (départ ↔ contraction)
+   Vue de profil, l'opérateur regarde vers la droite. viewBox 240 × 160, sol à y = 152.
+   Angles en degrés : 0 = vers le bas, 90 = vers la droite, 180 = vers le haut, -90 = vers la gauche.
+   ===================================================================== */
+const ILL = { T: 36, NECK: 13, HR: 7, UA: 21, FA: 20, TH: 26, SH: 26, FT: 8, FLOOR: 152, W: 240, H: 160 };
+const ilDir = a => { const r = a * Math.PI / 180; return [Math.sin(r), Math.cos(r)]; };
+const ilAdd = (p, a, l) => { const d = ilDir(a); return [p[0] + d[0] * l, p[1] + d[1] * l]; };
+const ilAng = (p, q) => Math.atan2(q[0] - p[0], q[1] - p[1]) * 180 / Math.PI;
+function ilIK(s, t, a, b, bend) {
+  const dx = t[0] - s[0], dy = t[1] - s[1];
+  const d = Math.max(0.001, Math.hypot(dx, dy)), dd = Math.min(d, a + b - 0.01);
+  const c = (a * a + dd * dd - b * b) / (2 * a * dd);
+  const ang = Math.acos(Math.max(-1, Math.min(1, c)));
+  const base = Math.atan2(dy, dx), e = base + (bend || 1) * ang;
+  const m = [s[0] + Math.cos(e) * a, s[1] + Math.sin(e) * a];
+  const ex = t[0] - m[0], ey = t[1] - m[1], el = Math.max(0.001, Math.hypot(ex, ey));
+  return [m, [m[0] + ex / el * b, m[1] + ey / el * b]];
+}
+function ilLerp(a, b, t) {
+  if (typeof a === "number" && typeof b === "number") return a + (b - a) * t;
+  if (Array.isArray(a) && Array.isArray(b)) return a.map((v, i) => ilLerp(v, b[i], t));
+  if (a && b && typeof a === "object" && typeof b === "object") {
+    const ka = Object.keys(a).sort().join(), kb = Object.keys(b).sort().join();
+    if (ka !== kb) return t < 0.5 ? a : b;
+    const o = {}; for (const k in a) o[k] = ilLerp(a[k], b[k], t); return o;
+  }
+  return t < 0.5 ? a : b;
+}
+/* Résout une posture de profil en points articulaires. */
+function ilSolve(p) {
+  const J = {}, L = ILL;
+  J.hip = [0, 0];
+  J.sh = ilAdd(J.hip, p.torso, L.T * (p.tl || 1));
+  J.head = ilAdd(J.sh, p.head !== undefined ? p.head : p.torso, L.NECK);
+  const ang = (spec, root, k1, k2, l1, l2) => { if (spec && spec.a !== undefined) { J[k1] = ilAdd(J[root], spec.a, l1); J[k2] = ilAdd(J[k1], spec.f, l2); } };
+  ang(p.leg, "hip", "knee", "ank", L.TH, L.SH); ang(p.leg2, "hip", "knee2", "ank2", L.TH, L.SH);
+  ang(p.arm, "sh", "elb", "hand", L.UA, L.FA); ang(p.arm2, "sh", "elb2", "hand2", L.UA, L.FA);
+  let off = p.hip || [118, 0];
+  if (p.anchor && J[p.anchor.j]) { const q = J[p.anchor.j]; off = [p.anchor.at[0] - q[0], p.anchor.at[1] - q[1]]; }
+  for (const k in J) J[k] = [J[k][0] + off[0], J[k][1] + off[1]];
+  const ik = (spec, root, k1, k2, l1, l2) => {
+    if (!spec || !spec.ik) return;
+    const base = spec.rel ? J[spec.rel] : [0, 0];
+    const tg = [base[0] + spec.ik[0], base[1] + spec.ik[1]];
+    [J[k1], J[k2]] = ilIK(J[root], tg, l1, l2, spec.bend);
+  };
+  ik(p.leg, "hip", "knee", "ank", L.TH, L.SH); ik(p.leg2, "hip", "knee2", "ank2", L.TH, L.SH);
+  ik(p.arm, "sh", "elb", "hand", L.UA, L.FA); ik(p.arm2, "sh", "elb2", "hand2", L.UA, L.FA);
+  if (p.ground) {
+    const ys = ["ank", "ank2"].filter(k => J[k]).map(k => J[k][1]);
+    const dy = L.FLOOR - 2 - Math.max(...ys);
+    for (const k in J) J[k] = [J[k][0], J[k][1] + dy];
+  }
+  if (J.ank) J.toe = ilAdd(J.ank, (p.foot !== undefined ? p.foot : ilAng(J.knee, J.ank) + 90), L.FT);
+  if (J.ank2) J.toe2 = ilAdd(J.ank2, (p.foot2 !== undefined ? p.foot2 : ilAng(J.knee2, J.ank2) + 90), L.FT);
+  return J;
+}
+/* Vue de face : membres symétriques (bras droit = angle a, bras gauche = -a). */
+function ilSolveFront(p) {
+  const J = {}, L = ILL, hip = p.hip;
+  J.hip = hip; J.sh = ilAdd(hip, p.torso || 180, L.T); J.head = ilAdd(J.sh, p.torso || 180, L.NECK);
+  const sw = 15, hw = 8;
+  J.rsh = [J.sh[0] + sw, J.sh[1]]; J.lsh = [J.sh[0] - sw, J.sh[1]];
+  J.rhip = [hip[0] + hw, hip[1]]; J.lhip = [hip[0] - hw, hip[1]];
+  const limb = (spec, rootR, rootL, l1, l2, kR1, kR2, kL1, kL2) => {
+    if (!spec) return;
+    if (spec.a !== undefined) {
+      J[kR1] = ilAdd(J[rootR], spec.a, l1); J[kR2] = ilAdd(J[kR1], spec.f, l2);
+      J[kL1] = ilAdd(J[rootL], -spec.a, l1); J[kL2] = ilAdd(J[kL1], -spec.f, l2);
+    } else if (spec.ik) {
+      const base = spec.rel ? J[spec.rel] : [0, 0];
+      const tR = [base[0] + spec.ik[0], base[1] + spec.ik[1]];
+      const tL = spec.same ? tR : [2 * J.sh[0] - tR[0], tR[1]];
+      [J[kR1], J[kR2]] = ilIK(J[rootR], tR, l1, l2, spec.bend || -1);
+      [J[kL1], J[kL2]] = ilIK(J[rootL], tL, l1, l2, -(spec.bend || -1));
+    }
+  };
+  limb(p.arm, "rsh", "lsh", L.UA, L.FA, "relb", "rhand", "lelb", "lhand");
+  limb(p.leg, "rhip", "lhip", L.TH, L.SH, "rknee", "rank", "lknee", "lank");
+  return J;
+}
+
+/* ---- Bibliothèque de mouvements ---- */
+const F = ILL.FLOOR;
+const STAND = { a: 0, f: 0 };
+const IL = {
+  press(o) { // développé allongé (plat, incliné, décliné), écarté
+    const tor = o.incline ? -122 : o.decline ? -76 : -90;
+    const hip = o.incline ? [150, 118] : [150, 114];
+    const sh = ilAdd(hip, tor, ILL.T);
+    const bench = { k: "benchline", p1: [hip[0] + 10, hip[1] + 7], p2: [sh[0] - 6, sh[1] + 7], legs: true };
+    const up = [sh[0] - 1, sh[1] - 40], down = o.fly ? [sh[0] + 4, sh[1] + 14] : [sh[0] + 2, sh[1] - 12];
+    const legs = { ik: [176, F - 2], bend: -1 };
+    const base = { hip, torso: tor, leg: legs, leg2: legs };
+    return { props: [bench, { k: o.db ? "db" : "bar", j: "hand" }],
+      A: Object.assign({}, base, { arm: { ik: down, bend: o.fly ? -1 : 1 } }),
+      B: Object.assign({}, base, { arm: { ik: up, bend: o.fly ? -1 : 1 } }) };
+  },
+  pushup(o) { // pompes, variantes
+    const hy = o.hands !== undefined ? o.hands : F - 1, fy = o.feet !== undefined ? o.feet : F - 2;
+    const ax = o.feet !== undefined ? 40 : 46;
+    const aA = o.aA || 97, aB = o.aB || 110;
+    const shB = ilAdd([ax, fy], aB, 88);
+    const hx = shB[0] + 2;
+    const pose = (a, hyy) => ({ anchor: { j: "ank", at: [ax, fy] }, torso: a, leg: { a: a - 180, f: a - 180 }, foot: a - 180 + 90, arm: { ik: [hx, hyy], bend: 1 } });
+    const props = [];
+    if (o.hands !== undefined && o.bar) props.push({ k: "lowbar", x1: hx - 16, x2: hx + 22, y: hy + 1 });
+    else if (o.hands !== undefined) props.push({ k: "box", x1: hx - 18, x2: hx + 26, y: hy + 1 });
+    if (o.feet !== undefined) props.push({ k: "box", x1: 22, x2: 64, y: fy + 2 });
+    return { props, A: pose(aA, hy), B: pose(aB, o.plyo ? hy - 9 : hy) };
+  },
+  pike() {
+    const hip = [88, 100], hands = [136, F - 1];
+    const legs = { ik: [70, F - 2], bend: -1 };
+    return { A: { hip, torso: 46, head: 46, leg: legs, arm: { ik: hands, bend: 1 } },
+             B: { hip, torso: 70, head: 70, leg: legs, arm: { ik: hands, bend: 1 } } };
+  },
+  hspu(o) {
+    const wall = { k: "wall", x: 152 };
+    const hands = [132, F - 1];
+    const pose = (sy) => ({ hip: [132, sy - 36], torso: 0, head: 0, leg: { a: 175, f: 175 }, arm: { ik: hands, bend: 1 } });
+    if (o.hold) return { iso: true, props: [wall], A: pose(F - 42), B: pose(F - 43) };
+    return { props: [wall], A: pose(F - 24), B: pose(F - 42) };
+  },
+  wallwalk() {
+    return { props: [{ k: "wall", x: 200 }],
+      A: { hip: [148, 133], torso: -108, head: -108, leg: { a: 72, f: 72 }, foot: 160, arm: { ik: [112, F - 1], bend: 1 } },
+      B: { hip: [178, 75], torso: 0, head: 0, leg: { a: 168, f: 168 }, foot: 240, arm: { ik: [178, F - 1], bend: 1 } } };
+  },
+  dips(o) {
+    const lean = o.lean ? 158 : 176, hands = [122, 80];
+    const props = o.rings ? [{ k: "rings", j: "hand" }] : [{ k: "pbars", x1: 100, x2: 150, y: 81 }];
+    const legs = { a: 18, f: -35 }, legs2 = { a: 8, f: -45 };
+    const pose = (sh) => ({ anchor: { j: "sh", at: sh }, torso: lean, leg: legs, leg2: legs2, arm: { ik: hands, bend: 1 } });
+    return { props, A: pose([127, 68]), B: pose([121, 40]) };
+  },
+  benchdip() {
+    const hand = [94, 118];
+    const pose = (sh) => ({ anchor: { j: "sh", at: sh }, torso: 180, leg: { ik: [178, F - 2], bend: -1 }, arm: { ik: hand, bend: 1 } });
+    return { props: [{ k: "box", x1: 56, x2: 98, y: 119 }], A: pose([100, 100]), B: pose([97, 78]) };
+  },
+  pullup(o) {
+    const by = o.bar || 26, hand = [120, by];
+    const props = [{ k: "pullbar", x1: 70, x2: 170, y: by }];
+    const legs = { a: 6, f: -28 }, legs2 = { a: -4, f: -40 };
+    const pose = (sh, lg, lg2) => ({ anchor: { j: "sh", at: sh }, torso: 184, leg: lg || legs, leg2: lg2 || legs2, arm: { ik: hand, bend: 1 } });
+    if (o.hang) return { iso: true, props, A: pose([119, by + 41]), B: pose([119, by + 40]) };
+    if (o.scap) return { props, A: pose([119, by + 41]), B: pose([119, by + 34]) };
+    if (o.raise) return { props, A: pose([119, by + 41], { a: 2, f: 2 }, { a: -2, f: -2 }), B: pose([119, by + 41], { a: 96, f: 96 }, { a: 92, f: 92 }) };
+    if (o.muscle) return { props: [{ k: "pullbar", x1: 70, x2: 170, y: 72 }],
+      A: { anchor: { j: "sh", at: [114, 88] }, torso: 186, leg: { a: 30, f: -40 }, leg2: { a: 20, f: -50 }, arm: { ik: [122, 72], bend: 1 } },
+      B: { anchor: { j: "sh", at: [126, 32] }, torso: 172, leg: { a: 10, f: -20 }, leg2: { a: 4, f: -30 }, arm: { ik: [122, 72], bend: 1 } } };
+    return { props, A: pose([119, by + 41]), B: pose([113, by + 10]) };
+  },
+  pulldown() {
+    const hip = [116, 122], seat = { k: "box", x1: 96, x2: 136, y: 129 };
+    const base = { hip, leg: { a: 90, f: 0 }, leg2: { a: 90, f: 0 } };
+    return { props: [seat, { k: "cable", from: [128, 6], j: "hand" }, { k: "hbar", j: "hand" }],
+      A: Object.assign({}, base, { torso: 182, arm: { ik: [126, 44], bend: 1 } }),
+      B: Object.assign({}, base, { torso: 192, arm: { ik: [126, 86], bend: 1 } }) };
+  },
+  cablerow() {
+    const hip = [84, 136];
+    const base = { hip, leg: { ik: [134, 142], bend: -1 }, leg2: { ik: [134, 142], bend: -1 } };
+    return { props: [{ k: "box", x1: 62, x2: 104, y: 143 }, { k: "foot", x: 138, y1: 128, y2: 150 }, { k: "cable", from: [222, 118], j: "hand" }],
+      A: Object.assign({}, base, { torso: 160, arm: { ik: [146, 112], bend: 1 } }),
+      B: Object.assign({}, base, { torso: 186, arm: { ik: [100, 110], bend: 1 } }) };
+  },
+  bentrow(o) {
+    const hip = [98, 102], tor = 122;
+    const sh = ilAdd(hip, tor, ILL.T), belly = ilAdd(hip, tor, 12);
+    const legs = { ik: [114, F - 2], bend: -1 };
+    const base = { hip, torso: tor, head: tor - 10, leg: legs, leg2: legs };
+    return { props: [{ k: o.db ? "db" : "bar", j: "hand" }],
+      A: Object.assign({}, base, { arm: { ik: [sh[0] + 1, sh[1] + 41], bend: 1 } }),
+      B: Object.assign({}, base, { arm: { ik: [belly[0] + 3, belly[1] + 8], bend: 1 } }) };
+  },
+  invrow(o) {
+    const heel = [46, F - 3], bar = [138, 92];
+    const pose = (a) => ({ anchor: { j: "ank", at: heel }, torso: a, leg: { a: a - 180, f: a - 180 }, foot: a, arm: { ik: bar, bend: o && o.curl ? -1 : 1 } });
+    return { props: [{ k: "lowbar", x1: 108, x2: 176, y: 92 }], A: pose(101), B: pose(117) };
+  },
+  facepull() {
+    const base = { ground: true, torso: 180, leg: STAND, leg2: { a: -6, f: -6 } };
+    return { props: [{ k: "cable", from: [224, 60], j: "hand" }],
+      A: Object.assign({}, base, { arm: { ik: [40, 6], rel: "sh", bend: -1 } }),
+      B: Object.assign({}, base, { arm: { ik: [6, -8], rel: "sh", bend: -1 } }) };
+  },
+  rearfly() {
+    const hip = [98, 102], legs = { ik: [114, F - 2], bend: -1 };
+    const base = { hip, torso: 118, head: 108, leg: legs, leg2: legs };
+    return { props: [{ k: "db", j: "hand" }], A: Object.assign({}, base, { arm: { a: 4, f: 10 } }), B: Object.assign({}, base, { arm: { a: 150, f: 140 } }) };
+  },
+  shrug() {
+    const base = { ground: true, torso: 180, head: 180, leg: STAND, leg2: STAND };
+    return { props: [{ k: "db", j: "hand" }], A: Object.assign({}, base, { tl: 1, arm: { a: 2, f: 2 } }), B: Object.assign({}, base, { tl: 1.13, arm: { a: 2, f: 2 } }) };
+  },
+  prone(o) { // superman, Y-T-W
+    const hip = [124, F - 7];
+    const A = { hip, torso: -90, head: -90, leg: { a: 90, f: 90 }, foot: 180, arm: { a: -90, f: -90 } };
+    const B = o.armsOnly ? Object.assign({}, A, { torso: -96, head: -100, arm: { a: -112, f: -112 } })
+                         : { hip, torso: -100, head: -104, leg: { a: 79, f: 77 }, foot: 166, arm: { a: -112, f: -114 } };
+    return { A, B };
+  },
+  hyper() {
+    const ank = [64, 140];
+    const pose = (t) => ({ anchor: { j: "ank", at: ank }, torso: t, head: t, leg: { a: -55, f: -55 }, foot: 35, arm: { ik: [6, 6], rel: "sh", bend: -1 } });
+    return { props: [{ k: "pad", j: "hip", dx: 4, dy: 6 }, { k: "pad", j: "ank", dx: 2, dy: -6 }], A: pose(28), B: pose(125) };
+  },
+  deadlift(o) {
+    const legs = { ik: [114, F - 2], bend: -1 };
+    const pose = (hip, t) => ({ hip, torso: t, head: t < 150 ? t - 15 : t, leg: legs, leg2: legs, arm: { a: 0, f: 0 } });
+    if (o.rdl) return { props: [{ k: "bar", j: "hand" }], A: pose([96, 100], 104), B: pose([112, 98], 180) };
+    return { props: [{ k: "bar", j: "hand" }], A: pose([92, 114], 118), B: pose([112, 98], 180) };
+  },
+  squat(o) {
+    const legs = { ik: [116, F - 2], bend: -1 };
+    const props = [];
+    let arm;
+    if (o.front) { arm = { ik: [9, -2], rel: "sh", bend: -1 }; props.push({ k: "bar", j: "sh", dx: 8, dy: -3 }); }
+    else if (o.air) arm = null;
+    else { arm = { ik: [2, -3], rel: "sh", bend: 1 }; props.push({ k: "bar", j: "sh", dx: -3, dy: -3 }); }
+    const pose = (hip, t, ank, armOverride) => ({ hip, torso: t, leg: ank ? { ik: ank, bend: -1 } : legs, leg2: ank ? { ik: ank, bend: -1 } : legs, arm: armOverride || arm });
+    if (o.air) return { A: pose([92, 126], 140, null, { a: 92, f: 92 }), B: pose([113, 98], 178, null, { a: 70, f: 60 }) };
+    if (o.jump) return { A: pose([92, 126], 140, [116, F - 2], { a: 30, f: 30 }), B: pose([113, 84], 180, [116, F - 15], { a: 172, f: 172 }) };
+    return { props, A: pose([90, 126], o.front ? 158 : 140), B: pose([113, 98], 177) };
+  },
+  legpress() {
+    const hip = [100, 132];
+    const pose = (ank) => ({ hip, torso: -126, head: -126, leg: { ik: ank, bend: 1 }, leg2: { ik: ank, bend: 1 }, arm: { a: 60, f: 60 } });
+    return { props: [{ k: "benchline", p1: [106, 139], p2: [70, 112], legs: false }, { k: "platform", j: "ank" }], A: pose([126, 92]), B: pose([150, 66]) };
+  },
+  lunge(o) {
+    const front = [148, F - 2];
+    const back = o.bulgarian ? [74, 119] : [82, F - 2];
+    const props = [];
+    if (o.bulgarian) props.push({ k: "box", x1: 52, x2: 92, y: 122 });
+    if (o.db) props.push({ k: "db", j: "hand" });
+    const pose = (hip) => ({ hip, torso: 178, leg: { ik: front, bend: -1 }, leg2: { ik: back, bend: -1 }, arm: { a: 2, f: 2 } });
+    return { props, A: pose(o.bulgarian ? [112, 124] : [115, 124]), B: pose(o.bulgarian ? [114, 104] : [115, 102]) };
+  },
+  stepup() {
+    return { props: [{ k: "box", x1: 128, x2: 172, y: 120 }],
+      A: { hip: [110, 104], torso: 172, leg: { ik: [146, 119], bend: -1 }, leg2: { ik: [96, F - 2], bend: -1 }, arm: { a: 10, f: 10 } },
+      B: { hip: [146, 68], torso: 180, leg: { ik: [146, 119], bend: -1 }, leg2: { ik: [136, 108], bend: 1 }, arm: { a: -6, f: -6 } } };
+  },
+  pistol() {
+    return {
+      A: { hip: [98, 128], torso: 148, leg: { ik: [116, F - 2], bend: -1 }, leg2: { a: 84, f: 88 }, arm: { a: 88, f: 88 } },
+      B: { hip: [113, 98], torso: 180, leg: { ik: [116, F - 2], bend: -1 }, leg2: { a: 40, f: 44 }, arm: { a: 60, f: 60 } } };
+  },
+  thrust(o) {
+    const sh = o.bridge ? [88, F - 6] : [98, 118], feet = [152, F - 2];
+    const pose = (t) => ({ anchor: { j: "sh", at: sh }, torso: t, head: t, leg: { ik: feet, bend: -1 }, leg2: { ik: feet, bend: -1 }, arm: { a: 100, f: 100 } });
+    const props = o.bridge ? [] : [{ k: "box", x1: 56, x2: 100, y: 122 }, { k: "bar", j: "hip", dx: 2, dy: -9 }];
+    return o.bridge ? { props, A: pose(-97), B: pose(-70) } : { props, A: pose(-124), B: pose(-90) };
+  },
+  legext() {
+    const hip = [104, 116];
+    const base = { hip, torso: 184, leg: null, arm: { a: 30, f: 60 } };
+    return { props: [{ k: "seatline", x1: 92, x2: 132, y: 122 }, { k: "pad", j: "ank", dx: 3, dy: 0 }],
+      A: Object.assign({}, base, { leg: { a: 90, f: 8 } }), B: Object.assign({}, base, { leg: { a: 90, f: 86 } }) };
+  },
+  legcurl() {
+    const hip = [124, 122];
+    const base = { hip, torso: -90, head: -96, arm: { a: -40, f: 0 } };
+    return { props: [{ k: "box", x1: 64, x2: 172, y: 128 }, { k: "pad", j: "ank", dx: 0, dy: -5 }],
+      A: Object.assign({}, base, { leg: { a: 90, f: 92 }, foot: 182 }), B: Object.assign({}, base, { leg: { a: 90, f: 172 }, foot: 262 }) };
+  },
+  nordic() {
+    const knee = [108, F - 3];
+    const pose = (phi) => ({ anchor: { j: "knee", at: knee }, torso: phi, head: phi, leg: { a: phi - 180, f: -90 }, foot: 0, arm: { a: phi - 60, f: phi - 50 } });
+    return { props: [{ k: "pad", j: "ank", dx: 0, dy: -6 }], A: pose(180), B: pose(116) };
+  },
+  calf() {
+    const pose = (y, foot) => ({ hip: [114, y], torso: 180, leg: STAND, leg2: STAND, foot, foot2: foot, arm: { a: 2, f: 2 } });
+    return { props: [{ k: "box", x1: 98, x2: 128, y: 141 }], A: pose(87, 76), B: pose(81, 128) };
+  },
+  wallsit() {
+    const pose = (y) => ({ hip: [94, y], torso: 180, leg: { a: 90, f: 0 }, leg2: { a: 90, f: 0 }, arm: { a: 30, f: 70 } });
+    return { iso: true, props: [{ k: "wall", x: 84 }], A: pose(F - 28), B: pose(F - 29) };
+  },
+  ohp(o) {
+    const seated = o.seated;
+    const base = seated ? { hip: [112, 122], torso: 180, leg: { a: 90, f: 0 }, leg2: { a: 90, f: 0 } } : { ground: true, torso: 180, leg: STAND, leg2: { a: -5, f: -5 } };
+    const props = [{ k: o.db ? "db" : "bar", j: "hand" }];
+    if (seated) props.push({ k: "box", x1: 92, x2: 132, y: 129 }, { k: "back", x: 98, y1: 80, y2: 129 });
+    return { props,
+      A: Object.assign({}, base, { arm: { ik: [8, 2], rel: "sh", bend: -1 } }),
+      B: Object.assign({}, base, { arm: { ik: [2, -40], rel: "sh", bend: -1 } }) };
+  },
+  curl(o) {
+    const props = [{ k: o.db ? "db" : "bar", j: "hand" }];
+    if (o.incline) {
+      const base = { hip: [116, 124], torso: 202, head: 196, leg: { a: 90, f: 0 }, leg2: { a: 90, f: 0 } };
+      props.push({ k: "benchline", p1: [118, 130], p2: [96, 78], legs: false });
+      return { props, A: Object.assign({}, base, { arm: { a: -10, f: -10 } }), B: Object.assign({}, base, { arm: { a: -10, f: 145 } }) };
+    }
+    const base = { ground: true, torso: 180, leg: STAND, leg2: STAND };
+    return { props, A: Object.assign({}, base, { arm: { a: 3, f: 6 } }), B: Object.assign({}, base, { arm: { a: 8, f: 152 } }) };
+  },
+  skull() {
+    const hip = [150, 114], sh = ilAdd(hip, -90, ILL.T);
+    const legs = { ik: [176, F - 2], bend: -1 };
+    const base = { hip, torso: -90, leg: legs, leg2: legs };
+    return { props: [{ k: "benchline", p1: [hip[0] + 10, hip[1] + 7], p2: [sh[0] - 6, sh[1] + 7], legs: true }, { k: "bar", j: "hand" }],
+      A: Object.assign({}, base, { arm: { a: 196, f: 300 } }), B: Object.assign({}, base, { arm: { a: 192, f: 188 } }) };
+  },
+  pushdown() {
+    const base = { ground: true, torso: 182, leg: STAND, leg2: { a: -5, f: -5 } };
+    return { props: [{ k: "cable", from: [150, 8], j: "hand" }],
+      A: Object.assign({}, base, { arm: { a: 6, f: 148 } }), B: Object.assign({}, base, { arm: { a: 4, f: 6 } }) };
+  },
+  plank(o) {
+    const ax = 50, ay = F - 2;
+    const a = 102.5;
+    const pose = (aa) => ({ anchor: { j: "ank", at: [ax, ay] }, torso: aa, leg: { a: aa - 180, f: aa - 180 }, foot: aa - 90, arm: { a: 2, f: 90 } });
+    return { iso: true, A: pose(a), B: pose(a + 0.8) };
+  },
+  wheel() {
+    const knee = [84, F - 3];
+    const pose = (phi, t, hand) => ({ anchor: { j: "knee", at: knee }, torso: t, head: t - 10, leg: { a: phi - 180, f: -90 }, foot: 0, arm: { ik: hand, bend: 1 } });
+    return { props: [{ k: "wheel", j: "hand" }], A: pose(160, 124, [126, F - 7]), B: pose(114, 100, [184, F - 7]) };
+  },
+  cablecrunch() {
+    const knee = [112, F - 3];
+    const pose = (t) => ({ anchor: { j: "knee", at: knee }, torso: t, head: t, leg: { a: 0, f: -90 }, foot: 0, arm: { ik: [6, 2], rel: "head", bend: -1 } });
+    return { props: [{ k: "cable", from: [140, 6], j: "hand" }], A: pose(176), B: pose(108) };
+  },
+  crunch(o) {
+    const hip = [124, F - 7];
+    const legs = { ik: [162, F - 2], bend: -1 };
+    const arm = { ik: [-3, -5], rel: "head", bend: 1 };
+    if (o.bicycle) return {
+      A: { hip, torso: -112, head: -118, leg: { a: 150, f: 95 }, leg2: { a: 104, f: 100 }, arm },
+      B: { hip, torso: -116, head: -122, leg: { a: 104, f: 100 }, leg2: { a: 150, f: 95 }, arm } };
+    return { A: { hip, torso: -90, head: -94, leg: legs, leg2: legs, arm }, B: { hip, torso: -118, head: -126, leg: legs, leg2: legs, arm } };
+  },
+  legraise() {
+    const hip = [116, F - 7];
+    const base = { hip, torso: -90, head: -90, arm: { a: 90, f: 90 } };
+    return { A: Object.assign({}, base, { leg: { a: 96, f: 96 }, foot: 186 }), B: Object.assign({}, base, { leg: { a: 176, f: 176 }, foot: 266 }) };
+  },
+  vup() {
+    const hip = [120, F - 7];
+    return { A: { hip, torso: -92, head: -92, leg: { a: 92, f: 92 }, foot: 182, arm: { a: -92, f: -92 } },
+             B: { hip, torso: -140, head: -146, leg: { a: 140, f: 140 }, foot: 230, arm: { a: -196, f: -196 } } };
+  },
+  deadbug() {
+    const hip = [124, F - 7];
+    const base = { hip, torso: -90, head: -90, arm2: { a: 180, f: 180 }, leg2: { a: 180, f: 90 } };
+    return { A: Object.assign({}, base, { arm: { a: 180, f: 180 }, leg: { a: 180, f: 90 } }),
+             B: Object.assign({}, base, { arm: { a: 252, f: 252 }, leg: { a: 98, f: 96 } }) };
+  },
+  mountain() {
+    const hip = [98, 124], hand = [142, F - 1];
+    const ext = { a: -78, f: -78 }, tuck = { a: 30, f: -50 };
+    return { A: { hip, torso: 100, leg: ext, leg2: tuck, arm: { ik: hand, bend: 1 } },
+             B: { hip, torso: 100, leg: tuck, leg2: ext, arm: { ik: hand, bend: 1 } } };
+  },
+  taps() {
+    const ax = 46, ay = F - 2, a = 110;
+    const sh = ilAdd([ax, ay], a, 88);
+    const pose = (t2) => ({ anchor: { j: "ank", at: [ax, ay] }, torso: a, leg: { a: a - 180, f: a - 180 }, foot: a - 90, arm: { ik: [sh[0] + 2, F - 1], bend: 1 }, arm2: { ik: t2, bend: 1 } });
+    return { A: pose([sh[0] + 2, F - 1]), B: pose([sh[0] - 4, sh[1] + 4]) };
+  },
+  hollow() {
+    const hip = [120, F - 9];
+    const pose = (k) => ({ hip, torso: -98 - k, head: -100 - k, leg: { a: 82 - k, f: 82 - k }, foot: 172, arm: { a: -104 - k, f: -104 - k } });
+    return { iso: true, A: pose(0), B: pose(1.2) };
+  },
+  lsit() {
+    const pose = (k) => ({ hip: [118, 128 - k], torso: 180, leg: { a: 90, f: 90 }, foot: 180, arm: { a: 2, f: 0 } });
+    return { iso: true, props: [{ k: "block", j: "hand" }], A: pose(0), B: pose(1) };
+  },
+  dragon() {
+    const sh = [66, 128];
+    const pose = (t) => ({ anchor: { j: "sh", at: sh }, torso: t, head: -90, leg: { a: t + 180, f: t + 180 }, foot: t + 270, arm: { ik: [52, 130], bend: 1 } });
+    return { props: [{ k: "box", x1: 36, x2: 120, y: 134 }], A: pose(0), B: pose(-78) };
+  },
+  /* vue de face */
+  lateral() {
+    const base = { view: "front", hip: [120, 98], torso: 180, leg: { a: 4, f: 4 } };
+    return { view: "front", props: [{ k: "db", j: "rhand" }, { k: "db", j: "lhand" }],
+      A: Object.assign({}, base, { arm: { a: 14, f: 14 } }), B: Object.assign({}, base, { arm: { a: 88, f: 84 } }) };
+  },
+  flyfront(o) {
+    const base = { view: "front", hip: [120, 98], torso: 180, leg: { a: 6, f: 6 } };
+    const props = o.cable ? [{ k: "cable", from: [222, 30], j: "rhand" }, { k: "cable", from: [18, 30], j: "lhand" }] : [{ k: "back", x: 120, y1: 50, y2: 129 }];
+    return { view: "front", props,
+      A: Object.assign({}, base, { arm: { ik: [52, 6], rel: "sh", bend: -1 } }),
+      B: Object.assign({}, base, { arm: { ik: [6, 22], rel: "sh", bend: -1 } }) };
+  },
+  twist() {
+    const base = { view: "front", hip: [120, F - 8], torso: 180, leg: { a: 140, f: 30 } };
+    return { view: "front", props: [{ k: "plate", j: "rhand" }],
+      A: Object.assign({}, base, { arm: { ik: [26, 26], rel: "sh", bend: -1, same: true } }),
+      B: Object.assign({}, base, { arm: { ik: [-26, 26], rel: "sh", bend: -1, same: true } }) };
+  }
+};
+
+/* Exercice → mouvement */
+const ILL_MAP = {
+  bench: ["press", {}], incline_db: ["press", { incline: 1, db: 1 }], decline: ["press", { decline: 1 }], close_bench: ["press", {}],
+  fly: ["press", { fly: 1, db: 1 }], cable_cross: ["flyfront", { cable: 1 }], pec_deck: ["flyfront", {}],
+  dips_chest: ["dips", { lean: 1 }], dips_rings: ["dips", { lean: 1, rings: 1 }], dips_bars: ["dips", {}], dips_bench: ["benchdip", {}],
+  pushup: ["pushup", {}], pushup_wide: ["pushup", {}], pushup_diamond: ["pushup", {}], pushup_archer: ["pushup", {}],
+  pushup_plyo: ["pushup", { plyo: 1 }], pushup_incline: ["pushup", { hands: 121, aA: 108, aB: 121 }], pushup_decline: ["pushup", { feet: 118, aA: 80, aB: 95 }],
+  bw_tri_ext: ["pushup", { hands: 112, bar: 1, aA: 112, aB: 124 }],
+  deadlift: ["deadlift", {}], rdl: ["deadlift", { rdl: 1 }],
+  pullup: ["pullup", {}], chinup: ["pullup", {}], pullup_neutral: ["pullup", {}], chinup_close: ["pullup", {}],
+  scap_pull: ["pullup", { scap: 1 }], dead_hang: ["pullup", { hang: 1 }], muscle_up: ["pullup", { muscle: 1 }], hanging_raise: ["pullup", { raise: 1 }],
+  row_bb: ["bentrow", {}], tbar: ["bentrow", {}], row_db: ["bentrow", { db: 1 }], lat_pd: ["pulldown", {}], seated_row: ["cablerow", {}],
+  inverted_row: ["invrow", {}], bw_curl: ["invrow", { curl: 1 }], shrug: ["shrug", {}], hyperext: ["hyper", {}], superman: ["prone", {}],
+  face_pull: ["facepull", {}], rear_fly: ["rearfly", {}], ytw: ["prone", { armsOnly: 1 }],
+  ohp: ["ohp", {}], db_press: ["ohp", { seated: 1, db: 1 }], arnold: ["ohp", { seated: 1, db: 1 }], lat_raise: ["lateral", {}],
+  pike_pushup: ["pike", {}], hspu: ["hspu", {}], handstand_hold: ["hspu", { hold: 1 }], wall_walk: ["wallwalk", {}],
+  skull: ["skull", {}], tri_pushdown: ["pushdown", {}], curl_bb: ["curl", {}], curl_hammer: ["curl", { db: 1 }], curl_incline: ["curl", { incline: 1, db: 1 }],
+  squat: ["squat", {}], front_squat: ["squat", { front: 1 }], air_squat: ["squat", { air: 1 }], jump_squat: ["squat", { jump: 1 }],
+  leg_press: ["legpress", {}], lunge: ["lunge", { db: 1 }], bw_lunge: ["lunge", {}], bulgarian: ["lunge", { bulgarian: 1, db: 1 }],
+  step_up: ["stepup", {}], pistol: ["pistol", {}], hip_thrust: ["thrust", {}], glute_bridge: ["thrust", { bridge: 1 }],
+  leg_ext: ["legext", {}], leg_curl: ["legcurl", {}], nordic: ["nordic", {}], calf: ["calf", {}], bw_calf: ["calf", {}], wall_sit: ["wallsit", {}],
+  plank: ["plank", {}], side_plank: ["plank", {}], ab_wheel: ["wheel", {}], cable_crunch: ["cablecrunch", {}], russian: ["twist", {}],
+  pallof: ["facepull", {}], crunch: ["crunch", {}], bicycle: ["crunch", { bicycle: 1 }], floor_leg_raise: ["legraise", {}], v_up: ["vup", {}],
+  dead_bug: ["deadbug", {}], mountain: ["mountain", {}], shoulder_taps: ["taps", {}], hollow: ["hollow", {}], l_sit: ["lsit", {}], dragon_flag: ["dragon", {}]
+};
+function illusSpec(id) {
+  const m = ILL_MAP[id]; if (!m || !IL[m[0]]) return null;
+  try { const s = IL[m[0]](m[1] || {}); s.view = s.view || "side"; return s; } catch (e) { return null; }
+}
+const r1 = v => Math.round(v * 10) / 10;
+const pt = p => `${r1(p[0])} ${r1(p[1])}`;
+function illusPaths(spec, pose) {
+  const J = spec.view === "front" ? ilSolveFront(pose) : ilSolve(pose);
+  const seg = (...ks) => ks.every(k => J[k]) ? "M" + ks.map(k => pt(J[k])).join("L") : "";
+  let main, dim = "";
+  if (spec.view === "front") {
+    main = [seg("lsh", "rsh"), "M" + pt(J.sh) + "L" + pt(J.hip), seg("lhip", "rhip"), seg("rsh", "relb", "rhand"), seg("lsh", "lelb", "lhand"), seg("rhip", "rknee", "rank"), seg("lhip", "lknee", "lank")].join("");
+  } else {
+    main = [seg("hip", "sh"), seg("sh", "elb", "hand"), seg("hip", "knee", "ank", "toe")].join("");
+    dim = [seg("sh", "elb2", "hand2"), seg("hip", "knee2", "ank2", "toe2")].join("");
+    if (!pose.arm2 && J.elb) dim += ""; // un seul bras visible de profil
+  }
+  return { J, main, dim };
+}
+function illusPropMarkup(p, J) {
+  const at = (j, dx, dy) => J[j] ? [J[j][0] + (dx || 0), J[j][1] + (dy || 0)] : null;
+  switch (p.k) {
+    case "bar": { const c = at(p.j, p.dx, p.dy); return c ? `<circle class="ip-heavy" cx="${r1(c[0])}" cy="${r1(c[1])}" r="10"/><circle class="ip" cx="${r1(c[0])}" cy="${r1(c[1])}" r="3"/>` : ""; }
+    case "db": { const c = at(p.j, p.dx, p.dy); return c ? `<rect class="ip-heavy" x="${r1(c[0] - 6)}" y="${r1(c[1] - 4)}" width="12" height="8" rx="2"/>` : ""; }
+    case "plate": { const c = at(p.j); return c ? `<circle class="ip-heavy" cx="${r1(c[0])}" cy="${r1(c[1])}" r="7"/>` : ""; }
+    case "wheel": { const c = at(p.j); return c ? `<circle class="ip-heavy" cx="${r1(c[0])}" cy="${r1(c[1] + 1)}" r="6"/>` : ""; }
+    case "block": { const c = at(p.j); return c ? `<rect class="ip" x="${r1(c[0] - 6)}" y="${r1(c[1])}" width="12" height="${r1(F - c[1])}"/>` : ""; }
+    case "pad": { const c = at(p.j, p.dx, p.dy); return c ? `<circle class="ip" cx="${r1(c[0])}" cy="${r1(c[1])}" r="4"/>` : ""; }
+    case "hbar": { const c = at(p.j); return c ? `<path class="ip-heavy" d="M${r1(c[0] - 12)} ${r1(c[1])}H${r1(c[0] + 12)}"/>` : ""; }
+    case "rings": { const c = at(p.j); return c ? `<path class="ip" d="M${r1(c[0])} 0V${r1(c[1] - 4)}"/><circle class="ip-heavy" cx="${r1(c[0])}" cy="${r1(c[1])}" r="4"/>` : ""; }
+    case "cable": { const c = at(p.j); return c ? `<circle class="ip" cx="${p.from[0]}" cy="${p.from[1]}" r="4"/><path class="ip ip-cable" d="M${p.from[0]} ${p.from[1]}L${pt(c)}"/>` : ""; }
+    case "platform": {
+      const c = at(p.j); if (!c) return "";
+      return `<path class="ip-heavy" d="M${r1(c[0] - 9)} ${r1(c[1] - 10)}L${r1(c[0] + 10)} ${r1(c[1] + 9)}"/>`;
+    }
+    case "benchline": return `<path class="ip-heavy" d="M${pt(p.p1)}L${pt(p.p2)}"/>` + (p.legs ? `<path class="ip" d="M${r1(p.p1[0] - 6)} ${r1(p.p1[1])}V${F}M${r1(p.p2[0] + 8)} ${r1(p.p2[1])}V${F}"/>` : "");
+    case "seatline": return `<path class="ip-heavy" d="M${p.x1} ${p.y}H${p.x2}"/><path class="ip" d="M${(p.x1 + p.x2) / 2} ${p.y}V${F}"/>`;
+    case "box": return `<rect class="ip" x="${p.x1}" y="${p.y}" width="${p.x2 - p.x1}" height="${F - p.y}"/>`;
+    case "wall": return `<path class="ip-heavy" d="M${p.x} 0V${F}"/>`;
+    case "back": return `<path class="ip" d="M${p.x} ${p.y1}V${p.y2}"/>`;
+    case "foot": return `<path class="ip-heavy" d="M${p.x} ${p.y1}V${p.y2}"/>`;
+    case "pullbar": return `<path class="ip-heavy" d="M${p.x1} ${p.y}H${p.x2}"/><path class="ip" d="M${p.x1} ${p.y}V${F}M${p.x2} ${p.y}V${F}"/>`;
+    case "lowbar": return `<path class="ip-heavy" d="M${p.x1} ${p.y}H${p.x2}"/><path class="ip" d="M${p.x2 - 4} ${p.y}V${F}"/>`;
+    case "pbars": return `<path class="ip-heavy" d="M${p.x1} ${p.y}H${p.x2}"/><path class="ip" d="M${p.x2 - 6} ${p.y}V${F}"/>`;
+  }
+  return "";
+}
+const ease = t => (1 - Math.cos(Math.PI * t)) / 2;
+function illusFrame(spec, t) {
+  const pose = ilLerp(spec.A, spec.B, t);
+  const { J, main, dim } = illusPaths(spec, pose);
+  const props = (spec.props || []).map(p => illusPropMarkup(p, J)).join("");
+  return { J, main, dim, props };
+}
+/* SVG complet d'une image (utilisé pour l'affichage figé et pour l'animation). */
+function illusSVG(id) {
+  const spec = illusSpec(id); if (!spec) return "";
+  const ghost = illusFrame(spec, 0);
+  const grid = Array.from({ length: 13 }, (_, i) => `M${i * 20} 0V${ILL.H}`).join("") + Array.from({ length: 9 }, (_, i) => `M0 ${i * 20}H${ILL.W}`).join("");
+  return `<svg class="illus" viewBox="0 0 ${ILL.W} ${ILL.H}" role="img" aria-label="Schéma du mouvement : ${esc(EX[id] ? EX[id].name : "")}">
+    <path class="ig" d="${grid}"/>
+    <path class="ifloor" d="M0 ${F}H${ILL.W}"/>
+    <g class="ighost"><path d="${ghost.main}"/>${ghost.J.head ? `<circle cx="${r1(ghost.J.head[0])}" cy="${r1(ghost.J.head[1])}" r="${ILL.HR}"/>` : ""}</g>
+    <g class="iprops" data-props></g>
+    <g class="ifig"><path class="idim" data-dim d=""/><path data-main d=""/><circle data-head r="${ILL.HR}" cx="0" cy="0"/></g>
+  </svg>`;
+}
+let illusRAF = null;
+function stopIllus() { if (illusRAF) cancelAnimationFrame(illusRAF); illusRAF = null; }
+function startIllus(root, id) {
+  stopIllus();
+  const spec = illusSpec(id), svg = root && root.querySelector("svg.illus");
+  if (!spec || !svg) return;
+  const mainEl = svg.querySelector("[data-main]"), dimEl = svg.querySelector("[data-dim]"), headEl = svg.querySelector("[data-head]"), propsEl = svg.querySelector("[data-props]");
+  const phaseEl = root.querySelector("[data-phase]");
+  const draw = (t) => {
+    const f = illusFrame(spec, ease(t));
+    mainEl.setAttribute("d", f.main); dimEl.setAttribute("d", f.dim); propsEl.innerHTML = f.props;
+    const h = f.J.head; headEl.setAttribute("cx", r1(h[0])); headEl.setAttribute("cy", r1(h[1]));
+  };
+  if (reduced()) { draw(1); if (phaseEl) phaseEl.textContent = spec.iso ? "MAINTIEN" : "POSITION FINALE · DÉPART EN POINTILLÉS"; return; }
+  const period = spec.iso ? 3200 : 2600, t0 = performance.now();
+  let lastLabel = "";
+  const loop = (now) => {
+    if (!svg.isConnected) { stopIllus(); return; }
+    const ph = ((now - t0) % period) / period;
+    const t = ph < 0.5 ? ph * 2 : 2 - ph * 2;
+    draw(t);
+    const label = spec.iso ? "MAINTIEN · RESPIRATION CONTRÔLÉE" : ph < 0.5 ? "PHASE CONCENTRIQUE · POUSSER / TIRER" : "PHASE EXCENTRIQUE · RETOUR CONTRÔLÉ";
+    if (phaseEl && label !== lastLabel) { phaseEl.textContent = label; lastLabel = label; }
+    illusRAF = requestAnimationFrame(loop);
+  };
+  illusRAF = requestAnimationFrame(loop);
+}
+
+/* =====================================================================
    Écran 2 — Catalogue & Loadout
    ===================================================================== */
 function renderCatalog() {
   const f = ui.filter || state.category;
-  const list = exByCat(f), n = state.loadoutSession.length;
+  const pdc = !!ui.pdcOnly, eqOn = state.equip.filter, place = curPlace();
+  const inCat = exByCat(f).filter(e => !pdc || e.type !== "load");
+  const list = inCat.filter(e => !eqOn || canDo(e.id, place)), n = state.loadoutSession.length;
+  const hidden = inCat.length - list.length;
   const cat = CAT_BY_ID[f];
   return `
   <header class="cmdbar">
@@ -1282,10 +2019,19 @@ function renderCatalog() {
   </header>
   <div class="filters" role="tablist" aria-label="Filtrer par système">
     ${[{ id: "all", label: "TOUS" }, ...CATS].map(c => `<button class="filt ${f === c.id ? "on" : ""}" role="tab" aria-selected="${f === c.id}" data-act="filter" data-cat="${c.id}">${c.label}</button>`).join("")}
+    <button class="filt pdc ${pdc ? "on" : ""}" aria-pressed="${pdc}" data-act="toggle-pdc">${pdc ? "✓ " : ""}POIDS DU CORPS</button>
   </div>
-  ${state.tips.catalog ? "" : `<div class="tip"><p>Touchez le <b>nom</b> d'un exercice pour l'analyser, la <b>case</b> pour l'ajouter au loadout, puis <b>VALIDER</b>.</p><button class="btn btn-quiet btn-sm" data-act="dismiss-tip" data-tip="catalog">COMPRIS</button></div>`}
-  <div class="list-head"><span>${cat ? `${cat.code} · ${cat.label}` : "TOUS SYSTÈMES"}</span><span>${list.length} EXERCICES</span></div>
+  <div class="eq-bar ${eqOn ? "on" : ""}">
+    <button class="eq-toggle" role="switch" aria-checked="${eqOn}" data-act="eq-filter">
+      <span class="sw" aria-hidden="true"><i></i></span>
+      <span class="eq-lab"><b>MATÉRIEL DISPO · ${PLACES[state.equip.active]}</b><small>${eqOn ? (hidden ? `${hidden} exercice${hidden > 1 ? "s" : ""} masqué${hidden > 1 ? "s" : ""}` : "Tout est réalisable ici") : "Masquer les exercices impossibles"}</small></span>
+    </button>
+    <button class="btn btn-ghost btn-sm" data-act="eq-open">RÉGLER</button>
+  </div>
+  ${state.tips.catalog ? "" : `<div class="tip"><p>Touchez le <b>nom</b> d'un exercice pour l'analyser, la <b>case</b> pour l'ajouter au loadout, puis <b>VALIDER</b>. Activez <b>MATÉRIEL DISPO</b> pour ne voir que ce que vous pouvez faire.</p><button class="btn btn-quiet btn-sm" data-act="dismiss-tip" data-tip="catalog">COMPRIS</button></div>`}
+  <div class="list-head"><span>${cat ? `${cat.code} · ${cat.label}` : "TOUS SYSTÈMES"}${pdc ? " · PDC" : ""}</span><span>${list.length} EXERCICES</span></div>
   <div class="ex-list" id="ex-list">${list.map(rowHTML).join("")}</div>
+  ${!list.length ? `<div class="empty-note">Aucun exercice réalisable ici avec le matériel coché pour « ${PLACES[state.equip.active]} ». <button class="link-btn" style="padding:0 4px" data-act="eq-open">Régler le matériel</button></div>` : ""}
   <footer class="actionbar"><div class="actionbar-in">
     <button class="btn btn-alert hold" data-hold="reset-loadout" data-ms="600" aria-label="Reset du loadout, appui long requis"><span class="stack">RESET<small>APPUI LONG</small></span></button>
     <button class="btn btn-neon" data-act="validate-loadout">VALIDER <span class="badge-n" id="lo-badge">${n}</span></button>
@@ -1296,7 +2042,7 @@ function rowHTML(e) {
   return `<div class="ex-row ${on ? "is-on" : ""}" data-row="${e.id}">
     <button class="ex-name" data-act="sheet-ex" data-id="${e.id}" aria-label="Analyser ${esc(e.name)}">
       <span class="ex-title">${esc(e.name)}<span class="i" aria-hidden="true">i</span></span>
-      <span class="ex-meta"><span class="x">×${e.coef.toFixed(2)}</span> · ${esc(e.muscles.slice(0, 2).join(", "))}</span>
+      <span class="ex-meta">${e.type !== "load" ? `<span class="tag-pdc">PDC</span>` : ""}<span class="x">×${e.coef.toFixed(2)}</span> · ${esc(e.muscles.slice(0, 2).join(", "))}</span>
     </button>
     <button class="check-hit" data-act="toggle-ex" data-id="${e.id}" role="checkbox" aria-checked="${on}" aria-label="Ajouter ${esc(e.name)} au loadout"><span class="check ${on ? "on" : ""}"></span></button>
   </div>`;
@@ -1344,7 +2090,9 @@ function openExSheet(id) {
     <div class="grip" aria-hidden="true"></div>
     <div class="sheet-top"><div><div class="eyebrow">TERMINAL D'ANALYSE · ${CAT_BY_ID[e.cat].code}</div><h2>${esc(e.name)}</h2></div>
       <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
+    ${ILL_MAP[e.id] ? `<div class="sec"><h3>SCHÉMA DU MOUVEMENT</h3><div class="illus-wrap" id="illus-box">${illusSVG(e.id)}<div class="illus-cap"><span data-phase>PHASE CONCENTRIQUE</span><span>POINTILLÉS = POSITION DE DÉPART</span></div></div></div>` : ""}
     <div class="sec"><h3>ANALYSE BIOMÉCANIQUE</h3><p>${esc(e.desc)}</p></div>
+    <div class="sec"><h3>MATÉRIEL REQUIS</h3><div class="mtags">${reqText(e.id).length ? reqText(e.id).map(t => `<span>${esc(t)}</span>`).join("") : `<span>Aucun : poids du corps</span>`}${state.equip.filter && !canDo(e.id, curPlace()) ? `<span class="miss">Indisponible · ${PLACES[state.equip.active]}</span>` : ""}</div></div>
     <div class="sec"><h3>MUSCLES CIBLÉS</h3><div class="mtags">${e.muscles.map(m => `<span>${esc(m)}</span>`).join("")}</div></div>
     <div class="sec"><h3>RATIO D'XP</h3>
       <div class="ratio">
@@ -1358,6 +2106,7 @@ function openExSheet(id) {
     </div>
     <button class="btn ${on ? "btn-ghost" : "btn-neon"}" data-act="toggle-ex" data-id="${e.id}">${on ? "RETIRER DU LOADOUT" : "AJOUTER AU LOADOUT"}</button>`;
   showSheet(".x-close");
+  startIllus($("#illus-box"), id);
 }
 function showSheet(focusSel) {
   const w = $("#sheet");
@@ -1366,8 +2115,41 @@ function showSheet(focusSel) {
 }
 function closeSheet() {
   const w = $("#sheet"); if (w.hidden) return;
-  w.classList.remove("open"); ui.sheetEx = null;
+  w.classList.remove("open"); ui.sheetEx = null; stopIllus();
   setTimeout(() => { if (!w.classList.contains("open")) w.hidden = true; }, reduced() ? 0 : 320);
+}
+
+/* ---- Matériel disponible ---- */
+function openEquipSheet() {
+  ui.sheetEx = null;
+  const pl = curPlace(), act = state.equip.active;
+  const ok = EXERCISES.filter(e => canDo(e.id, pl)).length;
+  const row = it => {
+    const on = pl.items.includes(it.id);
+    const mx = it.id === "db" ? pl.maxDb : pl.maxBb;
+    return `<div class="eq-item ${on ? "on" : ""}">
+      <button class="eq-row" role="checkbox" aria-checked="${on}" data-act="eq-item" data-id="${it.id}"><span class="check ${on ? "on" : ""}"></span>
+        <span class="eq-name">${esc(it.name)}${it.hint ? `<small>${esc(it.hint)}</small>` : ""}</span></button>
+      ${it.max && on ? `<label class="eq-max" for="eq-max-${it.id}">Jusqu'à <input id="eq-max-${it.id}" data-eqmax="${it.id}" inputmode="decimal" autocomplete="off" value="${mx ? fmt1(mx).replace(/\s/g, "") : ""}" placeholder="—"> kg ${it.id === "db" ? "par haltère" : "barre chargée"}</label>` : ""}
+    </div>`;
+  };
+  $("#sheet-in").innerHTML = `
+    <div class="grip" aria-hidden="true"></div>
+    <div class="sheet-top"><div><div class="eyebrow">CONFIGURATION DU LOADOUT</div><h2>MATÉRIEL DISPONIBLE</h2></div>
+      <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
+    <p class="hint">Cochez ce que vous avez sous la main. Le poids du corps est toujours disponible. Un profil pour la maison, un pour la salle.</p>
+    <div class="seg" role="tablist">${Object.entries(PLACES).map(([k, l]) => `<button role="tab" aria-selected="${k === act}" class="${k === act ? "on" : ""}" data-act="eq-place" data-place="${k}">${l}</button>`).join("")}</div>
+    <div class="eq-sum"><b>${ok}</b><span>exercices réalisables sur ${EXERCISES.length}</span></div>
+    <div class="btn-row"><button class="btn btn-quiet btn-sm" data-act="eq-all">TOUT COCHER</button><button class="btn btn-quiet btn-sm" data-act="eq-none">POIDS DU CORPS SEUL</button></div>
+    ${EQUIP_GROUPS.map(g => `<div class="sec"><h3>${g.label}</h3><div class="panel eq-list">${g.items.map(row).join("")}</div></div>`).join("")}
+    <p class="hint">La charge maximale sert à proposer des charges réalistes lors du briefing. Laissez vide si elle n'est pas limitée.</p>
+    <button class="btn btn-neon" data-act="eq-apply">AFFICHER LES EXERCICES RÉALISABLES</button>`;
+  showSheet(".x-close");
+}
+function equipChanged() {
+  save();
+  openEquipSheet();
+  if (ui.screen === "catalog" || ui.screen === "hq") render();
 }
 
 /* ---- Nom de code ---- */
@@ -1674,12 +2456,14 @@ function startSession(u) {
   $("#auth").hidden = true;
   document.body.style.overflow = "";
   render();
+  squad.lastSig = null;
   const t = setTimeout(maybeOnboard, 3500);
-  initSync().finally(() => { clearTimeout(t); maybeOnboard(); });
+  initSync().finally(() => { clearTimeout(t); maybeOnboard(); pushCards(false); });
 }
 function endSession() {
   if (sync.unsub) { try { sync.unsub(); } catch (e) {} }
   sync.unsub = null; sync.ref = null; clearTimeout(sync.timer);
+  closeSquadSub(); clearTimeout(squad.timer); squad.lastSig = null; squad.panel = null; squad.msg = ""; ui.squadSel = null;
   fb.user = null;
   STORAGE_KEY = "neonfitness-pro-v1:anon";
   state = defaultState();
@@ -1702,6 +2486,275 @@ document.addEventListener("submit", e => {
 });
 
 /* =====================================================================
+   Escouades (version autonome)
+   Firestore : squads/{code} = {name, createdBy, createdAt}
+               squads/{code}/members/{uid} = carte publique résumée du membre
+   Seuls les membres d'une escouade lisent ses cartes ; chacun n'écrit que la sienne.
+   ===================================================================== */
+const CODE_ALPHA = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const genCode = () => Array.from({ length: 6 }, () => CODE_ALPHA[Math.floor(Math.random() * CODE_ALPHA.length)]).join("");
+const fmtCode = c => String(c || "").slice(0, 3) + "-" + String(c || "").slice(3);
+const normCode = v => String(v || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+const SORTS = { week: "SEMAINE", level: "NIVEAU", ton: "TONNAGE", missions: "MISSIONS" };
+const squad = { lastSig: null, timer: null, code: null, unsub: null, unsubDoc: null, name: "", members: [],
+                loading: false, error: "", sort: "week", panel: null, draftName: "", draftCode: "", msg: "", busy: false };
+
+function weekStart(ts) {
+  const d = new Date(ts || Date.now());
+  const day = (d.getDay() + 6) % 7;
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() - day);
+  return d.getTime();
+}
+function buildCard() {
+  const ws = weekStart(), b = computeBonuses(state), stats = {}, gear = {};
+  STAT_KEYS.forEach(k => { stats[k] = Math.round(statTotal(k, b) * 10) / 10; });
+  SLOT_KEYS.forEach(s => { gear[s] = state.gear.equipped[s] || ""; });
+  return {
+    callsign: state.operator.callsign, level: state.level, xp: Math.round(state.totalXp),
+    weekXp: state.history.filter(h => h.date >= ws).reduce((a, h) => a + h.xp, 0), weekStart: ws,
+    tonnage: Math.round(state.tonnage), missions: state.missions, stats, gear,
+    lastMission: state.history.length ? state.history[0].date : 0
+  };
+}
+function cleanCard(d) {
+  d = isObj(d) ? d : {};
+  const stats = {}, gear = {};
+  STAT_KEYS.forEach(k => { stats[k] = num(isObj(d.stats) ? d.stats[k] : 0, 0, 0, 100000); });
+  SLOT_KEYS.forEach(s => { const id = isObj(d.gear) ? d.gear[s] : ""; gear[s] = GEAR_BY_ID[id] && GEAR_BY_ID[id].slot === s ? id : ""; });
+  return {
+    callsign: typeof d.callsign === "string" && d.callsign.trim() ? d.callsign.slice(0, 20) : "Opérateur",
+    level: Math.floor(num(d.level, 1, 1, 999)), xp: num(d.xp, 0, 0), weekXp: num(d.weekXp, 0, 0), weekStart: num(d.weekStart, 0, 0),
+    tonnage: num(d.tonnage, 0, 0), missions: Math.floor(num(d.missions, 0, 0)), stats, gear, lastMission: num(d.lastMission, 0, 0)
+  };
+}
+function scheduleCards() {
+  if (!STANDALONE || !fb.user || !fb.fs || !state.squads.length) return;
+  clearTimeout(squad.timer);
+  squad.timer = setTimeout(() => pushCards(false), 2000);
+}
+async function pushCards(force) {
+  if (!STANDALONE || !fb.user || !fb.fs || !state.squads.length) return;
+  const card = buildCard();
+  const sig = JSON.stringify(card) + "|" + state.squads.map(s => s.code).join(",");
+  if (!force && sig === squad.lastSig) return;
+  squad.lastSig = sig;
+  const body = Object.assign({}, card, { updatedAt: Date.now() });
+  for (const s of state.squads) {
+    try { await fb.fs.collection("squads").doc(s.code).collection("members").doc(fb.user.uid).set(body); } catch (e) { /* réessayé à la prochaine sauvegarde */ squad.lastSig = null; }
+  }
+}
+function closeSquadSub() {
+  if (squad.unsub) { try { squad.unsub(); } catch (e) {} }
+  if (squad.unsubDoc) { try { squad.unsubDoc(); } catch (e) {} }
+  squad.unsub = squad.unsubDoc = null;
+  squad.code = null; squad.members = []; squad.name = ""; squad.error = ""; squad.loading = false;
+}
+function refreshSquad() { if (ui.screen === "squad") render(); }
+function watchSquad(code) {
+  if (!fb.fs || !fb.user || !code) return;
+  if (squad.code === code && squad.unsub) return;
+  closeSquadSub();
+  squad.code = code; squad.loading = true;
+  const ref = fb.fs.collection("squads").doc(code);
+  squad.unsubDoc = ref.onSnapshot(s => {
+    const d = s.exists ? s.data() : null;
+    const name = d && typeof d.name === "string" ? d.name.slice(0, 30) : "";
+    squad.name = name;
+    const entry = state.squads.find(x => x.code === code);
+    if (entry && name && entry.name !== name) { entry.name = name; save(); }
+    refreshSquad();
+  }, () => {});
+  squad.unsub = ref.collection("members").onSnapshot(qs => {
+    squad.members = qs.docs.map(d => Object.assign({ id: d.id }, cleanCard(d.data())));
+    squad.loading = false; squad.error = "";
+    refreshSquad();
+  }, err => {
+    squad.loading = false;
+    squad.error = err && err.code === "permission-denied"
+      ? "Accès refusé par Firebase : les règles de sécurité des escouades ne sont pas encore publiées (étape 4 du guide)."
+      : "Classement indisponible pour le moment. Vérifiez votre connexion.";
+    refreshSquad();
+  });
+}
+function sqErr(e) {
+  const c = e && e.code;
+  if (c === "permission-denied") return "Accès refusé par Firebase : publiez les nouvelles règles de sécurité (étape 4 du guide).";
+  if (c === "unavailable" || navigator.onLine === false) return "Connexion internet requise pour cette action.";
+  return "Opération impossible pour le moment. Réessayez dans un instant.";
+}
+function setSqMsg(m) { squad.msg = m; const el = $("#sq-err"); if (el) el.textContent = m; }
+function lastSeen(ts) {
+  if (!ts) return "aucune mission";
+  const days = Math.round((new Date().setHours(0, 0, 0, 0) - new Date(ts).setHours(0, 0, 0, 0)) / 86400000);
+  if (days <= 0) return "mission aujourd'hui";
+  if (days === 1) return "mission hier";
+  return `dernière mission il y a ${days} j`;
+}
+function squadList() {
+  const me = Object.assign({ id: fb.user ? fb.user.uid : "me", me: true }, buildCard());
+  const ws = weekStart();
+  const val = m => squad.sort === "week" ? (m.weekStart === ws ? m.weekXp : 0) : squad.sort === "level" ? m.xp : squad.sort === "ton" ? m.tonnage : m.missions;
+  const list = squad.members.filter(m => m.id !== me.id).concat([me]);
+  list.sort((a, z) => (val(z) - val(a)) || (z.xp - a.xp));
+  return { list, val };
+}
+function renderSquad() {
+  if (!STANDALONE || !fb.user) { ui.screen = "hq"; return renderHQ(); }
+  const codes = state.squads.map(s => s.code);
+  if (codes.length) {
+    const want = ui.squadSel && codes.includes(ui.squadSel) ? ui.squadSel : codes[0];
+    if (squad.code !== want) watchSquad(want);
+  } else if (squad.code) closeSquadSub();
+  const showPanel = !codes.length || squad.panel;
+  const mode = squad.panel === "join" ? "join" : "create";
+  const head = `<header class="cmdbar">
+    <button class="back" data-act="go" data-to="hq" aria-label="Retour au QG">${chevron()}</button>
+    <h1 class="title-neon">ESCOUADES</h1></header>`;
+  const chips = codes.length ? `<div class="filters" role="tablist" aria-label="Vos escouades">
+    ${state.squads.map(s => `<button class="filt ${s.code === squad.code ? "on" : ""}" role="tab" aria-selected="${s.code === squad.code}" data-act="squad-select" data-code="${s.code}">${esc(s.name || fmtCode(s.code))}</button>`).join("")}
+    ${codes.length < 10 ? `<button class="filt" data-act="squad-panel" data-panel="create">+ AJOUTER</button>` : ""}</div>` : "";
+  const intro = !codes.length ? `<section class="sq-intro">
+    <p class="lead" style="font-size:15px;line-height:1.6">Comparez vos progressions avec vos amis : créez une escouade et partagez son code, ou rejoignez celle d'un ami avec le sien.</p>
+    <p class="hint">Seul un résumé est partagé avec les membres : nom de code, niveau, XP, tonnage, missions, attributs et cyberware. Le détail de vos séances, vos charges et vos records restent privés.</p></section>` : "";
+  const panel = showPanel ? `<section class="panel sq-panel">
+    <div class="seg" role="tablist">
+      <button role="tab" aria-selected="${mode === "create"}" class="${mode === "create" ? "on" : ""}" data-act="squad-panel" data-panel="create">CRÉER</button>
+      <button role="tab" aria-selected="${mode === "join"}" class="${mode === "join" ? "on" : ""}" data-act="squad-panel" data-panel="join">REJOINDRE</button></div>
+    ${mode === "create"
+      ? `<div class="field-line"><label for="sq-name">NOM DE L'ESCOUADE</label><input class="txt" id="sq-name" maxlength="30" autocomplete="off" placeholder="ex. Les Titans du lundi" value="${esc(squad.draftName)}"><span class="hint">Vous recevrez un code à 6 caractères à envoyer à vos amis.</span></div>
+         <button class="btn btn-neon" data-act="squad-create" ${squad.busy ? "disabled" : ""}>CRÉER L'ESCOUADE</button>`
+      : `<div class="field-line"><label for="sq-code">CODE D'INVITATION</label><input class="txt" id="sq-code" maxlength="8" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ex. NX7-K2P" value="${esc(squad.draftCode)}" style="font-family:var(--f-display);letter-spacing:.14em;text-transform:uppercase"><span class="hint">Demandez le code à l'ami qui a créé l'escouade.</span></div>
+         <button class="btn btn-neon" data-act="squad-join" ${squad.busy ? "disabled" : ""}>REJOINDRE</button>`}
+    <p class="auth-err" id="sq-err" role="alert">${esc(squad.msg)}</p>
+    ${codes.length ? `<button class="link-btn" data-act="squad-panel" data-panel="">Annuler</button>` : ""}
+  </section>` : "";
+  let board = "";
+  if (codes.length && !squad.panel) {
+    const entry = state.squads.find(s => s.code === squad.code) || {};
+    const name = squad.name || entry.name || "Escouade";
+    const { list, val } = squadList();
+    const valTxt = m => squad.sort === "week" ? `+${fmt(val(m))} XP` : squad.sort === "level" ? `NIV ${m.level}` : squad.sort === "ton" ? `${fmt(m.tonnage)} kg` : `${fmt(m.missions)}`;
+    const subTxt = m => squad.sort === "level" ? `${fmt(m.xp)} XP au total · ${lastSeen(m.lastMission)}` : `NIV ${m.level} · ${rankFor(m.level).toLowerCase()} · ${lastSeen(m.lastMission)}`;
+    board = `
+    <section class="panel bracket sq-head">
+      <div><div class="eyebrow">ESCOUADE · ${plural(list.length, "MEMBRE")}</div><h2 class="sq-name">${esc(name)}</h2></div>
+      <div class="sq-code"><span class="eyebrow">CODE</span><b>${fmtCode(squad.code)}</b></div>
+      <button class="btn btn-ghost btn-sm" data-act="squad-invite">INVITER DES AMIS</button>
+    </section>
+    <div class="seg seg4" role="tablist" aria-label="Classement">
+      ${Object.entries(SORTS).map(([k, l]) => `<button role="tab" aria-selected="${squad.sort === k}" class="${squad.sort === k ? "on" : ""}" data-act="squad-sort" data-sort="${k}">${l}</button>`).join("")}</div>
+    <p class="hint" style="margin-top:8px">${squad.sort === "week" ? "XP gagnée depuis lundi. Le compteur repart à zéro chaque semaine." : squad.sort === "level" ? "Classement par XP totale accumulée." : squad.sort === "ton" ? "Charge totale soulevée depuis l'inscription." : "Nombre de missions accomplies."}</p>
+    ${squad.error ? `<div class="empty-note" style="border-color:var(--alert-soft);color:var(--text)">${esc(squad.error)}</div>` : ""}
+    <div class="panel board" role="list">
+      ${list.map((m, i) => `<button class="sq-row ${m.me ? "me" : ""}" role="listitem" data-act="squad-member" data-id="${esc(m.id)}">
+        <span class="pos ${i < 3 ? "p" + (i + 1) : ""}">${i + 1}</span>
+        <span class="who"><b>${esc(m.callsign)}${m.me ? "<em>VOUS</em>" : ""}</b><small>${subTxt(m)}</small></span>
+        <span class="val">${valTxt(m)}</span></button>`).join("")}
+      ${squad.loading ? `<div class="sq-row" style="cursor:default"><span class="pos">…</span><span class="who"><small>Chargement des autres membres…</small></span><span></span></div>` : ""}
+    </div>
+    ${list.length === 1 && !squad.loading ? `<p class="hint" style="margin-top:10px">Vous êtes seul pour l'instant. Touchez « Inviter des amis » pour leur envoyer le code.</p>` : ""}
+    <div class="danger-zone" style="margin-top:26px">
+      <button class="btn btn-quiet hold" data-hold="squad-leave" data-ms="1000"><span class="stack">QUITTER CETTE ESCOUADE<small>APPUI LONG 1 S</small></span></button>
+    </div>`;
+  }
+  return head + chips + intro + panel + board;
+}
+function openMemberSheet(id) {
+  const { list } = squadList();
+  const m = list.find(x => x.id === id); if (!m) return;
+  ui.sheetEx = null;
+  const scale = Math.max(40, ...STAT_KEYS.map(k => m.stats[k])) * 1.15;
+  $("#sheet-in").innerHTML = `
+    <div class="grip" aria-hidden="true"></div>
+    <div class="sheet-top"><div><div class="eyebrow">FICHE D'OPÉRATEUR · ${rankFor(m.level)}</div><h2>${esc(m.callsign)}${m.me ? " (vous)" : ""}</h2></div>
+      <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
+    <div class="ratio">
+      <div><span>Niveau</span><b>${m.level}</b></div>
+      <div><span>XP totale</span><b>${fmt(m.xp)}</b></div>
+      <div><span>Missions</span><b>${fmt(m.missions)}</b></div>
+      <div><span>Tonnage cumulé</span><b>${fmt(m.tonnage)} kg</b></div>
+    </div>
+    <p class="hint">${lastSeen(m.lastMission).replace(/^./, c => c.toUpperCase())} · cette semaine : +${fmt(m.weekStart === weekStart() ? m.weekXp : 0)} XP</p>
+    <div class="sec"><h3>ATTRIBUTS</h3><div class="stats" style="padding:0">
+      ${STAT_KEYS.map(k => `<div class="stat"><div class="stat-head"><span class="stat-name">${STATS[k].label}</span><span class="stat-val">${fmt1(m.stats[k])}</span></div>
+        <div class="stat-bar"><i style="width:${m.stats[k] / scale * 100}%"></i></div></div>`).join("")}</div></div>
+    <div class="sec"><h3>CYBERWARE ÉQUIPÉ</h3><div class="panel slot-list">
+      ${SLOT_KEYS.map(s => { const g = GEAR_BY_ID[m.gear[s]]; return `<div class="slot-line"><span class="eyebrow">${SLOTS[s]}</span><div>${g ? `<b>${esc(g.name)}</b><span class="fx">${g.rarity}</span>` : `<span class="empty">LIBRE</span>`}</div></div>`; }).join("")}
+    </div></div>`;
+  showSheet(".x-close");
+}
+async function squadCreate() {
+  if (squad.busy || !fb.fs || !fb.user) return;
+  const name = cleanName(($("#sq-name") || {}).value || "");
+  squad.draftName = name;
+  if (name.length < 2) { setSqMsg("Donnez un nom d'au moins 2 caractères à l'escouade."); shake($("#sq-name")); return; }
+  if (state.squads.length >= 10) { setSqMsg("Limite de 10 escouades atteinte. Quittez-en une pour en créer une nouvelle."); return; }
+  squad.busy = true; setSqMsg("");
+  try {
+    let code = null;
+    for (let i = 0; i < 5 && !code; i++) {
+      const c = genCode();
+      const s = await fb.fs.collection("squads").doc(c).get();
+      if (!s.exists) code = c;
+    }
+    if (!code) throw { code: "busy" };
+    await fb.fs.collection("squads").doc(code).set({ name, createdBy: fb.user.uid, createdAt: Date.now() });
+    await joinWrite(code, name, true);
+  } catch (e) { setSqMsg(sqErr(e)); }
+  squad.busy = false;
+}
+async function squadJoin() {
+  if (squad.busy || !fb.fs || !fb.user) return;
+  const raw = ($("#sq-code") || {}).value || "";
+  squad.draftCode = raw;
+  const code = normCode(raw);
+  if (code.length !== 6) { setSqMsg("Le code contient 6 caractères, par exemple NX7-K2P."); shake($("#sq-code")); return; }
+  if (state.squads.some(s => s.code === code)) { ui.squadSel = code; squad.panel = null; squad.draftCode = ""; render(); toast("Vous faites déjà partie de cette escouade."); return; }
+  if (state.squads.length >= 10) { setSqMsg("Limite de 10 escouades atteinte. Quittez-en une pour en rejoindre une autre."); return; }
+  squad.busy = true; setSqMsg("");
+  try {
+    const s = await fb.fs.collection("squads").doc(code).get();
+    if (!s.exists) { setSqMsg("Aucune escouade avec ce code. Vérifiez-le auprès de votre ami."); squad.busy = false; return; }
+    const d = s.data() || {};
+    await joinWrite(code, typeof d.name === "string" ? d.name.slice(0, 30) : "", false);
+  } catch (e) { setSqMsg(sqErr(e)); }
+  squad.busy = false;
+}
+async function joinWrite(code, name, created) {
+  await fb.fs.collection("squads").doc(code).collection("members").doc(fb.user.uid).set(Object.assign({}, buildCard(), { updatedAt: Date.now() }));
+  if (!state.squads.some(s => s.code === code)) state.squads.push({ code, name });
+  ui.squadSel = code; squad.panel = null; squad.draftName = ""; squad.draftCode = ""; squad.msg = ""; squad.sort = "week";
+  squad.lastSig = null;
+  save();
+  closeSquadSub();
+  render();
+  vibrate([30, 30, 80]);
+  toast(created ? `Escouade créée. Code : ${fmtCode(code)}` : `Bienvenue dans « ${name || "l'escouade"} ».`);
+}
+async function squadInvite() {
+  const entry = state.squads.find(s => s.code === squad.code); if (!entry) return;
+  const url = location.origin + location.pathname;
+  const name = squad.name || entry.name || "mon escouade";
+  const text = `Rejoins mon escouade « ${name} » sur NeonFitness Pro ! Crée ton compte sur ${url} puis va dans Escouades → Rejoindre avec le code ${fmtCode(entry.code)}`;
+  try {
+    if (navigator.share) { await navigator.share({ title: "NeonFitness Pro", text }); return; }
+  } catch (e) { if (e && e.name === "AbortError") return; }
+  try { await navigator.clipboard.writeText(text); toast("Invitation copiée : collez-la dans un message à vos amis."); }
+  catch (e) { toast(`Code de l'escouade : ${fmtCode(entry.code)} (adresse : ${url})`); }
+}
+async function squadLeave() {
+  const code = squad.code; if (!code || !fb.fs || !fb.user) return;
+  closeSquadSub();
+  try { await fb.fs.collection("squads").doc(code).collection("members").doc(fb.user.uid).delete(); }
+  catch (e) { toast("Impossible de quitter l'escouade sans connexion. Réessayez.", true); render(); return; }
+  state.squads = state.squads.filter(s => s.code !== code);
+  ui.squadSel = null; squad.lastSig = null;
+  save(); render();
+  toast("Escouade quittée.");
+}
+
+/* =====================================================================
    Écran 3 — Briefing, mission active, repos
    ===================================================================== */
 function missionTotals() {
@@ -1709,9 +2762,16 @@ function missionTotals() {
   if (m) for (const id in m.sets) { const e = EX[id]; m.sets[id].forEach(s => { xp += s.xp; sets++; if (e && e.type !== "time") ton += s.load * s.reps; }); }
   return { xp, sets, ton };
 }
+function loadCap(id) {
+  const k = loadKind(id), pl = curPlace();
+  if (!k) return 0;
+  const cap = k === "db" ? pl.maxDb : pl.maxBb;
+  return cap > 0 && pl.items.includes(k) ? cap : 0;
+}
 function getDraft(id) {
   const e = EX[id], m = state.mission;
-  const d = (m && isObj(m.draft[id]) ? m.draft[id] : null) || state.lastSets[id] || { kg: e.defKg, reps: e.defReps };
+  const cap = loadCap(id);
+  const d = (m && isObj(m.draft[id]) ? m.draft[id] : null) || state.lastSets[id] || { kg: cap ? Math.min(e.defKg, cap) : e.defKg, reps: e.defReps };
   return { kg: num(d.kg, e.defKg, 0, 1000), reps: num(d.reps, e.defReps, 1, 3600) };
 }
 function ensureMission() {
@@ -1754,7 +2814,7 @@ function exCardHTML(e, b) {
   const repLabel = time ? "DURÉE (S)" : "RÉPÉTITIONS";
   const pv = previewXp(e.id, d.kg, d.reps, b);
   return `<article class="panel ex-card" data-card="${e.id}">
-    <header><div><div class="eyebrow">${CAT_BY_ID[e.cat].code} · ×${e.coef.toFixed(2)} · REPOS ${restFor(e, b)} S</div><h3>${esc(e.name)}</h3></div>
+    <header><div><div class="eyebrow">${CAT_BY_ID[e.cat].code} · ×${e.coef.toFixed(2)} · REPOS ${restFor(e, b)} S</div><button class="ex-link" data-act="sheet-ex" data-id="${e.id}" aria-label="Voir la fiche et le schéma de ${esc(e.name)}">${esc(e.name)}<span class="i" aria-hidden="true">i</span></button></div>
       <span class="setc">${plural(sets.length, "SÉRIE")}</span></header>
     ${sets.length ? `<div class="sets">${sets.map((s, i) => {
       const armed = ui.delArm === `${e.id}:${i}`;
@@ -1768,7 +2828,8 @@ function exCardHTML(e, b) {
     <div class="entry">
       <div class="field"><label for="kg-${e.id}">${kgLabel}</label>
         <div class="stepper"><button data-act="step" data-id="${e.id}" data-f="kg" data-d="-2.5" aria-label="Moins 2,5 kg">−</button><input id="kg-${e.id}" data-field="kg" data-id="${e.id}" inputmode="decimal" autocomplete="off" value="${fmt1(d.kg).replace(/\s/g, "")}"><button data-act="step" data-id="${e.id}" data-f="kg" data-d="2.5" aria-label="Plus 2,5 kg">+</button></div>
-        ${e.type === "bw" ? `<div class="bw-note">+ PDC ${fmt1(bodyweight())} kg × ${e.bw}</div>` : ""}</div>
+        ${e.type === "bw" ? `<div class="bw-note">+ PDC ${fmt1(bodyweight())} kg × ${e.bw}</div>` : ""}
+        ${loadCap(e.id) ? `<div class="bw-note">Matériel ${PLACES[state.equip.active].toLowerCase()} : ${fmt1(loadCap(e.id))} kg max${loadKind(e.id) === "db" ? " par haltère" : ""}</div>` : ""}</div>
       <div class="field"><label for="reps-${e.id}">${repLabel}</label>
         <div class="stepper"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="${time ? -5 : -1}" aria-label="Moins">−</button><input id="reps-${e.id}" data-field="reps" data-id="${e.id}" inputmode="numeric" autocomplete="off" value="${Math.round(d.reps)}"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="${time ? 5 : 1}" aria-label="Plus">+</button></div></div>
       <div class="entry-go">
@@ -2071,6 +3132,7 @@ function render() {
     if (ui.screen === "catalog") html = renderCatalog();
     else if (ui.screen === "briefing") html = renderBriefing();
     else if (ui.screen === "report") html = renderReport();
+    else if (ui.screen === "squad") html = renderSquad();
     else html = renderHQ();
   } catch (err) {
     console.error(err);
@@ -2087,7 +3149,9 @@ function render() {
   if (ui.screen === "report") animateReport();
 }
 function go(to) {
-  if (to !== "catalog" && to !== "briefing" && to !== "report") to = "hq";
+  if (to !== "catalog" && to !== "briefing" && to !== "report" && to !== "squad") to = "hq";
+  if (to === "squad" && !(STANDALONE && fb.user)) to = "hq";
+  if (ui.screen === "squad" && to !== "squad") { closeSquadSub(); squad.panel = null; squad.msg = ""; }
   if (to === "catalog" && !ui.filter) ui.filter = state.category;
   ui.screen = to; ui.delArm = null;
   closeSheet();
@@ -2102,6 +3166,19 @@ const actions = {
   "go-perks": () => { ui.report = null; ui.tab = "aptitudes"; go("hq"); },
   "pick-cat": el => { state.category = el.dataset.cat; ui.filter = el.dataset.cat; save(); go("catalog"); },
   "filter": el => { ui.filter = el.dataset.cat; render(); },
+  "toggle-pdc": () => { ui.pdcOnly = !ui.pdcOnly; render(); },
+  "eq-open": () => openEquipSheet(),
+  "eq-filter": () => { state.equip.filter = !state.equip.filter; save(); vibrate(12); render(); },
+  "eq-item": el => { const pl = curPlace(), id = el.dataset.id; if (!EQUIP[id]) return; const i = pl.items.indexOf(id); if (i >= 0) pl.items.splice(i, 1); else pl.items.push(id); vibrate(10); equipChanged(); },
+  "eq-place": el => { if (el.dataset.place in PLACES) { state.equip.active = el.dataset.place; equipChanged(); } },
+  "eq-all": () => { curPlace().items = EQUIP_IDS.slice(); equipChanged(); },
+  "eq-none": () => { curPlace().items = []; equipChanged(); },
+  "eq-apply": () => {
+    state.equip.filter = true; save(); closeSheet();
+    const n = EXERCISES.filter(e => canDo(e.id, curPlace())).length;
+    if (ui.screen !== "catalog") go("catalog"); else render();
+    toast(`Filtre actif : ${n} exercices réalisables (${PLACES[state.equip.active]}).`);
+  },
   "sheet-ex": el => openExSheet(el.dataset.id),
   "close-sheet": () => closeSheet(),
   "toggle-ex": el => toggleEx(el.dataset.id),
@@ -2152,9 +3229,17 @@ const actions = {
   "sign-out": () => signOut(),
   "auth-mode": el => { const em = $("#au-email"); if (em) authEmail = em.value.trim(); renderAuth(el.dataset.mode); },
   "auth-google": () => googleAuth(),
+  "squad-select": el => { ui.squadSel = el.dataset.code; squad.panel = null; render(); },
+  "squad-panel": el => { squad.panel = el.dataset.panel || null; squad.msg = ""; render(); const f = $(squad.panel === "join" ? "#sq-code" : "#sq-name"); if (f) f.focus(); },
+  "squad-create": () => squadCreate(),
+  "squad-join": () => squadJoin(),
+  "squad-sort": el => { if (el.dataset.sort in SORTS) { squad.sort = el.dataset.sort; render(); } },
+  "squad-member": el => openMemberSheet(el.dataset.id),
+  "squad-invite": () => squadInvite(),
   "reload": () => location.reload()
 };
 const holdActions = {
+  "squad-leave": () => squadLeave(),
   "import-confirm": () => {
     if (!ui.pendingImport) return;
     state = ui.pendingImport; ui.pendingImport = null;
@@ -2236,6 +3321,8 @@ document.addEventListener("keydown", e => {
   if (e.key === "Enter" && e.target.matches("[data-field]")) { e.preventDefault(); validateSet(e.target.dataset.id, e.target); }
   if (e.key === "Enter" && e.target.id === "name-input") { e.preventDefault(); actions["save-name"](); }
   if (e.key === "Enter" && e.target.id === "ob-name") { e.preventDefault(); obNext(); }
+  if (e.key === "Enter" && e.target.id === "sq-name") { e.preventDefault(); squadCreate(); }
+  if (e.key === "Enter" && e.target.id === "sq-code") { e.preventDefault(); squadJoin(); }
 });
 document.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter") { if (e.target.closest && e.target.closest("[data-hold]")) e.preventDefault(); cancelHold(); } });
 
@@ -2249,6 +3336,14 @@ function onDraftInput(id) {
 document.addEventListener("input", e => {
   const t = e.target;
   if (t.matches("[data-field]")) { t.parentElement.classList.remove("bad"); onDraftInput(t.dataset.id); }
+  if (t.dataset && t.dataset.eqmax) {
+    const v = parseNum(t.value), pl = curPlace();
+    const val = Number.isFinite(v) && v > 0 ? Math.min(t.dataset.eqmax === "db" ? 200 : 500, Math.round(v * 10) / 10) : 0;
+    if (t.dataset.eqmax === "db") pl.maxDb = val; else pl.maxBb = val;
+    save();
+  }
+  if (t.id === "sq-name") squad.draftName = t.value;
+  if (t.id === "sq-code") squad.draftCode = t.value;
 });
 document.addEventListener("change", e => {
   const t = e.target;
