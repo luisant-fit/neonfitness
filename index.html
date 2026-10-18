@@ -436,6 +436,96 @@ p{margin:0}
 .code-box{width:100%;min-height:120px;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;line-height:1.4;background:var(--panel);color:var(--text);border:1px solid var(--line-hi);border-radius:4px;padding:10px;word-break:break-all;resize:vertical}
 .code-box:focus{outline:2px solid var(--neon);outline-offset:1px}
 
+/* ---------- favoris, contrats, suggestions, disques, courbes, prises ---------- */
+.fav-list{display:flex;flex-direction:column;gap:8px}
+.fav{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.fav-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.fav-info b{font-family:var(--f-display);font-size:13px;letter-spacing:.06em;color:var(--neon)}
+.fav-info small{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fav-act{display:flex;align-items:center;gap:6px;flex:none}
+.fav-act .del{width:44px}
+.fav-save{width:100%;margin-top:10px;padding:11px 12px;border:1px dashed var(--line-hi);border-radius:4px;font-family:var(--f-display);font-size:10px;letter-spacing:.14em;color:var(--neon);background:var(--panel)}
+.fav-save:hover{border-style:solid;background:var(--neon-soft)}
+.streak{display:flex;align-items:center;gap:14px;padding:12px 14px}
+.streak-n{display:flex;flex-direction:column;align-items:center;min-width:56px}
+.streak-n b{font-family:var(--f-display);font-size:28px;font-weight:900;color:var(--muted);line-height:1}
+.streak-n span{font-family:var(--f-display);font-size:8px;letter-spacing:.16em;color:var(--muted)}
+.streak.hot .streak-n b{color:var(--legend);text-shadow:0 0 12px rgba(255,197,61,.6)}
+.streak-t{display:flex;flex-direction:column;gap:3px;min-width:0}
+.streak-t b{font-size:14px;font-weight:600}
+.streak.hot .streak-t b{color:var(--legend)}
+.streak-t small{font-size:12px;color:var(--muted);line-height:1.45}
+.contracts{padding:14px;display:flex;flex-direction:column;gap:14px}
+.ct{display:flex;flex-direction:column;gap:6px}
+.ct-top,.ct-bot,.sqc-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.ct-name{font-size:14px;font-weight:500}
+.ct.done .ct-name{color:var(--neon)}
+.ct-xp{font-family:var(--f-display);font-size:10px;letter-spacing:.12em;color:var(--legend)}
+.ct-bar{height:6px}
+.ct-bar i{background:var(--neon);box-shadow:0 0 6px var(--neon)}
+.ct-bot{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ct-ok{font-family:var(--f-display);font-size:9px;letter-spacing:.14em;color:var(--neon)}
+.sq-challenge{margin-top:14px;padding:14px;display:flex;flex-direction:column;gap:8px;border-color:var(--line-hi)}
+.sq-challenge.done{border-color:var(--neon);box-shadow:inset 0 0 0 1px rgba(57,255,20,.25)}
+.sqc-name{font-family:var(--f-display);font-size:15px;font-weight:700;letter-spacing:.08em;color:var(--neon)}
+.sqc-contrib{display:flex;flex-wrap:wrap;gap:6px}
+.sqc-contrib span{font-size:11.5px;padding:3px 8px;border:1px solid var(--line);border-radius:3px;color:var(--muted);font-variant-numeric:tabular-nums}
+.sqc-contrib span.me{border-color:var(--line-hi);color:var(--text)}
+.sugg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:var(--panel-2)}
+.sugg > div{display:flex;flex-direction:column;gap:2px;min-width:0;font-size:13px}
+.sugg .eyebrow{font-size:8.5px}
+.sugg b{color:var(--neon);font-weight:600;font-size:14px}
+.sugg small{font-size:11px;color:var(--muted)}
+@media (max-width:420px){.sugg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.sugg .btn{grid-column:1/-1}}
+.plates{grid-column:1/-1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pl-svg{height:30px;width:auto;max-width:140px;flex:none}
+.pl-svg .pl-bar{stroke:var(--muted);stroke-width:3}
+.pl-svg .pl-col{stroke:var(--muted);stroke-width:3}
+.pl-svg rect{fill:var(--neon-soft);stroke:var(--neon);stroke-width:1.2}
+.pl-txt{font-size:12px;color:var(--muted)}
+.pl-txt b{color:var(--neon);font-weight:600}
+.pchart{width:100%;height:auto;display:block}
+.pchart .pc-grid{stroke:var(--line);stroke-width:1}
+.pchart .pc-tick{font-family:var(--f-body);font-size:9px;fill:var(--muted);text-anchor:end}
+.pchart .pc-area{fill:rgba(57,255,20,.08)}
+.pchart .pc-line{fill:none;stroke:var(--neon);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.pchart .pc-dot{fill:var(--panel-2);stroke:var(--neon);stroke-width:2}
+.pchart .pc-dot.last{fill:var(--neon)}
+.pchart .pc-hit{fill:transparent}
+.pchart g:hover .pc-dot{fill:var(--neon)}
+.pc-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pc-sum div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pc-sum span{font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;color:var(--muted)}
+.pc-sum b{font-family:var(--f-display);font-size:12.5px;color:var(--text);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.pc-sum b.up{color:var(--neon)}
+.pc-sum b.down{color:var(--alert)}
+.grip-svg{display:block;width:100%;height:auto}
+.grip-svg .gr-guide{stroke:var(--dim);stroke-dasharray:3 4;stroke-width:1}
+.grip-svg .gr-lab{font-family:var(--f-display);font-size:7.5px;letter-spacing:.12em;fill:var(--muted)}
+.grip-svg .gr-body{fill:rgba(57,255,20,.05);stroke:rgba(57,255,20,.5);stroke-width:1.4;stroke-linejoin:round}
+.grip-svg path.gr-body{fill:none}
+.grip-svg path.gr-body[d$="Z"]{fill:rgba(57,255,20,.05)}
+.grip-svg .gr-arm{stroke:rgba(57,255,20,.6);stroke-width:2.2;stroke-linecap:round}
+.grip-svg .gr-hand{fill:rgba(57,255,20,.25);stroke:var(--neon);stroke-width:2;filter:drop-shadow(0 0 3px rgba(57,255,20,.7))}
+.grip-svg path.gr-hand{fill:none;stroke-width:1.5}
+.grip-svg .gr-arrow{fill:none;stroke:var(--legend);stroke-width:1.4;stroke-linecap:round}
+.grip-svg .gr-bar{stroke:#86c46f;stroke-width:4;stroke-linecap:round}
+.grip-svg .gr-mark{font-family:var(--f-display);font-size:8px;font-weight:700;fill:var(--ink);text-anchor:middle}
+.debrief{padding:14px;display:flex;flex-direction:column;gap:14px}
+.chips-pick{display:flex;gap:6px;flex-wrap:wrap}
+.pick{min-width:42px;height:38px;padding:0 10px;border:1px solid var(--line-hi);border-radius:4px;font-family:var(--f-display);font-size:12px;color:var(--muted);background:var(--panel-2)}
+.pick.wide{font-size:9.5px;letter-spacing:.1em}
+.pick.on{background:var(--neon);color:var(--ink);border-color:var(--neon)}
+textarea.txt{resize:vertical;min-height:58px;font-family:var(--f-body)}
+.note-line{font-size:12px;color:var(--neon);margin-top:3px;opacity:.85}
+.seg.seg-mini{display:inline-grid;grid-template-columns:1fr 1fr}
+.seg.seg-mini button{padding:8px 10px;font-size:9px}
+.avatar .badge path:first-child,.avatar .badge polygon{fill:var(--panel);stroke:var(--legend);stroke-width:1.3}
+.avatar .badge .bi{fill:none;stroke:var(--legend);stroke-width:1.4}
+.avatar .badge text{font-family:var(--f-display);font-size:9px;font-weight:900;fill:var(--legend);text-anchor:middle}
+.avatar .badge.bw polygon{stroke:var(--neon)}
+.avatar .badge.bw text{fill:var(--neon)}
+
 /* ---------- fiches arsenal / châssis ---------- */
 .gear-preview{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border:1px solid var(--line-hi);border-radius:4px;background:#030603}
 .gear-preview .avatar{width:min(240px,70vw)}
@@ -763,6 +853,11 @@ const EXERCISES = [
   ex("handstand_hold","Équilibre contre le mur","epaules","time",1.1,{power:0.6,core:0.4},75,0,30,["Deltoïdes","Trapèzes","Gainage"],"Maintien en appui renversé, ventre face au mur, bras verrouillés. Saisir la durée en secondes."),
   ex("ytw","Y-T-W au sol","epaules","bw",0.6,{armor:0.6,power:0.4},45,0,10,["Deltoïde postérieur","Trapèze inférieur","Coiffe des rotateurs"],"Allongé sur le ventre, bras levés en Y, puis en T, puis en W. Un cycle = une répétition. Excellent pour la santé des épaules.",0.15),
   // BRAS
+  ex("pushup_military","Pompes militaires","pecs","bw",1.05,{power:1},75,0,12,["Triceps","Grand pectoral","Deltoïde antérieur"],"Mains exactement sous les épaules, coudes collés au corps qui frôlent les côtes à la descente. Version stricte qui charge davantage les triceps et protège les épaules.",0.65),
+  ex("pushup_knees","Pompes sur les genoux","pecs","bw",0.8,{power:0.9,core:0.1},60,0,15,["Grand pectoral","Triceps","Deltoïde antérieur"],"Appui sur les genoux, corps aligné des genoux à la tête. Environ la moitié du poids du corps est déplacée : idéal pour débuter ou finir une série.",0.49),
+  ex("pushup_hindu","Pompes hindoues","pecs","bw",1.1,{power:0.7,armor:0.15,core:0.15},75,0,10,["Pectoraux","Deltoïdes","Triceps","Chaîne postérieure"],"Depuis la position en V inversé, on plonge la poitrine en arc jusqu'à remonter buste redressé, bras tendus, puis on repousse les hanches vers l'arrière. Force et mobilité.",0.6),
+  ex("pushup_spiderman","Pompes Spiderman","pecs","bw",1.15,{power:0.75,core:0.25},75,0,10,["Grand pectoral","Obliques","Fléchisseurs de hanche"],"À chaque descente, un genou vient toucher le coude du même côté, en alternance. La pompe devient aussi un exercice de gainage rotatif.",0.65),
+  ex("pushup_pseudo","Pompes pseudo-planche","epaules","bw",1.4,{power:0.9,core:0.1},105,0,8,["Deltoïde antérieur","Pectoraux","Biceps (gainage)","Sangle abdominale"],"Mains au niveau des hanches, doigts tournés vers l'extérieur ou l'arrière, épaules projetées loin devant les mains. Préparation à la planche, très exigeante pour l'avant des épaules.",0.75),
   ex("pushup_diamond","Pompes diamant","bras","bw",1.1,{power:1},75,0,10,["Triceps","Pectoral","Deltoïde antérieur"],"Pouces et index se touchent sous la poitrine. Les coudes restent près du corps : la poussée repose surtout sur les triceps.",0.65),
   ex("dips_bars","Dips barres parallèles","bras","bw",1.3,{power:1},105,0,8,["Triceps","Pectoral inférieur","Deltoïde antérieur"],"Buste droit et coudes serrés pour cibler les triceps. Ajoutez du lest une fois 15 répétitions atteintes.",0.92),
   ex("bw_tri_ext","Extensions triceps au poids du corps","bras","bw",1.0,{power:1},75,0,10,["Triceps, chef long"],"Mains sur une barre basse, corps gainé : on plie les coudes pour amener le front sous la barre puis on repousse. Barre au front sans matériel.",0.5),
@@ -835,11 +930,18 @@ const EX_REQ = {
   chinup_close: [["pullbar"]], bw_curl: [["lowbar", "rings"]], step_up: [["step", "bench"]], dragon_flag: [["bench"]]
 };
 const exReq = id => EX_REQ[id] || [];
+/* Exercices aux haltères qui demandent une paire ; ceux qui se font un bras à la fois avec une seule. */
+const EX_PAIR = new Set(["incline_db", "fly", "db_press", "arnold", "rdl"]);
+const EX_UNI = new Set(["row_db", "curl_hammer", "curl_incline", "lat_raise", "rear_fly", "shrug", "calf", "lunge", "bulgarian"]);
 function defaultEquip() {
-  return { active: "home", filter: false, places: { home: { items: [], maxDb: 0, maxBb: 0 }, gym: { items: EQUIP_IDS.slice(), maxDb: 0, maxBb: 0 } } };
+  return { active: "home", filter: false, places: {
+    home: { items: [], maxDb: 0, maxBb: 0, dbCount: 2, barKg: 20 },
+    gym: { items: EQUIP_IDS.slice(), maxDb: 0, maxBb: 0, dbCount: 2, barKg: 20 } } };
 }
 const curPlace = () => state.equip.places[state.equip.active] || state.equip.places.home;
-const canDo = (id, place) => exReq(id).every(g => g.some(x => place.items.includes(x)));
+const hasItem = (place, x, id) => place.items.includes(x) && !(x === "db" && place.dbCount === 1 && EX_PAIR.has(id));
+const canDo = (id, place) => exReq(id).every(g => g.some(x => hasItem(place, x, id)));
+const singleDbMode = id => { const pl = curPlace(); return pl.items.includes("db") && pl.dbCount === 1 && EX_UNI.has(id) && loadKind(id) === "db"; };
 /* Charge libre utilisée par l'exercice, pour appliquer la charge max déclarée. */
 function loadKind(id) {
   const r = exReq(id);
@@ -1017,7 +1119,8 @@ function defaultState() {
     missions: 0, tonnage: 0, records: {}, history: [], lastSets: {},
     category: "pecs", loadoutSession: [], mission: null,
     updatedAt: 0, onboarded: false, tips: { catalog: false, briefing: false },
-    squads: [], equip: defaultEquip()
+    squads: [], equip: defaultEquip(),
+    exLog: {}, favorites: [], contracts: { week: 0, picks: [], claimed: [] }, squadClaims: {}, squadWins: 0, undo: null
   };
 }
 const num = (v, def, min = -Infinity, max = Infinity) => { v = Number(v); return Number.isFinite(v) ? Math.min(max, Math.max(min, v)) : def; };
@@ -1041,7 +1144,8 @@ function sanitize(s) {
       const p = e.places[k]; if (!isObj(p)) return;
       o.equip.places[k] = {
         items: Array.isArray(p.items) ? [...new Set(p.items.filter(x => EQUIP[x]))] : o.equip.places[k].items,
-        maxDb: num(p.maxDb, 0, 0, 200), maxBb: num(p.maxBb, 0, 0, 500)
+        maxDb: num(p.maxDb, 0, 0, 200), maxBb: num(p.maxBb, 0, 0, 500),
+        dbCount: p.dbCount === 1 ? 1 : 2, barKg: num(p.barKg, 20, 5, 30)
       };
     });
   }
@@ -1069,10 +1173,33 @@ function sanitize(s) {
   if (isObj(s.records)) for (const [id, r] of Object.entries(s.records)) {
     if (EX[id] && isObj(r) && num(r.score, 0) > 0) o.records[id] = { score: num(r.score, 0, 0), kg: num(r.kg, 0, 0), reps: num(r.reps, 1, 1), date: num(r.date, Date.now()) };
   }
-  if (Array.isArray(s.history)) o.history = s.history.filter(isObj).slice(0, 60).map(h => ({
-    date: num(h.date, Date.now()), xp: num(h.xp, 0, 0), ton: num(h.ton, 0, 0), sets: num(h.sets, 0, 0),
-    exCount: num(h.exCount, 0, 0), dur: num(h.dur, 0, 0), level: num(h.level, 1, 1), focus: typeof h.focus === "string" ? h.focus.slice(0, 40) : ""
-  }));
+  if (Array.isArray(s.history)) o.history = s.history.filter(isObj).slice(0, 60).map(h => {
+    const x = {
+      date: num(h.date, Date.now()), xp: num(h.xp, 0, 0), ton: num(h.ton, 0, 0), sets: num(h.sets, 0, 0),
+      exCount: num(h.exCount, 0, 0), dur: num(h.dur, 0, 0), level: num(h.level, 1, 1), focus: typeof h.focus === "string" ? h.focus.slice(0, 40) : "",
+      recs: num(h.recs, 0, 0), push: num(h.push, 0, 0), coreSec: num(h.coreSec, 0, 0),
+      xpStat: {}, cats: Array.isArray(h.cats) ? h.cats.filter(c => CAT_BY_ID[c]) : []
+    };
+    STAT_KEYS.forEach(k => { x.xpStat[k] = num(isObj(h.xpStat) ? h.xpStat[k] : 0, 0, 0); });
+    if (isObj(h.note)) x.note = { energy: Math.floor(num(h.note.energy, 0, 0, 5)), rpe: Math.floor(num(h.note.rpe, 0, 0, 4)), text: typeof h.note.text === "string" ? h.note.text.slice(0, 200) : "" };
+    return x;
+  });
+  if (isObj(s.exLog)) for (const [id, arr] of Object.entries(s.exLog)) {
+    if (EX[id] && Array.isArray(arr)) o.exLog[id] = arr.filter(isObj).slice(-40).map(x => ({
+      d: num(x.d, Date.now()), kg: num(x.kg, 0, 0), reps: num(x.reps, 1, 1), score: num(x.score, 0, 0), e1: num(x.e1, 0, 0), sets: num(x.sets, 1, 1), vol: num(x.vol, 0, 0)
+    }));
+  }
+  if (Array.isArray(s.favorites)) o.favorites = s.favorites.filter(f => isObj(f) && typeof f.name === "string" && Array.isArray(f.ex)).slice(0, 12).map(f => ({
+    id: typeof f.id === "string" ? f.id.slice(0, 20) : Math.random().toString(36).slice(2, 9), name: f.name.slice(0, 30), ex: [...new Set(f.ex.filter(id => EX[id]))].slice(0, 20)
+  })).filter(f => f.ex.length);
+  if (isObj(s.contracts)) o.contracts = {
+    week: num(s.contracts.week, 0, 0),
+    picks: Array.isArray(s.contracts.picks) ? s.contracts.picks.filter(x => isObj(x) && typeof x.id === "string").slice(0, 3).map(x => ({ id: x.id, target: num(x.target, 1, 1) })) : [],
+    claimed: Array.isArray(s.contracts.claimed) ? s.contracts.claimed.filter(x => typeof x === "string") : []
+  };
+  if (isObj(s.squadClaims)) for (const [k, v] of Object.entries(s.squadClaims)) if (/^[A-Z0-9]{6}$/.test(k)) o.squadClaims[k] = num(v, 0, 0);
+  o.squadWins = Math.floor(num(s.squadWins, 0, 0));
+  if (isObj(s.undo) && typeof s.undo.snap === "string" && Date.now() - num(s.undo.at, 0) < 86400000) o.undo = { at: num(s.undo.at, 0), snap: s.undo.snap.slice(0, 400000) };
   if (isObj(s.lastSets)) for (const [id, v] of Object.entries(s.lastSets)) {
     if (EX[id] && isObj(v)) o.lastSets[id] = { kg: num(v.kg, EX[id].defKg, 0, 1000), reps: num(v.reps, EX[id].defReps, 1, 3600) };
   }
@@ -1326,6 +1453,150 @@ const exByCat = cat => cat === "all" ? EXERCISES : EXERCISES.filter(e => e.cat =
 const bodyweight = () => state.operator.bodyweight || 75;
 
 /* =====================================================================
+   Progression étendue : XP commune, série de semaines, contrats, défis d'escouade, annulation
+   ===================================================================== */
+const DAY = 86400000;
+function weekStartOf(ts) {
+  const d = new Date(ts || Date.now());
+  const day = (d.getDay() + 6) % 7;
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() - day);
+  return d.getTime();
+}
+const weekIndex = ws => Math.round(ws / (7 * DAY));
+const hashStr = str => { let h = 2166136261; for (const c of String(str)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+/* Ajoute de l'XP (récompenses) en gérant les montées de niveau et les déblocages. */
+function addXp(amount) {
+  const st = state, oldLevel = st.level;
+  st.xp += amount; st.totalXp += amount;
+  let levels = 0;
+  while (st.xp >= xpNeeded(st.level)) { st.xp -= xpNeeded(st.level); st.level++; st.perkPoints++; levels++; }
+  const newGear = checkUnlocks(st);
+  return { levels, oldLevel, newGear };
+}
+function rewardToast(label, xp, res) {
+  vibrate([40, 30, 90]);
+  toast(`${label} : +${fmt(xp)} XP${res.levels ? ` · NIVEAU ${state.level} !` : ""}`);
+  if (res.levels) levelFlash(state.level);
+}
+/* Mesures d'une liste de missions (historique) */
+function weekEntries(ws) { return state.history.filter(h => h.date >= ws && h.date < ws + 7 * DAY); }
+function sumOf(list, f) { return list.reduce((a, h) => a + (f(h) || 0), 0); }
+const PUSH_IDS = id => id.startsWith("pushup");
+/* ---- Série de semaines actives (au moins 2 missions par semaine) ---- */
+function streakInfo() {
+  const counts = {};
+  state.history.forEach(h => { const w = weekStartOf(h.date); counts[w] = (counts[w] || 0) + 1; });
+  const ws0 = weekStartOf();
+  const thisWeek = counts[ws0] || 0;
+  let w = thisWeek >= 2 ? ws0 : weekStartOf(ws0 - DAY), n = 0;
+  while ((counts[w] || 0) >= 2) { n++; w = weekStartOf(w - DAY); }
+  return { weeks: n, thisWeek, secured: thisWeek >= 2 };
+}
+const streakBonus = n => n >= 2 ? Math.min(20, n * 2) : 0;
+/* ---- Contrats hebdomadaires personnels ---- */
+const CONTRACTS = {
+  missions: { name: "Accomplir {n} missions", target: () => 3, val: h => h.length, xp: 200 },
+  push: { name: "{n} répétitions de pompes", target: st => Math.min(300, 100 + st.level * 10), val: h => sumOf(h, x => x.push), xp: 200 },
+  ton: { name: "Soulever {n} kg", fmtN: n => fmt(n), target: st => Math.round((3000 + st.level * 400) / 500) * 500, val: h => sumOf(h, x => x.ton), xp: 250 },
+  recs: { name: "Battre {n} records personnels", target: () => 2, val: h => sumOf(h, x => x.recs), xp: 250 },
+  core: { name: "{n} minutes de gainage", fmtN: n => Math.round(n / 60), target: () => 360, val: h => sumOf(h, x => x.coreSec), xp: 200 },
+  legs: { name: "{n} XP de Propulsion", fmtN: n => fmt(n), target: st => 400 + st.level * 60, val: h => sumOf(h, x => x.xpStat && x.xpStat.propulsion), xp: 250 },
+  variety: { name: "Travailler {n} systèmes musculaires", target: () => 4, val: h => new Set(h.flatMap(x => x.cats || [])).size, xp: 200 },
+  xp: { name: "Gagner {n} XP en mission", fmtN: n => fmt(n), target: st => 800 + st.level * 120, val: h => sumOf(h, x => x.xp), xp: 200 }
+};
+function ensureContracts() {
+  const ws = weekStartOf();
+  if (state.contracts.week === ws && state.contracts.picks.length === 3) return false;
+  const ids = Object.keys(CONTRACTS);
+  let seed = hashStr(weekIndex(ws) + ":" + ((fb && fb.user && fb.user.uid) || state.operator.callsign));
+  const picks = [];
+  while (picks.length < 3) { seed = (Math.imul(seed, 1103515245) + 12345) >>> 0; const id = ids[seed % ids.length]; if (!picks.some(p => p.id === id)) picks.push({ id, target: CONTRACTS[id].target(state) }); }
+  state.contracts = { week: ws, picks, claimed: [] };
+  return true;
+}
+function contractRows() {
+  ensureContracts();
+  const h = weekEntries(state.contracts.week);
+  return state.contracts.picks.map(p => {
+    const c = CONTRACTS[p.id]; if (!c) return null;
+    const v = c.val(h), done = v >= p.target, claimed = state.contracts.claimed.includes(p.id);
+    return { id: p.id, label: c.name.replace("{n}", c.fmtN ? c.fmtN(p.target) : p.target), v, target: p.target, pct: Math.min(100, v / p.target * 100), done, claimed, xp: c.xp, fmtV: c.fmtN ? c.fmtN(Math.min(v, p.target)) : Math.min(v, p.target) };
+  }).filter(Boolean);
+}
+function claimContract(id) {
+  const r = contractRows().find(x => x.id === id);
+  if (!r || !r.done || r.claimed) return;
+  state.contracts.claimed.push(id);
+  const res = addXp(r.xp);
+  save(); render();
+  rewardToast("Contrat rempli", r.xp, res);
+}
+/* ---- Défis d'escouade ---- */
+const SQ_STAT_ROT = ["power", "armor", "propulsion", "core"];
+const SQ_CHALLENGES = [
+  { id: "ton", name: "TONNAGE COLLECTIF", per: 3000, val: c => c.weekTon, desc: t => `Soulever ${fmt(t)} kg à vous tous cette semaine (poids du corps compris).`, fmtV: v => fmt(v) + " kg" },
+  { id: "push", name: "MARÉE DE POMPES", per: 200, val: c => c.weekPush, desc: t => `${fmt(t)} répétitions de pompes à vous tous, toutes variantes confondues.`, fmtV: v => fmt(v) },
+  { id: "missions", name: "ASSIDUITÉ", per: 3, val: c => c.weekMissions, desc: t => `${t} missions accomplies à vous tous.`, fmtV: v => fmt(v) },
+  { id: "all2", name: "PERSONNE NE LÂCHE", per: 2, all: true, val: c => c.weekMissions, desc: () => "Chaque membre accomplit au moins 2 missions cette semaine.", fmtV: v => fmt(v) },
+  { id: "core", name: "MUR DE GAINAGE", per: 400, val: c => c.weekCore, desc: t => `${Math.round(t / 60)} minutes de gainage cumulées à vous tous.`, fmtV: v => Math.floor(v / 60) + " min" },
+  { id: "recs", name: "CHASSE AUX RECORDS", per: 2, val: c => c.weekRecs, desc: t => `${t} records personnels battus à vous tous.`, fmtV: v => fmt(v) },
+  { id: "stat", name: "SEMAINE THÉMATIQUE", per: 1300, stat: true, val: (c, k) => (c.weekXpStat || {})[k] || 0, desc: (t, k) => `${fmt(t)} XP de ${STATS[k].short.charAt(0) + STATS[k].short.slice(1).toLowerCase()} à vous tous.`, fmtV: v => fmt(v) + " XP" }
+];
+const SQ_REWARD = 300;
+function squadChallenge(code, members) {
+  const ws = weekStartOf(), wi = weekIndex(ws);
+  const ch = SQ_CHALLENGES[(wi + hashStr(code)) % SQ_CHALLENGES.length];
+  const statKey = SQ_STAT_ROT[wi % 4];
+  const n = Math.max(1, members.length);
+  const cur = m => m.weekStart === ws ? ch.val(m, statKey) : 0;
+  let target, value, pct, contrib;
+  contrib = members.map(m => ({ id: m.id, name: m.callsign, me: m.me, v: cur(m) })).sort((a, z) => z.v - a.v);
+  if (ch.all) {
+    target = n; value = contrib.filter(c => c.v >= ch.per).length;
+  } else {
+    target = ch.per * n; value = contrib.reduce((a, c) => a + c.v, 0);
+  }
+  pct = Math.min(100, value / target * 100);
+  const done = value >= target;
+  const daysLeft = Math.max(0, Math.ceil((ws + 7 * DAY - Date.now()) / DAY));
+  return { ch, statKey, target, value, pct, done, contrib, daysLeft, ws, name: ch.stat ? `SEMAINE ${STATS[statKey].short}` : ch.name, desc: ch.desc(ch.all ? ch.per : target, statKey) };
+}
+function claimSquad(code) {
+  const ws = weekStartOf();
+  if (state.squadClaims[code] === ws) return;
+  const sc = squadChallenge(code, squadList().list);
+  if (!sc.done) return;
+  state.squadClaims[code] = ws;
+  state.squadWins = (state.squadWins || 0) + 1;
+  const res = addXp(SQ_REWARD);
+  save(); render();
+  rewardToast("Défi d'escouade réussi", SQ_REWARD, res);
+}
+/* ---- Annulation de la dernière mission (24 h) ---- */
+const PROG_KEYS = ["level", "xp", "totalXp", "perkPoints", "perks", "stats", "missions", "tonnage", "records", "gear", "history", "exLog", "contracts", "squadClaims", "squadWins", "lastSets"];
+function progressSnapshot() { const o = {}; PROG_KEYS.forEach(k => { o[k] = state[k]; }); return JSON.stringify(o); }
+const canUndo = () => !!(state.undo && Date.now() - state.undo.at < DAY);
+function undoLastMission() {
+  if (!canUndo()) { toast("Plus rien à annuler : l'annulation reste possible 24 h après une mission.", true); return; }
+  let snap;
+  try { snap = JSON.parse(state.undo.snap); } catch (e) { state.undo = null; save(); return; }
+  const cur = JSON.parse(JSON.stringify(state));
+  PROG_KEYS.forEach(k => { if (k in snap) cur[k] = snap[k]; });
+  cur.undo = null;
+  const keepUpdated = state.updatedAt;
+  state = sanitize(cur);
+  state.updatedAt = keepUpdated;
+  ui.report = null;
+  save();
+  vibrate([120, 60, 200]); redFlash();
+  toast("Mission annulée : XP, attributs, records et butin ont été retirés.");
+  go("hq");
+}
+/* ---- Mesures d'une série pour le journal par exercice ---- */
+const e1rm = (e, s) => e.type === "time" ? s.score : Math.round(s.load * (1 + s.reps / 30) * 10) / 10;
+
+/* =====================================================================
    Avatar : châssis blindé vu de face, qui évolue avec la progression
    - morphologie : épaules (Puissance), poitrine (Blindage), jambes (Propulsion), taille (Noyau)
    - chaque pièce de cyberware a son propre dessin, coloré selon sa rareté
@@ -1448,13 +1719,17 @@ function avatarSVG(st, opts) {
   }
   const plate = `<g class="fr-plate${tier === 5 ? " fr-legend" : ""}"><path d="M${W / 2 - 54} ${Hh - 3}L${W / 2 - 47} ${Hh - 15}H${W / 2 + 47}L${W / 2 + 54} ${Hh - 3}"/><text x="${W / 2}" y="${Hh - 6.5}">NIV ${lvl} · ${rankName.split(" ")[0]}</text></g>`;
   const grid = Array.from({ length: 9 }, (_, i) => `M${i * 20} 0V${Hh}`).join("") + Array.from({ length: 12 }, (_, i) => `M0 ${i * 20}H${W}`).join("");
+  // emblèmes : série de semaines (gauche) et défis d'escouade réussis (droite)
+  const sk = opts.noBadges ? 0 : streakInfo().weeks, wins = opts.noBadges ? 0 : (st.squadWins || 0);
+  const badges = (sk >= 2 ? `<g class="badge"><title>Série de ${sk} semaines actives</title><path d="M14 14H44L48 22L44 30H14Z"/><path class="bi" d="M19 26l4-4l4 4M19 21l4-4l4 4"/><text x="38" y="25.5">${sk}</text></g>` : "")
+    + (wins ? `<g class="badge bw"><title>${wins} défi${wins > 1 ? "s" : ""} d'escouade réussi${wins > 1 ? "s" : ""}</title><polygon points="${pts([[W - 30, 12], [W - 18, 12], [W - 12, 22], [W - 18, 32], [W - 30, 32], [W - 36, 22]])}"/><text x="${W - 24}" y="25.5">${wins}</text></g>` : "");
   return `<svg class="avatar tier-${RANK_TIERS[tier].key}${opts.big ? " big" : ""}" viewBox="0 0 ${W} ${Hh}" role="img" aria-label="Châssis de l'opérateur, ${rankName}, niveau ${lvl}, ${SLOT_KEYS.filter(s => eq[s]).length} modules équipés sur 5">
     <defs><linearGradient id="${uid}g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#39FF14" stop-opacity="0"/><stop offset="1" stop-color="#39FF14" stop-opacity=".2"/></linearGradient>
     <clipPath id="${uid}c"><rect x="0" y="0" width="${W}" height="${Hh}"/></clipPath></defs>
     <path class="av-grid" d="${grid}"/>
     ${halo}
     <g transform="translate(0 4)">${body}<g class="av-lines">${lines}</g>${traces}${heart}${gear}</g>
-    ${frame}${plate}
+    ${frame}${plate}${badges}
     <g clip-path="url(#${uid}c)"><rect class="scan" x="0" y="0" width="${W}" height="22" fill="url(#${uid}g)"/></g>
   </svg>`;
 }
@@ -1465,6 +1740,7 @@ function avatarSVG(st, opts) {
 const clock = () => new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
 
 function renderHQ() {
+  if (ensureContracts()) save();
   const st = state, b = computeBonuses(st), need = xpNeeded(st.level), pct = Math.min(100, st.xp / need * 100);
   const availPerks = PERKS.filter(p => perkState(p) === "avail").length;
   const mSets = st.mission ? missionTotals().sets : 0;
@@ -1530,9 +1806,9 @@ function tabFiche(b) {
     </div>
     ${rookie ? `<p class="hint">Chaque série renforce l'attribut du groupe musculaire travaillé.</p>` : ""}
   </section>`;
-  if (rookie) return target + attrs + `
+  if (rookie) return favoritesBlock() + target + contractsBlock() + attrs + `
   <section class="block"><div class="empty-note">Le cyberware et les aptitudes se débloquent en jouant. Consultez les onglets <b>Arsenal</b> et <b>Aptitudes</b> quand vous voulez.</div></section>`;
-  return target + attrs + `
+  return favoritesBlock() + contractsBlock() + target + attrs + `
   <section class="block">
     <h2 class="h2">CYBERWARE ÉQUIPÉ</h2>
     <div class="panel slot-list">
@@ -1627,7 +1903,8 @@ function tabArchives() {
   </section>
   <section class="block">
     <h2 class="h2">JOURNAL DES MISSIONS</h2>
-    ${st.history.length ? `<div class="panel rows">${st.history.slice(0, 12).map(h => `<div class="r"><div>${new Date(h.date).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${esc(h.focus || "Mission")}<div class="s">${h.sets} séries · ${fmt(h.ton)} kg · ${hms(h.dur)}</div></div><div class="v">+${fmt(h.xp)} XP<div class="s">NIV ${h.level}</div></div></div>`).join("")}</div>`
+    ${st.history.length ? `<div class="panel rows">${st.history.slice(0, 12).map((h, i) => `<div class="r"><div>${new Date(h.date).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${esc(h.focus || "Mission")}<div class="s">${h.sets} séries · ${fmt(h.ton)} kg · ${hms(h.dur)}</div>${h.note && (h.note.energy || h.note.rpe || h.note.text) ? `<div class="note-line">${h.note.energy ? `Énergie ${h.note.energy}/5` : ""}${h.note.energy && h.note.rpe ? " · " : ""}${h.note.rpe ? ["", "Facile", "Correcte", "Dure", "Épuisante"][h.note.rpe] : ""}${h.note.text ? `${h.note.energy || h.note.rpe ? " · " : ""}« ${esc(h.note.text)} »` : ""}</div>` : ""}</div><div class="v">+${fmt(h.xp)} XP<div class="s">NIV ${h.level}</div></div></div>`).join("")}</div>
+      ${canUndo() ? `<div class="danger-zone"><button class="btn btn-quiet hold" data-hold="undo-mission" data-ms="1500"><span class="stack">ANNULER LA DERNIÈRE MISSION<small>APPUI LONG 1,5 S · POSSIBLE ENCORE ${Math.max(1, Math.ceil((state.undo.at + DAY - Date.now()) / 3600000))} H</small></span></button></div>` : ""}`
       : `<div class="empty-note">Aucune mission archivée. Votre premier rapport apparaîtra ici.</div>`}
   </section>
   <section class="block">
@@ -1759,16 +2036,31 @@ const IL = {
   },
   pushup(o) { // pompes, variantes
     const hy = o.hands !== undefined ? o.hands : F - 1, fy = o.feet !== undefined ? o.feet : F - 2;
+    if (o.knees) {
+      const knee = [74, F - 3], L = ILL.TH + ILL.T;
+      const shB = ilAdd(knee, 127, L), hx = shB[0] + 2;
+      const pose = (a) => ({ anchor: { j: "knee", at: knee }, torso: a, leg: { a: a - 180, f: -100 }, foot: -10, arm: { ik: [hx, F - 1], bend: 1 } });
+      return { A: pose(99), B: pose(127) };
+    }
     const ax = o.feet !== undefined ? 40 : 46;
     const aA = o.aA || 97, aB = o.aB || 110;
     const shB = ilAdd([ax, fy], aB, 88);
-    const hx = shB[0] + 2;
-    const pose = (a, hyy) => ({ anchor: { j: "ank", at: [ax, fy] }, torso: a, leg: { a: a - 180, f: a - 180 }, foot: a - 180 + 90, arm: { ik: [hx, hyy], bend: 1 } });
+    const hx = o.pseudo ? shB[0] - 20 : shB[0] + 2;
+    const pose = (a, hyy, leg2) => {
+      const p = { anchor: { j: "ank", at: [ax, fy] }, torso: a, leg: { a: a - 180, f: a - 180 }, foot: a - 180 + 90, arm: { ik: [hx, hyy], bend: 1 } };
+      if (o.spider) p.leg2 = leg2;
+      return p;
+    };
     const props = [];
     if (o.hands !== undefined && o.bar) props.push({ k: "lowbar", x1: hx - 16, x2: hx + 22, y: hy + 1 });
     else if (o.hands !== undefined) props.push({ k: "box", x1: hx - 18, x2: hx + 26, y: hy + 1 });
     if (o.feet !== undefined) props.push({ k: "box", x1: 22, x2: 64, y: fy + 2 });
-    return { props, A: pose(aA, hy), B: pose(aB, o.plyo ? hy - 9 : hy) };
+    return { props, A: pose(aA, hy, { a: 35, f: -40 }), B: pose(aB, o.plyo ? hy - 9 : hy, { a: aB - 180, f: aB - 180 }) };
+  },
+  hindu() {
+    const feet = { ik: [60, F - 2], bend: -1 }, hands = [136, F - 1];
+    return { A: { hip: [92, 98], torso: 52, head: 46, leg: feet, arm: { ik: hands, bend: 1 } },
+             B: { hip: [110, 134], torso: 125, head: 150, leg: feet, arm: { ik: hands, bend: 1 } } };
   },
   pike() {
     const hip = [88, 100], hands = [136, F - 1];
@@ -2066,7 +2358,8 @@ const ILL_MAP = {
   fly: ["press", { fly: 1, db: 1 }], cable_cross: ["flyfront", { cable: 1 }], pec_deck: ["flyfront", {}],
   dips_chest: ["dips", { lean: 1 }], dips_rings: ["dips", { lean: 1, rings: 1 }], dips_bars: ["dips", {}], dips_bench: ["benchdip", {}],
   pushup: ["pushup", {}], pushup_wide: ["pushup", {}], pushup_diamond: ["pushup", {}], pushup_archer: ["pushup", {}],
-  pushup_plyo: ["pushup", { plyo: 1 }], pushup_incline: ["pushup", { hands: 121, aA: 108, aB: 121 }], pushup_decline: ["pushup", { feet: 118, aA: 80, aB: 95 }],
+  pushup_plyo: ["pushup", { plyo: 1 }], pushup_military: ["pushup", {}], pushup_spiderman: ["pushup", { spider: 1 }],
+  pushup_knees: ["pushup", { knees: 1 }], pushup_pseudo: ["pushup", { pseudo: 1 }], pushup_hindu: ["hindu", {}], pushup_incline: ["pushup", { hands: 121, aA: 108, aB: 121 }], pushup_decline: ["pushup", { feet: 118, aA: 80, aB: 95 }],
   bw_tri_ext: ["pushup", { hands: 112, bar: 1, aA: 112, aB: 124 }],
   deadlift: ["deadlift", {}], rdl: ["deadlift", { rdl: 1 }],
   pullup: ["pullup", {}], chinup: ["pullup", {}], pullup_neutral: ["pullup", {}], chinup_close: ["pullup", {}],
@@ -2208,6 +2501,7 @@ function renderCatalog() {
     <button class="btn btn-ghost btn-sm" data-act="eq-open">RÉGLER</button>
   </div>
   ${state.tips.catalog ? "" : `<div class="tip"><p>Touchez le <b>nom</b> d'un exercice pour l'analyser, la <b>case</b> pour l'ajouter au loadout, puis <b>VALIDER</b>. Activez <b>MATÉRIEL DISPO</b> pour ne voir que ce que vous pouvez faire.</p><button class="btn btn-quiet btn-sm" data-act="dismiss-tip" data-tip="catalog">COMPRIS</button></div>`}
+  <button class="fav-save" id="fav-save-btn" data-act="fav-open" ${n ? "" : "hidden"}>★ ENREGISTRER CE LOADOUT EN MISSION FAVORITE</button>
   <div class="list-head"><span>${cat ? `${cat.code} · ${cat.label}` : "TOUS SYSTÈMES"}${pdc ? " · PDC" : ""}</span><span>${list.length} EXERCICES</span></div>
   <div class="ex-list" id="ex-list">${list.map(rowHTML).join("")}</div>
   ${!list.length ? `<div class="empty-note">Aucun exercice réalisable ici avec le matériel coché pour « ${PLACES[state.equip.active]} ». <button class="link-btn" style="padding:0 4px" data-act="eq-open">Régler le matériel</button></div>` : ""}
@@ -2233,6 +2527,7 @@ function syncLoadoutUI(id) {
   const c = $("#lo-count"), bd = $("#lo-badge"), ctr = $("#lo-counter");
   if (c) c.textContent = n;
   if (bd) bd.textContent = n;
+  const fsb = $("#fav-save-btn"); if (fsb) fsb.hidden = !n;
   if (ctr) { ctr.classList.remove("bump"); void ctr.offsetWidth; ctr.classList.add("bump"); }
   const ids = id ? [id] : EXERCISES.map(e => e.id);
   ids.forEach(x => {
@@ -2270,8 +2565,10 @@ function openExSheet(id) {
     <div class="sheet-top"><div><div class="eyebrow">TERMINAL D'ANALYSE · ${CAT_BY_ID[e.cat].code}</div><h2>${esc(e.name)}</h2></div>
       <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
     ${ILL_MAP[e.id] ? `<div class="sec"><h3>SCHÉMA DU MOUVEMENT</h3><div class="illus-wrap" id="illus-box">${illusSVG(e.id)}<div class="illus-cap"><span data-phase>PHASE CONCENTRIQUE</span><span>POINTILLÉS = POSITION DE DÉPART</span></div></div></div>` : ""}
+    ${GRIPS[e.id] ? `<div class="sec"><h3>PLACEMENT DES MAINS · ${GRIPS[e.id].bar ? "VUE DE FACE" : "VUE DU DESSUS"}</h3><div class="illus-wrap">${gripSVG(e.id)}<div class="illus-cap"><span data-grip>${esc(GRIPS[e.id].label)}</span></div></div></div>` : ""}
     <div class="sec"><h3>ANALYSE BIOMÉCANIQUE</h3><p>${esc(e.desc)}</p></div>
-    <div class="sec"><h3>MATÉRIEL REQUIS</h3><div class="mtags">${reqText(e.id).length ? reqText(e.id).map(t => `<span>${esc(t)}</span>`).join("") : `<span>Aucun : poids du corps</span>`}${state.equip.filter && !canDo(e.id, curPlace()) ? `<span class="miss">Indisponible · ${PLACES[state.equip.active]}</span>` : ""}</div></div>
+    <div class="sec"><h3>PROGRESSION</h3>${progressChart(e.id)}</div>
+    <div class="sec"><h3>MATÉRIEL REQUIS</h3><div class="mtags">${reqText(e.id).length ? reqText(e.id).map(t => `<span>${esc(t)}</span>`).join("") : `<span>Aucun : poids du corps</span>`}${state.equip.filter && !canDo(e.id, curPlace()) ? `<span class="miss">Indisponible · ${PLACES[state.equip.active]}</span>` : ""}${EX_PAIR.has(e.id) ? `<span>Paire d'haltères</span>` : ""}${EX_UNI.has(e.id) && loadKind(e.id) === "db" ? `<span>Faisable avec une seule haltère</span>` : ""}</div></div>
     <div class="sec"><h3>MUSCLES CIBLÉS</h3><div class="mtags">${e.muscles.map(m => `<span>${esc(m)}</span>`).join("")}</div></div>
     <div class="sec"><h3>RATIO D'XP</h3>
       <div class="ratio">
@@ -2309,6 +2606,8 @@ function openEquipSheet() {
     return `<div class="eq-item ${on ? "on" : ""}">
       <button class="eq-row" role="checkbox" aria-checked="${on}" data-act="eq-item" data-id="${it.id}"><span class="check ${on ? "on" : ""}"></span>
         <span class="eq-name">${esc(it.name)}${it.hint ? `<small>${esc(it.hint)}</small>` : ""}</span></button>
+      ${it.id === "db" && on ? `<div class="eq-max"><span>Nombre :</span><div class="seg seg-mini" role="tablist">${[1, 2].map(n => `<button role="tab" aria-selected="${pl.dbCount === n}" class="${pl.dbCount === n ? "on" : ""}" data-act="eq-dbcount" data-n="${n}">${n === 1 ? "1 HALTÈRE" : "2 HALTÈRES"}</button>`).join("")}</div></div>` : ""}
+      ${it.id === "bb" && on ? `<label class="eq-max" for="eq-bar">Barre de <input id="eq-bar" data-eqbar="1" inputmode="decimal" autocomplete="off" value="${fmt1(pl.barKg || 20).replace(/\s/g, "")}"> kg (barre olympique : 20 kg)</label>` : ""}
       ${it.max && on ? `<label class="eq-max" for="eq-max-${it.id}">Jusqu'à <input id="eq-max-${it.id}" data-eqmax="${it.id}" inputmode="decimal" autocomplete="off" value="${mx ? fmt1(mx).replace(/\s/g, "") : ""}" placeholder="—"> kg ${it.id === "db" ? "par haltère" : "barre chargée"}</label>` : ""}
     </div>`;
   };
@@ -2331,6 +2630,213 @@ function equipChanged() {
   if (ui.screen === "catalog" || ui.screen === "hq") render();
 }
 
+
+/* =====================================================================
+   Interface : favoris, contrats, suggestions, courbes, disques, placement des mains
+   ===================================================================== */
+/* ---- Séances favorites ---- */
+function favoritesBlock() {
+  const favs = state.favorites;
+  if (!favs.length) return "";
+  return `<section class="block">
+    <h2 class="h2">MISSIONS ENREGISTRÉES</h2>
+    <div class="fav-list">${favs.map(f => `<div class="panel fav">
+      <div class="fav-info"><b>${esc(f.name)}</b><small>${f.ex.length} exercice${f.ex.length > 1 ? "s" : ""} · ${esc(f.ex.slice(0, 3).map(id => EX[id].name).join(", "))}${f.ex.length > 3 ? "…" : ""}</small></div>
+      <div class="fav-act"><button class="btn btn-neon btn-sm" data-act="fav-launch" data-id="${esc(f.id)}">LANCER</button>
+      <button class="del ${ui.favDel === f.id ? "confirm" : ""}" data-act="fav-del" data-id="${esc(f.id)}" aria-label="Supprimer la mission ${esc(f.name)}">${ui.favDel === f.id ? "SUPPR ?" : "✕"}</button></div>
+    </div>`).join("")}</div>
+  </section>`;
+}
+function openFavSheet() {
+  ui.sheetEx = null;
+  const lo = state.loadoutSession;
+  const cats = [...new Set(lo.map(id => EX[id].cat))].map(c => CAT_BY_ID[c].label.toLowerCase());
+  const suggestion = cats.length ? cats.slice(0, 2).map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(" + ") : "Ma séance";
+  $("#sheet-in").innerHTML = `
+    <div class="grip" aria-hidden="true"></div>
+    <div class="sheet-top"><div><div class="eyebrow">MISSIONS ENREGISTRÉES</div><h2>ENREGISTRER CE LOADOUT</h2></div>
+      <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
+    <p class="hint">${lo.length} exercice${lo.length > 1 ? "s" : ""} : ${esc(lo.map(id => EX[id].name).join(", "))}.</p>
+    <div class="field-line"><label for="fav-name">NOM DE LA MISSION</label><input class="txt" id="fav-name" maxlength="30" autocomplete="off" value="${esc(suggestion)}"></div>
+    <p class="hint">Elle apparaîtra au QG : un tap la relance avec les mêmes exercices.</p>
+    <button class="btn btn-neon" data-act="fav-save">ENREGISTRER</button>`;
+  showSheet("#fav-name");
+}
+function saveFavorite() {
+  const name = cleanName(($("#fav-name") || {}).value || "");
+  if (name.length < 2) { toast("Donnez un nom d'au moins 2 caractères.", true); return; }
+  if (!state.loadoutSession.length) { toast("Le loadout est vide.", true); return; }
+  if (state.favorites.length >= 12) { toast("12 missions enregistrées au maximum : supprimez-en une au QG.", true); return; }
+  state.favorites.unshift({ id: Math.random().toString(36).slice(2, 9), name: name.slice(0, 30), ex: state.loadoutSession.slice(0, 20) });
+  save(); closeSheet(); render();
+  toast(`Mission « ${name} » enregistrée au QG.`);
+}
+function launchFavorite(id) {
+  const f = state.favorites.find(x => x.id === id); if (!f) return;
+  if (state.mission && missionTotals().sets) { toast("Une mission est en cours : terminez-la ou abandonnez-la d'abord.", true); return; }
+  state.loadoutSession = f.ex.filter(x => EX[x]);
+  ensureMission(); save();
+  go("briefing");
+  toast(`Mission « ${f.name} » chargée.`);
+}
+/* ---- Contrats et série au QG ---- */
+function contractsBlock() {
+  const rows = contractRows(), sk = streakInfo();
+  const daysLeft = Math.max(0, Math.ceil((weekStartOf() + 7 * DAY - Date.now()) / DAY));
+  return `<section class="block">
+    <h2 class="h2">CONTRATS DE LA SEMAINE</h2>
+    <div class="panel streak ${sk.weeks >= 2 ? "hot" : ""}">
+      <div class="streak-n"><b>${sk.weeks}</b><span>SEMAINE${sk.weeks > 1 ? "S" : ""}</span></div>
+      <div class="streak-t"><b>${sk.weeks >= 2 ? `Série active · bonus de mission +${streakBonus(sk.weeks)} %` : "Série de semaines actives"}</b>
+        <small>${sk.secured ? "Semaine validée : 2 missions ou plus." : `${sk.thisWeek}/2 missions cette semaine pour ${sk.weeks ? "prolonger" : "lancer"} la série.`} Bonus de +2 % d'XP par semaine d'affilée, jusqu'à +20 %.</small></div>
+    </div>
+    <div class="panel contracts">
+      ${rows.map(r => `<div class="ct ${r.done ? "done" : ""}">
+        <div class="ct-top"><span class="ct-name">${esc(r.label)}</span><span class="ct-xp">+${r.xp} XP</span></div>
+        <div class="mini-bar ct-bar"><i style="width:${r.pct}%"></i></div>
+        <div class="ct-bot"><span>${r.fmtV} / ${CONTRACTS[r.id].fmtN ? CONTRACTS[r.id].fmtN(r.target) : r.target}</span>
+          ${r.claimed ? `<span class="ct-ok">RÉCOMPENSE REÇUE</span>` : r.done ? `<button class="btn btn-neon btn-sm" data-act="contract-claim" data-id="${r.id}">RÉCUPÉRER</button>` : ""}</div>
+      </div>`).join("")}
+      <p class="hint">Nouveaux contrats chaque lundi · encore ${daysLeft} jour${daysLeft > 1 ? "s" : ""}.</p>
+    </div>
+  </section>`;
+}
+/* ---- Surcharge progressive ---- */
+function suggestNext(id) {
+  const e = EX[id], log = state.exLog[id];
+  if (!e || !log || !log.length) return null;
+  const last = log[log.length - 1];
+  if (e.type === "time") return { last, kg: last.kg, reps: last.reps + 5, why: "5 secondes de plus" };
+  const kind = loadKind(id), cap = loadCap(id);
+  const hi = e.type === "bw" ? 15 : 12;
+  const inc = kind === "db" ? 2 : 2.5;
+  if (last.reps >= hi) {
+    const kg = Math.round((last.kg + inc) * 100) / 100;
+    if (e.type === "bw" && !last.kg) return { last, kg: last.kg, reps: last.reps + 1, why: "une répétition de plus (ou ajoutez un lest de 2,5 kg)" };
+    if (cap && kg > cap) return { last, kg: last.kg, reps: last.reps + 1, why: "charge max de votre matériel atteinte : une répétition de plus" };
+    return { last, kg, reps: Math.max(6, last.reps - 4), why: `+${fmt1(inc)} kg, répétitions remises à ${Math.max(6, last.reps - 4)}` };
+  }
+  return { last, kg: last.kg, reps: last.reps + 1, why: "même charge, une répétition de plus" };
+}
+const setTxt = (e, kg, reps) => e.type === "time" ? `${fmt(reps)} s${kg ? ` · lest ${fmt1(kg)} kg` : ""}` : e.type === "bw" ? `${kg ? `PDC + ${fmt1(kg)} kg` : "PDC"} × ${fmt(reps)}` : `${fmt1(kg)} kg × ${fmt(reps)}`;
+function suggestionHTML(e) {
+  const sg = suggestNext(e.id); if (!sg) return "";
+  const d = new Date(sg.last.d).toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+  return `<div class="sugg"><div><span class="eyebrow">DERNIÈRE FOIS · ${d}</span><span>${setTxt(e, sg.last.kg, sg.last.reps)} · ${sg.last.sets} série${sg.last.sets > 1 ? "s" : ""}</span></div>
+    <div><span class="eyebrow">OBJECTIF DU JOUR</span><b>${setTxt(e, sg.kg, sg.reps)}</b><small>${esc(sg.why)}</small></div>
+    <button class="btn btn-ghost btn-sm" data-act="apply-sugg" data-id="${e.id}">APPLIQUER</button></div>`;
+}
+/* ---- Calculateur de disques ---- */
+const PLATES = [25, 20, 15, 10, 5, 2.5, 1.25];
+const nf2 = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 });
+const fmt2 = n => nf2.format(+n || 0);
+function plateHTML(total) {
+  const bar = curPlace().barKg || 20;
+  if (!Number.isFinite(total)) return "";
+  if (total < bar) return `<span class="pl-txt">Charge inférieure à la barre seule (${fmt1(bar)} kg).</span>`;
+  let side = (total - bar) / 2; const used = [];
+  for (const p of PLATES) while (side >= p - 0.001) { used.push(p); side -= p; }
+  const rest = Math.round(side * 2 * 100) / 100;
+  const ph = p => 10 + p * 1.1;
+  let x = 4; const rects = used.map(p => { const h = ph(p), w = p >= 10 ? 7 : 5; const r = `<rect x="${x}" y="${(40 - h) / 2}" width="${w}" height="${h}" rx="1.5"/>`; x += w + 2; return r; }).join("");
+  return `<svg class="pl-svg" viewBox="0 0 ${Math.max(60, x + 40)} 40" aria-hidden="true"><path class="pl-bar" d="M0 20H${x + 40}"/><path class="pl-col" d="M${x + 2} 14V26"/>${rects}</svg>
+    <span class="pl-txt">${used.length ? `Par côté : <b>${used.map(p => fmt2(p)).join(" + ")}</b>` : "Barre seule"} · barre ${fmt1(bar)} kg${rest > 0 ? ` · reste ${fmt2(rest)} kg non réalisable` : ""}</span>`;
+}
+/* ---- Courbe de progression ---- */
+function progressChart(id) {
+  const e = EX[id], log = (state.exLog[id] || []).slice(-12);
+  if (!log.length) return `<p class="hint">La courbe apparaîtra après votre première mission avec cet exercice.</p>`;
+  const time = e.type === "time";
+  const vals = log.map(x => time ? x.reps : x.e1);
+  const unit = time ? "s" : "kg";
+  const W = 300, H = 130, padL = 34, padR = 12, padT = 14, padB = 24;
+  const lo = Math.min(...vals), hi = Math.max(...vals);
+  const span = hi - lo || Math.max(1, hi * 0.1);
+  const y0 = Math.max(0, lo - span * 0.25), y1 = hi + span * 0.25;
+  const X = i => log.length === 1 ? (padL + W - padR) / 2 : padL + i * (W - padL - padR) / (log.length - 1);
+  const Y = v => padT + (1 - (v - y0) / (y1 - y0)) * (H - padT - padB);
+  const ticks = [y0, (y0 + y1) / 2, y1];
+  const path = vals.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join("");
+  const area = log.length > 1 ? `${path}L${X(vals.length - 1).toFixed(1)} ${H - padB}L${X(0).toFixed(1)} ${H - padB}Z` : "";
+  const first = vals[0], last = vals[vals.length - 1], delta = last - first;
+  const best = log.reduce((a, x) => (time ? x.reps : x.e1) > (time ? a.reps : a.e1) ? x : a, log[0]);
+  return `<svg class="pchart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Progression de ${esc(e.name)} sur ${log.length} missions">
+      ${ticks.map(t => `<path class="pc-grid" d="M${padL} ${Y(t).toFixed(1)}H${W - padR}"/><text class="pc-tick" x="${padL - 6}" y="${(Y(t) + 3).toFixed(1)}">${fmt(t)}</text>`).join("")}
+      ${area ? `<path class="pc-area" d="${area}"/>` : ""}<path class="pc-line" d="${path}"/>
+      ${vals.map((v, i) => `<g><circle class="pc-hit" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="11"/><circle class="pc-dot${i === vals.length - 1 ? " last" : ""}" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="${i === vals.length - 1 ? 4.5 : 3}"/><title>${new Date(log[i].d).toLocaleDateString("fr-FR")} · ${setTxt(e, log[i].kg, log[i].reps)} · ${fmt1(v)} ${unit}</title></g>`).join("")}
+      <text class="pc-tick" x="${padL}" y="${H - 6}" text-anchor="start">${new Date(log[0].d).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}</text>
+      <text class="pc-tick" x="${W - padR}" y="${H - 6}" text-anchor="end">${new Date(log[log.length - 1].d).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}</text>
+    </svg>
+    <div class="pc-sum"><div><span>${time ? "DERNIÈRE DURÉE" : "1RM ESTIMÉ ACTUEL"}</span><b>${fmt1(last)} ${unit}</b></div>
+      <div><span>ÉVOLUTION</span><b class="${delta > 0 ? "up" : delta < 0 ? "down" : ""}">${delta > 0 ? "+" : ""}${fmt1(delta)} ${unit}</b></div>
+      <div><span>MEILLEURE SÉRIE</span><b>${setTxt(e, best.kg, best.reps)}</b></div></div>
+    <p class="hint">${time ? "Durée de la meilleure série à chaque mission." : "1RM estimé : la charge que vous pourriez soulever une seule fois, calculée à partir de votre meilleure série de chaque mission (formule d'Epley)."}</p>`;
+}
+/* ---- Placement des mains (vue du dessus / de face) ---- */
+const GRIPS = {
+  pushup: { w: 1.25, label: "Mains un peu plus larges que les épaules, coudes à 45° du corps." },
+  pushup_wide: { w: 1.85, label: "Mains nettement au-delà des épaules : plus de pectoraux, moins de triceps." },
+  pushup_military: { w: 1.0, tuck: true, label: "Mains exactement sous les épaules, coudes collés le long du corps." },
+  pushup_diamond: { w: 0.2, y: 12, diamond: true, label: "Pouces et index forment un losange sous la poitrine." },
+  pushup_archer: { w: 2.3, label: "Mains très écartées : on descend vers un bras, l'autre reste tendu." },
+  pushup_plyo: { w: 1.25, label: "Placement classique, poussée explosive jusqu'à décoller les mains." },
+  pushup_incline: { w: 1.25, label: "Placement classique, mains sur le support surélevé." },
+  pushup_decline: { w: 1.25, label: "Placement classique, pieds surélevés." },
+  pushup_knees: { w: 1.25, knees: true, label: "Placement classique, appui sur les genoux." },
+  pushup_spiderman: { w: 1.25, spider: true, label: "Placement classique ; à la descente, un genou rejoint le coude du même côté." },
+  pushup_hindu: { w: 1.35, label: "Mains un peu plus larges que les épaules, pieds écartés pour le V inversé." },
+  pushup_pseudo: { w: 1.1, y: 48, back: true, label: "Mains au niveau des hanches, doigts vers l'extérieur, épaules loin devant les mains." },
+  pullup: { bar: true, w: 1.5, grip: "pro", label: "Pronation (paumes vers l'avant), un peu plus large que les épaules." },
+  chinup: { bar: true, w: 1.0, grip: "sup", label: "Supination (paumes vers soi), mains à largeur d'épaules." },
+  pullup_neutral: { bar: true, w: 1.0, grip: "neu", label: "Prise neutre : paumes face à face sur des poignées parallèles." },
+  chinup_close: { bar: true, w: 0.55, grip: "sup", label: "Supination serrée : mains proches, paumes vers soi." },
+  scap_pull: { bar: true, w: 1.5, grip: "pro", label: "Prise des tractions classiques, bras toujours tendus." },
+  dead_hang: { bar: true, w: 1.4, grip: "pro", label: "Prise pronation, largeur d'épaules ou un peu plus." },
+  muscle_up: { bar: true, w: 1.2, grip: "pro", label: "Pronation à largeur d'épaules, poignets au-dessus de la barre." },
+  hanging_raise: { bar: true, w: 1.4, grip: "pro", label: "Prise pronation confortable, épaules engagées." }
+};
+function gripSVG(id) {
+  const g = GRIPS[id]; if (!g) return "";
+  const cx = 120, SW = 24;
+  const hx = d => cx + d * SW * g.w;
+  const guides = `<path class="gr-guide" d="M${cx - SW} 6V154M${cx + SW} 6V154"/><text class="gr-lab" x="${cx + SW + 3}" y="14">épaules</text>`;
+  if (g.bar) {
+    const by = 30;
+    const hand = (x, s) => g.grip === "neu"
+      ? `<path class="gr-bar" d="M${x} ${by - 12}V${by + 12}"/><rect class="gr-hand" x="${x - 6}" y="${by - 7}" width="12" height="14" rx="5"/>`
+      : `<rect class="gr-hand" x="${x - 8}" y="${by - 6}" width="16" height="12" rx="5"/><text class="gr-mark" x="${x}" y="${by + 3.5}">${g.grip === "sup" ? "S" : "P"}</text>`;
+    return `<svg class="grip-svg" viewBox="0 0 240 160" role="img" aria-label="Placement des mains, vue de face">
+      ${guides}${g.grip !== "neu" ? `<path class="gr-bar" d="M20 ${by}H220"/>` : `<path class="gr-bar" d="M20 ${by - 12}H220"/>`}
+      <path class="gr-body" d="M${hx(-1)} ${by + 4}L${cx - SW} 66M${hx(1)} ${by + 4}L${cx + SW} 66"/>
+      <circle class="gr-body" cx="${cx}" cy="58" r="10"/>
+      <path class="gr-body" d="M${cx - SW} 70H${cx + SW}L${cx + 16} 118H${cx - 16}Z"/>
+      <path class="gr-body" d="M${cx - 8} 118L${cx - 10} 152M${cx + 8} 118L${cx + 10} 152"/>
+      ${hand(hx(-1), -1)}${hand(hx(1), 1)}
+      <text class="gr-lab" x="20" y="152">${g.grip === "sup" ? "S = supination" : g.grip === "pro" ? "P = pronation" : "poignées parallèles"}</text>
+    </svg>`;
+  }
+  // vue du dessus, pompes : la tête en haut
+  const yS = 44, yH = yS + (g.y || 0);
+  const hand = (x, s) => {
+    const fingers = g.back ? `M${x} ${yH}l${s * 9} 3M${x} ${yH}l${s * 9} -2` : g.diamond ? `M${x} ${yH - 6}l${-s * 6} -3` : `M${x - 4} ${yH - 6}v-6M${x} ${yH - 7}v-7M${x + 4} ${yH - 6}v-6`;
+    return `<circle class="gr-hand" cx="${x}" cy="${yH}" r="7"/><path class="gr-hand" d="${fingers}"/>`;
+  };
+  const elbows = g.tuck
+    ? `<path class="gr-arrow" d="M${cx - SW - 4} ${yS + 8}V${yS + 30}M${cx - SW - 7} ${yS + 26}l3 4l3 -4M${cx + SW + 4} ${yS + 8}V${yS + 30}M${cx + SW + 1} ${yS + 26}l3 4l3 -4"/>`
+    : g.diamond ? "" : `<path class="gr-arrow" d="M${hx(-1)} ${yH + 8}l-10 14M${hx(1)} ${yH + 8}l10 14"/>`;
+  const legs = g.knees ? `M${cx - 9} 100L${cx - 11} 132M${cx + 9} 100L${cx + 11} 132` : `M${cx - 9} 100L${cx - 12} 152M${cx + 9} 100L${cx + 12} 152`;
+  const spider = g.spider ? `<path class="gr-arrow" d="M${cx + 10} 128Q${cx + 40} 110 ${cx + SW + 6} ${yS + 22}"/><circle class="gr-hand" cx="${cx + SW + 6}" cy="${yS + 22}" r="3"/>` : "";
+  return `<svg class="grip-svg" viewBox="0 0 240 160" role="img" aria-label="Placement des mains, vue du dessus">
+    ${guides}
+    <circle class="gr-body" cx="${cx}" cy="24" r="10"/>
+    <path class="gr-body" d="M${cx - SW} ${yS}H${cx + SW}L${cx + 15} 100H${cx - 15}Z"/>
+    <path class="gr-body" d="${legs}"/>${g.knees ? `<circle class="gr-hand" cx="${cx - 11}" cy="132" r="3"/><circle class="gr-hand" cx="${cx + 11}" cy="132" r="3"/>` : ""}
+    <path class="gr-arm" d="M${cx - SW} ${yS}L${hx(-1)} ${yH}M${cx + SW} ${yS}L${hx(1)} ${yH}"/>
+    ${elbows}${spider}
+    ${hand(hx(-1), -1)}${hand(hx(1), 1)}
+    <text class="gr-lab" x="20" y="152">tête en haut</text>
+  </svg>`;
+}
 
 /* ---- Fiches : châssis et pièces d'arsenal ---- */
 const GEAR_LORE = {
@@ -2771,7 +3277,9 @@ function buildCard() {
     callsign: state.operator.callsign, level: state.level, xp: Math.round(state.totalXp),
     weekXp: state.history.filter(h => h.date >= ws).reduce((a, h) => a + h.xp, 0), weekStart: ws,
     tonnage: Math.round(state.tonnage), missions: state.missions, stats, gear,
-    lastMission: state.history.length ? state.history[0].date : 0
+    lastMission: state.history.length ? state.history[0].date : 0,
+    ...(() => { const h = state.history.filter(x => x.date >= ws); const xs = {}; STAT_KEYS.forEach(k => { xs[k] = sumOf(h, x => x.xpStat && x.xpStat[k]); });
+      return { weekTon: Math.round(sumOf(h, x => x.ton)), weekPush: sumOf(h, x => x.push), weekMissions: h.length, weekCore: sumOf(h, x => x.coreSec), weekRecs: sumOf(h, x => x.recs), weekXpStat: xs, streak: streakInfo().weeks, wins: state.squadWins || 0 }; })()
   };
 }
 function cleanCard(d) {
@@ -2782,7 +3290,9 @@ function cleanCard(d) {
   return {
     callsign: typeof d.callsign === "string" && d.callsign.trim() ? d.callsign.slice(0, 20) : "Opérateur",
     level: Math.floor(num(d.level, 1, 1, 999)), xp: num(d.xp, 0, 0), weekXp: num(d.weekXp, 0, 0), weekStart: num(d.weekStart, 0, 0),
-    tonnage: num(d.tonnage, 0, 0), missions: Math.floor(num(d.missions, 0, 0)), stats, gear, lastMission: num(d.lastMission, 0, 0)
+    tonnage: num(d.tonnage, 0, 0), missions: Math.floor(num(d.missions, 0, 0)), stats, gear, lastMission: num(d.lastMission, 0, 0),
+    weekTon: num(d.weekTon, 0, 0), weekPush: num(d.weekPush, 0, 0), weekMissions: num(d.weekMissions, 0, 0), weekCore: num(d.weekCore, 0, 0), weekRecs: num(d.weekRecs, 0, 0),
+    weekXpStat: Object.fromEntries(STAT_KEYS.map(k => [k, num(isObj(d.weekXpStat) ? d.weekXpStat[k] : 0, 0, 0)])), streak: num(d.streak, 0, 0), wins: num(d.wins, 0, 0)
   };
 }
 function scheduleCards() {
@@ -2921,6 +3431,15 @@ function renderSquad() {
       <p class="hint">Pour retirer un membre, touchez son nom dans le classement puis maintenez « Retirer de l'escouade ». Il ne pourra plus revenir avec le code tant que vous ne l'aurez pas réautorisé.</p>
       ${squad.banned.length ? `<div class="field-line"><label>MEMBRES RETIRÉS</label><div class="panel rows">${squad.banned.map(uid => `<div class="r"><div>${esc(String(squad.bannedNames[uid] || "Opérateur").slice(0, 20))}</div><button class="btn btn-quiet btn-sm" data-act="squad-unban" data-id="${esc(uid)}">RÉAUTORISER</button></div>`).join("")}</div></div>` : ""}
     </section>` : ""}
+    ${(() => { const sc = squadChallenge(squad.code, list); const claimed = state.squadClaims[squad.code] === sc.ws;
+      return `<section class="panel sq-challenge ${sc.done ? "done" : ""}">
+        <div class="sqc-top"><span class="eyebrow">DÉFI DE LA SEMAINE · ${sc.daysLeft} J RESTANT${sc.daysLeft > 1 ? "S" : ""}</span><span class="ct-xp">+${SQ_REWARD} XP chacun</span></div>
+        <h3 class="sqc-name">${esc(sc.name)}</h3><p class="hint" style="color:var(--text)">${esc(sc.desc)}</p>
+        <div class="mini-bar ct-bar"><i style="width:${sc.pct}%"></i></div>
+        <div class="ct-bot"><span>${sc.ch.all ? `${sc.value} / ${sc.target} membres` : `${sc.ch.fmtV(sc.value)} / ${sc.ch.fmtV(sc.target)}`}</span>
+          ${claimed ? `<span class="ct-ok">RÉCOMPENSE REÇUE</span>` : sc.done ? `<button class="btn btn-neon btn-sm" data-act="squad-claim">RÉCUPÉRER</button>` : ""}</div>
+        <div class="sqc-contrib">${sc.contrib.map(c => `<span class="${c.me ? "me" : ""}">${esc(c.name)} · ${sc.ch.fmtV(c.v)}${sc.ch.all ? (c.v >= sc.ch.per ? " ✓" : "") : ""}</span>`).join("")}</div>
+      </section>`; })()}
     <div class="seg seg4" role="tablist" aria-label="Classement">
       ${Object.entries(SORTS).map(([k, l]) => `<button role="tab" aria-selected="${squad.sort === k}" class="${squad.sort === k ? "on" : ""}" data-act="squad-sort" data-sort="${k}">${l}</button>`).join("")}</div>
     <p class="hint" style="margin-top:8px">${squad.sort === "week" ? "XP gagnée depuis lundi. Le compteur repart à zéro chaque semaine." : squad.sort === "level" ? "Classement par XP totale accumulée." : squad.sort === "ton" ? "Charge totale soulevée depuis l'inscription." : "Nombre de missions accomplies."}</p>
@@ -3125,6 +3644,8 @@ function exCardHTML(e, b) {
   return `<article class="panel ex-card" data-card="${e.id}">
     <header><div><div class="eyebrow">${CAT_BY_ID[e.cat].code} · ×${e.coef.toFixed(2)} · REPOS ${restFor(e, b)} S</div><button class="ex-link" data-act="sheet-ex" data-id="${e.id}" aria-label="Voir la fiche et le schéma de ${esc(e.name)}">${esc(e.name)}<span class="i" aria-hidden="true">i</span></button></div>
       <span class="setc">${plural(sets.length, "SÉRIE")}</span></header>
+    ${sets.length ? "" : suggestionHTML(e)}
+    ${singleDbMode(e.id) ? `<p class="bw-note">Une seule haltère : faites toutes les répétitions d'un côté, puis de l'autre. Saisissez les répétitions par bras.</p>` : ""}
     ${sets.length ? `<div class="sets">${sets.map((s, i) => {
       const armed = ui.delArm === `${e.id}:${i}`;
       const tags = s.tags;
@@ -3139,6 +3660,7 @@ function exCardHTML(e, b) {
         <div class="stepper"><button data-act="step" data-id="${e.id}" data-f="kg" data-d="-2.5" aria-label="Moins 2,5 kg">−</button><input id="kg-${e.id}" data-field="kg" data-id="${e.id}" inputmode="decimal" autocomplete="off" value="${fmt1(d.kg).replace(/\s/g, "")}"><button data-act="step" data-id="${e.id}" data-f="kg" data-d="2.5" aria-label="Plus 2,5 kg">+</button></div>
         ${e.type === "bw" ? `<div class="bw-note">+ PDC ${fmt1(bodyweight())} kg × ${e.bw}</div>` : ""}
         ${loadCap(e.id) ? `<div class="bw-note">Matériel ${PLACES[state.equip.active].toLowerCase()} : ${fmt1(loadCap(e.id))} kg max${loadKind(e.id) === "db" ? " par haltère" : ""}</div>` : ""}</div>
+      ${loadKind(e.id) === "bb" ? `<div class="plates" id="pl-${e.id}">${plateHTML(d.kg)}</div>` : ""}
       <div class="field"><label for="reps-${e.id}">${repLabel}</label>
         <div class="stepper"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="${time ? -5 : -1}" aria-label="Moins">−</button><input id="reps-${e.id}" data-field="reps" data-id="${e.id}" inputmode="numeric" autocomplete="off" value="${Math.round(d.reps)}"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="${time ? 5 : 1}" aria-label="Plus">+</button></div></div>
       <div class="entry-go">
@@ -3287,24 +3809,39 @@ function finishMission() {
   const t = missionTotals();
   if (!t.sets) { toast("Validez au moins une série avant de terminer.", true); return; }
   const b = computeBonuses(st);
+  const undoSnap = progressSnapshot();
+  const streakBefore = streakInfo();
   const gains = { power: 0, armor: 0, propulsion: 0, core: 0 };
+  const xpStat = { power: 0, armor: 0, propulsion: 0, core: 0 };
   const perEx = [], records = [];
+  let push = 0, coreSec = 0;
+  const now = Date.now();
   for (const id in m.sets) {
     const e = EX[id]; if (!e) continue;
     let exXp = 0, exTon = 0, best = null;
     m.sets[id].forEach(s => {
       exXp += s.xp; if (e.type !== "time") exTon += s.load * s.reps;
-      for (const k in e.stats) gains[k] += s.xp * e.stats[k] / 60;
+      for (const k in e.stats) { gains[k] += s.xp * e.stats[k] / 60; xpStat[k] += s.xp * e.stats[k]; }
+      if (PUSH_IDS(id)) push += s.reps;
+      if (e.type === "time" && e.cat === "abdos") coreSec += s.reps;
       if (!best || s.score > best.score) best = s;
     });
     perEx.push({ id, sets: m.sets[id].length, xp: exXp, ton: exTon });
+    if (best) {
+      const log = st.exLog[id] || (st.exLog[id] = []);
+      log.push({ d: now, kg: best.kg, reps: best.reps, score: best.score, e1: e1rm(e, best), sets: m.sets[id].length, vol: Math.round(exTon) });
+      if (log.length > 40) log.splice(0, log.length - 40);
+    }
     const old = st.records[id];
     if (best && (!old || best.score > old.score)) {
       st.records[id] = { score: best.score, kg: best.kg, reps: best.reps, date: Date.now() };
       if (old) records.push({ id, kg: best.kg, reps: best.reps, prev: old });
     }
   }
-  const bonusPct = 10 + b.missionBonus;
+  // la série compte si cette mission est la 2e de la semaine ou si la série est déjà sécurisée
+  const streakNow = streakBefore.secured ? streakBefore.weeks : (streakBefore.thisWeek + 1 >= 2 ? streakBefore.weeks + 1 : streakBefore.weeks);
+  const sBonus = streakBonus(streakNow);
+  const bonusPct = 10 + b.missionBonus + sBonus;
   const bonusXp = Math.round(t.xp * bonusPct / 100);
   const totalXp = t.xp + bonusXp;
   const oldLevel = st.level, oldXp = st.xp, oldStats = { ...st.stats };
@@ -3320,12 +3857,16 @@ function finishMission() {
   const catCount = {};
   perEx.forEach(p => { const c = EX[p.id].cat; catCount[c] = (catCount[c] || 0) + p.sets; });
   const focus = Object.keys(catCount).sort((a, z) => catCount[z] - catCount[a]).slice(0, 2).map(c => CAT_BY_ID[c].label.toLowerCase()).join(" + ");
-  st.history.unshift({ date: Date.now(), xp: totalXp, ton: t.ton, sets: t.sets, exCount: perEx.length, dur, level: st.level, focus: focus.charAt(0).toUpperCase() + focus.slice(1) });
+  STAT_KEYS.forEach(k => { xpStat[k] = Math.round(xpStat[k]); });
+  st.history.unshift({ date: now, xp: totalXp, ton: Math.round(t.ton), sets: t.sets, exCount: perEx.length, dur, level: st.level, focus: focus.charAt(0).toUpperCase() + focus.slice(1),
+    recs: records.length, push, coreSec, xpStat, cats: Object.keys(catCount) });
+  st.undo = { at: now, snap: undoSnap };
   st.history = st.history.slice(0, 60);
   st.mission = null;
   st.loadoutSession = [];
   ui.report = { t, bonusXp, bonusPct, totalXp, oldLevel, newLevel: st.level, oldPct, newPct: st.xp / xpNeeded(st.level) * 100, levels,
-                oldStats, newStats: { ...st.stats }, gains, newGear, newPerks, records, perEx, dur, missionNo: st.missions };
+                oldStats, newStats: { ...st.stats }, gains, newGear, newPerks, records, perEx, dur, missionNo: st.missions,
+                streak: streakNow, sBonus, note: { energy: 0, rpe: 0, text: "" }, noteSaved: false };
   save();
   closeRest();
   ui.screen = "report";
@@ -3347,7 +3888,7 @@ function renderReport() {
   </section>
   <div class="rp-kpis">
     <div class="panel kpi"><b>${fmt(r.t.ton)} kg</b><span>tonnage total soulevé</span></div>
-    <div class="panel kpi"><b id="rp-xpcount">+${fmt(r.totalXp)}</b><span>XP gagnée (dont +${fmt(r.bonusXp)} bonus de mission ${r.bonusPct} %)</span></div>
+    <div class="panel kpi"><b id="rp-xpcount">+${fmt(r.totalXp)}</b><span>XP gagnée (dont +${fmt(r.bonusXp)} bonus de mission ${r.bonusPct} %${r.sBonus ? `, série ${r.streak} semaines incluse` : ""})</span></div>
     <div class="panel kpi"><b>${r.t.sets}</b><span>séries validées sur ${r.perEx.length} exercice${r.perEx.length > 1 ? "s" : ""}</span></div>
     <div class="panel kpi"><b>${r.records.length}</b><span>record${r.records.length > 1 ? "s" : ""} battu${r.records.length > 1 ? "s" : ""}</span></div>
   </div>
@@ -3385,7 +3926,18 @@ function renderReport() {
     <h2 class="h2">DÉTAIL DU LOADOUT</h2>
     <div class="panel rows">${r.perEx.sort((a, z) => z.xp - a.xp).map(p => `<div class="r"><div>${esc(EX[p.id].name)}<div class="s">${p.sets} série${p.sets > 1 ? "s" : ""}${p.ton ? ` · ${fmt(p.ton)} kg` : ""}</div></div><div class="v">+${fmt(p.xp)} XP</div></div>`).join("")}</div>
   </section>
-  <div style="margin-top:28px"><button class="btn btn-neon" style="width:100%" data-act="report-done">RETOUR AU QG</button></div>`;
+  <section class="block">
+    <h2 class="h2">DÉBRIEFING</h2>
+    <div class="panel debrief">
+      <div class="field-line"><label>ÉNERGIE</label><div class="chips-pick">${[1, 2, 3, 4, 5].map(n => `<button class="pick ${r.note.energy === n ? "on" : ""}" data-act="note-energy" data-n="${n}" aria-pressed="${r.note.energy === n}">${n}</button>`).join("")}</div><span class="hint">1 = vidé · 5 = au top</span></div>
+      <div class="field-line"><label>DIFFICULTÉ RESSENTIE</label><div class="chips-pick">${["FACILE", "CORRECTE", "DURE", "ÉPUISANTE"].map((l, i) => `<button class="pick wide ${r.note.rpe === i + 1 ? "on" : ""}" data-act="note-rpe" data-n="${i + 1}" aria-pressed="${r.note.rpe === i + 1}">${l}</button>`).join("")}</div></div>
+      <div class="field-line"><label for="note-text">COMMENTAIRE</label><textarea class="txt" id="note-text" maxlength="200" rows="2" placeholder="Sensations, douleur, à refaire…">${esc(r.note.text)}</textarea></div>
+      <button class="btn ${r.noteSaved ? "btn-quiet" : "btn-ghost"}" data-act="note-save">${r.noteSaved ? "NOTE ENREGISTRÉE · MODIFIER" : "ENREGISTRER LA NOTE"}</button>
+      <p class="hint">Retrouvez vos notes dans Archives → Journal des missions.</p>
+    </div>
+  </section>
+  <div style="margin-top:28px"><button class="btn btn-neon" style="width:100%" data-act="report-done">RETOUR AU QG</button></div>
+  ${canUndo() ? `<div class="danger-zone" style="margin-top:18px"><button class="btn btn-quiet hold" data-hold="undo-mission" data-ms="1500"><span class="stack">ANNULER CETTE MISSION<small>APPUI LONG 1,5 S · RETIRE L'XP, LES ATTRIBUTS ET LE BUTIN</small></span></button></div>` : ""}`;
 }
 let reportAnimToken = 0;
 function animateReport() {
@@ -3477,6 +4029,31 @@ const actions = {
   "filter": el => { ui.filter = el.dataset.cat; render(); },
   "toggle-pdc": () => { ui.pdcOnly = !ui.pdcOnly; render(); },
   "eq-open": () => openEquipSheet(),
+  "eq-dbcount": el => { curPlace().dbCount = el.dataset.n === "1" ? 1 : 2; equipChanged(); },
+  "fav-open": () => openFavSheet(),
+  "fav-save": () => saveFavorite(),
+  "fav-launch": el => launchFavorite(el.dataset.id),
+  "fav-del": el => {
+    const id = el.dataset.id;
+    if (ui.favDel !== id) { ui.favDel = id; render(); return; }
+    state.favorites = state.favorites.filter(f => f.id !== id); ui.favDel = null; save(); render(); toast("Mission enregistrée supprimée.");
+  },
+  "contract-claim": el => claimContract(el.dataset.id),
+  "squad-claim": () => claimSquad(squad.code),
+  "apply-sugg": el => {
+    const id = el.dataset.id, sg = suggestNext(id); if (!sg) return;
+    const k = document.getElementById("kg-" + id), r = document.getElementById("reps-" + id);
+    if (k) k.value = fmt1(sg.kg).replace(/\s/g, ""); if (r) r.value = String(Math.round(sg.reps));
+    onDraftInput(id); vibrate(12); toast("Objectif appliqué à la prochaine série.");
+  },
+  "note-energy": el => { if (!ui.report) return; ui.report.note.energy = +el.dataset.n; ui.report.noteSaved = false; keepNoteText(); render(); },
+  "note-rpe": el => { if (!ui.report) return; ui.report.note.rpe = +el.dataset.n; ui.report.noteSaved = false; keepNoteText(); render(); },
+  "note-save": () => {
+    if (!ui.report || !state.history.length) return;
+    keepNoteText();
+    state.history[0].note = Object.assign({}, ui.report.note);
+    ui.report.noteSaved = true; save(); render(); toast("Note de ressenti enregistrée.");
+  },
   "chassis": () => openChassisSheet(),
   "gear-sheet": el => openGearSheet(el.dataset.id),
   "eq-filter": () => { state.equip.filter = !state.equip.filter; save(); vibrate(12); render(); },
@@ -3552,7 +4129,9 @@ const actions = {
   "squad-unban": el => squadUnban(el.dataset.id),
   "reload": () => location.reload()
 };
+function keepNoteText() { const t = $("#note-text"); if (t && ui.report) ui.report.note.text = t.value.slice(0, 200); }
 const holdActions = {
+  "undo-mission": () => undoLastMission(),
   "squad-leave": () => squadLeave(),
   "squad-kick": el => squadKick(el.dataset.id),
   "import-confirm": () => {
@@ -3603,6 +4182,7 @@ document.addEventListener("click", e => {
   const h = e.target.closest("[data-hold]");
   if (h && Date.now() - lastHoldFire > 400) toast(`Maintenez le bouton appuyé (${(+(h.dataset.ms || 600) / 1000).toLocaleString("fr-FR")} s) pour confirmer.`, true);
   if (ui.delArm && !e.target.closest(".del")) { ui.delArm = null; if (ui.screen === "briefing") render(); }
+  if (ui.favDel && !e.target.closest(".del")) { ui.favDel = null; if (ui.screen === "hq") render(); }
 });
 
 /* ---- appui long ---- */
@@ -3637,6 +4217,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "Enter" && e.target.id === "name-input") { e.preventDefault(); actions["save-name"](); }
   if (e.key === "Enter" && e.target.id === "ob-name") { e.preventDefault(); obNext(); }
   if (e.key === "Enter" && e.target.id === "sq-name") { e.preventDefault(); squadCreate(); }
+  if (e.key === "Enter" && e.target.id === "fav-name") { e.preventDefault(); saveFavorite(); }
   if (e.key === "Enter" && e.target.id === "sq-code") { e.preventDefault(); squadJoin(); }
 });
 document.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter") { if (e.target.closest && e.target.closest("[data-hold]")) e.preventDefault(); cancelHold(); } });
@@ -3644,6 +4225,7 @@ document.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter"
 /* ---- saisies ---- */
 function onDraftInput(id) {
   const { kg, reps } = readDraftInputs(id);
+  const pl = document.getElementById("pl-" + id); if (pl) pl.innerHTML = plateHTML(kg);
   storeDraft(id, kg, reps);
   const pv = document.getElementById("pv-" + id);
   if (pv) pv.textContent = previewXp(id, kg, reps);
@@ -3651,6 +4233,7 @@ function onDraftInput(id) {
 document.addEventListener("input", e => {
   const t = e.target;
   if (t.matches("[data-field]")) { t.parentElement.classList.remove("bad"); onDraftInput(t.dataset.id); }
+  if (t.dataset && t.dataset.eqbar) { const v = parseNum(t.value); if (Number.isFinite(v) && v >= 5 && v <= 30) { curPlace().barKg = Math.round(v * 10) / 10; save(); } }
   if (t.dataset && t.dataset.eqmax) {
     const v = parseNum(t.value), pl = curPlace();
     const val = Number.isFinite(v) && v > 0 ? Math.min(t.dataset.eqmax === "db" ? 200 : 500, Math.round(v * 10) / 10) : 0;
