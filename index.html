@@ -764,6 +764,29 @@ button.sq-row:hover{background:var(--panel-2)}
 :root[data-nf-theme="light"] .brand b,:root[data-nf-theme="light"] .lvl b,:root[data-nf-theme="light"] .rar.ÉPIQUE,:root[data-nf-theme="light"] .rar.LÉGENDAIRE,:root[data-nf-theme="light"] .pp-head b,:root[data-nf-theme="light"] .title-neon,:root[data-nf-theme="light"] .gain,:root[data-nf-theme="light"] .rp-hero h1,:root[data-nf-theme="light"] .auth-title,:root[data-nf-theme="light"] .ob h2,:root[data-nf-theme="light"] .streak.hot .streak-n b,:root[data-nf-theme="light"] .float-xp{text-shadow:none}
 @media (prefers-color-scheme: light){ :root[data-nf-theme="auto"] .brand b,:root[data-nf-theme="auto"] .lvl b,:root[data-nf-theme="auto"] .rar.ÉPIQUE,:root[data-nf-theme="auto"] .rar.LÉGENDAIRE,:root[data-nf-theme="auto"] .pp-head b,:root[data-nf-theme="auto"] .title-neon,:root[data-nf-theme="auto"] .gain,:root[data-nf-theme="auto"] .rp-hero h1,:root[data-nf-theme="auto"] .auth-title,:root[data-nf-theme="auto"] .ob h2,:root[data-nf-theme="auto"] .streak.hot .streak-n b,:root[data-nf-theme="auto"] .float-xp{text-shadow:none} }
 .theme-picks .pick{flex:1 1 0}
+
+/* ---------- audio ---------- */
+.top-r{display:flex;align-items:center;gap:8px}
+.aud-btn{width:34px;height:31px;flex:none;display:grid;place-items:center;border:1px solid var(--line);border-radius:3px;color:var(--muted);background:var(--panel)}
+.aud-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.aud-btn .w{display:none}.aud-btn.s1 .w1,.aud-btn.s2 .w1,.aud-btn.s2 .w2{display:inline}
+.aud-btn.s0 .x{display:inline}.aud-btn .x{display:none}
+.aud-btn.s1,.aud-btn.s2{color:var(--neon);border-color:var(--line-hi)}
+.aud-btn[aria-expanded="true"]{background:var(--neon-soft);border-color:var(--neon)}
+.aud-pop{position:fixed;z-index:90;width:min(272px,calc(100vw - 24px));background:var(--panel);border:1px solid var(--line-hi);border-radius:4px;padding:6px 12px 10px;box-shadow:0 10px 30px rgba(0,0,0,.45);animation:popIn .14s ease-out}
+@keyframes popIn{from{opacity:0;transform:translateY(-4px)}}
+.aud-row{display:flex;align-items:center;gap:10px;width:100%;padding:9px 0 6px;text-align:left}
+.aud-row + .aud-vol + .aud-row,.aud-row + .aud-row{border-top:1px solid var(--line)}
+.aud-row .eq-lab{flex:1}
+.aud-row .eq-lab small{font-size:11px;color:var(--muted)}
+.aud-row .sw{width:34px;height:20px}
+.aud-row .sw i{width:10px;height:10px}
+.aud-row.on .sw i{transform:translateX(14px);background:var(--neon);box-shadow:0 0 8px var(--neon)}
+.aud-row.on .eq-lab b{color:var(--neon)}
+.aud-vol{display:flex;align-items:center;gap:8px;padding:0 0 6px}
+.aud-vol span{font-family:var(--f-display);font-size:8px;letter-spacing:.16em;color:var(--muted)}
+.aud-vol input{flex:1;accent-color:var(--neon);height:24px;min-width:0}
+.cmd-r{display:flex;align-items:center;gap:10px;margin-left:auto}
 </style>
 <script>window.NEON_STANDALONE = true;
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
@@ -917,6 +940,7 @@ const EXERCISES = [
   ex("dips_rings","Dips aux anneaux","pecs","bw",1.5,{power:0.9,core:0.1},120,0,6,["Pectoral inférieur","Triceps","Stabilisateurs de l'épaule"],"Les anneaux instables obligent à contrôler chaque centimètre. Nettement plus exigeant que les dips aux barres parallèles.",0.92),
   // DOS
   ex("chinup","Tractions supination","dos","bw",1.35,{armor:0.6,power:0.4},120,0,6,["Grand dorsal","Biceps","Brachial antérieur"],"Paumes vers soi, mains à largeur d'épaules. Le biceps participe davantage qu'en pronation, ce qui permet souvent quelques répétitions de plus.",1.0),
+  ex("pullup_neg","Tractions négatives","dos","bw",1.2,{armor:0.8,power:0.2},120,0,5,["Grand dorsal","Biceps","Grand rond","Avant-bras"],"On monte en haut de la barre sans tirer (saut ou marche), menton au-dessus, puis on descend le plus lentement possible : 3 à 5 secondes jusqu'aux bras tendus. La meilleure porte d'entrée vers les tractions complètes.",1.0),
   ex("pullup_neutral","Tractions prise neutre","dos","bw",1.4,{armor:0.8,power:0.2},120,0,6,["Grand dorsal","Brachio-radial","Grand rond"],"Paumes face à face sur des poignées parallèles. Position la plus confortable pour les épaules et les coudes.",1.0),
   ex("inverted_row","Rowing inversé","dos","bw",1.0,{armor:1},75,0,10,["Rhomboïdes","Trapèze moyen","Grand dorsal","Biceps"],"Suspendu sous une barre basse, corps gainé, on tire la poitrine vers la barre. Plus les pieds sont avancés, plus c'est difficile.",0.6),
   ex("muscle_up","Muscle-up","dos","bw",1.7,{armor:0.5,power:0.5},150,0,3,["Grand dorsal","Triceps","Pectoraux","Gainage"],"Traction explosive enchaînée d'un passage au-dessus de la barre puis d'un dips. Mouvement technique réservé aux opérateurs confirmés.",1.0),
@@ -1003,7 +1027,7 @@ const EX_REQ = {
   cable_crunch: [["cable"]], russian: [["db", "bb"]], pallof: [["cable"]],
   pushup_incline: [["bench", "step"]], pushup_decline: [["bench", "step"]], dips_rings: [["rings"]],
   chinup: [["pullbar"]], pullup_neutral: [["pullbar"]], scap_pull: [["pullbar"]], dead_hang: [["pullbar"]], muscle_up: [["pullbar", "rings"]],
-  pullup: [["pullbar"]], inverted_row: [["lowbar", "rings"]], dips_bars: [["dipbars"]], bw_tri_ext: [["lowbar", "rings"]],
+  pullup: [["pullbar"]], pullup_neg: [["pullbar"]], inverted_row: [["lowbar", "rings"]], dips_bars: [["dipbars"]], bw_tri_ext: [["lowbar", "rings"]],
   chinup_close: [["pullbar"]], bw_curl: [["lowbar", "rings"]], step_up: [["step", "bench"]], dragon_flag: [["bench"]]
 };
 const exReq = id => EX_REQ[id] || [];
@@ -1518,27 +1542,417 @@ function setTheme(p) {
 if (themeMQ) { const f = () => { if (themePref() === "auto") applyTheme(); }; if (themeMQ.addEventListener) themeMQ.addEventListener("change", f); else if (themeMQ.addListener) themeMQ.addListener(f); }
 applyTheme();
 function vibrate(p) { try { if (navigator.vibrate) navigator.vibrate(p); } catch (e) {} }
+/* =====================================================================
+   Audio : effets synthétisés et musique d'ambiance générative (aucun fichier)
+   Réglages propres à chaque appareil : Archives → Paramètres → Audio
+   ===================================================================== */
+const SND_KEY = "neonfitness-sound";
+const SND_DEF = { sfx: true, sfxVol: 0.7, scroll: true, music: false, musicVol: 0.5 };
+let sndMem = Object.assign({}, SND_DEF);
+function sndPrefs() {
+  let v = null;
+  try { v = JSON.parse(localStorage.getItem(SND_KEY) || "null"); } catch (e) { v = null; }
+  const src = v && typeof v === "object" ? v : sndMem, o = {};
+  for (const k in SND_DEF) {
+    const d = SND_DEF[k], x = src[k];
+    o[k] = typeof d === "boolean" ? (typeof x === "boolean" ? x : d) : (Number.isFinite(x) ? Math.max(0, Math.min(1, x)) : d);
+  }
+  return o;
+}
+function setSnd(patch) {
+  sndMem = Object.assign(sndPrefs(), patch);
+  try { localStorage.setItem(SND_KEY, JSON.stringify(sndMem)); } catch (e) {}
+  audioApply();
+}
+
 let actx = null;
-function audioPrime() { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === "suspended") actx.resume(); } catch (e) { actx = null; } }
-function beep(freq = 880, dur = 0.12, delay = 0) {
+const au = { master: null, sfx: null, music: null, verb: null, delay: null, noise: null, holdNode: null, musicOn: false };
+function audioBuild() {
+  const C = window.AudioContext || window.webkitAudioContext;
+  if (!C) return false;
+  actx = new C();
+  const comp = actx.createDynamicsCompressor();
+  comp.threshold.value = -14; comp.knee.value = 10; comp.ratio.value = 4; comp.attack.value = 0.004; comp.release.value = 0.2;
+  au.master = actx.createGain(); au.master.gain.value = 1.5;
+  au.master.connect(comp).connect(actx.destination);
+  au.sfx = actx.createGain(); au.sfx.connect(au.master);
+  au.music = actx.createGain(); au.music.gain.value = 0;
+  au.mlp = actx.createBiquadFilter(); au.mlp.type = "lowpass"; au.mlp.frequency.value = MUS.rest ? 750 : 20000; au.mlp.Q.value = 0.7;
+  au.music.connect(au.mlp).connect(au.master);
+  // réverbération : réponse impulsionnelle générée (bruit décroissant stéréo)
+  const len = Math.floor(actx.sampleRate * 3.2), ir = actx.createBuffer(2, len, actx.sampleRate);
+  for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
+  au.verb = actx.createConvolver(); au.verb.buffer = ir;
+  const verbOut = actx.createGain(); verbOut.gain.value = 0.55;
+  au.verb.connect(verbOut).connect(au.music);
+  // écho calé sur la croche pointée du tempo de la musique
+  au.delay = actx.createDelay(1.5); au.delay.delayTime.value = MUS.step * 3;
+  const fb = actx.createGain(); fb.gain.value = 0.38;
+  const dlp = actx.createBiquadFilter(); dlp.type = "lowpass"; dlp.frequency.value = 2600;
+  au.delay.connect(dlp).connect(fb).connect(au.delay);
+  const dOut = actx.createGain(); dOut.gain.value = 0.5;
+  dlp.connect(dOut).connect(au.music); dOut.connect(au.verb);
+  // une réverbe légère aussi pour certains effets
+  au.sfxVerb = actx.createGain(); au.sfxVerb.gain.value = 0.35;
+  const verbS = actx.createConvolver(); verbS.buffer = ir;
+  au.sfxVerb.connect(verbS).connect(au.sfx);
+  const nb = actx.createBuffer(1, actx.sampleRate, actx.sampleRate), nd = nb.getChannelData(0);
+  for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+  au.noise = nb;
+  return true;
+}
+function audioPrime() {
   try {
-    if (!actx) return;
-    const t = actx.currentTime + delay, o = actx.createOscillator(), g = actx.createGain();
-    o.type = "square"; o.frequency.value = freq;
-    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.08, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-    o.connect(g).connect(actx.destination); o.start(t); o.stop(t + dur + 0.02);
+    if (!actx && !audioBuild()) return;
+    if (actx.state === "suspended" && !document.hidden) actx.resume();
+    audioApply();
+  } catch (e) { actx = null; }
+}
+function audioApply() {
+  if (!actx) return;
+  const p = sndPrefs(), t = actx.currentTime;
+  au.sfx.gain.setTargetAtTime(p.sfx ? (0.15 + p.sfxVol * 0.85) * 3.4 : 0, t, 0.03);
+  const want = p.music && !document.hidden;
+  au.music.gain.setTargetAtTime(want ? Math.pow(p.musicVol, 1.5) * 2.2 : 0, t, want ? 0.9 : 0.25);
+  if (want && !au.musicOn) musicStart();
+  if (!want && au.musicOn) setTimeout(() => { if (!(sndPrefs().music && !document.hidden)) musicStop(); }, 900);
+  audUI();
+}
+/* ---- petit menu audio (icône haut-parleur dans les barres du haut) ---- */
+const audLevel = p => (p.music ? 1 : 0) + (p.sfx ? 1 : 0);
+function audBtn() {
+  const p = sndPrefs(), open = !!$("#aud-pop");
+  return `<button class="aud-btn s${audLevel(p)}" data-act="aud-open" aria-haspopup="true" aria-expanded="${open}" aria-label="Son : musique ${p.music ? "activée" : "coupée"}, sons ${p.sfx ? "activés" : "coupés"}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w w1" d="M16 9.5a3.5 3.5 0 0 1 0 5"/><path class="w w2" d="M18.5 7a7 7 0 0 1 0 10"/><path class="x" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></svg></button>`;
+}
+function audPopHTML() {
+  const p = sndPrefs();
+  const row = (k, on, title, sub) => `<button class="aud-row ${on ? "on" : ""}" role="switch" aria-checked="${on}" data-act="aud-toggle" data-k="${k}"><span class="eq-lab"><b>${title}</b><small>${sub}</small></span><span class="sw"><i></i></span></button>`;
+  const vol = (id, v, l) => `<div class="aud-vol"><span>VOL.</span><input type="range" id="${id}" min="0" max="100" step="5" value="${Math.round(v * 100)}" aria-label="${l}"></div>`;
+  return row("music", p.music, "MUSIQUE DE FOND", "Change selon l'écran, plus intense en séance")
+    + (p.music ? vol("snd-musvol", p.musicVol, "Volume de la musique") : "")
+    + row("sfx", p.sfx, "SONS", "Clics, défilement, chrono")
+    + (p.sfx ? vol("snd-sfxvol", p.sfxVol, "Volume des sons") : "");
+}
+function audFill(pop) { const h = audPopHTML(); if (pop.dataset.h !== h) { pop.innerHTML = h; pop.dataset.h = h; } }
+function audUI() {
+  const p = sndPrefs();
+  document.querySelectorAll(".aud-btn").forEach(b => { b.className = "aud-btn s" + audLevel(p); });
+  const pop = $("#aud-pop");
+  if (pop) {
+    const focused = document.activeElement && pop.contains(document.activeElement) ? document.activeElement.id : null;
+    if (!focused) audFill(pop);
+  }
+}
+function audPlace() {
+  const pop = $("#aud-pop"); if (!pop) return;
+  const btn = [...document.querySelectorAll(".aud-btn")].find(b => b.offsetParent !== null);
+  if (!btn) { audClose(); return; }
+  const r = btn.getBoundingClientRect(), w = pop.offsetWidth;
+  pop.style.top = Math.round(r.bottom + 8) + "px";
+  pop.style.left = Math.round(Math.max(12, Math.min(innerWidth - w - 12, r.right - w))) + "px";
+}
+function audOpen() {
+  if ($("#aud-pop")) { audClose(); return; }
+  const pop = document.createElement("div");
+  pop.id = "aud-pop"; pop.className = "aud-pop"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", "Réglages du son");
+  audFill(pop);
+  document.body.appendChild(pop);
+  audPlace();
+  document.querySelectorAll(".aud-btn").forEach(b => b.setAttribute("aria-expanded", "true"));
+}
+function audClose() {
+  const pop = $("#aud-pop"); if (pop) pop.remove();
+  document.querySelectorAll(".aud-btn").forEach(b => b.setAttribute("aria-expanded", "false"));
+}
+document.addEventListener("pointerdown", e => { const pop = $("#aud-pop"); if (pop && !pop.contains(e.target) && !e.target.closest(".aud-btn")) audClose(); }, true);
+window.addEventListener("resize", () => audPlace());
+window.addEventListener("scroll", () => audPlace(), { passive: true });
+const sfxOn = () => !!(actx && actx.state === "running" && sndPrefs().sfx);
+
+/* ---- briques de synthèse ---- */
+function tone(o) {
+  const t = (o.dest === au.music && MUS.cur ? MUS.cur : actx.currentTime) + (o.delay || 0), dur = o.dur || 0.1;
+  const osc = actx.createOscillator(), g = actx.createGain();
+  osc.type = o.type || "square";
+  osc.frequency.setValueAtTime(o.f, t);
+  if (o.f2) osc.frequency.exponentialRampToValueAtTime(o.f2, t + (o.glide || dur));
+  if (o.detune) osc.detune.value = o.detune;
+  const peak = o.vol || 0.1, a = o.attack || 0.004;
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(peak, t + a);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  let node = osc;
+  if (o.lp || o.bp || o.hp) {
+    const f = actx.createBiquadFilter();
+    f.type = o.lp ? "lowpass" : o.bp ? "bandpass" : "highpass";
+    f.frequency.value = o.lp || o.bp || o.hp; f.Q.value = o.q || 0.8;
+    osc.connect(f); node = f;
+  }
+  node.connect(g).connect(o.dest || au.sfx);
+  if (o.verb) g.connect(o.dest === au.music ? au.verb : au.sfxVerb);
+  if (o.echo) g.connect(au.delay);
+  osc.start(t); osc.stop(t + dur + 0.05);
+  return osc;
+}
+function noiseHit(o) {
+  const t = (o.dest === au.music && MUS.cur ? MUS.cur : actx.currentTime) + (o.delay || 0), dur = o.dur || 0.05;
+  const src = actx.createBufferSource(); src.buffer = au.noise;
+  const f = actx.createBiquadFilter(); f.type = o.type || "bandpass"; f.Q.value = o.q || 1;
+  f.frequency.setValueAtTime(o.f || 3000, t);
+  if (o.f2) f.frequency.exponentialRampToValueAtTime(o.f2, t + dur);
+  const g = actx.createGain(), peak = o.vol || 0.08, a = o.attack || 0.002;
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  src.connect(f).connect(g).connect(o.dest || au.sfx);
+  if (o.verb) g.connect(o.dest === au.music ? au.verb : au.sfxVerb);
+  src.start(t, Math.random() * 0.5); src.stop(t + dur + 0.05);
+}
+/* Compatibilité : ancien bip */
+function beep(freq = 880, dur = 0.12, delay = 0) { if (sfxOn()) tone({ f: freq, dur, delay, vol: 0.07, lp: 3800 }); }
+
+/* ---- bibliothèque d'effets ---- */
+const SFX = {
+  tap() { tone({ f: 2100, f2: 1500, dur: 0.035, vol: 0.06, lp: 5000 }); noiseHit({ f: 5200, dur: 0.012, vol: 0.025 }); },
+  nav() { tone({ type: "triangle", f: 620, dur: 0.06, vol: 0.09 }); tone({ type: "triangle", f: 930, dur: 0.08, vol: 0.08, delay: 0.045 }); noiseHit({ f: 4200, dur: 0.02, vol: 0.02 }); },
+  back() { tone({ type: "triangle", f: 930, dur: 0.06, vol: 0.08 }); tone({ type: "triangle", f: 620, dur: 0.08, vol: 0.08, delay: 0.045 }); },
+  on() { tone({ type: "square", f: 700, f2: 1500, dur: 0.07, vol: 0.06, lp: 3600 }); tone({ type: "sine", f: 1500, dur: 0.12, vol: 0.05, delay: 0.05 }); },
+  off() { tone({ type: "square", f: 1100, f2: 480, dur: 0.08, vol: 0.05, lp: 2600 }); },
+  step(up) { tone({ type: "triangle", f: up ? 1250 : 980, dur: 0.035, vol: 0.07 }); },
+  confirm() {
+    tone({ type: "square", f: 880, dur: 0.07, vol: 0.06, lp: 3200 });
+    tone({ type: "square", f: 1320, dur: 0.09, vol: 0.06, lp: 3600, delay: 0.06 });
+    tone({ type: "sine", f: 1760, dur: 0.35, vol: 0.05, delay: 0.12, verb: true });
+    noiseHit({ f: 6000, f2: 2500, dur: 0.08, vol: 0.025, delay: 0.02 });
+  },
+  open() { noiseHit({ f: 500, f2: 2600, dur: 0.22, vol: 0.06, q: 1.4, attack: 0.08 }); tone({ type: "sine", f: 220, f2: 440, dur: 0.2, vol: 0.04, attack: 0.05 }); },
+  close() { noiseHit({ f: 2600, f2: 500, dur: 0.18, vol: 0.05, q: 1.4, attack: 0.03 }); },
+  error() { tone({ type: "sawtooth", f: 150, dur: 0.11, vol: 0.07, lp: 900 }); tone({ type: "sawtooth", f: 140, dur: 0.16, vol: 0.07, lp: 900, delay: 0.13 }); },
+  tick() { noiseHit({ f: 3400, dur: 0.014, vol: 0.12, q: 2 }); },
+  sec(alt) { tone({ type: "sine", f: alt ? 1250 : 1000, dur: 0.03, vol: 0.035 }); },
+  count(n) { tone({ type: "square", f: n === 1 ? 990 : 660, dur: 0.12, vol: 0.06, lp: 3000 }); tone({ type: "sine", f: n === 1 ? 1980 : 1320, dur: 0.16, vol: 0.03 }); },
+  restDone() {
+    [0, 0.16, 0.32].forEach((d, i) => tone({ type: "square", f: [880, 1175, 1760][i], dur: 0.14, vol: 0.07, lp: 4200, delay: d }));
+    [440, 554, 659, 880].forEach(f => tone({ type: "sawtooth", f, dur: 1.2, vol: 0.025, lp: 2400, attack: 0.05, delay: 0.45, verb: true }));
+  },
+  reward() { [1568, 2093, 2637].forEach((f, i) => tone({ type: "triangle", f, dur: 0.22, vol: 0.06, delay: i * 0.07, verb: true })); },
+  levelup() {
+    [523, 659, 784, 1047, 1319].forEach((f, i) => tone({ type: "square", f, dur: 0.16, vol: 0.05, lp: 4000, delay: i * 0.08 }));
+    [262, 330, 392, 523].forEach(f => tone({ type: "sawtooth", f, f2: f * 1.003, dur: 1.8, vol: 0.03, lp: 2200, attack: 0.08, delay: 0.38, verb: true }));
+    noiseHit({ type: "highpass", f: 5000, dur: 1.2, vol: 0.02, attack: 0.3, delay: 0.38 });
+  },
+  complete() {
+    noiseHit({ f: 300, f2: 3000, dur: 0.5, vol: 0.05, q: 1, attack: 0.25 });
+    [[220, 0.5], [277, 0.5], [330, 0.5], [440, 0.5]].forEach(([f]) => tone({ type: "sawtooth", f, dur: 2.2, vol: 0.028, lp: 1800, attack: 0.25, delay: 0.45, verb: true }));
+    [880, 1109, 1319, 1760].forEach((f, i) => tone({ type: "triangle", f, dur: 0.3, vol: 0.05, delay: 0.5 + i * 0.09, verb: true }));
+  },
+  glitch() {
+    for (let i = 0; i < 5; i++) tone({ type: "square", f: 900 - i * 140 + Math.random() * 80, dur: 0.05, vol: 0.05, lp: 2800, delay: i * 0.045 });
+    tone({ type: "sawtooth", f: 220, f2: 55, dur: 0.5, vol: 0.06, lp: 1200, delay: 0.2 });
+  },
+  boot() { tone({ type: "sine", f: 110, f2: 220, dur: 0.6, vol: 0.05, attack: 0.2 }); [660, 990].forEach((f, i) => tone({ type: "triangle", f, dur: 0.1, vol: 0.05, delay: 0.35 + i * 0.08 })); }
+};
+function sfx(name, arg) { if (!sfxOn() || !SFX[name]) return; try { SFX[name](arg); } catch (e) {} }
+
+/* ---- appui long : tonalité qui monte pendant le maintien ---- */
+function holdTone(ms) {
+  holdToneStop();
+  if (!sfxOn()) return;
+  try {
+    const t = actx.currentTime, d = ms / 1000;
+    const o = actx.createOscillator(), g = actx.createGain(), f = actx.createBiquadFilter();
+    o.type = "sawtooth"; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(560, t + d);
+    f.type = "lowpass"; f.frequency.setValueAtTime(500, t); f.frequency.exponentialRampToValueAtTime(3000, t + d);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.045, t + 0.06);
+    o.connect(f).connect(g).connect(au.sfx); o.start(t); o.stop(t + d + 0.1);
+    au.holdNode = { o, g };
   } catch (e) {}
 }
+function holdToneStop() {
+  const h = au.holdNode; au.holdNode = null;
+  if (!h || !actx) return;
+  try { const t = actx.currentTime; h.g.gain.cancelScheduledValues(t); h.g.gain.setTargetAtTime(0.0001, t, 0.02); h.o.stop(t + 0.1); } catch (e) {}
+}
+
+/* ---- musique générative : trois ambiances qui suivent l'écran ----
+   QG et rapports : « Néon de nuit »   (La mineur, 84 BPM, calme)
+   Catalogue       : « Scan d'arsenal » (Ré mineur, 96 BPM, cloches et flux de données, sans grosse caisse)
+   Séance          : « Protocole combat » (Mi mineur, 118 BPM, grosse caisse, basse en doubles croches)
+   Pendant le repos, la musique est étouffée par un filtre puis se rouvre quand le chrono est terminé. */
+const midi = n => 440 * Math.pow(2, (n - 69) / 12);
+const ch = (root, notes) => ({ root, notes });
+const MOODS = {
+  ambient: {
+    bpm: 84, cycle: 32,
+    prog: [ch(45, [57, 60, 64, 67]), ch(41, [57, 60, 65, 69]), ch(48, [55, 60, 64, 67]), ch(43, [55, 59, 62, 67]),
+           ch(45, [57, 60, 64, 71]), ch(41, [57, 60, 65, 72]), ch(38, [57, 62, 65, 69]), ch(40, [56, 59, 64, 68])],
+    pad: { type: "sawtooth", lo: 500, hi: 1300, vol: 0.022 },
+    play(s16, bar, sec, c, t, st) {
+      if (sec >= 4 && sec < 28 && s16 % 2 === 0) {
+        const acc = s16 % 8 === 0, n = c.root + (s16 === 14 && Math.random() < 0.4 ? 7 : 0);
+        mBass(n, t, st * 1.7, acc ? 0.06 : 0.04, acc ? 420 : 320, true);
+      }
+      if (sec >= 2 && Math.random() < (sec < 6 ? 0.35 : 0.62)) {
+        const idx = ARP_PATS[MUS.arpPat][s16 % 8], oct = (s16 >= 8 && sec % 4 >= 2) ? 12 : 0;
+        mArp(c.notes[idx] + 12 + oct, t, st * 0.9, 0.022, 1700 + Math.random() * 900, "square");
+      }
+      if (sec >= 8 && sec < 26) {
+        if (s16 === 0 || s16 === 8 || (s16 === 10 && bar % 4 === 3)) mKick(t, 0.12);
+        if (s16 === 4 || s16 === 12) mSnare(t, 0.035);
+        if (s16 % 4 === 2) mHat(t, 0.022, false);
+      }
+      if (s16 === 0) noiseHit({ type: "lowpass", f: 900, dur: st * 16, vol: 0.006, attack: st * 6, dest: au.music });
+    }
+  },
+  select: {
+    bpm: 96, cycle: 16,
+    prog: [ch(38, [62, 65, 69, 76]), ch(34, [62, 65, 69, 74]), ch(41, [60, 65, 69, 72]), ch(36, [60, 64, 67, 69])],
+    pad: { type: "triangle", lo: 700, hi: 1600, vol: 0.02 },
+    play(s16, bar, sec, c, t, st) {
+      if (s16 === 0 || s16 === 8) { tone({ type: "sine", f: midi(c.root), dur: st * 7.5, vol: 0.04, attack: 0.05, dest: au.music }); }
+      // cloches pentatoniques qui « scannent » le catalogue
+      const scale = [62, 65, 67, 69, 72, 74, 77, 79, 81];
+      if ((s16 % 2 === 0 && Math.random() < 0.55) || (s16 % 2 === 1 && Math.random() < 0.12)) {
+        const n = Math.random() < 0.6 ? c.notes[Math.floor(Math.random() * 4)] + 12 : scale[Math.floor(Math.random() * scale.length)] + 12;
+        tone({ type: "triangle", f: midi(n), dur: st * 3, vol: 0.022, dest: au.music, echo: true, verb: true });
+        tone({ type: "sine", f: midi(n + 19), dur: st * 1.5, vol: 0.008, dest: au.music, verb: true });
+      }
+      // flux de données : charleston très léger en doubles croches, accent sur les temps
+      if (sec >= 2) mHat(t, s16 % 4 === 0 ? 0.016 : 0.008, false);
+      if (sec >= 4 && sec < 14 && s16 === 12) noiseHit({ f: 2600, dur: 0.03, vol: 0.03, q: 6, dest: au.music, verb: true });
+      if (sec >= 8 && sec < 14 && s16 === 6 && bar % 2) tone({ type: "square", f: midi(c.notes[3] + 24), dur: st * 0.6, vol: 0.012, lp: 3000, dest: au.music, echo: true });
+    }
+  },
+  combat: {
+    bpm: 118, cycle: 32,
+    prog: [ch(40, [55, 59, 64, 71]), ch(36, [55, 60, 64, 67]), ch(38, [57, 62, 66, 69]), ch(35, [54, 59, 63, 66])],
+    pad: { type: "sawtooth", lo: 700, hi: 1900, vol: 0.025, duck: true },
+    play(s16, bar, sec, c, t, st) {
+      const brk = sec >= 24 && sec < 28;
+      if (s16 % 4 === 0 && (!brk || s16 === 0)) { mKick(t, 0.2); if (MUS.padBus) { const g = MUS.padBus.gain; g.cancelScheduledValues(t); g.setValueAtTime(0.35, t); g.linearRampToValueAtTime(1, t + st * 3); } }
+      if (!brk && sec >= 2 && (s16 === 4 || s16 === 12)) { mSnare(t, 0.06); tone({ type: "triangle", f: 190, f2: 120, dur: 0.08, vol: 0.05, dest: au.music }); }
+      if (!brk) { mHat(t, s16 % 2 ? 0.008 : 0.013, false); if (s16 % 4 === 2) mHat(t, 0.028, true); }
+      if (!brk) {
+        const pat = [0, 0, 12, 0, 0, 12, 0, 7];
+        mBass(c.root + pat[s16 % 8], t, st * 0.85, s16 % 4 === 0 ? 0.068 : 0.05, s16 % 4 === 0 ? 700 : 480, false);
+      } else if (s16 === 0) mBass(c.root, t, st * 14, 0.05, 300, true);
+      if (sec >= 4 && Math.random() < (brk ? 0.5 : 0.82)) {
+        const idx = ARP_PATS[MUS.arpPat][s16 % 8], oct = s16 >= 8 ? 24 : 12;
+        mArp(c.notes[idx] + oct, t, st * 0.7, 0.023, brk ? 1200 : 2200 + (sec % 8) * 150, "sawtooth");
+      }
+      if (sec === 26 && s16 === 0) noiseHit({ f: 300, f2: 7000, dur: st * 32, vol: 0.035, q: 1.2, attack: st * 28, dest: au.music });
+      if (sec >= 8 && sec < 24 && bar % 4 === 0 && s16 === 0) c.notes.forEach(n => tone({ type: "sawtooth", f: midi(n + 12), dur: st * 3, vol: 0.012, lp: 2600, dest: au.music, verb: true }));
+    }
+  }
+};
+const ARP_PATS = [[0, 1, 2, 3, 2, 1, 0, 1], [0, 2, 1, 3, 0, 2, 3, 1], [3, 2, 1, 0, 1, 2, 3, 2], [0, 0, 2, 0, 3, 0, 2, 1]];
+function mKick(t, v) { tone({ type: "sine", f: 130, f2: 42, glide: 0.18, dur: 0.32, vol: v, dest: au.music}); }
+function mSnare(t, v) { noiseHit({ f: 1800, dur: 0.16, vol: v, q: 0.7, dest: au.music, verb: true}); }
+function mHat(t, v, open) { noiseHit({ type: "highpass", f: open ? 6500 : 8000, dur: open ? 0.12 : 0.035, vol: v, dest: au.music}); }
+function mBass(n, t, len, v, cut, sub) {
+  tone({ type: "sawtooth", f: midi(n), dur: len, vol: v, lp: cut, q: 2, attack: 0.008, dest: au.music });
+  if (sub) tone({ type: "sine", f: midi(n - 12), dur: len * 1.05, vol: 0.05, attack: 0.01, dest: au.music });
+}
+function mArp(n, t, len, v, cut, type) { tone({ type, f: midi(n), dur: len, vol: v, lp: cut, q: 3, dest: au.music, echo: true}); }
+
+const MUS = { mood: "ambient", want: "ambient", step: 60 / 84 / 4, timer: null, next: 0, cur: 0, i: 0, chordIdx: -1, padVoices: [], padBus: null, arpPat: 0, rest: false };
+function moodForScreen() { return ui.screen === "catalog" ? "select" : ui.screen === "briefing" ? "combat" : "ambient"; }
+function musicMoodSync() { MUS.want = moodForScreen(); }
+function musicRest(on) {
+  MUS.rest = !!on;
+  if (!actx || !au.mlp) return;
+  const t = actx.currentTime;
+  au.mlp.frequency.cancelScheduledValues(t);
+  au.mlp.frequency.setTargetAtTime(on ? 750 : 20000, t, on ? 0.35 : 0.7);
+}
+function musicStart() {
+  if (!actx || au.musicOn) return;
+  au.musicOn = true;
+  MUS.mood = MUS.want = moodForScreen(); MUS.step = 60 / MOODS[MUS.mood].bpm / 4;
+  if (au.delay) au.delay.delayTime.value = MUS.step * 3;
+  MUS.next = actx.currentTime + 0.12; MUS.i = 0; MUS.chordIdx = -1;
+  clearInterval(MUS.timer);
+  MUS.timer = setInterval(musicSchedule, 60);
+  musicSchedule();
+}
+function releasePad(t, tc) {
+  MUS.padVoices.forEach(v => { try { v.g.gain.cancelScheduledValues(t); v.g.gain.setTargetAtTime(0.0001, t, tc); v.o.forEach(o => o.stop(t + tc * 6)); } catch (e) {} });
+  MUS.padVoices = [];
+}
+function musicStop() {
+  au.musicOn = false;
+  clearInterval(MUS.timer); MUS.timer = null;
+  if (actx) releasePad(actx.currentTime, 0.3);
+}
+function padChord(chord, t, len, cfg) {
+  releasePad(t, 0.8);
+  const lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.Q.value = 0.9;
+  lp.frequency.setValueAtTime(cfg.lo, t); lp.frequency.linearRampToValueAtTime(cfg.hi, t + len * 0.5); lp.frequency.linearRampToValueAtTime(cfg.lo + 200, t + len);
+  const bus = actx.createGain(); bus.gain.value = 1;
+  lp.connect(bus); bus.connect(au.music); bus.connect(au.verb);
+  MUS.padBus = cfg.duck ? bus : null;
+  chord.notes.forEach(n => {
+    const g = actx.createGain(), os = [];
+    [-8, 8].forEach(det => { const o = actx.createOscillator(); o.type = cfg.type; o.frequency.value = midi(n); o.detune.value = det; o.connect(g); o.start(t); os.push(o); });
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(cfg.vol, t + 1.2);
+    g.connect(lp);
+    MUS.padVoices.push({ g, o: os });
+  });
+}
+function musicSchedule() {
+  if (!actx || !au.musicOn) return;
+  const ahead = actx.currentTime + 0.35;
+  while (MUS.next < ahead) {
+    // changement d'ambiance : sur le prochain temps, avec un souffle de transition
+    if (MUS.want !== MUS.mood && MUS.i % 4 === 0) {
+      MUS.mood = MUS.want; MUS.step = 60 / MOODS[MUS.mood].bpm / 4;
+      MUS.i = 0; MUS.chordIdx = -1; MUS.cur = Math.max(MUS.next, actx.currentTime);
+      try { au.delay.delayTime.setTargetAtTime(MUS.step * 3, MUS.next, 0.05); } catch (e) {}
+      noiseHit({ f: 4000, f2: 400, dur: 0.6, vol: 0.03, q: 1, attack: 0.05, dest: au.music, verb: true });
+    }
+    const M = MOODS[MUS.mood], i = MUS.i, t = MUS.next, st = MUS.step;
+    MUS.cur = Math.max(t, actx.currentTime);
+    const bar = Math.floor(i / 16), s16 = i % 16, sec = bar % M.cycle;
+    const ci = Math.floor(bar / 2) % M.prog.length, c = M.prog[ci];
+    if (s16 === 0 && ci !== MUS.chordIdx) { MUS.chordIdx = ci; padChord(c, t, st * 32, M.pad); MUS.arpPat = Math.floor(Math.random() * ARP_PATS.length); }
+    try { M.play(s16, bar, sec, c, t, st); } catch (e) {}
+    MUS.next += st; MUS.i++;
+  }
+  MUS.cur = 0;
+}
+
+/* ---- branchements globaux ---- */
+["pointerdown", "keydown", "touchend"].forEach(ev => document.addEventListener(ev, () => audioPrime(), { capture: true, passive: true }));
+document.addEventListener("visibilitychange", () => {
+  if (!actx) return;
+  if (document.hidden) { audioApply(); setTimeout(() => { if (document.hidden && actx) actx.suspend(); }, 400); }
+  else { actx.resume().then(audioApply).catch(() => {}); }
+});
+/* défilement : petit cliquetis discret, limité en cadence */
+const scrollMem = new WeakMap();
+let scrollLastT = 0;
+document.addEventListener("scroll", e => {
+  if (!sfxOn() || !sndPrefs().scroll) return;
+  const el = e.target === document ? document.scrollingElement : e.target;
+  if (!el) return;
+  const y = el.scrollTop, prev = scrollMem.get(el);
+  scrollMem.set(el, y);
+  if (prev === undefined) return;
+  const acc = (el._sAcc || 0) + Math.abs(y - prev);
+  const now = performance.now();
+  if (acc >= 70 && now - scrollLastT > 70) { el._sAcc = 0; scrollLastT = now; sfx("tick"); }
+  else el._sAcc = acc;
+}, { capture: true, passive: true });
+
 let toastTimer = null;
 function toast(msg, warn) {
   let el = $("#toast");
   if (!el) { el = document.createElement("div"); el.id = "toast"; el.setAttribute("role", "status"); document.body.appendChild(el); }
   el.className = "toast" + (warn ? " warn" : "");
+  if (warn) sfx("error");
   el.textContent = msg; el.hidden = false;
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.hidden = true; }, 2600);
 }
 function shake(el) { if (!el) return; el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
-function redFlash() { const f = $("#flash"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); }
+function redFlash() { sfx("glitch"); const f = $("#flash"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); }
 function floatXp(text, anchor) {
   const r = anchor ? anchor.getBoundingClientRect() : { left: innerWidth / 2, width: 0, top: innerHeight / 2 };
   const el = document.createElement("div");
@@ -1574,7 +1988,7 @@ function addXp(amount) {
   return { levels, oldLevel, newGear };
 }
 function rewardToast(label, xp, res) {
-  vibrate([40, 30, 90]);
+  vibrate([40, 30, 90]); if (!res.levels) sfx("reward");
   toast(`${label} : +${fmt(xp)} XP${res.levels ? ` · NIVEAU ${state.level} !` : ""}`);
   if (res.levels) levelFlash(state.level);
 }
@@ -1847,7 +2261,8 @@ function renderHQ() {
   return `
   <header class="topbar">
     <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>NEONFITNESS<b>PRO</b></span></div>
-    <button class="sync ${sync.mode}" id="sync-chip" data-act="sync-info" aria-label="État de la sauvegarde"><i aria-hidden="true"></i><span>${SYNC_LABEL[sync.mode]}</span></button>
+    <div class="top-r">${audBtn()}
+    <button class="sync ${sync.mode}" id="sync-chip" data-act="sync-info" aria-label="État de la sauvegarde"><i aria-hidden="true"></i><span>${SYNC_LABEL[sync.mode]}</span></button></div>
   </header>
   <section class="panel bracket op-card" aria-label="Fiche de l'opérateur">
     <button class="av-btn" data-act="chassis" aria-label="Ouvrir la fiche du châssis">${avatarSVG(st)}</button>
@@ -2197,6 +2612,7 @@ const IL = {
     const props = [{ k: "pullbar", x1: 70, x2: 170, y: by }];
     const legs = { a: 6, f: -28 }, legs2 = { a: -4, f: -40 };
     const pose = (sh, lg, lg2) => ({ anchor: { j: "sh", at: sh }, torso: 184, leg: lg || legs, leg2: lg2 || legs2, arm: { ik: hand, bend: 1 } });
+    if (o.neg) return { neg: true, props, A: pose([119, by + 41]), B: pose([113, by + 10]) };
     if (o.hang) return { iso: true, props, A: pose([119, by + 41]), B: pose([119, by + 40]) };
     if (o.scap) return { props, A: pose([119, by + 41]), B: pose([119, by + 34]) };
     if (o.raise) return { props, A: pose([119, by + 41], { a: 2, f: 2 }, { a: -2, f: -2 }), B: pose([119, by + 41], { a: 96, f: 96 }, { a: 92, f: 92 }) };
@@ -2463,7 +2879,7 @@ const ILL_MAP = {
   bw_tri_ext: ["pushup", { hands: 112, bar: 1, aA: 112, aB: 124 }],
   deadlift: ["deadlift", {}], rdl: ["deadlift", { rdl: 1 }],
   pullup: ["pullup", {}], chinup: ["pullup", {}], pullup_neutral: ["pullup", {}], chinup_close: ["pullup", {}],
-  scap_pull: ["pullup", { scap: 1 }], dead_hang: ["pullup", { hang: 1 }], muscle_up: ["pullup", { muscle: 1 }], hanging_raise: ["pullup", { raise: 1 }],
+  pullup_neg: ["pullup", { neg: 1 }], scap_pull: ["pullup", { scap: 1 }], dead_hang: ["pullup", { hang: 1 }], muscle_up: ["pullup", { muscle: 1 }], hanging_raise: ["pullup", { raise: 1 }],
   row_bb: ["bentrow", {}], tbar: ["bentrow", {}], row_db: ["bentrow", { db: 1 }], lat_pd: ["pulldown", {}], seated_row: ["cablerow", {}],
   inverted_row: ["invrow", {}], bw_curl: ["invrow", { curl: 1 }], shrug: ["shrug", {}], hyperext: ["hyper", {}], superman: ["prone", {}],
   face_pull: ["facepull", {}], rear_fly: ["rearfly", {}], ytw: ["prone", { armsOnly: 1 }],
@@ -2559,14 +2975,16 @@ function startIllus(root, id) {
     const h = f.J.head; headEl.setAttribute("cx", r1(h[0])); headEl.setAttribute("cy", r1(h[1]));
   };
   if (reduced()) { draw(1); if (phaseEl) phaseEl.textContent = spec.iso ? "MAINTIEN" : "POSITION FINALE · DÉPART EN POINTILLÉS"; return; }
-  const period = spec.iso ? 3200 : 2600, t0 = performance.now();
+  const period = spec.iso ? 3200 : spec.neg ? 5600 : 2600, t0 = performance.now();
   let lastLabel = "";
   const loop = (now) => {
     if (!svg.isConnected) { stopIllus(); return; }
     const ph = ((now - t0) % period) / period;
-    const t = ph < 0.5 ? ph * 2 : 2 - ph * 2;
+    const t = spec.neg ? (ph < 0.12 ? ph / 0.12 : ph < 0.22 ? 1 : Math.max(0, 1 - (ph - 0.22) / 0.72)) : ph < 0.5 ? ph * 2 : 2 - ph * 2;
     draw(t);
-    const label = spec.iso ? "MAINTIEN · RESPIRATION CONTRÔLÉE" : ph < 0.5 ? "PHASE CONCENTRIQUE · POUSSER / TIRER" : "PHASE EXCENTRIQUE · RETOUR CONTRÔLÉ";
+    const label = spec.iso ? "MAINTIEN · RESPIRATION CONTRÔLÉE"
+      : spec.neg ? (ph < 0.12 ? "MONTÉE SANS TIRER · SAUT OU MARCHE" : ph < 0.22 ? "MENTON AU-DESSUS · ON VERROUILLE" : ph < 0.94 ? "DESCENTE LENTE · 3 À 5 SECONDES" : "BRAS TENDUS · ON REMONTE")
+      : ph < 0.5 ? "PHASE CONCENTRIQUE · POUSSER / TIRER" : "PHASE EXCENTRIQUE · RETOUR CONTRÔLÉ";
     if (phaseEl && label !== lastLabel) { phaseEl.textContent = label; lastLabel = label; }
     illusRAF = requestAnimationFrame(loop);
   };
@@ -2587,7 +3005,7 @@ function renderCatalog() {
   <header class="cmdbar">
     <button class="back" data-act="go" data-to="hq" aria-label="Retour au QG">${chevron()}</button>
     <h1 class="title-neon">CATALOGUE</h1>
-    <div class="lo-counter" id="lo-counter" aria-live="polite">LOADOUT : <b id="lo-count">${n}</b> EXOS</div>
+    <div class="cmd-r"><div class="lo-counter" id="lo-counter" aria-live="polite">LOADOUT : <b id="lo-count">${n}</b> EXOS</div>${audBtn()}</div>
   </header>
   <div class="filters" role="tablist" aria-label="Filtrer par système">
     ${[{ id: "all", label: "TOUS" }, ...CATS].map(c => `<button class="filt ${f === c.id ? "on" : ""}" role="tab" aria-selected="${f === c.id}" data-act="filter" data-cat="${c.id}">${c.label}</button>`).join("")}
@@ -2664,7 +3082,7 @@ function openExSheet(id) {
     <div class="grip" aria-hidden="true"></div>
     <div class="sheet-top"><div><div class="eyebrow">TERMINAL D'ANALYSE · ${CAT_BY_ID[e.cat].code}</div><h2>${esc(e.name)}</h2></div>
       <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
-    ${ILL_MAP[e.id] ? `<div class="sec"><h3>SCHÉMA DU MOUVEMENT</h3><div class="illus-wrap" id="illus-box">${illusSVG(e.id)}<div class="illus-cap"><span data-phase>PHASE CONCENTRIQUE</span><span>POINTILLÉS = POSITION DE DÉPART</span></div></div></div>` : ""}
+    ${ILL_MAP[e.id] ? `<div class="sec"><h3>SCHÉMA DU MOUVEMENT</h3><div class="illus-wrap" id="illus-box">${illusSVG(e.id)}<div class="illus-cap"><span data-phase>PHASE CONCENTRIQUE</span><span>${ILL_MAP[e.id][1] && ILL_MAP[e.id][1].neg ? "POINTILLÉS = BRAS TENDUS, FIN DE LA DESCENTE" : "POINTILLÉS = POSITION DE DÉPART"}</span></div></div></div>` : ""}
     ${GRIPS[e.id] ? `<div class="sec"><h3>PLACEMENT DES MAINS · ${GRIPS[e.id].bar ? "VUE DE FACE" : "VUE DU DESSUS"}</h3><div class="illus-wrap">${gripSVG(e.id)}<div class="illus-cap"><span data-grip>${esc(GRIPS[e.id].label)}</span></div></div></div>` : ""}
     <div class="sec"><h3>ANALYSE BIOMÉCANIQUE</h3><p>${esc(e.desc)}</p></div>
     <div class="sec"><h3>PROGRESSION</h3>${progressChart(e.id)}</div>
@@ -2686,11 +3104,12 @@ function openExSheet(id) {
 }
 function showSheet(focusSel) {
   const w = $("#sheet");
-  if (w.hidden) { w.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => w.classList.add("open"))); }
+  if (w.hidden) { sfx("open"); w.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => w.classList.add("open"))); }
   setTimeout(() => { const x = w.querySelector(focusSel || ".x-close"); if (x) x.focus({ preventScroll: true }); }, 80);
 }
 function closeSheet() {
   const w = $("#sheet"); if (w.hidden) return;
+  sfx("close");
   w.classList.remove("open"); ui.sheetEx = null; stopIllus();
   setTimeout(() => { if (!w.classList.contains("open")) w.hidden = true; }, reduced() ? 0 : 320);
 }
@@ -2887,6 +3306,7 @@ const GRIPS = {
   pushup_hindu: { w: 1.35, label: "Mains un peu plus larges que les épaules, pieds écartés pour le V inversé." },
   pushup_pseudo: { w: 1.1, y: 48, back: true, label: "Mains au niveau des hanches, doigts vers l'extérieur, épaules loin devant les mains." },
   pullup: { bar: true, w: 1.5, grip: "pro", label: "Pronation (paumes vers l'avant), un peu plus large que les épaules." },
+  pullup_neg: { bar: true, w: 1.5, grip: "pro", label: "Pronation, un peu plus large que les épaules. On démarre en haut, menton au-dessus de la barre." },
   chinup: { bar: true, w: 1.0, grip: "sup", label: "Supination (paumes vers soi), mains à largeur d'épaules." },
   pullup_neutral: { bar: true, w: 1.0, grip: "neu", label: "Prise neutre : paumes face à face sur des poignées parallèles." },
   chinup_close: { bar: true, w: 0.55, grip: "sup", label: "Supination serrée : mains proches, paumes vers soi." },
@@ -3714,7 +4134,7 @@ function renderBriefing() {
   <header class="cmdbar">
     <button class="back" data-act="go" data-to="catalog" aria-label="Retour au catalogue">${chevron()}</button>
     <h1 class="title-neon">BRIEFING</h1>
-    <div class="timer" aria-label="Durée de mission">T+ <span id="m-timer">${m ? hms(Date.now() - m.start) : "00:00"}</span></div>
+    <div class="cmd-r"><div class="timer" aria-label="Durée de mission">T+ <span id="m-timer">${m ? hms(Date.now() - m.start) : "00:00"}</span></div>${audBtn()}</div>
   </header>
   <section class="panel bracket mstrip" aria-label="Télémétrie de mission">
     <div class="mstrip-row">
@@ -3824,7 +4244,7 @@ function validateSet(id, btn) {
   ui.delArm = null;
   save();
   vibrate([30, 40, 30]);
-  beep(1320, 0.07);
+  sfx("confirm");
   floatXp(`+${fmt(xp)} XP`, btn);
   render();
   openRest();
@@ -3860,7 +4280,8 @@ function openRest() {
   $("#rest-next").innerHTML = e ? `Série suivante : <b>${esc(e.name)}</b> · S${n + 1}` : "";
   const b = computeBonuses(state);
   $("#rest-note").textContent = b.rest ? `Récupération réduite de ${b.rest} % par vos aptitudes et votre cyberware.` : "Le temps de repos optimal dépend de l'exercice.";
-  restDoneFired = Date.now() >= r.endAt;
+  restDoneFired = Date.now() >= r.endAt; restLastSec = null;
+  musicRest(!restDoneFired);
   el.hidden = false;
   document.body.style.overflow = "hidden";
   tickRest();
@@ -3868,6 +4289,7 @@ function openRest() {
   try { if (navigator.wakeLock && !wakeLock) navigator.wakeLock.request("screen").then(w => { wakeLock = w; }).catch(() => {}); } catch (e2) {}
   setTimeout(() => $("#rest-btn").focus({ preventScroll: true }), 50);
 }
+let restLastSec = null;
 function tickRest() {
   const m = state.mission;
   if (!m || !m.rest) { closeRest(); return; }
@@ -3877,6 +4299,8 @@ function tickRest() {
   if (left > 0) {
     ring.classList.remove("done");
     $("#rest-time").textContent = mmss(Math.ceil(left));
+    const sec = Math.ceil(left);
+    if (sec !== restLastSec) { if (restLastSec !== null) { if (sec <= 3) sfx("count", sec); else sfx("sec", sec % 2); } restLastSec = sec; }
     $("#rest-state").textContent = "RÉCUPÉRATION";
     fg.setAttribute("stroke-dashoffset", (RING_C * (1 - Math.min(1, left / r.total))).toFixed(2));
     $("#rest-btn").textContent = "PASSER LE REPOS";
@@ -3886,11 +4310,11 @@ function tickRest() {
     $("#rest-state").textContent = "SYSTÈMES PRÊTS";
     fg.setAttribute("stroke-dashoffset", "0");
     $("#rest-btn").textContent = "REPRENDRE LE COMBAT";
-    if (!restDoneFired) { restDoneFired = true; vibrate([200, 100, 200]); beep(880, 0.15); beep(1320, 0.2, 0.18); }
+    if (!restDoneFired) { restDoneFired = true; vibrate([200, 100, 200]); sfx("restDone"); musicRest(false); }
   }
 }
 function closeRest() {
-  clearInterval(restTick); restTick = null;
+  clearInterval(restTick); restTick = null; musicRest(false);
   $("#rest").hidden = true;
   document.body.style.overflow = "";
   try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch (e) { wakeLock = null; }
@@ -4074,7 +4498,7 @@ function animateReport() {
   setTimeout(next, 500);
 }
 function levelFlash(level) {
-  vibrate([60, 40, 120]); beep(660, 0.12); beep(990, 0.12, 0.12); beep(1320, 0.25, 0.24);
+  vibrate([60, 40, 120]); sfx("levelup");
   const f = document.createElement("div");
   f.className = "lvl-flash"; f.setAttribute("aria-hidden", "true");
   f.innerHTML = `<div>LEVEL UP<small>NIVEAU ${level} · ${rankFor(level)}</small></div>`;
@@ -4108,6 +4532,8 @@ function render() {
     const c = $("#clock"); if (c) c.textContent = clock();
   }, 1000);
   if (ui.screen === "report") animateReport();
+  musicMoodSync();
+  if ($("#aud-pop")) { document.querySelectorAll(".aud-btn").forEach(b => b.setAttribute("aria-expanded", "true")); audPlace(); }
 }
 function go(to) {
   if (to !== "catalog" && to !== "briefing" && to !== "report" && to !== "squad") to = "hq";
@@ -4129,6 +4555,14 @@ const actions = {
   "filter": el => { ui.filter = el.dataset.cat; render(); },
   "toggle-pdc": () => { ui.pdcOnly = !ui.pdcOnly; render(); },
   "eq-open": () => openEquipSheet(),
+  "aud-open": () => { audioPrime(); audOpen(); },
+  "aud-toggle": el => {
+    const k = el.dataset.k, v = !sndPrefs()[k];
+    if (k === "sfx" && !v) sfx("off");
+    setSnd({ [k]: v });
+    if (v) { audioPrime(); sfx("on"); }
+    const pop = $("#aud-pop"); if (pop) { audFill(pop); const nb = pop.querySelector(`[data-k="${k}"]`); if (nb) nb.focus({ preventScroll: true }); }
+  },
   "set-theme": el => { setTheme(el.dataset.n); render(); toast(el.dataset.n === "auto" ? "Thème automatique : suit le réglage de l'appareil." : el.dataset.n === "light" ? "Thème clair activé." : "Thème sombre activé."); },
   "eq-dbcount": el => { curPlace().dbCount = el.dataset.n === "1" ? 1 : 2; equipChanged(); },
   "fav-open": () => openFavSheet(),
@@ -4272,12 +4706,22 @@ const holdActions = {
   }
 };
 
+const SND_OWN = new Set(["toggle-ex", "validate-set", "step", "close-sheet", "finish-mission", "aud-toggle"]);
+const SND_NAV = new Set(["go", "tab", "validate-loadout", "report-done", "squad-select", "pick-cat"]);
 document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]");
   if (el) {
     if (el.closest("[aria-disabled='true']")) return;
-    const fn = actions[el.dataset.act];
-    if (fn) { e.preventDefault(); fn(el, e); }
+    const act = el.dataset.act, fn = actions[act];
+    if (fn) {
+      e.preventDefault();
+      const own = SND_OWN.has(act);
+      if (!own) sfx(SND_NAV.has(act) ? "nav" : "tap");
+      fn(el, e);
+      if (act === "toggle-ex") sfx(state.loadoutSession.includes(el.dataset.id) ? "on" : "off");
+      else if (act === "step") sfx("step", +el.dataset.d > 0);
+      else if (act === "finish-mission" && ui.screen === "report") sfx("complete");
+    }
     return;
   }
   const h = e.target.closest("[data-hold]");
@@ -4294,14 +4738,14 @@ function startHold(el) {
   el.style.setProperty("--hold-ms", ms + "ms");
   void el.offsetWidth;
   el.classList.add("arming");
-  vibrate(10);
+  vibrate(10); holdTone(ms);
   hold = { el, timer: setTimeout(() => {
-    el.classList.remove("arming");
+    el.classList.remove("arming"); holdToneStop(); sfx("off");
     const act = el.dataset.hold; hold = null; lastHoldFire = Date.now();
     if (holdActions[act]) holdActions[act](el);
   }, ms) };
 }
-function cancelHold() { if (!hold) return; clearTimeout(hold.timer); hold.el.classList.remove("arming"); hold = null; }
+function cancelHold() { if (!hold) return; holdToneStop(); clearTimeout(hold.timer); hold.el.classList.remove("arming"); hold = null; }
 document.addEventListener("pointerdown", e => {
   const el = e.target.closest("[data-hold]");
   if (!el || el.disabled || (e.button !== undefined && e.button > 0)) return;
@@ -4311,7 +4755,7 @@ document.addEventListener("pointerdown", e => {
 document.addEventListener("pointerout", e => { if (hold && e.target === hold.el && !hold.el.contains(e.relatedTarget)) cancelHold(); });
 document.addEventListener("contextmenu", e => { if (e.target.closest("[data-hold]")) e.preventDefault(); });
 document.addEventListener("keydown", e => {
-  if (e.key === "Escape") { if (!$("#sheet").hidden) closeSheet(); return; }
+  if (e.key === "Escape") { if ($("#aud-pop")) { audClose(); return; } if (!$("#sheet").hidden) closeSheet(); return; }
   const el = e.target.closest && e.target.closest("[data-hold]");
   if (el && (e.key === " " || e.key === "Enter")) { e.preventDefault(); if (!e.repeat) startHold(el); }
   if (e.key === "Enter" && e.target.matches("[data-field]")) { e.preventDefault(); validateSet(e.target.dataset.id, e.target); }
@@ -4341,11 +4785,14 @@ document.addEventListener("input", e => {
     if (t.dataset.eqmax === "db") pl.maxDb = val; else pl.maxBb = val;
     save();
   }
+  if (t.id === "snd-sfxvol") setSnd({ sfxVol: (+t.value || 0) / 100 });
+  if (t.id === "snd-musvol") setSnd({ musicVol: (+t.value || 0) / 100 });
   if (t.id === "sq-name") squad.draftName = t.value;
   if (t.id === "sq-code") squad.draftCode = t.value;
 });
 document.addEventListener("change", e => {
   const t = e.target;
+  if (t.id === "snd-sfxvol") { sfx("confirm"); return; }
   if (t.id === "set-callsign") {
     if (commitName(t.value)) { toast("Nom de code mis à jour."); render(); } else t.value = state.operator.callsign;
   } else if (t.id === "set-bw") {
