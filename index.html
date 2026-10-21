@@ -190,7 +190,7 @@ p{margin:0}
 .stat-bar i.gear{background:rgba(var(--neon-rgb),.35);box-shadow:none}
 .stat-sub{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);margin-top:5px;flex-wrap:wrap}
 
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .cat{text-align:left;padding:14px;display:flex;flex-direction:column;gap:4px;min-height:96px;transition:border-color .2s,background .2s}
 .cat:hover{border-color:var(--line-hi)}
 .cat.sel{border-color:var(--neon);background:var(--neon-soft)}
@@ -785,8 +785,27 @@ button.sq-row:hover{background:var(--panel-2)}
 .aud-row.on .eq-lab b{color:var(--neon)}
 .aud-vol{display:flex;align-items:center;gap:8px;padding:0 0 6px}
 .aud-vol span{font-family:var(--f-display);font-size:8px;letter-spacing:.16em;color:var(--muted)}
-.aud-vol input{flex:1;accent-color:var(--neon);height:24px;min-width:0}
+.aud-vol input{flex:1;min-width:0;height:34px;margin:0;background:transparent;touch-action:none;-webkit-appearance:none;appearance:none;cursor:pointer;--p:50%}
+.aud-vol input::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--neon) var(--p),var(--line) var(--p))}
+.aud-vol input::-moz-range-track{height:4px;border-radius:2px;background:var(--line)}
+.aud-vol input::-moz-range-progress{height:4px;border-radius:2px;background:var(--neon)}
+.aud-vol input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;margin-top:-9px;border-radius:50%;background:var(--neon);border:3px solid var(--panel);box-shadow:0 0 0 1px var(--neon),0 0 10px var(--neon-glow)}
+.aud-vol input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--neon);border:3px solid var(--panel);box-shadow:0 0 0 1px var(--neon)}
 .cmd-r{display:flex;align-items:center;gap:10px;margin-left:auto}
+
+/* ---------- entrée EXERCICES & écran des systèmes ---------- */
+.ex-entry{margin-top:10px;width:100%;display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--neon);border-radius:4px;background:var(--neon-soft);text-align:left;box-shadow:0 0 16px rgba(var(--neon-rgb),.12)}
+.ex-entry:hover{box-shadow:0 0 22px var(--neon-glow)}
+.ex-ic{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:4px;background:var(--neon);color:var(--ink)}
+.ex-ic svg{width:24px;height:24px}.ex-ic svg .f{fill:currentColor}
+.ex-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ex-txt b{font-family:var(--f-display);font-size:15px;font-weight:900;letter-spacing:.14em;color:var(--neon)}
+.ex-txt small{font-size:12.5px;color:var(--muted)}
+.ex-entry .go{font-family:var(--f-display);font-size:10.5px;letter-spacing:.14em;color:var(--neon);white-space:nowrap}
+.cat .when{font-family:var(--f-display);font-size:9.5px;letter-spacing:.06em;color:var(--neon);text-transform:uppercase}
+.cat .when.never{color:var(--dim)}
+.cat .code em{font-style:normal;color:var(--neon)}
+.cat-grid + .btn{margin-top:2px;width:100%}
 </style>
 <script>window.NEON_STANDALONE = true;
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
@@ -1586,7 +1605,7 @@ function audioBuild() {
   const verbOut = actx.createGain(); verbOut.gain.value = 0.55;
   au.verb.connect(verbOut).connect(au.music);
   // écho calé sur la croche pointée du tempo de la musique
-  au.delay = actx.createDelay(1.5); au.delay.delayTime.value = MUS.step * 3;
+  au.delay = actx.createDelay(1.5); au.delay.delayTime.value = 0.536;
   const fb = actx.createGain(); fb.gain.value = 0.38;
   const dlp = actx.createBiquadFilter(); dlp.type = "lowpass"; dlp.frequency.value = 2600;
   au.delay.connect(dlp).connect(fb).connect(au.delay);
@@ -1596,7 +1615,7 @@ function audioBuild() {
   au.sfxVerb = actx.createGain(); au.sfxVerb.gain.value = 0.35;
   const verbS = actx.createConvolver(); verbS.buffer = ir;
   au.sfxVerb.connect(verbS).connect(au.sfx);
-  const nb = actx.createBuffer(1, actx.sampleRate, actx.sampleRate), nd = nb.getChannelData(0);
+  const nb = actx.createBuffer(1, actx.sampleRate * 2, actx.sampleRate), nd = nb.getChannelData(0);
   for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
   au.noise = nb;
   return true;
@@ -1627,13 +1646,13 @@ function audBtn() {
 function audPopHTML() {
   const p = sndPrefs();
   const row = (k, on, title, sub) => `<button class="aud-row ${on ? "on" : ""}" role="switch" aria-checked="${on}" data-act="aud-toggle" data-k="${k}"><span class="eq-lab"><b>${title}</b><small>${sub}</small></span><span class="sw"><i></i></span></button>`;
-  const vol = (id, v, l) => `<div class="aud-vol"><span>VOL.</span><input type="range" id="${id}" min="0" max="100" step="5" value="${Math.round(v * 100)}" aria-label="${l}"></div>`;
+  const vol = (id, v, l) => `<div class="aud-vol"><span>VOL.</span><input type="range" id="${id}" min="0" max="100" step="1" value="${Math.round(v * 100)}" style="--p:${Math.round(v * 100)}%" aria-label="${l}"></div>`;
   return row("music", p.music, "MUSIQUE DE FOND", "Change selon l'écran, plus intense en séance")
     + (p.music ? vol("snd-musvol", p.musicVol, "Volume de la musique") : "")
-    + row("sfx", p.sfx, "SONS", "Clics, défilement, chrono")
+    + row("sfx", p.sfx, "SONS", "Clics, validations, chrono")
     + (p.sfx ? vol("snd-sfxvol", p.sfxVol, "Volume des sons") : "");
 }
-function audFill(pop) { const h = audPopHTML(); if (pop.dataset.h !== h) { pop.innerHTML = h; pop.dataset.h = h; } }
+function audFill(pop) { const p = sndPrefs(), sig = `${p.music}|${p.sfx}`; if (pop.dataset.sig !== sig) { pop.innerHTML = audPopHTML(); pop.dataset.sig = sig; } }
 function audUI() {
   const p = sndPrefs();
   document.querySelectorAll(".aud-btn").forEach(b => { b.className = "aud-btn s" + audLevel(p); });
@@ -1665,13 +1684,14 @@ function audClose() {
   document.querySelectorAll(".aud-btn").forEach(b => b.setAttribute("aria-expanded", "false"));
 }
 document.addEventListener("pointerdown", e => { const pop = $("#aud-pop"); if (pop && !pop.contains(e.target) && !e.target.closest(".aud-btn")) audClose(); }, true);
+document.addEventListener("touchmove", e => { if (e.target && e.target.closest && e.target.closest(".aud-vol")) e.stopPropagation(); }, { capture: true, passive: true });
 window.addEventListener("resize", () => audPlace());
 window.addEventListener("scroll", () => audPlace(), { passive: true });
 const sfxOn = () => !!(actx && actx.state === "running" && sndPrefs().sfx);
 
 /* ---- briques de synthèse ---- */
 function tone(o) {
-  const t = (o.dest === au.music && MUS.cur ? MUS.cur : actx.currentTime) + (o.delay || 0), dur = o.dur || 0.1;
+  const t = (o.dest === au.music && CURP ? CURP.cur : actx.currentTime) + (o.delay || 0), dur = o.dur || 0.1;
   const osc = actx.createOscillator(), g = actx.createGain();
   osc.type = o.type || "square";
   osc.frequency.setValueAtTime(o.f, t);
@@ -1688,23 +1708,26 @@ function tone(o) {
     f.frequency.value = o.lp || o.bp || o.hp; f.Q.value = o.q || 0.8;
     osc.connect(f); node = f;
   }
-  node.connect(g).connect(o.dest || au.sfx);
-  if (o.verb) g.connect(o.dest === au.music ? au.verb : au.sfxVerb);
-  if (o.echo) g.connect(au.delay);
+  const mus = o.dest === au.music && CURP;
+  node.connect(g).connect(mus ? CURP.in : (o.dest || au.sfx));
+  if (o.verb) g.connect(mus ? CURP.vs : o.dest === au.music ? au.verb : au.sfxVerb);
+  if (o.echo) g.connect(mus ? CURP.es : au.delay);
   osc.start(t); osc.stop(t + dur + 0.05);
   return osc;
 }
 function noiseHit(o) {
-  const t = (o.dest === au.music && MUS.cur ? MUS.cur : actx.currentTime) + (o.delay || 0), dur = o.dur || 0.05;
+  const t = (o.dest === au.music && CURP ? CURP.cur : actx.currentTime) + (o.delay || 0), dur = o.dur || 0.05;
   const src = actx.createBufferSource(); src.buffer = au.noise;
   const f = actx.createBiquadFilter(); f.type = o.type || "bandpass"; f.Q.value = o.q || 1;
   f.frequency.setValueAtTime(o.f || 3000, t);
   if (o.f2) f.frequency.exponentialRampToValueAtTime(o.f2, t + dur);
   const g = actx.createGain(), peak = o.vol || 0.08, a = o.attack || 0.002;
   g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-  src.connect(f).connect(g).connect(o.dest || au.sfx);
-  if (o.verb) g.connect(o.dest === au.music ? au.verb : au.sfxVerb);
-  src.start(t, Math.random() * 0.5); src.stop(t + dur + 0.05);
+  const mus = o.dest === au.music && CURP;
+  src.loop = true;
+  src.connect(f).connect(g).connect(mus ? CURP.in : (o.dest || au.sfx));
+  if (o.verb) g.connect(mus ? CURP.vs : o.dest === au.music ? au.verb : au.sfxVerb);
+  src.start(t, Math.random() * 1.5); src.stop(t + dur + 0.05);
 }
 /* Compatibilité : ancien bip */
 function beep(freq = 880, dur = 0.12, delay = 0) { if (sfxOn()) tone({ f: freq, dur, delay, vol: 0.07, lp: 3800 }); }
@@ -1726,7 +1749,6 @@ const SFX = {
   open() { noiseHit({ f: 500, f2: 2600, dur: 0.22, vol: 0.06, q: 1.4, attack: 0.08 }); tone({ type: "sine", f: 220, f2: 440, dur: 0.2, vol: 0.04, attack: 0.05 }); },
   close() { noiseHit({ f: 2600, f2: 500, dur: 0.18, vol: 0.05, q: 1.4, attack: 0.03 }); },
   error() { tone({ type: "sawtooth", f: 150, dur: 0.11, vol: 0.07, lp: 900 }); tone({ type: "sawtooth", f: 140, dur: 0.16, vol: 0.07, lp: 900, delay: 0.13 }); },
-  tick() { noiseHit({ f: 3400, dur: 0.014, vol: 0.12, q: 2 }); },
   sec(alt) { tone({ type: "sine", f: alt ? 1250 : 1000, dur: 0.03, vol: 0.035 }); },
   count(n) { tone({ type: "square", f: n === 1 ? 990 : 660, dur: 0.12, vol: 0.06, lp: 3000 }); tone({ type: "sine", f: n === 1 ? 1980 : 1320, dur: 0.16, vol: 0.03 }); },
   restDone() {
@@ -1791,7 +1813,7 @@ const MOODS = {
         mBass(n, t, st * 1.7, acc ? 0.06 : 0.04, acc ? 420 : 320, true);
       }
       if (sec >= 2 && Math.random() < (sec < 6 ? 0.35 : 0.62)) {
-        const idx = ARP_PATS[MUS.arpPat][s16 % 8], oct = (s16 >= 8 && sec % 4 >= 2) ? 12 : 0;
+        const idx = ARP_PATS[CURP.arpPat][s16 % 8], oct = (s16 >= 8 && sec % 4 >= 2) ? 12 : 0;
         mArp(c.notes[idx] + 12 + oct, t, st * 0.9, 0.022, 1700 + Math.random() * 900, "square");
       }
       if (sec >= 8 && sec < 26) {
@@ -1827,7 +1849,7 @@ const MOODS = {
     pad: { type: "sawtooth", lo: 700, hi: 1900, vol: 0.025, duck: true },
     play(s16, bar, sec, c, t, st) {
       const brk = sec >= 24 && sec < 28;
-      if (s16 % 4 === 0 && (!brk || s16 === 0)) { mKick(t, 0.2); if (MUS.padBus) { const g = MUS.padBus.gain; g.cancelScheduledValues(t); g.setValueAtTime(0.35, t); g.linearRampToValueAtTime(1, t + st * 3); } }
+      if (s16 % 4 === 0 && (!brk || s16 === 0)) { mKick(t, 0.2); if (CURP.padBus) { const g = CURP.padBus.gain; g.cancelScheduledValues(t); g.setValueAtTime(0.35, t); g.linearRampToValueAtTime(1, t + st * 3); } }
       if (!brk && sec >= 2 && (s16 === 4 || s16 === 12)) { mSnare(t, 0.06); tone({ type: "triangle", f: 190, f2: 120, dur: 0.08, vol: 0.05, dest: au.music }); }
       if (!brk) { mHat(t, s16 % 2 ? 0.008 : 0.013, false); if (s16 % 4 === 2) mHat(t, 0.028, true); }
       if (!brk) {
@@ -1835,7 +1857,7 @@ const MOODS = {
         mBass(c.root + pat[s16 % 8], t, st * 0.85, s16 % 4 === 0 ? 0.068 : 0.05, s16 % 4 === 0 ? 700 : 480, false);
       } else if (s16 === 0) mBass(c.root, t, st * 14, 0.05, 300, true);
       if (sec >= 4 && Math.random() < (brk ? 0.5 : 0.82)) {
-        const idx = ARP_PATS[MUS.arpPat][s16 % 8], oct = s16 >= 8 ? 24 : 12;
+        const idx = ARP_PATS[CURP.arpPat][s16 % 8], oct = s16 >= 8 ? 24 : 12;
         mArp(c.notes[idx] + oct, t, st * 0.7, 0.023, brk ? 1200 : 2200 + (sec % 8) * 150, "sawtooth");
       }
       if (sec === 26 && s16 === 0) noiseHit({ f: 300, f2: 7000, dur: st * 32, vol: 0.035, q: 1.2, attack: st * 28, dest: au.music });
@@ -1853,8 +1875,13 @@ function mBass(n, t, len, v, cut, sub) {
 }
 function mArp(n, t, len, v, cut, type) { tone({ type, f: midi(n), dur: len, vol: v, lp: cut, q: 3, dest: au.music, echo: true}); }
 
-const MUS = { mood: "ambient", want: "ambient", step: 60 / 84 / 4, timer: null, next: 0, cur: 0, i: 0, chordIdx: -1, padVoices: [], padBus: null, arpPat: 0, rest: false };
-function moodForScreen() { return ui.screen === "catalog" ? "select" : ui.screen === "briefing" ? "combat" : "ambient"; }
+/* Moteur : chaque ambiance joue dans son propre « lecteur » (bus, filtre, écho, envoi de réverbe).
+   Changer d'écran = fondu enchaîné façon DJ : l'ambiance sortante se referme derrière un filtre
+   et s'éteint pendant que la nouvelle s'ouvre et monte, sur environ 3 secondes. */
+const XF = 3.2;
+const MUS = { want: "ambient", active: null, players: [], timer: null, rest: false };
+let CURP = null;
+function moodForScreen() { return ui.screen === "catalog" || ui.screen === "systems" ? "select" : ui.screen === "briefing" ? "combat" : "ambient"; }
 function musicMoodSync() { MUS.want = moodForScreen(); }
 function musicRest(on) {
   MUS.rest = !!on;
@@ -1863,60 +1890,107 @@ function musicRest(on) {
   au.mlp.frequency.cancelScheduledValues(t);
   au.mlp.frequency.setTargetAtTime(on ? 750 : 20000, t, on ? 0.35 : 0.7);
 }
+function mkPlayer(mood, fadeIn) {
+  const t = actx.currentTime, step = 60 / MOODS[mood].bpm / 4;
+  const P = { mood, step, next: t + 0.1, cur: 0, i: 0, chordIdx: -1, padVoices: [], padBus: null, arpPat: 0, dying: false, dead: false };
+  P.in = actx.createGain(); P.lp = actx.createBiquadFilter(); P.lp.type = "lowpass"; P.lp.Q.value = 0.6;
+  P.in.connect(P.lp).connect(au.music);
+  P.vs = actx.createGain(); P.vs.connect(au.verb);
+  P.es = actx.createGain();
+  const dl = actx.createDelay(1.5); dl.delayTime.value = step * 3;
+  const fb = actx.createGain(); fb.gain.value = 0.38;
+  const dlp = actx.createBiquadFilter(); dlp.type = "lowpass"; dlp.frequency.value = 2600;
+  const dOut = actx.createGain(); dOut.gain.value = 0.5;
+  P.es.connect(dl); dl.connect(dlp).connect(fb).connect(dl); dlp.connect(dOut); dOut.connect(P.in); dOut.connect(P.vs);
+  P.nodes = [P.in, P.lp, P.vs, P.es, dl, fb, dlp, dOut];
+  const gains = [P.in.gain, P.vs.gain, P.es.gain];
+  if (fadeIn) {
+    gains.forEach(g => { g.setValueAtTime(0.0001, t); g.exponentialRampToValueAtTime(0.25, t + XF * 0.45); g.linearRampToValueAtTime(1, t + XF); });
+    P.lp.frequency.setValueAtTime(320, t); P.lp.frequency.exponentialRampToValueAtTime(20000, t + XF);
+  } else { gains.forEach(g => g.setValueAtTime(1, t)); P.lp.frequency.setValueAtTime(20000, t); }
+  MUS.players.push(P);
+  return P;
+}
+function fadeOutPlayer(P, dur) {
+  if (P.dying) return;
+  P.dying = true;
+  const t = actx.currentTime;
+  [P.in.gain, P.vs.gain, P.es.gain].forEach(g => { g.cancelScheduledValues(t); g.setValueAtTime(Math.max(0.0001, g.value), t); g.linearRampToValueAtTime(0.0001, t + dur); });
+  P.lp.frequency.cancelScheduledValues(t); P.lp.frequency.setValueAtTime(Math.max(300, P.lp.frequency.value), t); P.lp.frequency.exponentialRampToValueAtTime(260, t + dur * 0.85);
+  const tok = P.tok = (P.tok || 0) + 1;
+  setTimeout(() => { if (P.dying && P.tok === tok) killPlayer(P); }, dur * 1000 + 2500);
+}
+/* retour rapide vers une ambiance encore audible : on la fait remonter au lieu d'en relancer une */
+function revivePlayer(P) {
+  P.dying = false; P.tok = (P.tok || 0) + 1;
+  const t = actx.currentTime, d = XF * 0.7;
+  [P.in.gain, P.vs.gain, P.es.gain].forEach(g => { g.cancelScheduledValues(t); g.setValueAtTime(Math.max(0.0001, g.value), t); g.linearRampToValueAtTime(1, t + d); });
+  P.lp.frequency.cancelScheduledValues(t); P.lp.frequency.setValueAtTime(Math.max(260, P.lp.frequency.value), t); P.lp.frequency.exponentialRampToValueAtTime(20000, t + d);
+}
+function killPlayer(P) {
+  if (P.dead) return;
+  P.dead = true;
+  if (actx) releasePad(P, actx.currentTime, 0.05);
+  setTimeout(() => P.nodes.forEach(n => { try { n.disconnect(); } catch (e) {} }), 600);
+  MUS.players = MUS.players.filter(x => x !== P);
+}
 function musicStart() {
   if (!actx || au.musicOn) return;
   au.musicOn = true;
-  MUS.mood = MUS.want = moodForScreen(); MUS.step = 60 / MOODS[MUS.mood].bpm / 4;
-  if (au.delay) au.delay.delayTime.value = MUS.step * 3;
-  MUS.next = actx.currentTime + 0.12; MUS.i = 0; MUS.chordIdx = -1;
+  MUS.want = moodForScreen();
+  MUS.active = mkPlayer(MUS.want, false);
   clearInterval(MUS.timer);
   MUS.timer = setInterval(musicSchedule, 60);
   musicSchedule();
 }
-function releasePad(t, tc) {
-  MUS.padVoices.forEach(v => { try { v.g.gain.cancelScheduledValues(t); v.g.gain.setTargetAtTime(0.0001, t, tc); v.o.forEach(o => o.stop(t + tc * 6)); } catch (e) {} });
-  MUS.padVoices = [];
+function releasePad(P, t, tc) {
+  P.padVoices.forEach(v => { try { v.g.gain.cancelScheduledValues(t); v.g.gain.setTargetAtTime(0.0001, t, tc); v.o.forEach(o => o.stop(t + tc * 6 + 0.05)); } catch (e) {} });
+  P.padVoices = [];
 }
 function musicStop() {
   au.musicOn = false;
   clearInterval(MUS.timer); MUS.timer = null;
-  if (actx) releasePad(actx.currentTime, 0.3);
+  MUS.players.slice().forEach(P => { if (actx) releasePad(P, actx.currentTime, 0.3); killPlayer(P); });
+  MUS.active = null;
 }
-function padChord(chord, t, len, cfg) {
-  releasePad(t, 0.8);
+function padChord(P, chord, t, len, cfg) {
+  releasePad(P, t, 0.8);
   const lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.Q.value = 0.9;
   lp.frequency.setValueAtTime(cfg.lo, t); lp.frequency.linearRampToValueAtTime(cfg.hi, t + len * 0.5); lp.frequency.linearRampToValueAtTime(cfg.lo + 200, t + len);
   const bus = actx.createGain(); bus.gain.value = 1;
-  lp.connect(bus); bus.connect(au.music); bus.connect(au.verb);
-  MUS.padBus = cfg.duck ? bus : null;
+  lp.connect(bus); bus.connect(P.in); bus.connect(P.vs);
+  P.padBus = cfg.duck ? bus : null;
   chord.notes.forEach(n => {
     const g = actx.createGain(), os = [];
     [-8, 8].forEach(det => { const o = actx.createOscillator(); o.type = cfg.type; o.frequency.value = midi(n); o.detune.value = det; o.connect(g); o.start(t); os.push(o); });
     g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(cfg.vol, t + 1.2);
     g.connect(lp);
-    MUS.padVoices.push({ g, o: os });
+    P.padVoices.push({ g, o: os });
   });
+}
+function schedulePlayer(P, ahead) {
+  const M = MOODS[P.mood];
+  CURP = P;
+  while (P.next < ahead) {
+    const i = P.i, t = P.next, st = P.step;
+    P.cur = Math.max(t, actx.currentTime);
+    const bar = Math.floor(i / 16), s16 = i % 16, sec = bar % M.cycle;
+    const ci = Math.floor(bar / 2) % M.prog.length, c = M.prog[ci];
+    if (s16 === 0 && ci !== P.chordIdx) { P.chordIdx = ci; padChord(P, c, t, st * 32, M.pad); P.arpPat = Math.floor(Math.random() * ARP_PATS.length); }
+    try { M.play(s16, bar, sec, c, t, st); } catch (e) {}
+    P.next += st; P.i++;
+  }
+  CURP = null;
 }
 function musicSchedule() {
   if (!actx || !au.musicOn) return;
-  const ahead = actx.currentTime + 0.35;
-  while (MUS.next < ahead) {
-    // changement d'ambiance : sur le prochain temps, avec un souffle de transition
-    if (MUS.want !== MUS.mood && MUS.i % 4 === 0) {
-      MUS.mood = MUS.want; MUS.step = 60 / MOODS[MUS.mood].bpm / 4;
-      MUS.i = 0; MUS.chordIdx = -1; MUS.cur = Math.max(MUS.next, actx.currentTime);
-      try { au.delay.delayTime.setTargetAtTime(MUS.step * 3, MUS.next, 0.05); } catch (e) {}
-      noiseHit({ f: 4000, f2: 400, dur: 0.6, vol: 0.03, q: 1, attack: 0.05, dest: au.music, verb: true });
-    }
-    const M = MOODS[MUS.mood], i = MUS.i, t = MUS.next, st = MUS.step;
-    MUS.cur = Math.max(t, actx.currentTime);
-    const bar = Math.floor(i / 16), s16 = i % 16, sec = bar % M.cycle;
-    const ci = Math.floor(bar / 2) % M.prog.length, c = M.prog[ci];
-    if (s16 === 0 && ci !== MUS.chordIdx) { MUS.chordIdx = ci; padChord(c, t, st * 32, M.pad); MUS.arpPat = Math.floor(Math.random() * ARP_PATS.length); }
-    try { M.play(s16, bar, sec, c, t, st); } catch (e) {}
-    MUS.next += st; MUS.i++;
+  if (!MUS.active || MUS.active.mood !== MUS.want) {
+    const back = MUS.players.find(P => !P.dead && P.mood === MUS.want);
+    MUS.players.forEach(P => { if (P !== back && !P.dying) fadeOutPlayer(P, XF); });
+    if (back) { revivePlayer(back); MUS.active = back; } else MUS.active = mkPlayer(MUS.want, true);
   }
-  MUS.cur = 0;
+  const ahead = actx.currentTime + 0.35;
+  MUS.players.slice().forEach(P => { if (!P.dead) schedulePlayer(P, ahead); });
 }
 
 /* ---- branchements globaux ---- */
@@ -1926,21 +2000,7 @@ document.addEventListener("visibilitychange", () => {
   if (document.hidden) { audioApply(); setTimeout(() => { if (document.hidden && actx) actx.suspend(); }, 400); }
   else { actx.resume().then(audioApply).catch(() => {}); }
 });
-/* défilement : petit cliquetis discret, limité en cadence */
-const scrollMem = new WeakMap();
-let scrollLastT = 0;
-document.addEventListener("scroll", e => {
-  if (!sfxOn() || !sndPrefs().scroll) return;
-  const el = e.target === document ? document.scrollingElement : e.target;
-  if (!el) return;
-  const y = el.scrollTop, prev = scrollMem.get(el);
-  scrollMem.set(el, y);
-  if (prev === undefined) return;
-  const acc = (el._sAcc || 0) + Math.abs(y - prev);
-  const now = performance.now();
-  if (acc >= 70 && now - scrollLastT > 70) { el._sAcc = 0; scrollLastT = now; sfx("tick"); }
-  else el._sAcc = acc;
-}, { capture: true, passive: true });
+
 
 let toastTimer = null;
 function toast(msg, warn) {
@@ -2283,28 +2343,13 @@ function renderHQ() {
   <nav class="tabs" role="tablist">
     ${tabs.map(([id, l]) => `<button class="tab" role="tab" aria-selected="${ui.tab === id}" data-act="tab" data-tab="${id}">${l}${id === "aptitudes" && st.perkPoints > 0 && availPerks ? '<span class="pip" aria-label="points disponibles"></span>' : ""}</button>`).join("")}
   </nav>
+  <button class="ex-entry" data-act="go" data-to="systems"><span class="ex-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="f" d="M1.5 10h2v4h-2zM4.5 6.5h3.5v11H4.5zM16 6.5h3.5v11H16zM20.5 10h2v4h-2zM8 11h8v2H8z"/></svg></span><span class="ex-txt"><b>EXERCICES</b><small>${CATS.length} systèmes musculaires · ${EXERCISES.length} exercices</small></span><span class="go">OUVRIR →</span></button>
   <div>${ui.tab === "arsenal" ? tabArsenal(b) : ui.tab === "aptitudes" ? tabPerks() : ui.tab === "archives" ? tabArchives() : tabFiche(b)}</div>`;
 }
 
 function tabFiche(b) {
   const st = state, rookie = st.missions === 0;
   const scale = Math.max(40, ...STAT_KEYS.map(k => statTotal(k, b))) * 1.15;
-  const target = `
-  <section class="block">
-    <h2 class="h2">${rookie ? "PREMIÈRE MISSION" : "CIBLE DE MISSION"}</h2>
-    <p class="hint">${rookie ? "Choisissez le système musculaire à travailler aujourd'hui. Le catalogue d'exercices s'ouvre directement dessus." : "Sélectionnez le système à travailler. Vous pourrez mélanger plusieurs systèmes dans le loadout."}</p>
-    <button class="eq-hq" data-act="eq-open"><span>MATÉRIEL · ${PLACES[st.equip.active]}</span><b>${curPlace().items.length ? `${curPlace().items.length} équipement${curPlace().items.length > 1 ? "s" : ""} + poids du corps` : "Poids du corps uniquement"}${st.equip.filter ? " · filtre actif" : ""}</b><em>RÉGLER →</em></button>
-    <div class="cat-grid">
-      ${CATS.map(c => {
-        const list = exByCat(c.id), aff = {};
-        list.forEach(e => { for (const k in e.stats) aff[k] = (aff[k] || 0) + e.stats[k]; });
-        const main = Object.keys(aff).sort((a, z) => aff[z] - aff[a])[0];
-        return `<button class="panel cat ${st.category === c.id ? "sel" : ""}" data-act="pick-cat" data-cat="${c.id}">
-          <span class="code">${c.code}</span><span class="lab">${c.label}</span>
-          <span class="meta">${list.length} exercices · ${STATS[main].short.toLowerCase()}</span></button>`;
-      }).join("")}
-    </div>
-  </section>`;
   const attrs = `
   <section class="block">
     <h2 class="h2">ATTRIBUTS DU CHÂSSIS</h2>
@@ -2320,9 +2365,9 @@ function tabFiche(b) {
     </div>
     ${rookie ? `<p class="hint">Chaque série renforce l'attribut du groupe musculaire travaillé.</p>` : ""}
   </section>`;
-  if (rookie) return favoritesBlock() + target + contractsBlock() + attrs + `
+  if (rookie) return `<section class="block"><div class="empty-note">Pour votre première mission, touchez <b>EXERCICES</b> juste au-dessus, choisissez un système musculaire puis cochez vos exercices.</div></section>` + contractsBlock() + attrs + `
   <section class="block"><div class="empty-note">Le cyberware et les aptitudes se débloquent en jouant. Consultez les onglets <b>Arsenal</b> et <b>Aptitudes</b> quand vous voulez.</div></section>`;
-  return favoritesBlock() + contractsBlock() + target + attrs + `
+  return contractsBlock() + attrs + `
   <section class="block">
     <h2 class="h2">CYBERWARE ÉQUIPÉ</h2>
     <div class="panel slot-list">
@@ -2991,6 +3036,49 @@ function startIllus(root, id) {
   illusRAF = requestAnimationFrame(loop);
 }
 
+
+/* =====================================================================
+   Écran — Exercices : choix du système musculaire
+   ===================================================================== */
+function lastByCat() {
+  const o = {};
+  state.history.forEach(h => (h.cats || []).forEach(c => { if (!o[c] || h.date > o[c]) o[c] = h.date; }));
+  return o;
+}
+function agoTxt(ts) {
+  if (!ts) return "jamais travaillé";
+  const days = Math.max(0, Math.round((new Date().setHours(0, 0, 0, 0) - new Date(ts).setHours(0, 0, 0, 0)) / DAY));
+  return days === 0 ? "travaillé aujourd'hui" : days === 1 ? "travaillé hier" : `il y a ${days} jours`;
+}
+function renderSystems() {
+  const st = state, last = lastByCat(), pl = curPlace(), lo = st.loadoutSession.length;
+  const cards = CATS.map(c => {
+    const list = exByCat(c.id), doable = st.equip.filter ? list.filter(e => canDo(e.id, pl)).length : list.length, aff = {};
+    list.forEach(e => { for (const k in e.stats) aff[k] = (aff[k] || 0) + e.stats[k]; });
+    const main = Object.keys(aff).sort((a, z) => aff[z] - aff[a])[0];
+    const inLo = st.loadoutSession.filter(id => EX[id].cat === c.id).length;
+    return `<button class="panel cat ${inLo ? "sel" : ""}" data-act="pick-cat" data-cat="${c.id}">
+      <span class="code">${c.code}${inLo ? ` · <em>${inLo} AU LOADOUT</em>` : ""}</span><span class="lab">${c.label}</span>
+      <span class="meta">${st.equip.filter ? `${doable}/${list.length}` : list.length} exercices · ${STATS[main].short.toLowerCase()}</span>
+      <span class="when ${last[c.id] ? "" : "never"}">${agoTxt(last[c.id])}</span></button>`;
+  }).join("");
+  return `
+  <header class="cmdbar">
+    <button class="back" data-act="go" data-to="hq" aria-label="Retour au QG">${chevron()}</button>
+    <h1 class="title-neon">EXERCICES</h1>
+    <div class="cmd-r">${audBtn()}</div>
+  </header>
+  ${st.mission ? `<button class="banner" data-act="go" data-to="briefing"><div><div class="d">MISSION EN COURS · ${hms(Date.now() - st.mission.start)}</div><p>Reprendre le briefing</p></div><span class="go">REPRENDRE →</span></button>` : ""}
+  ${favoritesBlock()}
+  <section class="block">
+    <h2 class="h2">SYSTÈMES MUSCULAIRES</h2>
+    <p class="hint">Touchez un système pour voir ses exercices. Vous pouvez mélanger plusieurs systèmes dans la même mission.</p>
+    <button class="eq-hq" data-act="eq-open"><span>MATÉRIEL · ${PLACES[st.equip.active]}</span><b>${pl.items.length ? `${pl.items.length} équipement${pl.items.length > 1 ? "s" : ""} + poids du corps` : "Poids du corps uniquement"}${st.equip.filter ? " · filtre actif" : ""}</b><em>RÉGLER →</em></button>
+    <div class="cat-grid">${cards}</div>
+    <button class="btn btn-quiet" data-act="pick-cat" data-cat="all">VOIR TOUS LES EXERCICES</button>
+  </section>
+  ${lo ? `<div class="actionbar"><button class="btn btn-neon" data-act="go" data-to="catalog" style="width:100%">LOADOUT : ${lo} EXERCICE${lo > 1 ? "S" : ""} · CONTINUER →</button></div>` : ""}`;
+}
 /* =====================================================================
    Écran 2 — Catalogue & Loadout
    ===================================================================== */
@@ -3003,7 +3091,7 @@ function renderCatalog() {
   const cat = CAT_BY_ID[f];
   return `
   <header class="cmdbar">
-    <button class="back" data-act="go" data-to="hq" aria-label="Retour au QG">${chevron()}</button>
+    <button class="back" data-act="go" data-to="systems" aria-label="Retour aux systèmes musculaires">${chevron()}</button>
     <h1 class="title-neon">CATALOGUE</h1>
     <div class="cmd-r"><div class="lo-counter" id="lo-counter" aria-live="polite">LOADOUT : <b id="lo-count">${n}</b> EXOS</div>${audBtn()}</div>
   </header>
@@ -3514,7 +3602,7 @@ function renderOnboard() {
     body = `<div class="eyebrow">DÉROULÉ D'UNE MISSION · 3/4</div>
       <h2 id="ob-title">UNE SÉANCE = UNE MISSION</h2>
       <div class="ob-rows">
-        <div class="panel ob-row"><span class="k">1</span><div><b>Choisir une cible</b><span>Au QG, touchez un système musculaire.</span></div></div>
+        <div class="panel ob-row"><span class="k">1</span><div><b>Choisir une cible</b><span>Au QG, touchez EXERCICES puis un système musculaire.</span></div></div>
         <div class="panel ob-row"><span class="k">2</span><div><b>Composer le loadout</b><span>Cochez les exercices de la séance, puis VALIDER.</span></div></div>
         <div class="panel ob-row"><span class="k">3</span><div><b>Valider chaque série</b><span>Saisissez charge et répétitions. Le chrono de repos se lance tout seul.</span></div></div>
         <div class="panel ob-row"><span class="k">4</span><div><b>Terminer la mission</b><span>Le rapport encaisse l'XP, augmente vos attributs et livre le butin.</span></div></div>
@@ -4518,6 +4606,7 @@ function render() {
     else if (ui.screen === "briefing") html = renderBriefing();
     else if (ui.screen === "report") html = renderReport();
     else if (ui.screen === "squad") html = renderSquad();
+    else if (ui.screen === "systems") html = renderSystems();
     else html = renderHQ();
   } catch (err) {
     console.error(err);
@@ -4525,7 +4614,7 @@ function render() {
     html = renderHQ();
   }
   app.innerHTML = html;
-  app.classList.toggle("has-footer", ui.screen === "catalog" || ui.screen === "briefing");
+  app.classList.toggle("has-footer", ui.screen === "catalog" || ui.screen === "briefing" || (ui.screen === "systems" && state.loadoutSession.length > 0));
   clearInterval(timerInt);
   timerInt = setInterval(() => {
     const t = $("#m-timer"); if (t && state.mission) t.textContent = hms(Date.now() - state.mission.start);
@@ -4536,7 +4625,7 @@ function render() {
   if ($("#aud-pop")) { document.querySelectorAll(".aud-btn").forEach(b => b.setAttribute("aria-expanded", "true")); audPlace(); }
 }
 function go(to) {
-  if (to !== "catalog" && to !== "briefing" && to !== "report" && to !== "squad") to = "hq";
+  if (to !== "catalog" && to !== "briefing" && to !== "report" && to !== "squad" && to !== "systems") to = "hq";
   if (to === "squad" && !(STANDALONE && fb.user)) to = "hq";
   if (ui.screen === "squad" && to !== "squad") { closeSquadSub(); squad.panel = null; squad.msg = ""; }
   if (to === "catalog" && !ui.filter) ui.filter = state.category;
@@ -4551,7 +4640,7 @@ const actions = {
   "go": el => go(el.dataset.to),
   "tab": el => { ui.tab = el.dataset.tab; if (ui.screen !== "hq") ui.screen = "hq"; render(); },
   "go-perks": () => { ui.report = null; ui.tab = "aptitudes"; go("hq"); },
-  "pick-cat": el => { state.category = el.dataset.cat; ui.filter = el.dataset.cat; save(); go("catalog"); },
+  "pick-cat": el => { const c = el.dataset.cat; if (c !== "all") { state.category = c; save(); } ui.filter = c; go("catalog"); },
   "filter": el => { ui.filter = el.dataset.cat; render(); },
   "toggle-pdc": () => { ui.pdcOnly = !ui.pdcOnly; render(); },
   "eq-open": () => openEquipSheet(),
@@ -4727,7 +4816,7 @@ document.addEventListener("click", e => {
   const h = e.target.closest("[data-hold]");
   if (h && Date.now() - lastHoldFire > 400) toast(`Maintenez le bouton appuyé (${(+(h.dataset.ms || 600) / 1000).toLocaleString("fr-FR")} s) pour confirmer.`, true);
   if (ui.delArm && !e.target.closest(".del")) { ui.delArm = null; if (ui.screen === "briefing") render(); }
-  if (ui.favDel && !e.target.closest(".del")) { ui.favDel = null; if (ui.screen === "hq") render(); }
+  if (ui.favDel && !e.target.closest(".del")) { ui.favDel = null; if (ui.screen === "hq" || ui.screen === "systems") render(); }
 });
 
 /* ---- appui long ---- */
@@ -4785,8 +4874,10 @@ document.addEventListener("input", e => {
     if (t.dataset.eqmax === "db") pl.maxDb = val; else pl.maxBb = val;
     save();
   }
-  if (t.id === "snd-sfxvol") setSnd({ sfxVol: (+t.value || 0) / 100 });
-  if (t.id === "snd-musvol") setSnd({ musicVol: (+t.value || 0) / 100 });
+  if (t.id === "snd-sfxvol" || t.id === "snd-musvol") {
+    t.style.setProperty("--p", t.value + "%");
+    setSnd(t.id === "snd-sfxvol" ? { sfxVol: (+t.value || 0) / 100 } : { musicVol: (+t.value || 0) / 100 });
+  }
   if (t.id === "sq-name") squad.draftName = t.value;
   if (t.id === "sq-code") squad.draftCode = t.value;
 });
