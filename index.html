@@ -290,6 +290,17 @@ p{margin:0}
 .filters::-webkit-scrollbar{display:none}
 .filt{font-family:var(--f-display);font-size:10px;letter-spacing:.14em;padding:9px 12px;border:1px solid var(--line);border-radius:3px;color:var(--muted);white-space:nowrap;background:var(--panel)}
 .filt.on{border-color:var(--neon);color:var(--neon);background:var(--neon-soft)}
+.search{position:relative;display:block;margin-top:12px}
+.search .txt{padding-left:38px;padding-right:40px;-webkit-appearance:none;appearance:none}
+.search .txt::-webkit-search-cancel-button{display:none}
+.search .txt:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 1px var(--neon)}
+.search .s-ic{position:absolute;left:12px;top:50%;width:17px;height:17px;transform:translateY(-50%);fill:none;stroke:var(--muted);stroke-width:2.2;stroke-linecap:round;pointer-events:none}
+.search .s-clear{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:36px;height:36px;color:var(--muted);font-size:14px}
+.search .s-clear[hidden]{display:none}
+.search-fake{width:100%;text-align:left;background:var(--panel-2);border:1px solid var(--line-hi);border-radius:4px;padding:11px 12px 11px 38px;color:var(--muted);font-size:15px;margin:14px 0 2px}
+.search-fake:hover{border-color:var(--neon);color:var(--text)}
+.tag-cat{color:var(--muted)}
+.s-hidden{padding:8px 2px}
 .list-head{display:flex;justify-content:space-between;gap:10px;padding:14px 2px 8px;font-family:var(--f-display);font-size:10px;letter-spacing:.18em;color:var(--muted)}
 
 .ex-list{display:flex;flex-direction:column;gap:8px}
@@ -1641,6 +1652,68 @@ const EXERCISES = [
   ex("st_hipflexor","Étirement des fléchisseurs de hanche","jambes","time",0.4,{propulsion:0.7,core:0.3},15,0,30,["Fléchisseurs de hanche (psoas)","Quadriceps"],"Un genou au sol, l'autre pied devant. On rentre le bassin en serrant le fessier et on avance les hanches ; le bras du côté du genou au sol se lève pour accentuer. Durée par côté.")
 ];
 const EX = Object.fromEntries(EXERCISES.map(e => [e.id, e]));
+/* Recherche : noms anglais et synonymes courants, en plus du nom, des muscles, du système et du matériel */
+const EX_ALIAS = {
+  bench: "bench press developpe couche", incline_db: "incline dumbbell press", decline: "decline bench press", dips_chest: "dips chest",
+  pushup: "push up pushups", fly: "dumbbell fly flyes", cable_cross: "cable crossover", pec_deck: "butterfly machine",
+  deadlift: "deadlift sdt", pullup: "pull up pullups", row_bb: "bent over row barbell row", row_db: "one arm row 1 arm row dumbbell row",
+  lat_pd: "lat pulldown", seated_row: "seated cable row", tbar: "t bar row landmine", shrug: "shrugs", hyperext: "back extension hyperextension",
+  ohp: "overhead press military press", db_press: "dumbbell shoulder press", arnold: "arnold press", lat_raise: "side raises lateral raises",
+  face_pull: "face pull", rear_fly: "reverse fly rear delt fly", close_bench: "close grip bench press", skull: "skull crusher",
+  tri_pushdown: "triceps pushdown", dips_bench: "bench dips", curl_bb: "barbell curl biceps curl", curl_hammer: "hammer curls",
+  curl_incline: "incline curl", squat: "back squat", front_squat: "front squat", leg_press: "leg press", rdl: "romanian deadlift rdl",
+  bulgarian: "bulgarian split squats", lunge: "walking lunges", hip_thrust: "hip thrust", leg_ext: "leg extension", leg_curl: "leg curl hamstring curl",
+  calf: "calf raises", plank: "plank planche", side_plank: "side plank", hanging_raise: "hanging leg raises", ab_wheel: "ab rollout ab wheel",
+  cable_crunch: "cable crunch", russian: "russian twist", pallof: "pallof press", pushup_incline: "incline push up", pushup_wide: "wide push up",
+  pushup_decline: "decline push up", pushup_archer: "archer push up", pushup_plyo: "clap push up plyo", dips_rings: "ring dips", chinup: "chin up",
+  pullup_neg: "negative pull up", pullup_neutral: "neutral grip pull up", inverted_row: "inverted row australian pull up", muscle_up: "muscle up",
+  scap_pull: "scapular pull up", superman: "superman", dead_hang: "dead hang", pike_pushup: "pike push up", hspu: "handstand push up",
+  wall_walk: "wall walk", handstand_hold: "handstand", ytw: "ytw", pushup_military: "military push up", pushup_knees: "knee push up",
+  pushup_hindu: "hindu push up", pushup_spiderman: "spiderman push up", pushup_pseudo: "pseudo planche push up", pushup_diamond: "diamond push up",
+  dips_bars: "parallel bar dips", bw_tri_ext: "bodyweight triceps extension", chinup_close: "close grip chin up", bw_curl: "bodyweight curl",
+  air_squat: "bodyweight squat air squat", jump_squat: "jump squats", pistol: "pistol squat", bw_lunge: "lunges", step_up: "step up",
+  glute_bridge: "glute bridge", nordic: "nordic curl", wall_sit: "wall sit", bw_calf: "single leg calf raises", crunch: "crunches",
+  bicycle: "bicycle crunch", floor_leg_raise: "leg raises lying", v_up: "v up v sit up", dead_bug: "dead bug", mountain: "mountain climbers",
+  shoulder_taps: "shoulder taps", hollow: "hollow hold", l_sit: "l sit", dragon_flag: "dragon flag",
+  db_bench: "dumbbell press dumbbell bench press floor press", upright_row: "upright rows", y_raise: "y raises", curl_db: "bicep curls biceps curl dumbbell curl",
+  oh_tri_one: "single arm tricep extension overhead extension", goblet_squat: "goblet squat", goblet_sumo: "goblet sumo squat", bstance_rdl: "b stance rdl kickstand",
+  sumo_squat: "sumo squat", reverse_lunge: "reverse lunges", static_lunge: "static lunges split squat", frog_jump: "frog jumps frog",
+  bw_hip_thrust: "bodyweight hip thrust", sl_hip_thrust: "single leg hip thrust", glute_march: "glute bridge march", frog_pumps: "frog pumps",
+  donkey_kick: "donkey kickback donkey kicks", clamshell: "banded clamshell", side_tapout: "side tap out", reverse_crunch: "reverse crunches",
+  cross_crunch: "cross crunches", heel_taps: "side to sides heel touches", bicycle_kicks: "bicycle kicks flutter", wipers: "windshield wipers",
+  knee_elbow: "knee to elbow", plank_side_taps: "side taps", st_fig4: "figure 4 glute stretch etirement stretch mobilite souplesse",
+  st_butterfly: "butterfly stretch etirement mobilite souplesse", st_child: "child pose childs pose etirement stretch mobilite souplesse",
+  st_twist: "seated glute twist etirement stretch mobilite souplesse", st_hipflexor: "kneeling hip flexor stretch etirement mobilite souplesse psoas"
+};
+const normTxt = t => String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+const exHayCache = {};
+function exHay(e) {
+  if (exHayCache[e.id]) return exHayCache[e.id];
+  const cat = CAT_BY_ID[e.cat];
+  return exHayCache[e.id] = {
+    name: " " + normTxt(e.name) + " ", alias: " " + normTxt(EX_ALIAS[e.id]) + " ",
+    rest: " " + normTxt([e.muscles.join(" "), cat ? cat.label : "", e.type === "bw" ? "poids du corps pdc bodyweight" : e.type === "time" ? "chrono duree tenue" : "charge", reqText(e.id).join(" ")].join(" ")) + " "
+  };
+}
+/* Tous les mots doivent être trouvés ; le nom compte plus que les synonymes, eux-mêmes plus que muscles et matériel. */
+function exSearch(list, q) {
+  const toks = normTxt(q).split(" ").filter(Boolean).map(t => t.length > 3 ? t.replace(/s$/, "") : t);
+  if (!toks.length) return list;
+  const out = [], phrase = normTxt(q);
+  list.forEach((e, i) => {
+    const h = exHay(e); let sc = 0;
+    for (const t of toks) {
+      const w = " " + t;
+      const p = h.name.includes(w) ? 6 : h.name.includes(t) ? 4 : h.alias.includes(w) ? 3 : h.alias.includes(t) ? 2 : h.rest.includes(w) ? 1 : h.rest.includes(t) ? 0.5 : 0;
+      if (!p) return;
+      sc += p;
+    }
+    if (h.name.startsWith(" " + toks[0])) sc += 3;
+    if (toks.length > 1 && (h.name + h.alias).includes(" " + phrase)) sc += 5;
+    out.push({ e, sc, i });
+  });
+  return out.sort((a, b) => b.sc - a.sc || a.i - b.i).map(o => o.e);
+}
 
 /* ---- Matériel disponible ---- */
 const EQUIP_GROUPS = [
@@ -4669,7 +4742,8 @@ function renderSystems() {
   </header>
   ${st.mission ? `<button class="banner" data-act="go" data-to="briefing"><div><div class="d">MISSION EN COURS · ${hms(Date.now() - st.mission.start)}</div><p>Reprendre le briefing</p></div><span class="go">REPRENDRE →</span></button>` : ""}
   <div class="seg ex-seg" role="tablist" aria-label="Choisir">${[["sys", "PAR SYSTÈME"], ["prog", "SÉANCES PRÊTES"]].map(([k, l]) => `<button role="tab" aria-selected="${(ui.exView || "sys") === k}" class="${(ui.exView || "sys") === k ? "on" : ""}" data-act="ex-view" data-v="${k}">${l}</button>`).join("")}</div>
-  ${ui.exView === "prog" ? programsHTML() : `${favoritesBlock()}
+  ${ui.exView === "prog" ? programsHTML() : `<button class="search search-fake" data-act="search-open"><svg class="s-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Rechercher un exercice…</span></button>
+  ${favoritesBlock()}
   <section class="block">
     <h2 class="h2">SYSTÈMES MUSCULAIRES</h2>
     <p class="hint">Touchez un système pour voir ses exercices. Vous pouvez mélanger plusieurs systèmes dans la même mission.</p>
@@ -4682,19 +4756,46 @@ function renderSystems() {
 /* =====================================================================
    Écran 2 — Catalogue & Loadout
    ===================================================================== */
-function renderCatalog() {
-  const f = ui.filter || state.category;
+function catalogData() {
+  const f = ui.filter || state.category, q = (ui.q || "").trim();
   const pdc = !!ui.pdcOnly, eqOn = state.equip.filter, place = curPlace();
-  const inCat = exByCat(f).filter(e => !pdc || e.type !== "load");
-  const list = inCat.filter(e => !eqOn || canDo(e.id, place)), n = state.loadoutSession.length;
-  const hidden = inCat.length - list.length;
-  const cat = CAT_BY_ID[f];
+  const inCat = exSearch(exByCat(f).filter(e => !pdc || e.type !== "load"), q);
+  const list = inCat.filter(e => !eqOn || canDo(e.id, place));
+  return { f, q, pdc, eqOn, list, hidden: inCat.length - list.length, cat: CAT_BY_ID[f] };
+}
+function catalogListHTML(d) {
+  const { f, q, pdc, list, hidden, cat } = d;
+  const head = `<div class="list-head" id="list-head"><span>${q ? `RECHERCHE · ${cat ? cat.label : "TOUS SYSTÈMES"}` : cat ? `${cat.code} · ${cat.label}` : "TOUS SYSTÈMES"}${pdc ? " · PDC" : ""}</span><span>${list.length} EXERCICE${list.length > 1 ? "S" : ""}</span></div>`;
+  let empty = "";
+  if (!list.length && q) empty = `<div class="empty-note">Aucun exercice ne correspond à « ${esc(q)} »${f !== "all" ? ` dans ${cat ? cat.label : "ce système"}. <button class="link-btn" style="padding:0 4px" data-act="filter" data-cat="all">Chercher partout</button>` : "."}${hidden ? ` ${hidden} résultat${hidden > 1 ? "s" : ""} masqué${hidden > 1 ? "s" : ""} par le filtre matériel.` : ""}</div>`;
+  else if (!list.length) empty = `<div class="empty-note">Aucun exercice réalisable ici avec le matériel coché pour « ${PLACES[state.equip.active]} ». <button class="link-btn" style="padding:0 4px" data-act="eq-open">Régler le matériel</button></div>`;
+  else if (q && hidden) empty = `<p class="hint s-hidden">${hidden} autre${hidden > 1 ? "s" : ""} résultat${hidden > 1 ? "s" : ""} masqué${hidden > 1 ? "s" : ""} par le filtre matériel.</p>`;
+  return `${head}<div class="ex-list" id="ex-list">${list.map(e => rowHTML(e, q && f === "all")).join("")}</div>${empty}`;
+}
+/* Frappe dans la recherche : on ne redessine que la liste, pour garder le clavier ouvert. */
+function onSearchInput(v) {
+  const was = (ui.q || "").trim();
+  ui.q = v;
+  if (!was && v.trim() && ui.filter !== "all") {
+    ui.filter = "all";
+    document.querySelectorAll(".filters .filt[data-cat]").forEach(b => { const on = b.dataset.cat === "all"; b.classList.toggle("on", on); b.setAttribute("aria-selected", on); });
+  }
+  const box = $("#cat-results"); if (box) box.innerHTML = catalogListHTML(catalogData());
+  const x = $(".search .s-clear"); if (x) x.hidden = !v;
+}
+function renderCatalog() {
+  const d = catalogData(), { f, eqOn, hidden } = d, pdc = d.pdc, n = state.loadoutSession.length;
   return `
   <header class="cmdbar">
     <button class="back" data-act="go" data-to="systems" aria-label="Retour aux systèmes musculaires">${chevron()}</button>
     <h1 class="title-neon">CATALOGUE</h1>
     <div class="cmd-r"><div class="lo-counter" id="lo-counter" aria-live="polite">LOADOUT : <b id="lo-count">${n}</b> EXOS</div>${audBtn()}</div>
   </header>
+  <div class="search" role="search">
+    <svg class="s-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+    <input id="ex-search" class="txt" type="search" value="${esc(ui.q || "")}" placeholder="Rechercher : nom, muscle, matériel…" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="Rechercher un exercice">
+    <button class="s-clear" data-act="search-clear" aria-label="Effacer la recherche" ${ui.q ? "" : "hidden"}>✕</button>
+  </div>
   <div class="filters" role="tablist" aria-label="Filtrer par système">
     ${[{ id: "all", label: "TOUS" }, ...CATS].map(c => `<button class="filt ${f === c.id ? "on" : ""}" role="tab" aria-selected="${f === c.id}" data-act="filter" data-cat="${c.id}">${c.label}</button>`).join("")}
     <button class="filt pdc ${pdc ? "on" : ""}" aria-pressed="${pdc}" data-act="toggle-pdc">${pdc ? "✓ " : ""}POIDS DU CORPS</button>
@@ -4707,21 +4808,19 @@ function renderCatalog() {
     <button class="link-btn eq-set" data-act="eq-open">RÉGLER</button>
   </div>
   ${state.tips.catalog ? "" : `<div class="tip"><p>Touchez le <b>nom</b> d'un exercice pour l'analyser, la <b>case</b> pour l'ajouter au loadout, puis <b>VALIDER</b>. Activez <b>MATÉRIEL DISPO</b> pour ne voir que ce que vous pouvez faire.</p><button class="btn btn-quiet btn-sm" data-act="dismiss-tip" data-tip="catalog">COMPRIS</button></div>`}
-  <div class="list-head"><span>${cat ? `${cat.code} · ${cat.label}` : "TOUS SYSTÈMES"}${pdc ? " · PDC" : ""}</span><span>${list.length} EXERCICES</span></div>
-  <div class="ex-list" id="ex-list">${list.map(rowHTML).join("")}</div>
-  ${!list.length ? `<div class="empty-note">Aucun exercice réalisable ici avec le matériel coché pour « ${PLACES[state.equip.active]} ». <button class="link-btn" style="padding:0 4px" data-act="eq-open">Régler le matériel</button></div>` : ""}
+  <div id="cat-results">${catalogListHTML(d)}</div>
   <footer class="actionbar"><div class="actionbar-in">
     <button class="btn btn-alert hold" data-hold="reset-loadout" data-ms="600" aria-label="Reset du loadout, appui long requis"><span class="stack">RESET<small>APPUI LONG</small></span></button>
     <button class="btn btn-quiet fav-star" id="fav-save-btn" data-act="fav-open" ${n ? "" : "hidden"} aria-label="Enregistrer ce loadout en mission favorite">★</button>
     <button class="btn btn-neon" data-act="validate-loadout">VALIDER <span class="badge-n" id="lo-badge">${n}</span></button>
   </div></footer>`;
 }
-function rowHTML(e) {
+function rowHTML(e, showCat) {
   const on = state.loadoutSession.includes(e.id);
   return `<div class="ex-row ${on ? "is-on" : ""}" data-row="${e.id}">
     <button class="ex-name" data-act="sheet-ex" data-id="${e.id}" aria-label="Analyser ${esc(e.name)}">
       <span class="ex-title">${esc(e.name)}<span class="i" aria-hidden="true">i</span></span>
-      <span class="ex-meta">${e.type !== "load" ? `<span class="tag-pdc">PDC</span>` : ""}<span class="x">×${e.coef.toFixed(2)}</span> · ${esc(e.muscles.slice(0, 2).join(", "))}</span>
+      <span class="ex-meta">${showCat === true ? `<span class="tag-pdc tag-cat">${CAT_BY_ID[e.cat].label}</span>` : ""}${e.type !== "load" ? `<span class="tag-pdc">PDC</span>` : ""}<span class="x">×${e.coef.toFixed(2)}</span> · ${esc(e.muscles.slice(0, 2).join(", "))}</span>
     </button>
     <button class="check-hit" data-act="toggle-ex" data-id="${e.id}" role="checkbox" aria-checked="${on}" aria-label="Ajouter ${esc(e.name)} au loadout"><span class="check ${on ? "on" : ""}"></span></button>
   </div>`;
@@ -6414,6 +6513,7 @@ function go(to) {
   if (to === "squad" && !(STANDALONE && fb.user)) to = "hq";
   if (ui.screen === "squad" && to !== "squad") { closeSquadSub(); squad.panel = null; squad.msg = ""; }
   if (to === "catalog" && !ui.filter) ui.filter = state.category;
+  if (to !== "catalog") ui.q = "";
   ui.screen = to; ui.delArm = null;
   closeSheet();
   render();
@@ -6488,6 +6588,8 @@ const actions = {
   "sheet-ex": el => openExSheet(el.dataset.id),
   "close-sheet": () => closeSheet(),
   "toggle-ex": el => toggleEx(el.dataset.id),
+  "search-open": () => { ui.q = ""; ui.filter = "all"; go("catalog"); const i = $("#ex-search"); if (i) i.focus(); },
+  "search-clear": () => { const i = $("#ex-search"); if (i) { i.value = ""; onSearchInput(""); i.focus(); } },
   "validate-loadout": () => {
     if (!state.loadoutSession.length) { shake($("#lo-counter")); vibrate(60); toast("Loadout vide : cochez au moins un exercice.", true); return; }
     ensureMission(); save(); go("briefing");
@@ -6678,6 +6780,7 @@ function onDraftInput(id) {
   const pv = document.getElementById("pv-" + id);
   if (pv) pv.textContent = previewXp(id, kg, reps);
 }
+document.addEventListener("keydown", e => { if (e.key === "Enter" && e.target && e.target.id === "ex-search") { e.preventDefault(); e.target.blur(); } });
 document.addEventListener("input", e => {
   const t = e.target;
   if (t.matches("[data-field]")) { t.parentElement.classList.remove("bad"); onDraftInput(t.dataset.id); }
@@ -6693,6 +6796,7 @@ document.addEventListener("input", e => {
     setSnd(t.id === "snd-sfxvol" ? { sfxVol: (+t.value || 0) / 100 } : { musicVol: (+t.value || 0) / 100 });
   }
   if (t.id === "ef-secs") effortReviewUpdate();
+  if (t.id === "ex-search") onSearchInput(t.value);
   if (t.id === "sq-name") squad.draftName = t.value;
   if (t.id === "sq-code") squad.draftCode = t.value;
 });
