@@ -1244,6 +1244,88 @@ button.sq-row:hover{background:var(--panel-2)}
 .mm-det[open] .mm-list{margin-top:8px}
 .set-links{display:flex;flex-direction:column;gap:10px}
 #sheet-in .theme-picks .pick{flex:1 1 0}
+
+/* ---------- arsenal en icônes ---------- */
+.g-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.g-tile{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 6px 10px;border:1px solid var(--line);border-radius:4px;background:var(--panel);text-align:center;min-width:0}
+.g-tile:hover{border-color:var(--line-hi)}
+.g-tile.eq{border-color:var(--neon);background:var(--neon-soft)}
+.g-tile.locked{opacity:.6}
+.g-tile b{font-size:11.5px;font-weight:600;line-height:1.25;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+.g-fx{font-size:10.5px;line-height:1.35;color:var(--neon)}
+.g-tile.locked .g-fx{color:var(--muted)}
+.g-tile .rar{font-family:var(--f-display);font-size:7.5px;letter-spacing:.14em}
+.g-tile .mini-bar{width:70%;margin-top:3px}
+.g-flag{position:absolute;top:-1px;right:-1px;font-family:var(--f-display);font-size:7px;letter-spacing:.12em;padding:3px 5px;background:var(--neon);color:var(--ink);border-radius:0 4px 0 4px}
+.g-icw{position:relative;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--panel-2);border:1px solid var(--line)}
+.g-tile.eq .g-icw{border-color:var(--neon);box-shadow:0 0 10px var(--neon-soft)}
+.g-lock{position:absolute;right:-3px;bottom:-3px;width:18px;height:18px;padding:2px;border-radius:50%;background:var(--panel);border:1px solid var(--line);fill:none;stroke:var(--muted);stroke-width:2.2;stroke-linecap:round}
+.g-ic{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.g-ic .f{fill:currentColor;stroke:none}.g-ic .fs{fill:currentColor;fill-opacity:.2;stroke:none}
+.g-ic.r-COMMUN{color:var(--common)}.g-ic.r-RARE{color:var(--neon)}.g-ic.r-EPIQUE{color:var(--neon);filter:drop-shadow(0 0 3px var(--neon-glow))}.g-ic.r-LEGENDAIRE{color:var(--legend);filter:drop-shadow(0 0 3px rgba(var(--legend-rgb),.6))}
+.g-tile.locked .g-ic{color:var(--muted);filter:none}
+.g-head{display:flex;align-items:center;gap:12px}
+/* ---------- aptitudes en icônes ---------- */
+.pp-line{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.pp-line b{font-family:var(--f-display);font-size:24px;color:var(--neon)}
+.pp-line .hint{flex-basis:100%;font-size:12px}
+.p-branch{margin-top:14px}
+.p-bh{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.p-bh b{font-family:var(--f-display);font-size:11px;letter-spacing:.16em;color:var(--neon)}
+.p-bh span{font-size:12px;color:var(--muted)}
+.p-row{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.p-row::before{content:"";position:absolute;left:12%;right:12%;top:30px;height:2px;background:var(--line)}
+.p-tile{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 2px;text-align:center;min-width:0;border-radius:4px}
+.p-icw{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--panel);color:var(--dim)}
+.p-ic{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.p-tile b{font-size:10.5px;font-weight:600;line-height:1.25;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+.p-tile small{font-family:var(--f-display);font-size:7.5px;letter-spacing:.1em;color:var(--dim)}
+.p-tile.owned .p-icw{border-color:var(--neon);background:var(--neon);color:var(--ink);box-shadow:0 0 10px var(--neon-glow)}
+.p-tile.owned b{color:var(--text)}.p-tile.owned small{color:var(--neon)}
+.p-tile.avail .p-icw{border-color:var(--neon);color:var(--neon);animation:pulse 1.6s infinite}
+.p-tile.avail b{color:var(--text)}.p-tile.avail small{color:var(--neon)}
+.perk-hero{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);border-radius:4px;background:var(--panel-2)}
+.perk-hero .p-ic{flex:none;color:var(--neon)}
+.perk-hero p{font-size:15px;line-height:1.5;color:var(--text)}
+.perk-hero.locked .p-ic{color:var(--muted)}
+.perk-confirm{padding:14px;display:flex;flex-direction:column;gap:12px;border-color:var(--neon)}
+.perk-confirm p{font-size:14px;line-height:1.5}
+.perk-done{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;font-family:var(--f-display);font-size:11px;letter-spacing:.14em;color:var(--neon);border:1px solid var(--neon);border-radius:4px;background:var(--neon-soft)}
+.perk-done .p-ic{color:var(--neon)}
+/* ---------- QG : tuiles Exercices / Escouades ---------- */
+.hq-go.two .ex-entry,.hq-go.two .sq-entry{flex-direction:column;align-items:flex-start;gap:8px;padding:12px}
+.hq-go .ex-txt b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;letter-spacing:.1em}
+.hq-go.two .ex-txt b{font-size:12px}
+.hq-go.two{grid-template-columns:1fr 1fr}
+
+/* ---------- QG : EXERCICES dominant, escouades et synchro dans la barre ---------- */
+.ex-main{margin-top:12px;padding:18px 16px;gap:14px}
+.ex-main .ex-ic{width:48px;height:48px}.ex-main .ex-ic svg{width:30px;height:30px}
+.ex-main .ex-txt b{font-size:18px;letter-spacing:.16em}
+.ex-main .ex-txt small{font-size:12.5px}
+.ex-main .go{font-size:28px;line-height:1;color:var(--neon)}
+.set-btn{position:relative}
+.set-btn .sync{position:absolute;top:-4px;right:-4px;width:auto;height:auto;padding:0;border:0;background:none}
+.set-btn .sync i{width:9px;height:9px;border:2px solid var(--void);box-sizing:content-box}
+.sync-row{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:11px;letter-spacing:.14em}
+.sync-row .sync{width:auto;height:auto;padding:0;border:0;background:none}
+/* ---------- coach ---------- */
+.coach{display:flex;flex-direction:column;gap:8px}
+.ct-tip{display:flex;gap:12px;padding:12px 14px;align-items:flex-start}
+.ct-tip svg{flex:none;width:22px;height:22px;margin-top:1px;fill:none;stroke:var(--neon);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ct-tip b{display:block;font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:3px}
+.ct-tip p{font-size:13px;line-height:1.5;color:var(--muted)}
+.ct-tip.warn{border-color:rgba(var(--legend-rgb),.5)}
+.ct-tip.warn svg{stroke:var(--legend)}
+
+.sq-strip{margin-top:8px;width:100%;display:flex;align-items:center;gap:12px;padding:9px 14px 9px 10px;border:1px solid var(--line-hi);border-radius:4px;background:linear-gradient(90deg,var(--neon-soft),var(--panel) 70%);text-align:left}
+.sq-strip:hover{border-color:var(--neon)}
+.sq-logo svg{display:block;width:34px;height:34px;fill:none;stroke:var(--neon);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sq-logo .hx{fill:rgba(var(--neon-rgb),.1);stroke-width:1.4}
+.sq-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.sq-t b{font-family:var(--f-display);font-size:11.5px;letter-spacing:.18em;color:var(--neon)}
+.sq-t small{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sq-strip .go{font-size:22px;line-height:1;color:var(--neon)}
 </style>
 <script>window.NEON_STANDALONE = true;
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
@@ -2819,8 +2901,7 @@ function renderHQ() {
   <header class="topbar">
     <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>NEONFITNESS<b>PRO</b></span></div>
     <div class="top-r">${audBtn()}
-    <button class="sync ${sync.mode}" id="sync-chip" data-act="sync-info" aria-label="État de la sauvegarde"><i aria-hidden="true"></i><span>${SYNC_LABEL[sync.mode]}</span></button>
-    <button class="icon-btn" data-act="settings-open" aria-label="Réglages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div>
+    <button class="icon-btn set-btn" data-act="settings-open" aria-label="Réglages et sauvegarde"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="sync ${sync.mode}" id="sync-chip"><i aria-hidden="true"></i><span>${SYNC_LABEL[sync.mode]}</span></span></button></div>
   </header>
   <section class="panel bracket op-card" aria-label="Fiche de l'opérateur">
     <button class="av-btn" data-act="chassis" aria-label="Ouvrir la fiche du châssis">${avatarSVG(st)}</button>
@@ -2843,10 +2924,11 @@ function renderHQ() {
   <nav class="tabs" role="tablist">
     ${tabs.map(([id, l]) => `<button class="tab" role="tab" aria-selected="${ui.tab === id}" data-act="tab" data-tab="${id}">${l}${id === "aptitudes" && st.perkPoints > 0 && availPerks ? '<span class="pip" aria-label="points disponibles"></span>' : ""}</button>`).join("")}
   </nav>
-  <div class="hq-go ${STANDALONE && fb.user ? "two" : ""}">
-    <button class="ex-entry" data-act="go" data-to="systems"><span class="ex-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="f" d="M1.5 10h2v4h-2zM4.5 6.5h3.5v11H4.5zM16 6.5h3.5v11H16zM20.5 10h2v4h-2zM8 11h8v2H8z"/></svg></span><span class="ex-txt"><b>EXERCICES</b><small>${EXERCISES.length} exercices · 6 systèmes</small></span></button>
-    ${STANDALONE && fb.user ? `<button class="sq-entry" data-act="go" data-to="squad"><span class="ex-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M18 15c2 .6 3 2.4 3 5"/></svg></span><span class="ex-txt"><b>ESCOUADES</b><small>${st.squads.length ? `${st.squads.length} escouade${st.squads.length > 1 ? "s" : ""} · classement` : "Jouer avec des amis"}</small></span></button>` : ""}
-  </div>
+  <button class="ex-entry ex-main" data-act="go" data-to="systems"><span class="ex-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="f" d="M1.5 10h2v4h-2zM4.5 6.5h3.5v11H4.5zM16 6.5h3.5v11H16zM20.5 10h2v4h-2zM8 11h8v2H8z"/></svg></span><span class="ex-txt"><b>EXERCICES</b><small>${st.mission ? "Mission en cours : reprendre ou compléter le loadout" : `Choisir un système et lancer une mission · ${EXERCISES.length} exercices`}</small></span><span class="go" aria-hidden="true">›</span></button>
+  ${STANDALONE && fb.user ? `<button class="sq-strip" data-act="go" data-to="squad">
+    <span class="sq-logo" aria-hidden="true"><svg viewBox="0 0 32 32"><polygon class="hx" points="16,2 28.5,9 28.5,23 16,30 3.5,23 3.5,9"/><path d="M12.5 15.5a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zM7.5 22.5c0-2.8 2.2-4.6 5-4.6s5 1.8 5 4.6M19.5 10.4a2.6 2.6 0 0 1 0 5.1M21 18c1.9.5 3.5 2 3.5 4.5"/></svg></span>
+    <span class="sq-t"><b>ESCOUADES</b><small>${st.squads.length ? `${esc(st.squads.length === 1 ? (st.squads[0].name || "Mon escouade") : `${st.squads.length} escouades`)} · défi de la semaine et raid du mois` : "Créez ou rejoignez une escouade avec vos amis"}</small></span>
+    <span class="go" aria-hidden="true">›</span></button>` : ""}
   <div>${ui.tab === "arsenal" ? tabArsenal(b) : ui.tab === "aptitudes" ? tabPerks() : ui.tab === "archives" ? tabArchives() : tabFiche(b)}</div>`;
 }
 
@@ -2873,30 +2955,81 @@ function tabFiche(b) {
   return contractsBlock() + attrs;
 }
 
+
+/* =====================================================================
+   Icônes du cyberware et des aptitudes
+   ===================================================================== */
+const GEAR_ICON = {
+  neural_civ: `<rect x="14" y="14" width="20" height="20" rx="2"/><rect class="f" x="20" y="20" width="8" height="8" rx="1"/><path d="M18 14v-5M24 14v-5M30 14v-5M18 34v5M24 34v5M30 34v5M14 18h-5M14 24h-5M14 30h-5M34 18h5M34 24h5M34 30h5"/>`,
+  neural_adren: `<rect x="14" y="14" width="20" height="20" rx="2"/><path d="M8 24h7l3-6 4 12 3-9 2 3h13M18 14v-5M30 14v-5M18 34v5M30 34v5"/>`,
+  neural_sync: `<circle cx="24" cy="24" r="4" class="f"/><circle cx="11" cy="13" r="3"/><circle cx="37" cy="13" r="3"/><circle cx="11" cy="35" r="3"/><circle cx="37" cy="35" r="3"/><path d="M14 15l7 6M34 15l-7 6M14 33l7-6M34 33l-7-6M24 8v12M24 28v12"/>`,
+  neural_ghost: `<path d="M12 12h24l4 10-4 16H12L8 22z"/><path class="f" d="M15 22h7l-2 4h-5zM33 22h-7l2 4h5z"/><path d="M19 33h10M24 6v6"/>`,
+  arms_mk0: `<path d="M13 22c0-4 3-7 7-7h8c4 0 7 3 7 7v11c0 3-2 5-5 5H18c-3 0-5-2-5-5z"/><path d="M18 15v8M23 15v8M28 15v8M13 27h22"/>`,
+  arms_hydra: `<rect x="9" y="12" width="12" height="24" rx="3"/><rect x="27" y="12" width="12" height="24" rx="3"/><path d="M15 6v6M33 6v6M15 36v6M33 36v6M21 20h6M21 28h6"/><path class="f" d="M12 26h6v6h-6zM30 26h6v6h-6z"/>`,
+  arms_plasma: `<path d="M14 40l6-24 8-6 6 4-4 10-6 16z"/><path d="M36 8l-4 6 5 1-4 7M40 22l-5 3 4 3"/><circle class="f" cx="25" cy="20" r="2.5"/>`,
+  core_belt: `<path d="M5 18h38v12H5z"/><rect x="18" y="15" width="12" height="18" rx="2"/><path class="f" d="M22 21h4v6h-4z"/><path d="M9 18v12M39 18v12"/>`,
+  core_gyro: `<circle cx="24" cy="24" r="14"/><ellipse cx="24" cy="24" rx="14" ry="5"/><ellipse cx="24" cy="24" rx="5" ry="14"/><circle class="f" cx="24" cy="24" r="3"/>`,
+  core_arc: `<circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="9"/><circle class="f" cx="24" cy="24" r="4"/><path d="M24 4v5M24 39v5M4 24h5M39 24h5M10 10l3.5 3.5M34.5 34.5L38 38M10 38l3.5-3.5M34.5 13.5L38 10"/>`,
+  core_raid: `<polygon points="24,6 39.6,15 39.6,33 24,42 8.4,33 8.4,15"/><polygon points="24,15 32,30 16,30"/><circle class="f" cx="24" cy="25" r="2.6"/>`,
+  dorsal_mk1: `<rect x="19" y="5" width="10" height="6" rx="2"/><rect x="19" y="14" width="10" height="6" rx="2"/><rect x="19" y="23" width="10" height="6" rx="2"/><rect x="19" y="32" width="10" height="6" rx="2"/><path d="M24 38v6M19 8h-6M29 8h6M19 17h-5M29 17h5"/>`,
+  dorsal_mk2: `<rect x="20" y="6" width="8" height="6" rx="2"/><rect x="20" y="15" width="8" height="6" rx="2"/><rect x="20" y="24" width="8" height="6" rx="2"/><rect x="20" y="33" width="8" height="6" rx="2"/><path d="M20 9H8l-2 6M28 9h12l2 6M20 18H11M28 18h9M20 27h-6M28 27h6"/><circle class="f" cx="6" cy="17" r="2"/><circle class="f" cx="42" cy="17" r="2"/>`,
+  dorsal_aegis: `<path d="M24 5l15 6v12c0 9-7 16-15 19-8-3-15-10-15-19V11z"/><path d="M24 5v37M9 18h30M11 28h26"/><path class="fs" d="M24 5l15 6v7H24z"/>`,
+  legs_g0: `<path d="M17 6h10v20l11 8v6H13V26z"/><path d="M13 40h25M9 44c3-2 6-2 9 0s6 2 9 0 6-2 9 0"/><path d="M17 16h10"/>`,
+  legs_titan: `<rect x="16" y="4" width="16" height="16" rx="3"/><rect x="19" y="20" width="10" height="12"/><path d="M14 32h20v6H14zM24 20v-6M12 42h24"/><path class="f" d="M21 23h6v6h-6z"/>`,
+  legs_quant: `<path d="M20 4h8v26l6 6v6H16v-6l4-6z"/><ellipse cx="24" cy="22" rx="17" ry="5"/><ellipse cx="24" cy="22" rx="17" ry="5" transform="rotate(60 24 22)"/><circle class="f" cx="24" cy="22" r="2.5"/>`
+};
+function gearIcon(id, size) {
+  const g = GEAR_BY_ID[id];
+  return `<svg class="g-ic r-${g ? g.rarity.normalize("NFD").replace(/[̀-ͯ]/g, "") : "COMMUN"}" viewBox="0 0 48 48" width="${size || 48}" height="${size || 48}" aria-hidden="true">${GEAR_ICON[id] || GEAR_ICON.neural_civ}</svg>`;
+}
+const PERK_GLYPH = { surcharge: "star", fibres: "push", adrenaline: "bolt", berserker: "flame", titane: "repeat", cryo: "snow", overclock: "timer",
+  fusion: "sun", ouverture: "flag", gyro: "hourglass", propulseurs: "level", commandement: "people" };
+function perkIcon(p, size) {
+  return `<svg class="p-ic" viewBox="0 0 24 24" width="${size || 22}" height="${size || 22}" aria-hidden="true"><path d="${GLYPH[PERK_GLYPH[p.id]] || GLYPH.star}"/></svg>`;
+}
+function perkStatus(p) {
+  const st = state, s = perkState(p);
+  if (s === "owned") return "INSTALLÉE";
+  if (s === "avail") return "DISPONIBLE";
+  if (st.level < p.lvl) return `NIVEAU ${p.lvl}`;
+  if (p.req && !st.perks.includes(p.req)) return `APRÈS ${PERK_BY_ID[p.req].name.toUpperCase()}`;
+  return "SANS POINT";
+}
+function openPerkSheet(id, confirm) {
+  const p = PERK_BY_ID[id]; if (!p) return;
+  ui.sheetEx = null;
+  const st = state, s = perkState(p), br = BRANCHES[p.branch];
+  let action;
+  if (s === "owned") action = `<div class="perk-done">${perkIcon(p, 18)} APTITUDE INSTALLÉE</div>`;
+  else if (s === "avail" && confirm) action = `<div class="panel perk-confirm"><p>Installer <b>${esc(p.name)}</b> ? Cela utilise 1 point d'aptitude (il vous en reste ${st.perkPoints}). <b>Une aptitude installée est définitive.</b></p>
+      <div class="btn-row"><button class="btn btn-quiet" data-act="perk-sheet" data-id="${p.id}">ANNULER</button><button class="btn btn-neon" data-act="perk" data-id="${p.id}">CONFIRMER</button></div></div>`;
+  else if (s === "avail") action = `<button class="btn btn-neon" style="width:100%" data-act="perk-ask" data-id="${p.id}">INSTALLER · 1 POINT</button>`;
+  else action = `<div class="lock"><span class="req">VERROUILLÉE · ${perkStatus(p)}${st.level < p.lvl ? " REQUIS" : ""}</span>${st.level < p.lvl ? `<span class="hint">Vous êtes niveau ${st.level}.</span>` : p.req && !st.perks.includes(p.req) ? `<span class="hint">Installez d'abord « ${esc(PERK_BY_ID[p.req].name)} ».</span>` : `<span class="hint">Gagnez un niveau pour obtenir un point d'aptitude.</span>`}</div>`;
+  $("#sheet-in").innerHTML = `
+    <div class="grip" aria-hidden="true"></div>
+    <div class="sheet-top"><div><div class="eyebrow">BRANCHE ${br.label} · RANG ${p.tier} · ${p.type}</div><h2>${esc(p.name)}</h2></div>
+      <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
+    <div class="perk-hero ${s}">${perkIcon(p, 40)}<p>${esc(p.desc)}</p></div>
+    <div class="ratio"><div><span>Niveau requis</span><b>${p.lvl}</b></div><div><span>Prérequis</span><b>${p.req ? esc(PERK_BY_ID[p.req].name) : "Aucun"}</b></div></div>
+    ${action}`;
+  showSheet(".x-close");
+}
 function tabArsenal() {
   const st = state;
-  return SLOT_KEYS.map(s => `
+  return `<p class="hint" style="margin-top:16px">Touchez une pièce pour voir sa fiche, la comparer et l'équiper.</p>` + SLOT_KEYS.map(s => `
   <section class="block gear-slot">
     <h2 class="h2">${SLOTS[s]}</h2>
-    ${GEAR.filter(g => g.slot === s).map(g => {
+    <div class="g-grid">${GEAR.filter(g => g.slot === s).map(g => {
       const unlocked = st.gear.unlocked.includes(g.id), eq = st.gear.equipped[s] === g.id;
-      let side = "";
-      if (eq) side = `<span class="tag-eq">ÉQUIPÉ</span>`;
-      else if (unlocked) side = `<button class="btn btn-neon btn-sm" data-act="equip" data-id="${g.id}">ÉQUIPER</button>`;
-      let lock = "";
-      if (!unlocked) {
-        const [cur, tgt] = condProgress(g.cond, st);
-        lock = `<div class="lock"><span class="req">VERROUILLÉ · ${condText(g.cond)}</span><div class="mini-bar"><i style="width:${Math.min(100, cur / tgt * 100)}%"></i></div><span class="hint">${fmt(cur)} / ${fmt(tgt)}</span></div>`;
-      }
-      return `<article class="panel gear ${eq ? "equipped" : ""} ${unlocked ? "" : "locked"}">
-        <div><div class="rar ${g.rarity}">${g.rarity}</div><button class="nm gear-name" data-act="gear-sheet" data-id="${g.id}">${esc(g.name)}<span class="more">FICHE ›</span></button></div>
-        <div>${side}</div>
-        <p class="ds">${esc(g.desc)}</p>
-        <div class="fx-list">${fxLines(g.fx).map(l => `<span>${l}</span>`).join("")}</div>
-        ${lock}
-        ${eq ? `<div style="grid-column:1/-1"><button class="btn btn-quiet btn-sm" data-act="unequip" data-slot="${s}">RETIRER</button></div>` : ""}
-      </article>`;
-    }).join("")}
+      const [cur, tgt] = unlocked ? [1, 1] : condProgress(g.cond, st);
+      return `<button class="g-tile ${eq ? "eq" : ""} ${unlocked ? "" : "locked"}" data-act="gear-sheet" data-id="${g.id}" aria-label="${esc(g.name)}, ${g.rarity.toLowerCase()}${eq ? ", équipé" : unlocked ? "" : ", verrouillé"}">
+        ${eq ? `<span class="g-flag">ÉQUIPÉ</span>` : ""}
+        <span class="g-icw">${gearIcon(g.id, 46)}${unlocked ? "" : `<svg class="g-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`}</span>
+        <b>${esc(g.name)}</b>
+        <span class="g-fx">${fxLines(g.fx).join("<br>")}</span>
+        ${unlocked ? `<span class="rar ${g.rarity}">${g.rarity}</span>` : `<span class="mini-bar"><i style="width:${Math.min(100, cur / tgt * 100)}%"></i></span>`}
+      </button>`;
+    }).join("")}</div>
   </section>`).join("");
 }
 
@@ -2909,32 +3042,14 @@ function tabPerks() {
   const st = state;
   return `
   <section class="block">
-    <div class="panel pp-head">
-      <div><div class="eyebrow">POINTS D'APTITUDE</div><b class="num">${st.perkPoints}</b></div>
-      <p class="hint" style="max-width:34ch">Un point gagné à chaque niveau. Chaque branche se débloque dans l'ordre.</p>
-    </div>
-  </section>
-  <section class="block">
-    <div class="branches">
-      ${Object.entries(BRANCHES).map(([bid, br]) => {
-        const nodes = PERKS.filter(p => p.branch === bid).sort((a, z) => a.tier - z.tier);
-        return `<div class="branch"><div class="branch-h"><div class="d">${br.label}</div><p>${br.sub}</p></div>
-          ${nodes.map((p, i) => {
-            const s = perkState(p);
-            let status;
-            if (s === "owned") status = "INSTALLÉE";
-            else if (s === "avail") status = "TOUCHER POUR INSTALLER";
-            else if (st.level < p.lvl) status = `NIVEAU ${p.lvl} REQUIS`;
-            else if (p.req && !st.perks.includes(p.req)) status = `REQUIERT ${PERK_BY_ID[p.req].name.toUpperCase()}`;
-            else status = "AUCUN POINT DISPONIBLE";
-            const link = i < nodes.length - 1 ? `<span class="link ${s === "owned" ? "lit" : ""}" aria-hidden="true"></span>` : "";
-            return `<button class="panel node ${s}" ${s === "avail" ? `data-act="perk" data-id="${p.id}"` : "aria-disabled=\"true\""}>
-              <span class="st"><span>T${p.tier} · NIV ${p.lvl}</span><span class="ptype ${p.type}">${p.type}</span></span>
-              <span class="nm">${esc(p.name)}</span><span class="ds">${esc(p.desc)}</span>
-              <span class="st">${status}</span></button>${link}`;
-          }).join("")}</div>`;
-      }).join("")}
-    </div>
+    <div class="pp-line"><span class="eyebrow">POINTS D'APTITUDE</span><b class="num">${st.perkPoints}</b><span class="hint">1 par niveau · touchez une aptitude pour la détailler</span></div>
+    ${Object.entries(BRANCHES).map(([bid, br]) => {
+      const nodes = PERKS.filter(p => p.branch === bid).sort((a, z) => a.tier - z.tier);
+      return `<div class="p-branch"><div class="p-bh"><b>${br.label}</b><span>${br.sub}</span></div>
+        <div class="p-row">${nodes.map(p => { const s = perkState(p);
+          return `<button class="p-tile ${s}" data-act="perk-sheet" data-id="${p.id}" aria-label="${esc(p.name)} : ${perkStatus(p).toLowerCase()}">
+            <span class="p-icw">${perkIcon(p, 22)}</span><b>${esc(p.name)}</b><small>${s === "owned" ? "✓ INSTALLÉE" : s === "avail" ? "● DISPONIBLE" : `NIV ${p.lvl}`}</small></button>`; }).join("")}</div></div>`;
+    }).join("")}
   </section>`;
 }
 
@@ -2946,6 +3061,7 @@ function tabArchives() {
   <section class="block"><h2 class="h2">CARTE DES MUSCLES</h2>${muscleMapHTML()}</section>
   <section class="block"><h2 class="h2">POIDS DE CORPS</h2>${weightHTML()}</section>`;
   if (view === "journal") return seg + `
+  <section class="block"><h2 class="h2">COACH</h2>${coachHTML(null)}</section>
   <section class="block">
     <h2 class="h2">JOURNAL DES MISSIONS</h2>
     ${st.history.length ? `<div class="panel rows">${st.history.slice(0, ui.journalAll ? 60 : 8).map(h => `<div class="r"><div>${new Date(h.date).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${esc(h.focus || "Mission")}<div class="s">${h.sets} séries · ${fmt(h.ton)} kg · ${hms(h.dur)}</div>${h.note && (h.note.energy || h.note.rpe || h.note.text) ? `<div class="note-line">${h.note.energy ? `Énergie ${h.note.energy}/5` : ""}${h.note.energy && h.note.rpe ? " · " : ""}${h.note.rpe ? ["", "Facile", "Correcte", "Dure", "Épuisante"][h.note.rpe] : ""}${h.note.text ? `${h.note.energy || h.note.rpe ? " · " : ""}« ${esc(h.note.text)} »` : ""}</div>` : ""}</div><div class="v">+${fmt(h.xp)} XP<div class="s">NIV ${h.level}</div></div></div>`).join("")}</div>
@@ -2987,7 +3103,9 @@ function settingsHTML() {
       <p class="hint">AUTO suit le mode clair/sombre du téléphone. Réglages propres à cet appareil, comme le son (icône haut-parleur).</p></div>
     <div class="sec"><h3>SAUVEGARDE</h3>
       ${STANDALONE && fb.user ? `<p style="font-size:14px;overflow-wrap:anywhere;margin-bottom:6px">${esc(fb.user.email || "Compte Google")}</p>` : ""}
+      <p class="sync-row"><span class="sync ${sync.mode}"><i aria-hidden="true"></i></span><b>${SYNC_LABEL[sync.mode]}</b></p>
       <p id="sync-info-text" class="hint">${esc(syncInfo())}</p>
+      ${sync.mode === "error" ? `<button class="btn btn-neon" data-act="sync-retry">RÉESSAYER L'ENVOI</button>` : ""}
       <div class="btn-row"><button class="btn btn-ghost" data-act="export">EXPORTER</button><button class="btn btn-ghost" data-act="import">IMPORTER</button></div>
       <p class="hint">L'export donne un code de secours contenant toute votre progression.</p></div>
     <div class="sec set-links">
@@ -3616,6 +3734,7 @@ function lifeOnMission(st, m, t, xp, records, now) {
    Succès
    ===================================================================== */
 const GLYPH = {
+  snow: "M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 4l3 3 3-3M9 20l3-3 3 3",
   flag: "M6 21V4M6 4h11l-2 4 2 4H6", weight: "M3 9v6M6 6v12M18 6v12M21 9v6M6 12h12", push: "M3 18h18M7 14l5-7 5 7",
   pull: "M3 5h18M8 5v5a4 4 0 0 0 8 0V5", hourglass: "M7 3h10M7 21h10M8 3c0 5 8 6 8 9s-8 4-8 9M16 3c0 5-8 6-8 9s8 4 8 9",
   level: "M5 14l7-6 7 6M5 20l7-6 7 6", star: "M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.8l-5.3 2.6 1.2-6-4.5-4.1 6-.7z",
@@ -3987,6 +4106,131 @@ function raidPanelHTML(code, list) {
     <div class="sqc-contrib">${sr.contrib.map(c => `<span class="${c.me ? "me" : ""}">${esc(c.name)} · ${sr.r.fmtV(c.v)}</span>`).join("")}</div>
     <p class="hint">${first ? "Premier raid réussi : débloque une pièce de cyberware exclusive, le <b>Noyau de Raid Ω-7</b>, qu'on ne gagne qu'en équipe." : "Objectif commun sur tout le mois, il grandit avec le nombre de membres. Nouveau raid le 1er du mois."}</p>
   </section>`;
+}
+
+/* =====================================================================
+   Coach intégré (sans IA, tout est calculé sur l'appareil)
+   Il lit les notes de débriefing (énergie, difficulté, commentaire), l'historique,
+   les courbes de progression et la répartition des muscles, puis choisit les 3 conseils
+   les plus utiles. Rien n'est envoyé nulle part.
+   ===================================================================== */
+const norm = t => String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const has = (t, re) => re.test(t);
+const BODY_PARTS = [
+  { k: "epaule", re: /epaule|deltoide|coiffe/, name: "à l'épaule",
+    tip: "Allège de 20 à 30 % les développés (couché, militaire, dips) et évite l'amplitude qui fait mal. Échauffe la coiffe des rotateurs avec des face pulls et des élévations très légères avant de pousser." },
+  { k: "coude", re: /coude|tendinite.*bras|epicondyl/, name: "au coude",
+    tip: "Réduis les curls et les extensions triceps lourds, préfère les prises neutres (curl marteau, tractions prise neutre) et monte les charges plus progressivement." },
+  { k: "poignet", re: /poignet|main/, name: "au poignet",
+    tip: "Privilégie les prises neutres et les haltères plutôt que la barre droite, garde le poignet aligné avec l'avant-bras, et fais les pompes sur des poignées ou les poings." },
+  { k: "genou", re: /genou|rotule|menisque/, name: "au genou",
+    tip: "Réduis la profondeur et la charge sur les squats et fentes, travaille davantage avec la hanche (soulevé roumain, hip thrust) et prends le temps de t'échauffer les jambes." },
+  { k: "dos", re: /\bdos\b|lombaire|lombalgie|reins|sciatique|dos bloque/, name: "au bas du dos",
+    tip: "Allège le soulevé de terre, le rowing barre et le squat, gaine bien le ventre avant chaque répétition, et renforce le tronc (gainage, bird dog) en attendant." },
+  { k: "nuque", re: /nuque|\bcou\b|cervical|trapeze/, name: "à la nuque",
+    tip: "Évite les shrugs lourds et la barre au front quelques séances, garde la tête dans l'axe pendant les exercices et détends les épaules entre les séries." },
+  { k: "hanche", re: /hanche|aine|psoas/, name: "à la hanche",
+    tip: "Réduis l'amplitude des squats et fentes, échauffe les hanches (mobilité, fentes légères) et évite ce qui provoque la gêne." },
+  { k: "cheville", re: /cheville|mollet|tendon d'achille|achille/, name: "à la cheville",
+    tip: "Allège les mollets et les exercices sautés, échauffe les chevilles et privilégie les exercices assis ou couchés pour les jambes." }
+];
+function recentNotes(n) { return state.history.filter(h => h.note && (h.note.energy || h.note.rpe || h.note.text)).slice(0, n || 5); }
+function stagnating() {
+  const out = [];
+  for (const [id, log] of Object.entries(state.exLog)) {
+    const e = EX[id]; if (!e || log.length < 4) continue;
+    const v = log.map(x => e.type === "time" ? x.reps : (x.e1 || x.score));
+    const last3 = v.slice(-3), before = Math.max(...v.slice(0, -3));
+    if (Math.max(...last3) <= before && Date.now() - log[log.length - 1].d < 30 * DAY) out.push(e);
+  }
+  return out;
+}
+function progressing() {
+  const out = [];
+  for (const [id, log] of Object.entries(state.exLog)) {
+    const e = EX[id]; if (!e || log.length < 3) continue;
+    const v = log.slice(-4).map(x => e.type === "time" ? x.reps : (x.e1 || x.score));
+    if (v[0] > 0 && v[v.length - 1] >= v[0] * 1.05 && Date.now() - log[log.length - 1].d < 21 * DAY) out.push({ e, pct: Math.round((v[v.length - 1] / v[0] - 1) * 100) });
+  }
+  return out.sort((a, z) => z.pct - a.pct);
+}
+/* r = rapport de mission en cours (facultatif) */
+function coachTips(r) {
+  const tips = [], add = (prio, key, icon, title, text) => { if (!tips.some(t => t.key === key)) tips.push({ prio, key, icon, title, text }); };
+  const st = state, H = st.history, notes = recentNotes(5);
+  const note = r && r.noteSaved ? r.note : (H[0] && H[0].note) || null;
+  const txt = norm(note && note.text);
+  const now = Date.now();
+  // ---------- ce que dit le commentaire ----------
+  if (txt) {
+    const pain = has(txt, /douleur|douloureu|\bmal\b|mal (a|au|aux)|bless|gene|genant|tendin|inflamm|craqu|coince|claque|elongation|contracture|entorse/);
+    const parts = BODY_PARTS.filter(p => p.re.test(txt));
+    if (pain && parts.length) parts.slice(0, 2).forEach(p => add(100, "pain-" + p.k, "alert", `Gêne ${p.name}`, p.tip + " Si la douleur est vive, gonfle ou dure plus de quelques jours, consulte un professionnel de santé avant de reprendre."));
+    else if (pain) add(98, "pain", "alert", "Douleur signalée", "Ne force pas sur ce qui fait mal : allège la charge, réduis l'amplitude ou remplace l'exercice concerné. Une douleur vive, qui gonfle ou qui dure plus de quelques jours mérite l'avis d'un professionnel de santé.");
+    if (has(txt, /malade|rhume|fievre|grippe|covid|angine|enrhume|nez qui coule/)) add(97, "sick", "alert", "Récupère d'abord", "Avec de la fièvre ou une infection, on ne s'entraîne pas : le corps a besoin de son énergie pour guérir. Pour un simple rhume sans fièvre, une séance légère et courte reste possible.");
+    if (has(txt, /vertige|tete qui tourne|malaise|nausee|vomi|voile noir/)) add(96, "dizzy", "alert", "Malaise pendant la séance", "Arrête-toi dès que la tête tourne, assieds-toi et bois. Mange quelque chose 1 à 2 h avant la séance, hydrate-toi bien, et parle-en à un médecin si ça se répète.");
+    if (has(txt, /mal dormi|pas dormi|peu dormi|nuit blanche|insomni|sommeil|fatigue|creve|epuise|naze|vide|lessive|a plat/)) add(80, "sleep", "moon", "Fatigue signalée", "La progression se fait pendant la récupération. Vise 7 à 9 h de sommeil ; les jours de grosse fatigue, garde la séance mais baisse les charges de 10 % ou fais une version courte.");
+    if (has(txt, /courbature|doms|raide|ankylose/)) add(70, "doms", "body", "Courbatures", "C'est normal 24 à 72 h après un effort inhabituel. Bouge en douceur (marche, mobilité), entraîne d'autres muscles en attendant, et évite de recharger lourd un muscle encore très courbaturé.");
+    if (has(txt, /crampe|soif|deshydrat/)) add(68, "water", "drop", "Hydratation", "Bois régulièrement dans la journée et pendant la séance (quelques gorgées entre les séries). Les crampes viennent souvent d'un manque d'eau ou d'une grosse fatigue musculaire.");
+    if (has(txt, /faim|pas mange|a jeun|ventre vide|hypo|pas d'energie|sans energie/)) add(66, "fuel", "bolt", "Énergie avant la séance", "Un repas ou une collation 1 à 2 h avant (féculents, fruit, laitage…) aide à tenir l'intensité. S'entraîner le ventre vide fonctionne pour certains, mais pas les jours de séance lourde.");
+    if (has(txt, /stress|journee (difficile|chargee|horrible)|boulot|taf|tete ailleurs|preoccup/)) add(60, "stress", "heart", "Journée chargée", "Venir quand même, c'est déjà une victoire. Les jours de stress, garde la séance mais vise la qualité plutôt que les records : la régularité compte plus que l'intensité.");
+    if (has(txt, /pas motive|flemme|pas envie|ennui|lassitude|routine|monoton|lasse/)) add(58, "motiv", "flag", "Motivation en baisse", "Change un ou deux exercices pour casser la routine, fixe-toi un contrat de la semaine, ou lance un défi à ton escouade. Une séance courte vaut mieux qu'aucune séance.");
+    if (has(txt, /pas le temps|presse|rapide|vite fait|court|en retard/)) add(55, "time", "timer", "Peu de temps", "Enregistre une mission favorite de 3 ou 4 exercices polyarticulaires (squat, développé, tractions, rowing) : 30 minutes suffisent pour une séance efficace.");
+    if (has(txt, /trop facile|facile|trop leger|leger|tranquille|easy/)) add(50, "easy", "level", "Ça passe facilement", "Quand les dernières répétitions ne sont plus difficiles, monte la charge de 2,5 kg (ou d'une répétition) : c'est la surcharge progressive qui fait progresser. Utilise le bouton APPLIQUER du briefing.");
+    if (has(txt, /trop dur|trop lourd|galere|pas reussi|echec|rate|lache|pas pu finir|abandonne/)) add(62, "hard", "level", "Charge trop lourde", "Baisse la charge de 5 à 10 % et vise des répétitions propres. Vérifie aussi ton temps de repos : sur les gros exercices, 2 à 3 minutes ne sont pas du luxe.");
+    if (has(txt, /record|pr\b|super|genial|top|en forme|au top|forme|fier|motive|bien passe|excellent/)) add(30, "good", "star", "Belle séance", "Note ce qui a bien marché (sommeil, repas, heure de la séance) et essaie de le reproduire : c'est souvent là que se cache la régularité.");
+    if (has(txt, /essouffl|souffle|cardio|respir/)) add(45, "cardio", "heart", "Souffle court", "Allonge un peu les temps de repos et ajoute 1 ou 2 séances de cardio léger (marche rapide, vélo) dans la semaine pour améliorer l'endurance.");
+    if (has(txt, /technique|posture|forme du mouvement|mauvaise position|pas sur de/)) add(52, "tech", "body", "Technique", "Ouvre la fiche de l'exercice (le petit « i ») pour revoir le schéma du mouvement, filme-toi une série, et baisse la charge le temps de bien maîtriser le geste.");
+  }
+  // ---------- énergie et difficulté ----------
+  const last3 = notes.slice(0, 3);
+  const exhausting = last3.filter(h => h.note.rpe === 4).length, lowE = last3.filter(h => h.note.energy && h.note.energy <= 2).length;
+  if (exhausting >= 2) add(85, "deload", "moon", "Semaine de décharge conseillée", `${exhausting} séances récentes notées « épuisantes ». Fais une semaine plus légère : mêmes exercices, environ 60 % des charges et une série de moins. Tu repartiras plus fort.`);
+  if (lowE >= 2) add(78, "lowenergy", "moon", "Énergie basse en ce moment", "Plusieurs séances avec une énergie de 1 ou 2 sur 5 : sommeil, repas et stress jouent beaucoup. Garde la régularité mais allège un peu en attendant que l'énergie revienne.");
+  if (note && note.energy >= 4 && note.rpe && note.rpe <= 2) add(48, "push", "bolt", "En forme et pas fatigué", "Énergie haute et séance facile : c'est le bon moment pour tenter un record ou ajouter une série sur ton exercice principal.");
+  if (note && note.rpe === 4 && !(exhausting >= 2)) add(63, "hard1", "moon", "Séance épuisante", "Après une séance très dure, laisse 48 h avant de retravailler les mêmes muscles, mange suffisamment de protéines et dors bien ce soir.");
+  // ---------- rythme ----------
+  const days = n => H.filter(h => h.date >= now - n * DAY).length;
+  if (H.length && now - H[0].date > 7 * DAY && !r) add(75, "comeback", "flag", "Reprise en douceur", `Ta dernière mission date de ${Math.floor((now - H[0].date) / DAY)} jours. Reprends avec des charges un peu plus légères la première séance pour éviter les courbatures et les blessures.`);
+  if (days(7) >= 6) add(72, "toomuch", "moon", "Beaucoup de séances", `${days(7)} missions en 7 jours : pense à garder au moins 1 ou 2 jours de repos complet par semaine, c'est là que les muscles se reconstruisent.`);
+  if (H.length >= 2 && H[0].cats && H[1].cats && H[0].date - H[1].date < 36 * 3600 * 1000) {
+    const same = H[0].cats.filter(c => H[1].cats.includes(c) && c !== "abdos");
+    if (same.length) add(57, "same", "body", "Mêmes muscles deux jours de suite", `Tu as travaillé ${same.map(c => CAT_BY_ID[c].label.toLowerCase()).join(" et ")} deux jours d'affilée. Laisse idéalement 48 h entre deux séances sur les mêmes muscles.`);
+  }
+  const sk = streakInfo(), wd = (new Date().getDay() + 6) % 7;
+  if (!r && !sk.secured && wd >= 4 && sk.weeks >= 2) add(65, "streak", "flame", "Ta série est en jeu", `Encore ${2 - sk.thisWeek} mission${2 - sk.thisWeek > 1 ? "s" : ""} avant dimanche pour garder ta série de ${sk.weeks} semaines et son bonus de +${streakBonus(sk.weeks)} %.`);
+  if (H[0] && H[0].dur > 100 * 60000) add(40, "long", "timer", "Séance longue", "Plus de 1 h 40 de séance : au-delà d'1 h 15 environ, la qualité baisse. Mieux vaut deux séances plus courtes, ou moins d'exercices avec la même intensité.");
+  const lateN = H.slice(0, 5).filter(h => new Date(h.date).getHours() >= 22).length;
+  if (lateN >= 2) add(38, "late", "moon", "Séances tardives", "Plusieurs séances après 22 h : l'entraînement intense peut retarder l'endormissement. Si tu dors mal, essaie de finir 2 h avant le coucher.");
+  // ---------- progression ----------
+  const stag = stagnating();
+  if (stag.length) add(54, "stag", "level", `Plateau sur ${stag[0].name}`, `Pas de progrès depuis 3 séances. Change de plage de répétitions (par exemple 5 × 5 lourd ou 3 × 12 plus léger), essaie une variante, ou fais une semaine légère avant de repartir.`);
+  const prog = progressing();
+  if (prog.length) add(35, "prog", "star", `${prog[0].e.name} : +${prog[0].pct} %`, "Ta performance estimée a bien progressé ces dernières séances. Continue avec la même méthode : petites augmentations régulières.");
+  if (r && r.records && r.records.length) add(42, "recs", "star", `${r.records.length} record${r.records.length > 1 ? "s" : ""} battu${r.records.length > 1 ? "s" : ""}`, "Bravo ! Pour consolider, garde la même charge la prochaine fois et vise une répétition de plus avant de remonter le poids.");
+  // ---------- équilibre musculaire (30 jours) ----------
+  const L = muscleLoad(30), tot = Object.values(L).reduce((a, b) => a + b, 0);
+  if (tot >= 20) {
+    const push = L.pecs + L.delts + L.triceps, pull = L.lats + L.biceps + L.traps, legs = L.quads + L.hams + L.glutes + L.calves;
+    if (push > pull * 1.6) add(56, "pushpull", "body", "Plus de poussée que de tirage", "Sur 30 jours, tu pousses nettement plus que tu ne tires. Ajoute du dos (rowing, tractions, face pulls) : c'est meilleur pour la posture et la santé des épaules.");
+    if (legs < tot * 0.2) add(53, "legs", "body", "Les jambes sont en retrait", "Moins de 20 % de tes séries concernent les jambes sur 30 jours. Ajoute un exercice de jambes par séance (squat, fentes, soulevé roumain) pour un physique équilibré.");
+    if (L.hams < L.quads * 0.4 && L.quads > 6) add(44, "hams", "body", "Ischios oubliés", "Beaucoup de quadriceps, peu d'ischio-jambiers : ajoute du soulevé de terre roumain ou du leg curl pour protéger les genoux.");
+    if (L.abs + L.obliques === 0) add(36, "core", "hourglass", "Pas de gainage ce mois-ci", "Quelques minutes de gainage par séance renforcent le tronc et protègent le dos sur les gros exercices.");
+  }
+  // ---------- échauffement ----------
+  if (r && r.perEx && r.perEx.some(p => BIG_LIFTS.has(p.id)) && st.life.warm < 3) add(46, "warm", "thermo", "Pense à l'échauffement", "Sur les gros exercices à la barre, le bloc « Échauffement conseillé » du briefing propose 3 ou 4 séries légères : ça prépare les articulations et améliore la force de la première vraie série.");
+  // ---------- par défaut ----------
+  if (!tips.length) {
+    if (!notes.length) add(10, "note", "note", "Note tes séances", "Remplis le débriefing en fin de mission (énergie, difficulté, un petit mot) : le coach pourra te donner des conseils adaptés.");
+    else add(10, "steady", "flag", "Continue comme ça", "Rien à signaler : régularité, charges et récupération ont l'air bien équilibrées. Vise une petite progression à chaque séance.");
+  }
+  return tips.sort((a, z) => z.prio - a.prio).slice(0, 3);
+}
+function coachHTML(r) {
+  const tips = coachTips(r);
+  const ic = { alert: GLYPH.shield, moon: GLYPH.moon, body: GLYPH.body, drop: "M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z", bolt: GLYPH.bolt, heart: GLYPH.heart, flag: GLYPH.flag, timer: GLYPH.timer, level: GLYPH.level, star: GLYPH.star, flame: GLYPH.flame, hourglass: GLYPH.hourglass, thermo: GLYPH.thermo, note: GLYPH.note };
+  return `<div class="coach">${tips.map(t => `<div class="panel ct-tip ${t.icon === "alert" ? "warn" : ""}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ic[t.icon] || GLYPH.star}"/></svg><div><b>${esc(t.title)}</b><p>${esc(t.text)}</p></div></div>`).join("")}
+    <p class="hint">Conseils calculés sur ton téléphone à partir de tes notes et de tes séances. Ils ne remplacent pas l'avis d'un professionnel de santé.</p></div>`;
 }
 
 /* =====================================================================
@@ -4436,7 +4680,7 @@ function openGearSheet(id) {
   else { const [c, t] = condProgress(g.cond, st); action = `<div class="lock"><span class="req">VERROUILLÉ · ${condText(g.cond)}</span><div class="mini-bar"><i style="width:${Math.min(100, c / t * 100)}%"></i></div><span class="hint">Progression : ${fmt(c)} / ${fmt(t)}</span></div>`; }
   $("#sheet-in").innerHTML = `
     <div class="grip" aria-hidden="true"></div>
-    <div class="sheet-top"><div><div class="eyebrow">${SLOTS[g.slot]} · <span class="rar ${g.rarity}">${g.rarity}</span></div><h2>${esc(g.name)}</h2></div>
+    <div class="sheet-top"><div class="g-head">${gearIcon(id, 44)}<div><div class="eyebrow">${SLOTS[g.slot]} · <span class="rar ${g.rarity}">${g.rarity}</span></div><h2>${esc(g.name)}</h2></div></div>
       <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
     <div class="gear-preview ${unlocked ? "" : "locked"}">${avatarSVG(preview, { highlight: g.slot, big: true })}<span class="eyebrow">${isEq ? "ÉQUIPÉ SUR VOTRE CHÂSSIS" : unlocked ? "APERÇU SUR VOTRE CHÂSSIS" : "APERÇU · PIÈCE VERROUILLÉE"}</span></div>
     <div class="sec"><h3>DOSSIER TECHNIQUE</h3><p>${esc(g.desc)} ${esc(GEAR_LORE[id] || "")}</p></div>
@@ -5658,6 +5902,11 @@ function renderReport() {
       <p class="hint">Retrouvez vos notes dans Suivi → Journal.</p>
     </div>
   </section>
+  <section class="block">
+    <h2 class="h2">CONSEILS DU COACH</h2>
+    ${coachHTML(r)}
+    ${r.noteSaved ? "" : `<p class="hint">Enregistre ta note ci-dessus : le coach en tiendra compte.</p>`}
+  </section>
   <div style="margin-top:28px"><button class="btn btn-neon" style="width:100%" data-act="report-done">RETOUR AU QG</button></div>
   ${canUndo() ? `<div class="danger-zone" style="margin-top:18px"><button class="btn btn-quiet hold" data-hold="undo-mission" data-ms="1500"><span class="stack">ANNULER CETTE MISSION<small>APPUI LONG 1,5 S · RETIRE L'XP, LES ATTRIBUTS ET LE BUTIN</small></span></button></div>` : ""}`;
 }
@@ -5850,9 +6099,11 @@ const actions = {
   "ef-adj": el => effortAdjust(+el.dataset.d),
   "equip": el => { const g = GEAR_BY_ID[el.dataset.id]; if (!g || !state.gear.unlocked.includes(g.id)) return; state.gear.equipped[g.slot] = g.id; save(); vibrate(25); toast(`${g.name} équipé.`); render(); if (el.dataset.reopen) openGearSheet(el.dataset.reopen); },
   "unequip": el => { const s = el.dataset.slot; if (!(s in state.gear.equipped)) return; state.gear.equipped[s] = null; save(); render(); if (el.dataset.reopen) openGearSheet(el.dataset.reopen); },
+  "perk-sheet": el => openPerkSheet(el.dataset.id, false),
+  "perk-ask": el => openPerkSheet(el.dataset.id, true),
   "perk": el => {
     const p = PERK_BY_ID[el.dataset.id]; if (!p || perkState(p) !== "avail") return;
-    state.perks.push(p.id); state.perkPoints--; save(); vibrate([30, 30, 80]); toast(`Aptitude installée : ${p.name}`); render();
+    state.perks.push(p.id); state.perkPoints--; save(); vibrate([30, 30, 80]); sfx("reward"); toast(`Aptitude installée : ${p.name}`); render(); openPerkSheet(p.id, false); achSoon(800);
   },
   "report-done": () => { ui.report = null; ui.tab = "fiche"; go("hq"); },
   "edit-name": () => openNameSheet(),
