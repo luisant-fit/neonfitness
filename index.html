@@ -1337,6 +1337,69 @@ button.sq-row:hover{background:var(--panel-2)}
 .cat-ill .mr.l2>*{fill:rgba(var(--neon-rgb),.55);stroke:var(--panel);stroke-width:.9}
 .cat-ill .mr.l3{filter:drop-shadow(0 0 1.5px rgba(var(--neon-rgb),.7))}
 .cat.sel .cat-ill .mn>*,.cat.sel .cat-ill .mr.l0>*{fill:var(--panel)}
+
+/* ---------- détail d'une mission ---------- */
+.rows .r-btn{width:100%;text-align:left;cursor:pointer}
+.rows .r-btn:hover{background:var(--neon-soft)}
+.md-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-bottom:12px}
+.md-kpis div{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border:1px solid var(--line);border-radius:4px;background:var(--panel-2)}
+.md-kpis b{font-family:var(--f-display);font-size:14px;color:var(--neon);white-space:nowrap}
+.md-kpis span{font-size:11px;color:var(--muted)}
+.md-note{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border:1px solid var(--line);border-radius:4px;margin-bottom:6px}
+.md-note span{font-family:var(--f-display);font-size:9px;letter-spacing:.12em;padding:4px 7px;border:1px solid var(--line-hi);border-radius:3px;color:var(--neon)}
+.md-note p{flex-basis:100%;font-size:13.5px;color:var(--text);margin-top:2px}
+.md-list{display:flex;flex-direction:column;gap:8px}
+.md-ex{padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:var(--panel-2)}
+.md-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.md-name{font-size:14.5px;font-weight:600;color:var(--text);text-align:left;flex:1;min-width:0}
+.md-name:hover{color:var(--neon)}
+.md-rec{font-family:var(--f-display);font-size:8.5px;letter-spacing:.12em;color:var(--legend)}
+.md-xp{font-family:var(--f-display);font-size:11px;color:var(--neon)}
+.md-sets{display:flex;flex-direction:column;margin-top:6px}
+.md-sets div{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;padding:5px 0;border-top:1px dashed var(--line);font-size:13px;align-items:baseline}
+.md-sets span{font-family:var(--f-display);font-size:9px;color:var(--muted)}
+.md-sets b{font-weight:500;color:var(--text)}
+.md-sets em{font-style:normal;font-family:var(--f-display);font-size:10.5px;color:var(--muted)}
+.md-tot{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* ---------- séances prêtes ---------- */
+.ex-seg{margin-top:14px}
+.prog-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.prog{padding:14px;display:flex;flex-direction:column;gap:8px}
+.prog-top{display:flex;justify-content:space-between;align-items:center}
+.prog-lvl{display:flex;align-items:center;gap:3px}
+.prog-lvl i{width:14px;height:5px;border-radius:2px;background:var(--line)}
+.prog-lvl i.on{background:var(--neon)}
+.prog.l4 .prog-lvl i.on{background:var(--legend)}
+.prog-lvl b{margin-left:8px;font-family:var(--f-display);font-size:9px;letter-spacing:.16em;color:var(--muted);font-weight:400}
+.prog-xp{font-family:var(--f-display);font-size:11px;color:var(--legend)}
+.prog h3{font-family:var(--f-display);font-size:16px;letter-spacing:.12em;color:var(--text)}
+.prog-sub{font-size:12.5px;color:var(--muted)}
+.prog-ex{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.prog-ex li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.prog-ex li b{font-family:var(--f-display);font-size:11px;color:var(--neon);white-space:nowrap}
+.prog-ex li.no{opacity:.45}
+.prog-ex .link-ex{text-align:left;color:var(--text);font-size:13px}.prog-ex .link-ex:hover{color:var(--neon)}
+.prog-head{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.prog-miss{font-size:12px;color:var(--legend)}
+.prog-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:12px 14px;margin-top:12px;border-color:var(--line-hi)}
+.prog-bar b{font-family:var(--f-display);font-size:14px;letter-spacing:.1em;color:var(--text)}
+.prog-bar>div:first-child{display:flex;flex-direction:column;gap:3px;min-width:0}
+.prog-bar .pb-r{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.prog-bar .pb-r b{color:var(--neon)}
+.prog-bar .pb-r span{font-family:var(--f-display);font-size:8px;letter-spacing:.12em;color:var(--legend)}
+.prog-bar .mini-bar{grid-column:1/-1}
+.prog-bar .mini-bar i,.prog-bar.ok .mini-bar i{background:var(--neon)}
+.prog-bar.ok{border-color:var(--neon);background:var(--neon-soft)}
+.prog-goal{display:flex;align-items:center;gap:10px;padding:7px 10px;border:1px dashed var(--line-hi);border-radius:4px;font-size:12px}
+.prog-goal span{font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;color:var(--muted)}
+.prog-goal b{flex:1;color:var(--text);font-weight:600}
+.prog-goal em{font-style:normal;font-family:var(--f-display);font-size:10px;color:var(--neon)}
+.prog-goal.ok{border-style:solid;border-color:var(--neon);background:var(--neon-soft)}
+.prog-res{padding:14px;display:flex;flex-direction:column;gap:4px;border-color:var(--line-hi)}
+.prog-res b{font-family:var(--f-display);font-size:14px;letter-spacing:.1em;color:var(--muted)}
+.prog-res.ok{border-color:var(--legend)}.prog-res.ok b{color:var(--legend)}
+.prog-res small{font-size:12.5px;color:var(--muted)}
 </style>
 <script>window.NEON_STANDALONE = true;
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
@@ -1765,7 +1828,7 @@ function fxLines(fx) {
    ===================================================================== */
 function defaultLife() {
   return { reps: 0, push: 0, pull: 0, core: 0, sets: 0, recs: 0, maxPush: 0, maxTon: 0, maxSets: 0, maxXp: 0, longHold: 0, maxCats: 0,
-           early: 0, late: 0, weekend: 0, contracts: 0, warm: 0, notes: 0, bestStreak: 0, exDone: [] };
+           early: 0, late: 0, weekend: 0, contracts: 0, warm: 0, notes: 0, bestStreak: 0, programs: 0, exDone: [], programsBy: {} };
 }
 function defaultState() {
   return {
@@ -1841,6 +1904,8 @@ function sanitize(s) {
       xpStat: {}, cats: Array.isArray(h.cats) ? h.cats.filter(c => CAT_BY_ID[c]) : []
     };
     STAT_KEYS.forEach(k => { x.xpStat[k] = num(isObj(h.xpStat) ? h.xpStat[k] : 0, 0, 0); });
+    if (Array.isArray(h.ex)) x.ex = h.ex.filter(e => isObj(e) && EX[e.id] && Array.isArray(e.s)).slice(0, 30).map(e => ({ id: e.id, s: e.s.filter(Array.isArray).slice(0, 60).map(a => [num(a[0], 0, 0, 1000), num(a[1], 1, 1, 3600), num(a[2], 0, 0)]) }));
+    if (Array.isArray(h.recIds)) x.recIds = h.recIds.filter(id => EX[id]).slice(0, 30);
     if (isObj(h.note)) x.note = { energy: Math.floor(num(h.note.energy, 0, 0, 5)), rpe: Math.floor(num(h.note.rpe, 0, 0, 4)), text: typeof h.note.text === "string" ? h.note.text.slice(0, 200) : "" };
     return x;
   });
@@ -1868,7 +1933,8 @@ function sanitize(s) {
   if (isObj(s.activity)) { const lim = dayKey(Date.now() - 420 * 86400000); for (const [k, v] of Object.entries(s.activity)) if (/^\d{8}$/.test(k) && +k >= lim) o.activity[k] = Math.floor(num(v, 0, 0, 20)); }
   if (Array.isArray(s.weights)) o.weights = s.weights.filter(x => isObj(x) && Number.isFinite(+x.d)).map(x => ({ d: num(x.d, 0, 0), kg: num(x.kg, 75, 30, 250) })).sort((a, z) => a.d - z.d).slice(-300);
   if (isObj(s.life)) {
-    const L = s.life; for (const k in o.life) if (k !== "exDone") o.life[k] = num(L[k], 0, 0);
+    const L = s.life; for (const k in o.life) if (k !== "exDone" && k !== "programsBy") o.life[k] = num(L[k], 0, 0);
+    if (isObj(L.programsBy)) for (const [k, v] of Object.entries(L.programsBy)) if (/^w\d{1,6}l[1-4]$/.test(k)) o.life.programsBy[k] = Math.floor(num(v, 0, 0));
     o.life.exDone = Array.isArray(L.exDone) ? [...new Set(L.exDone.filter(id => EX[id]))] : [];
   } else o.lifeBackfill = true;
   if (isObj(s.undo) && typeof s.undo.snap === "string" && Date.now() - num(s.undo.at, 0) < 86400000) o.undo = { at: num(s.undo.at, 0), snap: s.undo.snap.slice(0, 400000) };
@@ -1905,6 +1971,11 @@ function sanitize(s) {
     } : null;
     o.mission = { start: num(m.start, Date.now()), sets, draft: isObj(m.draft) ? m.draft : {},
                   adrenaline: ["ready", "armed", "used"].includes(m.adrenaline) ? m.adrenaline : "ready", rest: r };
+    if (isObj(m.program) && Array.isArray(m.program.ex)) {
+      const lv = Math.min(4, Math.max(1, Math.floor(num(m.program.lvl, 1))));
+      const ex = m.program.ex.filter(x => Array.isArray(x) && EX[x[0]]).slice(0, 8).map(x => [x[0], Math.floor(num(x[1], 3, 1, 10)), Math.floor(num(x[2], 10, 1, 3600))]);
+      if (ex.length) o.mission.program = { lvl: lv, tag: String(m.program.tag || "").slice(0, 20), name: String(m.program.name || "SÉANCE").slice(0, 30), xp: [150, 250, 400, 600][lv - 1], ex };
+    }
   }
   return o;
 }
@@ -3075,7 +3146,7 @@ function tabArchives() {
   <section class="block"><h2 class="h2">COACH</h2>${coachHTML(null)}</section>
   <section class="block">
     <h2 class="h2">JOURNAL DES MISSIONS</h2>
-    ${st.history.length ? `<div class="panel rows">${st.history.slice(0, ui.journalAll ? 60 : 8).map(h => `<div class="r"><div>${new Date(h.date).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${esc(h.focus || "Mission")}<div class="s">${h.sets} séries · ${fmt(h.ton)} kg · ${hms(h.dur)}</div>${h.note && (h.note.energy || h.note.rpe || h.note.text) ? `<div class="note-line">${h.note.energy ? `Énergie ${h.note.energy}/5` : ""}${h.note.energy && h.note.rpe ? " · " : ""}${h.note.rpe ? ["", "Facile", "Correcte", "Dure", "Épuisante"][h.note.rpe] : ""}${h.note.text ? `${h.note.energy || h.note.rpe ? " · " : ""}« ${esc(h.note.text)} »` : ""}</div>` : ""}</div><div class="v">+${fmt(h.xp)} XP<div class="s">NIV ${h.level}</div></div></div>`).join("")}</div>
+    ${st.history.length ? `<div class="panel rows">${st.history.slice(0, ui.journalAll ? 60 : 8).map((h, hi) => `<button class="r r-btn" data-act="mission-sheet" data-i="${hi}" aria-label="Voir le détail de la mission"><div>${new Date(h.date).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${esc(h.focus || "Mission")}<div class="s">${h.sets} séries · ${fmt(h.ton)} kg · ${hms(h.dur)}</div>${h.note && (h.note.energy || h.note.rpe || h.note.text) ? `<div class="note-line">${h.note.energy ? `Énergie ${h.note.energy}/5` : ""}${h.note.energy && h.note.rpe ? " · " : ""}${h.note.rpe ? ["", "Facile", "Correcte", "Dure", "Épuisante"][h.note.rpe] : ""}${h.note.text ? `${h.note.energy || h.note.rpe ? " · " : ""}« ${esc(h.note.text)} »` : ""}</div>` : ""}</div><div class="v">+${fmt(h.xp)} XP<div class="s">NIV ${h.level} ›</div></div></button>`).join("")}</div>
       ${st.history.length > 8 && !ui.journalAll ? `<button class="more-btn" data-act="journal-all">VOIR LES ${st.history.length} MISSIONS</button>` : ""}
       ${canUndo() ? `<div class="danger-zone"><button class="btn btn-quiet hold" data-hold="undo-mission" data-ms="1500"><span class="stack">ANNULER LA DERNIÈRE MISSION<small>APPUI LONG 1,5 S · POSSIBLE ENCORE ${Math.max(1, Math.ceil((state.undo.at + DAY - Date.now()) / 3600000))} H</small></span></button></div>` : ""}`
       : `<div class="empty-note">Aucune mission archivée. Votre premier rapport apparaîtra ici.</div>`}
@@ -3098,6 +3169,38 @@ function tabArchives() {
       ${favFams(st).length ? achFavRow(favFams(st), 34) : `<span class="ach-sum-t">Voir le tableau d'honneur</span>`}<span class="go">→</span></button>
   </section>
   <section class="block"><h2 class="h2">ACTIVITÉ</h2>${activityHTML()}</section>`;
+}
+/* Détail d'une mission archivée : exercices, séries, charges et XP */
+function openMissionSheet(i) {
+  const h = state.history[i]; if (!h) return;
+  ui.sheetEx = null;
+  const d = new Date(h.date);
+  let body;
+  if (h.ex && h.ex.length) {
+    body = h.ex.map(x => {
+      const e = EX[x.id], tot = x.s.reduce((a, s) => ({ xp: a.xp + s[2], reps: a.reps + s[1], ton: a.ton + (e.type === "load" ? s[0] * s[1] : 0) }), { xp: 0, reps: 0, ton: 0 });
+      const rec = (h.recIds || []).includes(x.id);
+      return `<div class="md-ex"><div class="md-h"><button class="md-name" data-act="sheet-ex" data-id="${x.id}">${esc(e.name)}</button>${rec ? `<span class="md-rec">★ RECORD</span>` : ""}<span class="md-xp">+${fmt(tot.xp)} XP</span></div>
+        <div class="md-sets">${x.s.map((s, k) => `<div><span>S${k + 1}</span><b>${setTxt(e, s[0], s[1])}</b><em>+${fmt(s[2])}</em></div>`).join("")}</div>
+        <div class="md-tot">${x.s.length} série${x.s.length > 1 ? "s" : ""} · ${e.type === "time" ? `${fmt(tot.reps)} s tenues` : `${fmt(tot.reps)} rép.`}${tot.ton ? ` · ${fmt(Math.round(tot.ton))} kg` : ""}</div></div>`;
+    }).join("");
+  } else {
+    // missions enregistrées avant cette mise à jour : on retrouve les exercices et la meilleure série
+    const logs = Object.entries(state.exLog).map(([id, log]) => ({ id, x: log.find(l => l.d === h.date) })).filter(o => o.x && EX[o.id]);
+    body = logs.length ? logs.map(o => { const e = EX[o.id]; return `<div class="md-ex"><div class="md-h"><button class="md-name" data-act="sheet-ex" data-id="${o.id}">${esc(e.name)}</button></div>
+        <div class="md-tot">${o.x.sets} série${o.x.sets > 1 ? "s" : ""} · meilleure : ${setTxt(e, o.x.kg, o.x.reps)}${o.x.vol ? ` · ${fmt(o.x.vol)} kg` : ""}</div></div>`; }).join("")
+      + `<p class="hint">Mission enregistrée avant l'ajout du détail série par série : seuls les exercices et la meilleure série sont disponibles.</p>`
+      : `<p class="hint">Le détail de cette mission n'est pas disponible (mission enregistrée avant l'ajout de cette fonction).</p>`;
+  }
+  const n = h.note;
+  $("#sheet-in").innerHTML = `
+    <div class="grip" aria-hidden="true"></div>
+    <div class="sheet-top"><div><div class="eyebrow">MISSION · ${d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })} · ${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}</div><h2>${esc(h.focus || "Mission")}</h2></div>
+      <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
+    <div class="md-kpis"><div><b>+${fmt(h.xp)}</b><span>XP</span></div><div><b>${h.sets}</b><span>séries</span></div><div><b>${fmt(h.ton)}</b><span>kg</span></div><div><b>${hms(h.dur)}</b><span>durée</span></div></div>
+    ${n && (n.energy || n.rpe || n.text) ? `<div class="md-note">${n.energy ? `<span>Énergie ${n.energy}/5</span>` : ""}${n.rpe ? `<span>${["", "Facile", "Correcte", "Dure", "Épuisante"][n.rpe]}</span>` : ""}${n.text ? `<p>« ${esc(n.text)} »</p>` : ""}</div>` : ""}
+    <div class="sec"><h3>EXERCICES</h3><div class="md-list">${body}</div></div>`;
+  showSheet(".x-close");
 }
 function settingsHTML() {
   const st = state;
@@ -3796,6 +3899,7 @@ achFam("body", "body", [4, 5, 6], ["Corps complet", "Presque tout", "Rien ne m'�
 achFam("early", "sun", [1, 10, 25, 50], ["Lève-tôt", "Matinal", "Aube éternelle", "Soldat de l'aube"], g => `Terminer ${pl(g, "mission")} avant 8 h.`, st => st.life.early);
 achFam("late", "moon", [1, 10, 25], ["Oiseau de nuit", "Noctambule", "Créature de la nuit"], g => `Terminer ${pl(g, "mission")} après 22 h.`, st => st.life.late);
 achFam("weekend", "cal", [5, 10, 25, 50], ["Week-end actif", "Guerrier du week-end", "Pas de grasse matinée", "Le week-end, c'est sacré"], g => `Accomplir ${pl(g, "mission")} le samedi ou le dimanche.`, st => st.life.weekend);
+achFam("programs", "doc", [1, 10, 25, 50], ["Séance accomplie", "Discipliné", "Machine de guerre", "Programme vivant"], g => `Accomplir ${pl(g, "séance prête", "séances prêtes")} en entier.`, st => st.life.programs);
 /* Exploits : s'obtiennent une seule fois, ils n'ont pas de paliers. */
 achOne("favorite", "heart", 3, 1, "Routine", "Enregistrer une mission favorite.", st => st.favorites.length, 50);
 achOne("squad", "people", 3, 1, "Recrue d'escouade", "Rejoindre ou créer une escouade.", st => st.squads.length, 50);
@@ -4275,6 +4379,91 @@ function catIllus(cat) {
   const lvl = r => z.main.includes(r) ? 3 : (z.mid || []).includes(r) ? 2 : z.sub.includes(r) ? 1 : 0;
   return `<svg class="cat-ill" viewBox="${z.box}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${bodyFig(z.view, lvl)}</svg>`;
 }
+/* =====================================================================
+   Séances prêtes : 4 programmes de difficulté croissante, bonus d'XP si tout est accompli
+   ===================================================================== */
+/* Séances générées chaque semaine : 4 niveaux, tirées au hasard (graine = semaine + compte + lieu),
+   uniquement parmi les exercices faisables avec le matériel du lieu actif. */
+const PROG_LEVELS = [
+  { lvl: 1, tag: "DÉBUTANT", xp: 150, sets: 3, names: ["INITIATION", "PREMIER CONTACT", "ÉVEIL", "MISE EN ROUTE"], slots: ["jambes", "pecs", "dos", "abdos"], coef: [0, 1.15] },
+  { lvl: 2, tag: "INTERMÉDIAIRE", xp: 250, sets: 3, names: ["PATROUILLE", "RECONNAISSANCE", "INFILTRATION", "RONDE DE NUIT"], slots: ["jambes", "pecs", "dos", "epaules", "abdos"], coef: [0.8, 1.4] },
+  { lvl: 3, tag: "AVANCÉ", xp: 400, sets: 4, names: ["ASSAUT", "PERCÉE", "OFFENSIVE", "FRAPPE ÉCLAIR"], slots: ["jambes", "pecs", "dos", "epaules", "bras", "abdos"], coef: [1.0, 1.6] },
+  { lvl: 4, tag: "ÉLITE", xp: 600, sets: 4, names: ["OPÉRATION TITAN", "PROTOCOLE OMÉGA", "DERNIER RAMPART", "ORDRE 66"], slots: ["jambes", "dos", "pecs", "jambes", "epaules", "abdos"], coef: [1.2, 9] }
+];
+const PROG_XP = [150, 250, 400, 600];
+/* exercices d'isolation ou trop techniques : jamais tirés comme exercice principal d'une séance */
+const PROG_SKIP = new Set(["bw_calf", "calf", "shrug", "scap_pull", "dead_hang", "wall_walk", "ytw", "handstand_hold", "pushup_spiderman", "leg_ext", "leg_curl", "pec_deck", "cable_cross", "russian", "pallof", "jump_squat"]);
+function seededRng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function progReps(e, lvl) {
+  const i = lvl - 1, r5 = v => Math.max(15, Math.round(v / 5) * 5);
+  if (e.type === "time") return r5((e.defReps || 30) * [0.75, 1, 1.25, 1.5][i]);
+  if (e.type === "load") return [12, 10, 8, 5][i];
+  return Math.max(3, Math.round((e.defReps || 10) * [0.8, 1, 1, 1.1][i]));
+}
+function weeklyPrograms() {
+  const ws = weekStartOf(), pl = curPlace();
+  const who = (typeof fb !== "undefined" && fb.user && fb.user.uid) || state.operator.callsign;
+  return PROG_LEVELS.map(L => {
+    const rnd = seededRng(hashStr(`${weekIndex(ws)}|${who}|${state.equip.active}|${L.lvl}`));
+    const used = new Set(), ex = [];
+    L.slots.forEach((cat, k) => {
+      const base = EXERCISES.filter(e => e.cat === cat && !used.has(e.id) && canDo(e.id, pl));
+      let pool = base.filter(e => !PROG_SKIP.has(e.id) && e.coef >= L.coef[0] && e.coef <= L.coef[1]);
+      if (!pool.length) pool = base.filter(e => !PROG_SKIP.has(e.id));
+      if (!pool.length) pool = base;
+      if (!pool.length) return;
+      // les niveaux avancés favorisent les gros exercices (coefficient élevé)
+      if (L.lvl >= 3) pool.sort((a, z) => z.coef - a.coef), pool = pool.slice(0, Math.max(3, Math.ceil(pool.length / 2)));
+      const e = pool[Math.floor(rnd() * pool.length)];
+      used.add(e.id);
+      const sets = L.lvl === 4 && k === 0 && e.type === "load" ? 5 : L.sets;
+      ex.push([e.id, sets, progReps(e, L.lvl)]);
+    });
+    const min = Math.round(ex.reduce((a, [id, sets]) => a + sets * (45 + restFor(EX[id], computeBonuses(state))), 0) / 60 / 5) * 5;
+    const cats = [...new Set(ex.map(x => EX[x[0]].cat))].map(c => CAT_BY_ID[c].label.toLowerCase());
+    return { lvl: L.lvl, tag: L.tag, xp: L.xp, name: L.names[Math.floor(rnd() * L.names.length)], sub: cats.join(", "), min, ex };
+  });
+}
+/* séries réussies = séries dont les répétitions (ou secondes) atteignent l'objectif */
+function programProgress(m) {
+  const p = m && m.program; if (!p || !p.ex) return null;
+  const rows = p.ex.map(([id, sets, reps]) => {
+    const ok = ((m.sets[id] || []).filter(s => s.reps >= reps)).length;
+    return { id, sets, reps, ok: Math.min(ok, sets), done: ok >= sets };
+  });
+  const doneN = rows.filter(r => r.done).length;
+  return { p, rows, doneN, total: rows.length, done: rows.length > 0 && doneN === rows.length };
+}
+const progTarget = (p, id) => { const x = p && p.ex && p.ex.find(e => e[0] === id); return x ? { sets: x[1], reps: x[2] } : null; };
+function launchProgram(lvl) {
+  const p = weeklyPrograms().find(x => x.lvl === +lvl); if (!p || !p.ex.length) return;
+  if (state.mission && missionTotals().sets) { toast("Une mission est en cours : terminez-la ou abandonnez-la d'abord.", true); return; }
+  state.mission = null;
+  state.loadoutSession = p.ex.map(e => e[0]).filter(x => EX[x]);
+  ensureMission();
+  state.mission.program = { lvl: p.lvl, tag: p.tag, name: p.name, xp: p.xp, ex: p.ex.map(x => x.slice()) };
+  p.ex.forEach(([eid, , reps]) => { const d = getDraft(eid); state.mission.draft[eid] = { kg: EX[eid].type === "load" ? d.kg : 0, reps }; });
+  save(); sfx("confirm");
+  go("briefing");
+  toast(`Séance « ${p.name} » chargée : bonus de ${p.xp} XP si tout est accompli.`);
+}
+function programsHTML() {
+  const pl = curPlace(), progs = weeklyPrograms();
+  const daysLeft = Math.max(1, Math.ceil((weekStartOf() + 7 * DAY - Date.now()) / DAY));
+  return `<section class="block">
+    <div class="prog-head"><span class="eyebrow">SÉANCES DE LA SEMAINE · NOUVELLES DANS ${daysLeft} J</span><span class="eyebrow">MATÉRIEL : ${PLACES[state.equip.active]}</span></div>
+    <p class="hint">4 séances tirées au hasard chaque lundi, adaptées à votre matériel. Validez toutes les séries prévues, avec au moins les répétitions indiquées, pour gagner le <b>bonus de séance</b>. Les charges restent libres.</p>
+    <div class="prog-list">${progs.map(p => {
+      const done = state.life.programsBy && state.life.programsBy["w" + weekIndex(weekStartOf()) + "l" + p.lvl];
+      return `<article class="panel prog l${p.lvl}">
+        <div class="prog-top"><span class="prog-lvl">${[1, 2, 3, 4].map(i => `<i class="${i <= p.lvl ? "on" : ""}"></i>`).join("")}<b>${p.tag}</b></span><span class="prog-xp">${done ? "✓ ACCOMPLIE" : `+${p.xp} XP`}</span></div>
+        <h3>${p.name}</h3><p class="prog-sub">${p.sub.charAt(0).toUpperCase() + p.sub.slice(1)} · environ ${p.min} min</p>
+        <ul class="prog-ex">${p.ex.map(([id, sets, reps]) => { const e = EX[id]; return `<li><button class="link-ex" data-act="sheet-ex" data-id="${id}">${esc(e.name)}</button><b>${sets} × ${e.type === "time" ? reps + " s" : reps}</b></li>`; }).join("")}</ul>
+        <button class="btn ${p.lvl >= 3 ? "btn-ghost" : "btn-neon"}" data-act="prog-launch" data-id="${p.lvl}">LANCER LA SÉANCE</button>
+      </article>`;
+    }).join("")}</div>
+  </section>`;
+}
 function renderSystems() {
   const st = state, last = lastByCat(), pl = curPlace(), lo = st.loadoutSession.length;
   const cards = CATS.map(c => {
@@ -4295,14 +4484,15 @@ function renderSystems() {
     <div class="cmd-r">${audBtn()}</div>
   </header>
   ${st.mission ? `<button class="banner" data-act="go" data-to="briefing"><div><div class="d">MISSION EN COURS · ${hms(Date.now() - st.mission.start)}</div><p>Reprendre le briefing</p></div><span class="go">REPRENDRE →</span></button>` : ""}
-  ${favoritesBlock()}
+  <div class="seg ex-seg" role="tablist" aria-label="Choisir">${[["sys", "PAR SYSTÈME"], ["prog", "SÉANCES PRÊTES"]].map(([k, l]) => `<button role="tab" aria-selected="${(ui.exView || "sys") === k}" class="${(ui.exView || "sys") === k ? "on" : ""}" data-act="ex-view" data-v="${k}">${l}</button>`).join("")}</div>
+  ${ui.exView === "prog" ? programsHTML() : `${favoritesBlock()}
   <section class="block">
     <h2 class="h2">SYSTÈMES MUSCULAIRES</h2>
     <p class="hint">Touchez un système pour voir ses exercices. Vous pouvez mélanger plusieurs systèmes dans la même mission.</p>
     <button class="eq-hq" data-act="eq-open"><span>MATÉRIEL · ${PLACES[st.equip.active]}</span><b>${pl.items.length ? `${pl.items.length} équipement${pl.items.length > 1 ? "s" : ""} + poids du corps` : "Poids du corps uniquement"}${st.equip.filter ? " · filtre actif" : ""}</b><em>RÉGLER →</em></button>
     <div class="cat-grid">${cards}</div>
     <button class="btn btn-quiet" data-act="pick-cat" data-cat="all">VOIR TOUS LES EXERCICES</button>
-  </section>
+  </section>`}
   ${lo ? `<div class="actionbar"><button class="btn btn-neon" data-act="go" data-to="catalog" style="width:100%">LOADOUT : ${lo} EXERCICE${lo > 1 ? "S" : ""} · CONTINUER →</button></div>` : ""}`;
 }
 /* =====================================================================
@@ -5463,6 +5653,10 @@ function renderBriefing() {
   </section>
   ${state.tips.briefing || !lo.length ? "" : `<div class="tip"><p>Réglez la charge et les répétitions, puis <b>VALIDER SÉRIE</b> : le repos démarre seul. <b>TERMINER LA MISSION</b> encaisse l'XP.</p><button class="btn btn-quiet btn-sm" data-act="dismiss-tip" data-tip="briefing">COMPRIS</button></div>`}
   ${hasAdr && m ? `<button class="adren ${m.adrenaline}" data-act="adrenaline"><div><div class="d">INJECTION D'ADRÉNALINE</div><p>${m.adrenaline === "armed" ? "Armée : la prochaine série rapporte ×2 XP. Toucher pour annuler." : m.adrenaline === "used" ? "Déjà utilisée pendant cette mission." : "Aptitude active, une fois par mission."}</p></div><span class="d">${m.adrenaline === "armed" ? "ARMÉE" : m.adrenaline === "used" ? "UTILISÉE" : "ARMER"}</span></button>` : ""}
+  ${(() => { const pr = programProgress(m); if (!pr) return "";
+    return `<section class="panel prog-bar ${pr.done ? "ok" : ""}"><div><span class="eyebrow">SÉANCE PRÊTE · ${pr.p.tag}</span><b>${pr.p.name}</b></div>
+      <div class="pb-r"><b>${pr.doneN}/${pr.total}</b><span>${pr.done ? "BONUS ACQUIS" : `+${pr.p.xp} XP SI COMPLÈTE`}</span></div>
+      <div class="mini-bar"><i style="width:${pr.doneN / pr.total * 100}%"></i></div></section>`; })()}
   ${lo.length ? `<div class="ex-cards">${lo.map(id => exCardHTML(EX[id], b)).join("")}</div>` :
     `<div class="panel empty-lo"><div class="eyebrow">LOADOUT VIDE</div><p class="hint">Aucun exercice sélectionné pour cette mission.</p><button class="btn btn-ghost" data-act="go" data-to="catalog">OUVRIR LE CATALOGUE</button></div>`}
   <footer class="actionbar"><div class="actionbar-in">
@@ -5484,6 +5678,9 @@ function exCardHTML(e, b) {
     ${sets.length ? `<div class="ex-total"><span>TOTAL</span><b>${plural(sets.length, "série").toLowerCase()} · ${totTxt}</b><em>+${fmt(tot.xp)} XP</em></div>` : ""}
     <header><div><div class="eyebrow">${CAT_BY_ID[e.cat].code} · ×${e.coef.toFixed(2)} · REPOS ${restFor(e, b)} S</div><button class="ex-link" data-act="sheet-ex" data-id="${e.id}" aria-label="Voir la fiche et le schéma de ${esc(e.name)}">${esc(e.name)}<span class="i" aria-hidden="true">i</span></button></div>
       <span class="setc">${plural(sets.length, "SÉRIE")}</span></header>
+    ${(() => { const m = state.mission, tg = m && progTarget(m.program, e.id); if (!tg) return "";
+      const ok = Math.min(tg.sets, sets.filter(s => s.reps >= tg.reps).length);
+      return `<div class="prog-goal ${ok >= tg.sets ? "ok" : ""}"><span>OBJECTIF SÉANCE</span><b>${tg.sets} × ${e.type === "time" ? tg.reps + " s" : tg.reps + " rép."}</b><em>${ok >= tg.sets ? "✓ ACCOMPLI" : `${ok}/${tg.sets}`}</em></div>`; })()}
     ${sets.length ? "" : suggestionHTML(e)}
     ${sets.length ? "" : warmupHTML(e, d.kg)}
     ${singleDbMode(e.id) ? `<p class="bw-note">Une seule haltère : faites toutes les répétitions d'un côté, puis de l'autre. Saisissez les répétitions par bras.</p>` : ""}
@@ -5837,7 +6034,9 @@ function finishMission() {
   const sBonus = streakBonus(streakNow);
   const bonusPct = 10 + b.missionBonus + sBonus;
   const bonusXp = Math.round(t.xp * bonusPct / 100);
-  const totalXp = t.xp + bonusXp;
+  const progRes = programProgress(m), progXp = progRes && progRes.done ? progRes.p.xp : 0;
+  if (progXp) { st.life.programs++; const pk = "w" + weekIndex(weekStartOf()) + "l" + progRes.p.lvl; st.life.programsBy[pk] = (st.life.programsBy[pk] || 0) + 1; }
+  const totalXp = t.xp + bonusXp + progXp;
   const oldLevel = st.level, oldXp = st.xp, oldStats = { ...st.stats };
   const oldPct = oldXp / xpNeeded(oldLevel) * 100;
   st.xp += totalXp; st.totalXp += totalXp;
@@ -5853,15 +6052,17 @@ function finishMission() {
   const focus = Object.keys(catCount).sort((a, z) => catCount[z] - catCount[a]).slice(0, 2).map(c => CAT_BY_ID[c].label.toLowerCase()).join(" + ");
   STAT_KEYS.forEach(k => { xpStat[k] = Math.round(xpStat[k]); });
   const repsTot = lifeOnMission(st, m, t, totalXp, records, now);
-  st.history.unshift({ reps: repsTot, date: now, xp: totalXp, ton: Math.round(t.ton), sets: t.sets, exCount: perEx.length, dur, level: st.level, focus: focus.charAt(0).toUpperCase() + focus.slice(1),
-    recs: records.length, push, coreSec, xpStat, cats: Object.keys(catCount) });
+  const exDetail = Object.keys(m.sets).filter(id => EX[id] && m.sets[id].length).map(id => ({ id, s: m.sets[id].map(x => [x.kg, x.reps, Math.round(x.xp)]) }));
+  st.history.unshift({ ex: exDetail, recIds: records.map(x => x.id), reps: repsTot, date: now, xp: totalXp, ton: Math.round(t.ton), sets: t.sets, exCount: perEx.length, dur, level: st.level, focus: focus.charAt(0).toUpperCase() + focus.slice(1),
+    recs: records.length, push, coreSec, xpStat, cats: Object.keys(catCount), ...(progRes ? { prog: progRes.p.name, progDone: progRes.done } : {}) });
   st.undo = { at: now, snap: undoSnap };
   st.history = st.history.slice(0, 60);
   st.mission = null;
   st.loadoutSession = [];
   ui.report = { t, bonusXp, bonusPct, totalXp, oldLevel, newLevel: st.level, oldPct, newPct: st.xp / xpNeeded(st.level) * 100, levels,
                 oldStats, newStats: { ...st.stats }, gains, newGear, newPerks, records, perEx, dur, missionNo: st.missions,
-                streak: streakNow, sBonus, note: { energy: 0, rpe: 0, text: "" }, noteSaved: false };
+                streak: streakNow, sBonus, note: { energy: 0, rpe: 0, text: "" }, noteSaved: false,
+                prog: progRes ? { name: progRes.p.name, done: progRes.done, xp: progXp, doneN: progRes.doneN, total: progRes.total, bonus: progRes.p.xp } : null };
   save();
   closeRest();
   ui.screen = "report";
@@ -5884,10 +6085,14 @@ function renderReport() {
   </section>
   <div class="rp-kpis">
     <div class="panel kpi"><b>${fmt(r.t.ton)} kg</b><span>tonnage total soulevé</span></div>
-    <div class="panel kpi"><b id="rp-xpcount">+${fmt(r.totalXp)}</b><span>XP gagnée (dont +${fmt(r.bonusXp)} bonus de mission ${r.bonusPct} %${r.sBonus ? `, série ${r.streak} semaines incluse` : ""})</span></div>
+    <div class="panel kpi"><b id="rp-xpcount">+${fmt(r.totalXp)}</b><span>XP gagnée (dont +${fmt(r.bonusXp)} bonus de mission ${r.bonusPct} %${r.sBonus ? `, série ${r.streak} semaines incluse` : ""}${r.prog && r.prog.xp ? `, +${r.prog.xp} bonus de séance` : ""})</span></div>
     <div class="panel kpi"><b>${r.t.sets}</b><span>séries validées sur ${r.perEx.length} exercice${r.perEx.length > 1 ? "s" : ""}</span></div>
     <div class="panel kpi"><b>${r.records.length}</b><span>record${r.records.length > 1 ? "s" : ""} battu${r.records.length > 1 ? "s" : ""}</span></div>
   </div>
+  ${r.prog ? `<section class="block"><div class="panel prog-res ${r.prog.done ? "ok" : ""}">
+    <span class="eyebrow">SÉANCE PRÊTE · ${esc(r.prog.name)}</span>
+    <b>${r.prog.done ? `SÉANCE ACCOMPLIE · +${r.prog.xp} XP` : `SÉANCE INCOMPLÈTE · ${r.prog.doneN}/${r.prog.total} EXERCICES`}</b>
+    <small>${r.prog.done ? "Toutes les séries prévues ont été validées. Bonus de séance ajouté." : `Bonus de ${r.prog.bonus} XP manqué : il fallait toutes les séries prévues avec au moins les répétitions indiquées.`}</small></div></section>` : ""}
   <section class="block">
     <h2 class="h2">PROGRESSION</h2>
     <div class="panel bracket rp-lvl">
@@ -6044,6 +6249,9 @@ const actions = {
   "set-accent": el => { setAccent(el.dataset.n); render(); if (ui.settingsOpen) { const sc = $("#sheet-in").scrollTop; $("#sheet-in").innerHTML = settingsHTML(); $("#sheet-in").scrollTop = sc; } },
   "settings-open": () => openSettings(),
   "suivi": el => { ui.suivi = el.dataset.v; render(); },
+  "ex-view": el => { ui.exView = el.dataset.v; render(); },
+  "prog-launch": el => launchProgram(el.dataset.id),
+  "mission-sheet": el => openMissionSheet(+el.dataset.i),
   "journal-all": () => { ui.journalAll = true; render(); },
   "recs-all": () => { ui.recsAll = true; render(); },
   "set-theme": el => { setTheme(el.dataset.n); render(); if (ui.settingsOpen) { const sc = $("#sheet-in").scrollTop; $("#sheet-in").innerHTML = settingsHTML(); $("#sheet-in").scrollTop = sc; } toast(el.dataset.n === "auto" ? "Thème automatique : suit le réglage de l'appareil." : el.dataset.n === "light" ? "Thème clair activé." : "Thème sombre activé."); },
