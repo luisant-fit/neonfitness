@@ -611,6 +611,9 @@ textarea.txt{resize:vertical;min-height:58px;font-family:var(--f-body)}
 .illus .ip-cable{stroke-dasharray:2 3}
 .illus-cap{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 10px;border-top:1px solid var(--line);font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;color:var(--muted)}
 .illus-cap [data-phase]{color:var(--neon)}
+.illus-alt{margin-top:8px}
+.illus .ip-mat{stroke-dasharray:4 3;opacity:.7}
+.illus .ip-band{fill:none;stroke:var(--alert);stroke-width:2;stroke-linecap:round}
 .ex-link{display:flex;align-items:center;gap:8px;text-align:left;font-size:16.5px;font-weight:600;margin-top:3px;color:var(--text)}
 .ex-link:hover{color:var(--neon)}
 .ex-link .i{font-family:var(--f-display);font-size:9px;color:var(--muted);border:1px solid var(--dim);border-radius:50%;width:16px;height:16px;display:inline-grid;place-items:center;flex:none}
@@ -1597,7 +1600,45 @@ const EXERCISES = [
   ex("shoulder_taps","Planche touchers d'épaules","abdos","bw",0.7,{core:0.7,power:0.3},45,0,20,["Transverse","Obliques","Épaules"],"En position de pompe, une main touche l'épaule opposée sans que le bassin ne tourne. Répétitions totales.",0.6),
   ex("hollow","Hollow body","abdos","time",1.1,{core:1},60,0,30,["Grand droit","Transverse"],"Allongé, bas du dos plaqué, bras et jambes tendus décollés du sol : le corps forme une banane. Saisir la durée en secondes."),
   ex("l_sit","L-sit","abdos","time",2.0,{core:0.8,power:0.2},90,0,15,["Grand droit","Fléchisseurs de hanche","Triceps"],"En appui sur les mains (barres ou sol), jambes tendues à l'horizontale. Isométrie très exigeante. Saisir la durée en secondes."),
-  ex("dragon_flag","Dragon flag","abdos","bw",1.8,{core:1},120,0,4,["Grand droit","Transverse","Grand dorsal"],"Allongé sur un banc, mains derrière la tête, corps gainé en planche levé à la verticale puis redescendu lentement.",0.6)
+  ex("dragon_flag","Dragon flag","abdos","bw",1.8,{core:1},120,0,4,["Grand droit","Transverse","Grand dorsal"],"Allongé sur un banc, mains derrière la tête, corps gainé en planche levé à la verticale puis redescendu lentement.",0.6),
+  /* ---- Ajouts : fessiers, gainage, haltères, étirements ---- */
+  // PECTORAUX
+  ex("db_bench","Développé couché haltères","pecs","load",1.2,{power:1},90,16,10,["Grand pectoral","Triceps","Deltoïde antérieur"],"Allongé sur un banc, haltères au-dessus de la poitrine. Descente contrôlée coudes à 45° du corps, poussée jusqu'à bras tendus. Sans banc, il se fait au sol (floor press) avec une amplitude plus courte."),
+  // ÉPAULES
+  ex("upright_row","Rowing menton haltères","epaules","load",0.85,{power:0.7,armor:0.3},60,8,12,["Deltoïde moyen","Trapèzes"],"Haltères devant les cuisses, on tire les coudes vers le haut et l'extérieur jusqu'à hauteur d'épaules, haltères près du corps. On ne monte pas plus haut que les épaules et on s'arrête si l'épaule pince."),
+  ex("y_raise","Élévations en Y","epaules","load",0.65,{power:0.6,armor:0.4},45,3,12,["Deltoïde antérieur","Trapèzes (portion basse)","Coiffe des rotateurs"],"Haltères très légères, bras presque tendus montés en diagonale au-dessus de la tête pour dessiner un Y, pouces vers le haut. Omoplates basses, sans cambrer le dos."),
+  // BRAS
+  ex("curl_db","Curl haltères","bras","load",0.85,{power:0.7,armor:0.3},60,10,12,["Biceps brachial","Brachial antérieur"],"Paumes tournées vers l'avant (supination), coudes fixes le long du corps. On monte sans balancer le buste, descente contrôlée jusqu'au bras tendu."),
+  ex("oh_tri_one","Extension triceps unilatérale","bras","load",0.8,{power:1},60,8,12,["Triceps (longue portion)"],"Une haltère tenue au-dessus de la tête, coude pointé vers le plafond. On descend l'haltère derrière la tête puis on tend le bras : seul l'avant-bras bouge. Répétitions par bras."),
+  // JAMBES ET FESSIERS
+  ex("goblet_squat","Goblet squat","jambes","load",1.15,{propulsion:0.85,core:0.15},90,16,12,["Quadriceps","Fessiers","Gainage"],"Une haltère tenue verticalement contre la poitrine, coudes vers le bas. Descente profonde, buste droit, genoux dans l'axe des pieds."),
+  ex("goblet_sumo","Goblet squat sumo","jambes","load",1.1,{propulsion:0.9,core:0.1},90,16,12,["Adducteurs","Grand fessier","Quadriceps"],"Pieds très écartés, pointes vers l'extérieur, une haltère tenue verticalement contre la poitrine. Buste droit, on pousse les genoux vers l'extérieur en descendant."),
+  ex("bstance_rdl","RDL en B-stance","jambes","load",1.1,{propulsion:0.8,armor:0.2},75,14,10,["Ischio-jambiers","Grand fessier","Érecteurs du rachis"],"Pied arrière posé sur la pointe comme une béquille, 80 % du poids sur la jambe avant. Charnière de hanche, dos plat, haltères le long de la jambe. Répétitions par jambe."),
+  ex("sumo_squat","Squat sumo","jambes","bw",0.8,{propulsion:0.9,core:0.1},60,0,15,["Adducteurs","Quadriceps","Grand fessier"],"Pieds très écartés, pointes vers l'extérieur, mains jointes devant la poitrine. Descente buste droit en poussant les genoux dans l'axe des orteils.",0.6),
+  ex("reverse_lunge","Fentes arrière","jambes","bw",0.9,{propulsion:0.9,core:0.1},60,0,12,["Quadriceps","Grand fessier","Adducteurs"],"Debout pieds joints, on recule une jambe et on descend le genou arrière près du sol, buste droit, puis on revient. Plus doux pour les genoux que la fente avant. Répétitions par jambe.",0.6),
+  ex("static_lunge","Fentes statiques","jambes","bw",0.9,{propulsion:0.9,core:0.1},60,0,12,["Quadriceps","Fessiers","Adducteurs"],"Pieds fixes en position de fente (split squat) : on descend et on remonte sur place, genou avant au-dessus de la cheville. Haltères possibles en lest. Répétitions par jambe.",0.6),
+  ex("frog_jump","Sauts de grenouille","jambes","bw",1.15,{propulsion:0.9,core:0.1},75,0,10,["Quadriceps","Fessiers","Mollets"],"Squat profond pieds écartés, mains au sol entre les pieds, puis saut explosif vers l'avant et le haut. Réception souple genoux fléchis, on enchaîne.",0.65),
+  ex("bw_hip_thrust","Hip thrust au poids du corps","jambes","bw",0.85,{propulsion:0.9,core:0.1},60,0,15,["Grand fessier","Ischio-jambiers"],"Haut du dos appuyé sur un banc ou un canapé, pieds à plat. On pousse le bassin jusqu'à l'horizontale et on marque une pause d'une seconde en serrant les fessiers.",0.45),
+  ex("sl_hip_thrust","Hip thrust unilatéral","jambes","bw",1.0,{propulsion:0.85,core:0.15},60,0,10,["Grand fessier","Ischio-jambiers","Moyen fessier"],"Haut du dos sur un banc, un seul pied au sol, l'autre jambe tendue dans le prolongement. Extension complète du bassin sans le laisser pivoter. Répétitions par jambe.",0.6),
+  ex("glute_march","Pont fessier marché","jambes","bw",0.7,{propulsion:0.6,core:0.4},45,0,16,["Grand fessier","Ischio-jambiers","Transverse"],"En pont fessier tenu, on lève un genou puis l'autre en alternance sans laisser le bassin tomber ni pivoter. Répétitions totales.",0.35),
+  ex("frog_pumps","Frog pumps","jambes","bw",0.65,{propulsion:0.9,core:0.1},45,0,20,["Grand fessier","Adducteurs"],"Allongé sur le dos, plantes des pieds collées et genoux ouverts en « grenouille ». Petites montées de bassin rythmées en serrant fort les fessiers en haut.",0.35),
+  ex("donkey_kick","Donkey kicks","jambes","bw",0.6,{propulsion:0.8,core:0.2},45,0,15,["Grand fessier","Ischio-jambiers","Gainage"],"À quatre pattes, genou plié à 90°, on pousse la plante du pied vers le plafond sans cambrer le bas du dos. Répétitions par jambe.",0.2),
+  ex("clamshell","Clamshell avec élastique","jambes","bw",0.5,{propulsion:0.8,core:0.2},30,0,15,["Moyen fessier","Stabilisateurs de hanche"],"Allongé sur le côté, hanches et genoux fléchis, mini-band au-dessus des genoux. Pieds collés, on ouvre le genou du dessus sans basculer le bassin en arrière. Répétitions par côté.",0.1),
+  ex("side_tapout","Tap-out latéral","jambes","bw",0.55,{propulsion:0.8,core:0.2},30,0,20,["Moyen fessier","Quadriceps","Stabilisateurs de hanche"],"En demi-squat tenu, on pousse un pied sur le côté pour toucher le sol puis on le ramène, en alternance, sans se relever. Un mini-band aux chevilles ou aux genoux augmente l'intensité. Répétitions totales.",0.3),
+  // ABDOS
+  ex("reverse_crunch","Crunch inversé","abdos","bw",0.75,{core:1},45,0,15,["Grand droit (portion basse)","Transverse"],"Allongé, genoux pliés à 90° au-dessus des hanches. On enroule le bassin pour ramener les genoux vers la poitrine en décollant les fesses, puis on redescend lentement.",0.3),
+  ex("cross_crunch","Crunch croisé","abdos","bw",0.65,{core:1},45,0,15,["Obliques","Grand droit"],"Allongé, une cheville posée sur le genou opposé, main derrière la tête. On enroule le buste en amenant le coude opposé vers ce genou. Répétitions par côté.",0.25),
+  ex("heel_taps","Touchers de talons (side-to-sides)","abdos","bw",0.55,{core:1},45,0,20,["Obliques","Grand droit"],"Allongé, genoux pliés, épaules décollées du sol. On se penche d'un côté puis de l'autre pour toucher le talon avec la main, sans reposer la tête. Répétitions totales.",0.2),
+  ex("bicycle_kicks","Pédalage (bicycle kicks)","abdos","bw",0.6,{core:1},45,0,30,["Grand droit (portion basse)","Fléchisseurs de hanche"],"Allongé, mains sous les fessiers, bas du dos plaqué. Les jambes pédalent en l'air : l'une se tend près du sol pendant que l'autre se replie. Répétitions totales.",0.25),
+  ex("wipers","Essuie-glaces","abdos","bw",1.1,{core:1},60,0,10,["Obliques","Grand droit","Fléchisseurs de hanche"],"Allongé, bras en croix, jambes à la verticale. On les descend d'un côté sans toucher le sol puis de l'autre, épaules plaquées. Version plus facile : genoux pliés. Répétitions totales.",0.3),
+  ex("knee_elbow","Genou-coude en planche","abdos","bw",0.75,{core:1},45,0,16,["Grand droit","Obliques","Transverse"],"En planche bras tendus, on amène lentement un genou vers le coude du même côté en arrondissant légèrement le dos, puis on repose le pied. Répétitions totales.",0.35),
+  ex("plank_side_taps","Planche side taps","abdos","bw",0.7,{core:0.9,propulsion:0.1},45,0,20,["Transverse","Obliques","Moyen fessier"],"En planche bras tendus, on écarte un pied sur le côté pour toucher le sol puis on le ramène, en alternance, bassin immobile. Répétitions totales.",0.3),
+  // ÉTIREMENTS (durée, rangés dans le système travaillé)
+  ex("st_fig4","Étirement en figure 4","jambes","time",0.4,{propulsion:0.6,core:0.4},15,0,30,["Grand fessier","Piriforme","Stabilisateurs de hanche"],"Allongé sur le dos, cheville posée sur le genou opposé (la forme d'un 4). On tire la cuisse d'appui vers la poitrine jusqu'à sentir l'étirement dans le fessier. Durée par côté, respiration lente."),
+  ex("st_butterfly","Étirement papillon","jambes","time",0.4,{propulsion:0.8,core:0.2},15,0,30,["Adducteurs","Hanches"],"Assis, plantes des pieds collées, talons près du bassin, mains sur les pieds. Dos long, on laisse les genoux descendre et on se penche doucement vers l'avant en expirant."),
+  ex("st_child","Posture de l'enfant avec allongement latéral","dos","time",0.4,{core:0.6,armor:0.4},15,0,30,["Grand dorsal","Carré des lombes","Obliques"],"Assis sur les talons, buste vers l'avant, bras allongés au sol. On fait marcher les deux mains d'un côté pour étirer tout le flanc opposé. Durée par côté."),
+  ex("st_twist","Torsion assise des fessiers","jambes","time",0.4,{propulsion:0.5,core:0.5},15,0,30,["Grand fessier","Obliques","Lombaires"],"Assis, une jambe tendue, l'autre croisée par-dessus avec le pied à plat à l'extérieur du genou. Le coude opposé pousse le genou pendant qu'on tourne le buste, dos droit. Durée par côté."),
+  ex("st_hipflexor","Étirement des fléchisseurs de hanche","jambes","time",0.4,{propulsion:0.7,core:0.3},15,0,30,["Fléchisseurs de hanche (psoas)","Quadriceps"],"Un genou au sol, l'autre pied devant. On rentre le bassin en serrant le fessier et on avance les hanches ; le bras du côté du genou au sol se lève pour accentuer. Durée par côté.")
 ];
 const EX = Object.fromEntries(EXERCISES.map(e => [e.id, e]));
 
@@ -1622,7 +1663,8 @@ const EQUIP_GROUPS = [
     { id: "pecdeck", name: "Pec deck (butterfly)", hint: "" },
     { id: "tbar", name: "T-bar / landmine", hint: "" },
     { id: "roman", name: "Banc à lombaires (45°)", hint: "" },
-    { id: "wheel", name: "Roue abdominale", hint: "" } ] }
+    { id: "wheel", name: "Roue abdominale", hint: "" },
+    { id: "band", name: "Mini-bands (élastiques)", hint: "Clamshell, activation des fessiers" } ] }
 ];
 const EQUIP = Object.fromEntries(EQUIP_GROUPS.flatMap(g => g.items).map(i => [i.id, i]));
 const EQUIP_IDS = Object.keys(EQUIP);
@@ -1641,12 +1683,15 @@ const EX_REQ = {
   pushup_incline: [["bench", "step"]], pushup_decline: [["bench", "step"]], dips_rings: [["rings"]],
   chinup: [["pullbar"]], pullup_neutral: [["pullbar"]], scap_pull: [["pullbar"]], dead_hang: [["pullbar"]], muscle_up: [["pullbar", "rings"]],
   pullup: [["pullbar"]], pullup_neg: [["pullbar"]], inverted_row: [["lowbar", "rings"]], dips_bars: [["dipbars"]], bw_tri_ext: [["lowbar", "rings"]],
-  chinup_close: [["pullbar"]], bw_curl: [["lowbar", "rings"]], step_up: [["step", "bench"]], dragon_flag: [["bench"]]
+  chinup_close: [["pullbar"]], bw_curl: [["lowbar", "rings"]], step_up: [["step", "bench"]], dragon_flag: [["bench"]],
+  db_bench: [["db"]], upright_row: [["db"]], y_raise: [["db"]], curl_db: [["db"]], oh_tri_one: [["db"]],
+  goblet_squat: [["db"]], goblet_sumo: [["db"]], bstance_rdl: [["db"]], bw_hip_thrust: [["bench", "step"]], sl_hip_thrust: [["bench", "step"]],
+  clamshell: [["band"]]
 };
 const exReq = id => EX_REQ[id] || [];
 /* Exercices aux haltères qui demandent une paire ; ceux qui se font un bras à la fois avec une seule. */
-const EX_PAIR = new Set(["incline_db", "fly", "db_press", "arnold", "rdl"]);
-const EX_UNI = new Set(["row_db", "curl_hammer", "curl_incline", "lat_raise", "rear_fly", "shrug", "calf", "lunge", "bulgarian"]);
+const EX_PAIR = new Set(["incline_db", "fly", "db_press", "arnold", "rdl", "db_bench"]);
+const EX_UNI = new Set(["row_db", "curl_hammer", "curl_incline", "lat_raise", "rear_fly", "shrug", "calf", "lunge", "bulgarian", "curl_db", "oh_tri_one", "y_raise", "bstance_rdl"]);
 function defaultEquip() {
   return { active: "home", filter: false, places: {
     home: { items: [], maxDb: 0, maxBb: 0, dbCount: 2, barKg: 20 },
@@ -3260,12 +3305,14 @@ function ilLerp(a, b, t) {
   return t < 0.5 ? a : b;
 }
 /* Résout une posture de profil en points articulaires. */
+/* s : échelle de longueur d'un membre (nombre ou [segment 1, segment 2]) pour figurer un raccourci de perspective */
+const ilSc = (spec, i) => spec && spec.s !== undefined ? (Array.isArray(spec.s) ? spec.s[i] : spec.s) : 1;
 function ilSolve(p) {
   const J = {}, L = ILL;
   J.hip = [0, 0];
   J.sh = ilAdd(J.hip, p.torso, L.T * (p.tl || 1));
   J.head = ilAdd(J.sh, p.head !== undefined ? p.head : p.torso, L.NECK);
-  const ang = (spec, root, k1, k2, l1, l2) => { if (spec && spec.a !== undefined) { J[k1] = ilAdd(J[root], spec.a, l1); J[k2] = ilAdd(J[k1], spec.f, l2); } };
+  const ang = (spec, root, k1, k2, l1, l2) => { if (spec && spec.a !== undefined) { J[k1] = ilAdd(J[root], spec.a, l1 * ilSc(spec, 0)); J[k2] = ilAdd(J[k1], spec.f, l2 * ilSc(spec, 1)); } };
   ang(p.leg, "hip", "knee", "ank", L.TH, L.SH); ang(p.leg2, "hip", "knee2", "ank2", L.TH, L.SH);
   ang(p.arm, "sh", "elb", "hand", L.UA, L.FA); ang(p.arm2, "sh", "elb2", "hand2", L.UA, L.FA);
   let off = p.hip || [118, 0];
@@ -3275,7 +3322,7 @@ function ilSolve(p) {
     if (!spec || !spec.ik) return;
     const base = spec.rel ? J[spec.rel] : [0, 0];
     const tg = [base[0] + spec.ik[0], base[1] + spec.ik[1]];
-    [J[k1], J[k2]] = ilIK(J[root], tg, l1, l2, spec.bend);
+    [J[k1], J[k2]] = ilIK(J[root], tg, l1 * ilSc(spec, 0), l2 * ilSc(spec, 1), spec.bend);
   };
   ik(p.leg, "hip", "knee", "ank", L.TH, L.SH); ik(p.leg2, "hip", "knee2", "ank2", L.TH, L.SH);
   ik(p.arm, "sh", "elb", "hand", L.UA, L.FA); ik(p.arm2, "sh", "elb2", "hand2", L.UA, L.FA);
@@ -3288,28 +3335,31 @@ function ilSolve(p) {
   if (J.ank2) J.toe2 = ilAdd(J.ank2, (p.foot2 !== undefined ? p.foot2 : ilAng(J.knee2, J.ank2) + 90), L.FT);
   return J;
 }
-/* Vue de face : membres symétriques (bras droit = angle a, bras gauche = -a). */
+/* Vue de face (ou de dessus) : membres symétriques (droit = angle a, gauche = -a).
+   legL / armL remplacent le membre gauche (même convention miroir) pour les mouvements asymétriques.
+   tl raccourcit le buste, sw / hw règlent la largeur des épaules et du bassin (rotation du buste). */
 function ilSolveFront(p) {
-  const J = {}, L = ILL, hip = p.hip;
-  J.hip = hip; J.sh = ilAdd(hip, p.torso || 180, L.T); J.head = ilAdd(J.sh, p.torso || 180, L.NECK);
-  const sw = 15, hw = 8;
+  const J = {}, L = ILL, hip = p.hip, tor = p.torso || 180;
+  J.hip = hip; J.sh = ilAdd(hip, tor, L.T * (p.tl || 1)); J.head = ilAdd(J.sh, p.head !== undefined ? p.head : tor, L.NECK);
+  const sw = 15 * (p.sw || 1), hw = 8 * (p.hw || 1);
   J.rsh = [J.sh[0] + sw, J.sh[1]]; J.lsh = [J.sh[0] - sw, J.sh[1]];
   J.rhip = [hip[0] + hw, hip[1]]; J.lhip = [hip[0] - hw, hip[1]];
-  const limb = (spec, rootR, rootL, l1, l2, kR1, kR2, kL1, kL2) => {
-    if (!spec) return;
-    if (spec.a !== undefined) {
-      J[kR1] = ilAdd(J[rootR], spec.a, l1); J[kR2] = ilAdd(J[kR1], spec.f, l2);
-      J[kL1] = ilAdd(J[rootL], -spec.a, l1); J[kL2] = ilAdd(J[kL1], -spec.f, l2);
-    } else if (spec.ik) {
+  const one = (spec, root, l1, l2, k1, k2, side, axis) => {
+    const a1 = l1 * ilSc(spec, 0), a2 = l2 * ilSc(spec, 1);
+    if (spec.a !== undefined) { J[k1] = ilAdd(J[root], side * spec.a, a1); J[k2] = ilAdd(J[k1], side * spec.f, a2); }
+    else if (spec.ik) {
       const base = spec.rel ? J[spec.rel] : [0, 0];
-      const tR = [base[0] + spec.ik[0], base[1] + spec.ik[1]];
-      const tL = spec.same ? tR : [2 * J.sh[0] - tR[0], tR[1]];
-      [J[kR1], J[kR2]] = ilIK(J[rootR], tR, l1, l2, spec.bend || -1);
-      [J[kL1], J[kL2]] = ilIK(J[rootL], tL, l1, l2, -(spec.bend || -1));
+      let t = [base[0] + spec.ik[0], base[1] + spec.ik[1]];
+      if (side < 0 && !spec.same) t = [2 * axis - t[0], t[1]];
+      [J[k1], J[k2]] = ilIK(J[root], t, a1, a2, side * (spec.bend || -1));
     }
   };
-  limb(p.arm, "rsh", "lsh", L.UA, L.FA, "relb", "rhand", "lelb", "lhand");
-  limb(p.leg, "rhip", "lhip", L.TH, L.SH, "rknee", "rank", "lknee", "lank");
+  const limb = (spec, specL, R, Lr, l1, l2, kR1, kR2, kL1, kL2, axis) => {
+    if (spec) one(spec, R, l1, l2, kR1, kR2, 1, axis);
+    const sl = specL || spec; if (sl) one(sl, Lr, l1, l2, kL1, kL2, -1, axis);
+  };
+  limb(p.leg, p.legL, "rhip", "lhip", L.TH, L.SH, "rknee", "rank", "lknee", "lank", hip[0]);
+  limb(p.arm, p.armL, "rsh", "lsh", L.UA, L.FA, "relb", "rhand", "lelb", "lhand", J.sh[0]);
   return J;
 }
 
@@ -3458,8 +3508,8 @@ const IL = {
   },
   deadlift(o) {
     const legs = { ik: [114, F - 2], bend: -1 };
-    const pose = (hip, t) => ({ hip, torso: t, head: t < 150 ? t - 15 : t, leg: legs, leg2: legs, arm: { a: 0, f: 0 } });
-    if (o.rdl) return { props: [{ k: "bar", j: "hand" }], A: pose([96, 100], 104), B: pose([112, 98], 180) };
+    const pose = (hip, t) => ({ hip, torso: t, head: t < 150 ? t - 15 : t, leg: legs, leg2: o.bstance ? { ik: [99, F - 8], bend: -1 } : legs, foot2: o.bstance ? 45 : undefined, arm: { a: 0, f: 0 } });
+    if (o.rdl) return { props: [{ k: o.db ? "db" : "bar", j: "hand" }], A: pose([96, 100], 104), B: pose([112, 98], 180) };
     return { props: [{ k: "bar", j: "hand" }], A: pose([92, 114], 118), B: pose([112, 98], 180) };
   },
   squat(o) {
@@ -3471,6 +3521,8 @@ const IL = {
     else { arm = { ik: [2, -3], rel: "sh", bend: 1 }; props.push({ k: "bar", j: "sh", dx: -3, dy: -3 }); }
     const pose = (hip, t, ank, armOverride) => ({ hip, torso: t, leg: ank ? { ik: ank, bend: -1 } : legs, leg2: ank ? { ik: ank, bend: -1 } : legs, arm: armOverride || arm });
     if (o.air) return { A: pose([92, 126], 140, null, { a: 92, f: 92 }), B: pose([113, 98], 178, null, { a: 70, f: 60 }) };
+    if (o.goblet) { const g = { ik: [12, 5], rel: "sh", bend: 1 }; return { props: [{ k: "db", j: "hand", dy: -3 }], A: pose([92, 126], 148, null, g), B: pose([113, 98], 178, null, g) }; }
+    if (o.frog) return { A: pose([100, 130], 118, [122, F - 2], { ik: [-4, 37], rel: "sh", bend: 1 }), B: pose([124, 80], 178, [126, F - 22], { ik: [5, -40], rel: "sh", bend: -1 }) };
     if (o.jump) return { A: pose([92, 126], 140, [116, F - 2], { a: 30, f: 30 }), B: pose([113, 84], 180, [116, F - 15], { a: 172, f: 172 }) };
     return { props, A: pose([90, 126], o.front ? 158 : 140), B: pose([113, 98], 177) };
   },
@@ -3481,6 +3533,10 @@ const IL = {
   },
   lunge(o) {
     const front = [148, F - 2];
+    if (o.reverse) {
+      const pose = (hip, back) => ({ hip, torso: 178, leg: { ik: front, bend: -1 }, leg2: { ik: back, bend: -1 }, arm: { a: 2, f: 2 } });
+      return { A: pose([146, 99], [144, F - 2]), B: pose([115, 124], [82, F - 2]) };
+    }
     const back = o.bulgarian ? [74, 119] : [82, F - 2];
     const props = [];
     if (o.bulgarian) props.push({ k: "box", x1: 52, x2: 92, y: 122 });
@@ -3499,10 +3555,17 @@ const IL = {
       B: { hip: [113, 98], torso: 180, leg: { ik: [116, F - 2], bend: -1 }, leg2: { a: 40, f: 44 }, arm: { a: 60, f: 60 } } };
   },
   thrust(o) {
-    const sh = o.bridge ? [88, F - 6] : [98, 118], feet = [152, F - 2];
-    const pose = (t) => ({ anchor: { j: "sh", at: sh }, torso: t, head: t, leg: { ik: feet, bend: -1 }, leg2: { ik: feet, bend: -1 }, arm: { a: 100, f: 100 } });
-    const props = o.bridge ? [] : [{ k: "box", x1: 56, x2: 100, y: 122 }, { k: "bar", j: "hip", dx: 2, dy: -9 }];
-    return o.bridge ? { props, A: pose(-97), B: pose(-70) } : { props, A: pose(-124), B: pose(-90) };
+    const sh = o.bridge ? [88, F - 6] : [98, 118], feet = o.frog ? [130, F - 3] : [152, F - 2];
+    const L = (ft, sc) => ({ ik: ft, bend: -1, s: sc || (o.frog ? 0.8 : 1) });
+    const pose = (t, lift) => {
+      const p = { anchor: { j: "sh", at: sh }, torso: t, head: t, leg: L(lift ? [156, 108] : feet), leg2: L(feet), arm: { a: 100, f: 100 } };
+      if (o.single) p.leg2 = { a: 172, f: 96 };
+      return p;
+    };
+    const props = o.bridge ? [] : [{ k: "box", x1: 56, x2: 100, y: 122 }];
+    if (!o.bridge && !o.bw && !o.single) props.push({ k: "bar", j: "hip", dx: 2, dy: -9 });
+    if (o.march) return { props, A: pose(-70), B: pose(-70, true) };
+    return o.bridge ? { props, A: pose(o.frog ? -94 : -97), B: pose(o.frog ? -64 : -70) } : { props, A: pose(-124), B: pose(-90) };
   },
   legext() {
     const hip = [104, 116];
@@ -3580,6 +3643,14 @@ const IL = {
     const hip = [124, F - 7];
     const legs = { ik: [162, F - 2], bend: -1 };
     const arm = { ik: [-3, -5], rel: "head", bend: 1 };
+    if (o.kicks) {
+      const base = { hip, torso: -92, head: -98, arm: { a: 90, f: 90 } };
+      return { A: Object.assign({ leg: { a: 140, f: 110 }, leg2: { a: 100, f: 100 } }, base), B: Object.assign({ leg: { a: 100, f: 100 }, leg2: { a: 140, f: 110 } }, base) };
+    }
+    if (o.cross) {
+      const cl = { ik: [2, -3], rel: "knee", bend: 1 };
+      return { A: { hip, torso: -90, head: -94, leg: legs, leg2: cl, arm }, B: { hip, torso: -122, head: -130, leg: legs, leg2: cl, arm } };
+    }
     if (o.bicycle) return {
       A: { hip, torso: -112, head: -118, leg: { a: 150, f: 95 }, leg2: { a: 104, f: 100 }, arm },
       B: { hip, torso: -116, head: -122, leg: { a: 104, f: 100 }, leg2: { a: 150, f: 95 }, arm } };
@@ -3627,6 +3698,101 @@ const IL = {
     const pose = (t) => ({ anchor: { j: "sh", at: sh }, torso: t, head: -90, leg: { a: t + 180, f: t + 180 }, foot: t + 270, arm: { ik: [52, 130], bend: 1 } });
     return { props: [{ k: "box", x1: 36, x2: 120, y: 134 }], A: pose(0), B: pose(-78) };
   },
+
+  /* ---- ajouts ---- */
+  quad() { // à quatre pattes : donkey kick
+    const knee = [96, F - 3], kneel = { a: 0, f: -90 };
+    const pose = (lg) => ({ anchor: { j: "knee2", at: knee }, torso: 104, head: 100, leg2: kneel, leg: lg, arm: { ik: [133, F - 1], bend: 1 } });
+    return { A: pose({ a: 0, f: -90 }), B: pose({ a: -100, f: -180 }) };
+  },
+  clam() { // allongé sur le côté, vue de trois quarts avant
+    const hip = [124, 128], low = { a: 45, f: 125, s: [0.98, 0.94] };
+    const pose = (top) => ({ hip, torso: -90, head: -94, leg2: low, leg: top, arm2: { a: -92, f: -92 }, arm: { a: 60, f: 90 } });
+    return { floor: false, vlabel: "VUE DE TROIS QUARTS", props: [{ k: "mat", pts: [[34, 140], [190, 140], [212, 158], [56, 158]] }, { k: "band", a: "knee", b: "knee2" }],
+      A: pose({ a: 49, f: 123, s: [0.98, 0.94] }), B: pose({ a: 139, f: 60, s: [0.72, 1.15] }) };
+  },
+  revcrunch() {
+    const sh = [76, F - 6];
+    const pose = (t, lg) => ({ anchor: { j: "sh", at: sh }, torso: t, head: -90, leg: lg, leg2: lg, arm: { a: 90, f: 90 } });
+    return { A: pose(-90, { a: 178, f: 92 }), B: pose(-72, { a: 222, f: 150 }) };
+  },
+  kneeplank() { // planche bras tendus, genou vers le coude
+    const ank = [46, F - 2], a = 114, sh = ilAdd(ank, a, 88), ext = { a: a - 180, f: a - 180 };
+    const pose = (lg) => ({ anchor: { j: "ank2", at: ank }, torso: a, leg2: ext, foot2: a - 90, leg: lg, arm: { ik: [sh[0] + 3, F - 1], bend: 1 } });
+    return { A: pose(ext), B: pose({ a: 75, f: -60 }) };
+  },
+  ohtri() { // extension triceps unilatérale au-dessus de la tête
+    const base = { ground: true, torso: 180, leg: STAND, leg2: { a: -5, f: -5 } };
+    return { props: [{ k: "db", j: "hand" }], A: Object.assign({}, base, { arm: { a: 150, f: -60 } }), B: Object.assign({}, base, { arm: { a: 150, f: -192 } }) };
+  },
+  fig4() { // étirement figure 4, allongé
+    const sh = [70, F - 6];
+    const pose = (th) => ({ anchor: { j: "sh", at: sh }, torso: -90, head: -94, leg2: { a: th, f: th - 90 }, leg: { ik: [2, -2], rel: "knee2", bend: 1 }, arm: { ik: [-1, 8], rel: "knee2", bend: -1 } });
+    return { stretch: true, A: pose(184), B: pose(198) };
+  },
+  child() { // posture de l'enfant, profil
+    const pose = (k) => ({ anchor: { j: "knee", at: [110, F - 3] }, torso: 92 + k, head: 112, leg: { a: 60, f: -90 }, foot: -90, arm: { ik: [160 + k * 2, F - 1], bend: 1 } });
+    return { iso: true, A: pose(0), B: pose(1) };
+  },
+  hipflex() { // fente genou au sol : on avance les hanches, bras levé
+    const pose = (hip, back, t, arm) => ({ hip, torso: t, leg: back, leg2: { ik: [152, F - 2], bend: -1 }, arm });
+    return { stretch: true,
+      A: pose([124, 124], { a: -25, f: -90 }, 180, { a: 6, f: 6 }),
+      B: pose([132, 128], { a: -40, f: -90 }, 186, { a: 176, f: 178 }) };
+  },
+  /* vue de face */
+  sumo(o) {
+    const legs = { ik: [151, F - 2], bend: -1 }, arm = { ik: [2, 15], rel: "sh", bend: -1 };
+    const props = o.goblet ? [{ k: "db", j: "rhand", dx: -2, dy: 1 }] : [];
+    const base = { view: "front", torso: 180, leg: legs, arm };
+    return { view: "front", feet: 1, vlabel: "VUE DE FACE", props, A: Object.assign({ hip: [120, 102] }, base), B: Object.assign({ hip: [120, 126] }, base) };
+  },
+  tapout() {
+    const arm = { ik: [11, 31], rel: "sh", bend: -1 }, home = { ik: [133, F - 2], bend: -1 };
+    const pose = (r) => ({ view: "front", hip: [120, 114], torso: 180, arm, leg: r, legL: home });
+    return { view: "front", feet: 1, vlabel: "VUE DE FACE", A: pose(home), B: pose({ ik: [166, F - 2], bend: -1 }) };
+  },
+  upright() {
+    const base = { view: "front", hip: [120, 98], torso: 180, leg: { a: 4, f: 4 } };
+    return { view: "front", feet: 1, vlabel: "VUE DE FACE", props: [{ k: "db", j: "rhand" }, { k: "db", j: "lhand" }],
+      A: Object.assign({}, base, { arm: { a: 7, f: 2 } }), B: Object.assign({}, base, { arm: { a: 100, f: -128 } }) };
+  },
+  yraise() {
+    const base = { view: "front", hip: [120, 98], torso: 180, leg: { a: 4, f: 4 } };
+    return { view: "front", feet: 1, vlabel: "VUE DE FACE", props: [{ k: "db", j: "rhand" }, { k: "db", j: "lhand" }],
+      A: Object.assign({}, base, { arm: { a: 10, f: 10 } }), B: Object.assign({}, base, { arm: { a: 148, f: 150 } }) };
+  },
+  butterfly() {
+    const pose = (tl, ka) => ({ view: "front", hip: [120, F - 10], torso: 180, tl, leg: { a: ka, f: -65, s: [0.9, 1.3] }, arm: { ik: [124, F - 6], bend: -1 } });
+    return { view: "front", stretch: true, vlabel: "VUE DE FACE", A: pose(1, 104), B: pose(0.72, 110) };
+  },
+  stwist() { // torsion assise, profil : jambe tendue au sol, l'autre croisée par-dessus, coude contre le genou
+    const pose = (t) => ({ hip: [92, F - 10], torso: t, head: t + 4, leg2: { a: 90, f: 90 }, leg: { ik: [118, F - 2], bend: -1 }, arm: { ik: [5, 3], rel: "knee", bend: 1 }, arm2: { ik: [64, F - 1], bend: 1 } });
+    return { iso: true, A: pose(178), B: pose(177) };
+  },
+  wipers() { // vue depuis les pieds : jambes verticales qui basculent d'un côté à l'autre
+    const pose = (r) => ({ view: "front", hip: [120, F - 6], torso: 180, tl: 0.12, sw: 1.1, arm: { a: 90, f: 90 }, leg: { a: r, f: r }, legL: { a: -r, f: -r } });
+    return { view: "front", vlabel: "VUE DEPUIS LES PIEDS", A: pose(232), B: pose(128) };
+  },
+  /* vue de dessus (allongé ou en appui au sol) */
+  heeltap() {
+    const pose = (t) => ({ view: "front", hip: [120, 102], torso: t, leg: { a: 26, f: -16, s: 0.62 }, arm: { a: 4, f: 2 } });
+    return { view: "front", vlabel: "VUE DE DESSUS", props: [{ k: "mat", pts: [[80, 18], [160, 18], [160, 150], [80, 150]] }], A: pose(166), B: pose(194) };
+  },
+  planktop() {
+    const pose = (r) => ({ view: "front", hip: [120, 100], torso: 180, arm: { a: 8, f: 8, s: 0.22 }, leg: r, legL: { a: 2, f: 2 } });
+    return { view: "front", vlabel: "VUE DE DESSUS", props: [{ k: "mat", pts: [[76, 30], [164, 30], [164, 156], [76, 156]] }], A: pose({ a: 2, f: 2 }), B: pose({ a: 30, f: 30 }) };
+  },
+  frogtop() {
+    const pose = (k) => ({ view: "front", hip: [120, 84], torso: 180, leg: { ik: [120, 116 - k], bend: -1, same: true }, arm: { a: 14, f: 10 } });
+    return { view: "front", iso: true, vlabel: "VUE DE DESSUS · POSITION DES JAMBES", plabel: "PLANTES DES PIEDS COLLÉES · GENOUX OUVERTS",
+      props: [{ k: "mat", pts: [[78, 22], [162, 22], [162, 150], [78, 150]] }], A: pose(0), B: pose(1) };
+  },
+  childtop() {
+    const pose = (t, r, l) => ({ view: "front", hip: [120, 132], torso: t, arm: { a: r, f: r }, armL: { a: l, f: l } });
+    return { view: "front", stretch: true, vlabel: "VUE DE DESSUS · ALLONGEMENT LATÉRAL", props: [{ k: "mat", pts: [[70, 10], [170, 10], [170, 150], [70, 150]] }],
+      A: pose(180, 172, 172), B: pose(166, 152, 200) };
+  },
   /* vue de face */
   lateral() {
     const base = { view: "front", hip: [120, 98], torso: 180, leg: { a: 4, f: 4 } };
@@ -3672,11 +3838,23 @@ const ILL_MAP = {
   leg_ext: ["legext", {}], leg_curl: ["legcurl", {}], nordic: ["nordic", {}], calf: ["calf", {}], bw_calf: ["calf", {}], wall_sit: ["wallsit", {}],
   plank: ["plank", {}], side_plank: ["plank", {}], ab_wheel: ["wheel", {}], cable_crunch: ["cablecrunch", {}], russian: ["twist", {}],
   pallof: ["facepull", {}], crunch: ["crunch", {}], bicycle: ["crunch", { bicycle: 1 }], floor_leg_raise: ["legraise", {}], v_up: ["vup", {}],
-  dead_bug: ["deadbug", {}], mountain: ["mountain", {}], shoulder_taps: ["taps", {}], hollow: ["hollow", {}], l_sit: ["lsit", {}], dragon_flag: ["dragon", {}]
+  dead_bug: ["deadbug", {}], mountain: ["mountain", {}], shoulder_taps: ["taps", {}], hollow: ["hollow", {}], l_sit: ["lsit", {}], dragon_flag: ["dragon", {}],
+  db_bench: ["press", { db: 1 }], upright_row: ["upright", {}], y_raise: ["yraise", {}], curl_db: ["curl", { db: 1 }], oh_tri_one: ["ohtri", {}],
+  goblet_squat: ["squat", { goblet: 1 }], goblet_sumo: ["sumo", { goblet: 1 }], sumo_squat: ["sumo", {}], bstance_rdl: ["deadlift", { rdl: 1, db: 1, bstance: 1 }],
+  reverse_lunge: ["lunge", { reverse: 1 }], static_lunge: ["lunge", {}], frog_jump: ["squat", { frog: 1 }],
+  bw_hip_thrust: ["thrust", { bw: 1 }], sl_hip_thrust: ["thrust", { single: 1 }], glute_march: ["thrust", { bridge: 1, march: 1 }], frog_pumps: ["thrust", { bridge: 1, frog: 1 }],
+  donkey_kick: ["quad", {}], clamshell: ["clam", {}], side_tapout: ["tapout", {}],
+  reverse_crunch: ["revcrunch", {}], cross_crunch: ["crunch", { cross: 1 }], heel_taps: ["heeltap", {}], bicycle_kicks: ["crunch", { kicks: 1 }],
+  wipers: ["wipers", {}], knee_elbow: ["kneeplank", {}], plank_side_taps: ["planktop", {}],
+  st_fig4: ["fig4", {}], st_butterfly: ["butterfly", {}], st_child: ["child", {}], st_twist: ["stwist", {}], st_hipflexor: ["hipflex", {}]
 };
-function illusSpec(id) {
-  const m = ILL_MAP[id]; if (!m || !IL[m[0]]) return null;
-  try { const s = IL[m[0]](m[1] || {}); s.view = s.view || "side"; return s; } catch (e) { return null; }
+/* Second point de vue quand le profil ne suffit pas à comprendre le mouvement */
+const ILL_ALT = {
+  frog_pumps: ["frogtop", {}], st_child: ["childtop", {}], plank_side_taps: ["pushup", { aA: 106, aB: 106.6, iso: 1, vlabel: "VUE DE PROFIL", plabel: "PLANCHE BRAS TENDUS · BASSIN FIXE" }]
+};
+function illusSpec(id, alt) {
+  const m = (alt ? ILL_ALT : ILL_MAP)[id]; if (!m || !IL[m[0]]) return null;
+  try { const o = m[1] || {}, s = IL[m[0]](o); s.view = s.view || "side"; ["vlabel", "plabel", "iso"].forEach(k => { if (o[k]) s[k] = o[k]; }); return s; } catch (e) { return null; }
 }
 const r1 = v => Math.round(v * 10) / 10;
 const pt = p => `${r1(p[0])} ${r1(p[1])}`;
@@ -3686,6 +3864,7 @@ function illusPaths(spec, pose) {
   let main, dim = "";
   if (spec.view === "front") {
     main = [seg("lsh", "rsh"), "M" + pt(J.sh) + "L" + pt(J.hip), seg("lhip", "rhip"), seg("rsh", "relb", "rhand"), seg("lsh", "lelb", "lhand"), seg("rhip", "rknee", "rank"), seg("lhip", "lknee", "lank")].join("");
+    if (spec.feet && J.rank && J.lank) main += `M${pt(J.rank)}L${pt([J.rank[0] + 6, J.rank[1] + 1])}M${pt(J.lank)}L${pt([J.lank[0] - 6, J.lank[1] + 1])}`;
   } else {
     main = [seg("hip", "sh"), seg("sh", "elb", "hand"), seg("hip", "knee", "ank", "toe")].join("");
     dim = [seg("sh", "elb2", "hand2"), seg("hip", "knee2", "ank2", "toe2")].join("");
@@ -3717,6 +3896,8 @@ function illusPropMarkup(p, J) {
     case "foot": return `<path class="ip-heavy" d="M${p.x} ${p.y1}V${p.y2}"/>`;
     case "pullbar": return `<path class="ip-heavy" d="M${p.x1} ${p.y}H${p.x2}"/><path class="ip" d="M${p.x1} ${p.y}V${F}M${p.x2} ${p.y}V${F}"/>`;
     case "lowbar": return `<path class="ip-heavy" d="M${p.x1} ${p.y}H${p.x2}"/><path class="ip" d="M${p.x2 - 4} ${p.y}V${F}"/>`;
+    case "mat": return `<path class="ip ip-mat" d="M${p.pts.map(pt).join("L")}Z"/>`;
+    case "band": return J[p.a] && J[p.b] ? `<path class="ip-band" d="M${pt(J[p.a])}L${pt(J[p.b])}"/>` : "";
     case "pbars": return `<path class="ip-heavy" d="M${p.x1} ${p.y}H${p.x2}"/><path class="ip" d="M${p.x2 - 6} ${p.y}V${F}"/>`;
   }
   return "";
@@ -3729,23 +3910,24 @@ function illusFrame(spec, t) {
   return { J, main, dim, props };
 }
 /* SVG complet d'une image (utilisé pour l'affichage figé et pour l'animation). */
-function illusSVG(id) {
-  const spec = illusSpec(id); if (!spec) return "";
+function illusSVG(id, alt) {
+  const spec = illusSpec(id, alt); if (!spec) return "";
   const ghost = illusFrame(spec, 0);
   const grid = Array.from({ length: 13 }, (_, i) => `M${i * 20} 0V${ILL.H}`).join("") + Array.from({ length: 9 }, (_, i) => `M0 ${i * 20}H${ILL.W}`).join("");
   return `<svg class="illus" viewBox="0 0 ${ILL.W} ${ILL.H}" role="img" aria-label="Schéma du mouvement : ${esc(EX[id] ? EX[id].name : "")}">
     <path class="ig" d="${grid}"/>
-    <path class="ifloor" d="M0 ${F}H${ILL.W}"/>
+    ${spec.floor === false || /DESSUS/.test(spec.vlabel || "") ? "" : `<path class="ifloor" d="M0 ${F}H${ILL.W}"/>`}
     <g class="ighost"><path d="${ghost.main}"/>${ghost.J.head ? `<circle cx="${r1(ghost.J.head[0])}" cy="${r1(ghost.J.head[1])}" r="${ILL.HR}"/>` : ""}</g>
     <g class="iprops" data-props></g>
     <g class="ifig"><path class="idim" data-dim d=""/><path data-main d=""/><circle data-head r="${ILL.HR}" cx="0" cy="0"/></g>
   </svg>`;
 }
-let illusRAF = null;
-function stopIllus() { if (illusRAF) cancelAnimationFrame(illusRAF); illusRAF = null; }
-function startIllus(root, id) {
-  stopIllus();
-  const spec = illusSpec(id), svg = root && root.querySelector("svg.illus");
+let illusRAFs = [];
+function stopIllus() { illusRAFs.forEach(r => cancelAnimationFrame(r.id)); illusRAFs = []; }
+function startIllus(root, id, alt, keep) {
+  if (!keep) stopIllus();
+  const slot = { id: 0 };
+  const spec = illusSpec(id, alt), svg = root && root.querySelector("svg.illus");
   if (!spec || !svg) return;
   const mainEl = svg.querySelector("[data-main]"), dimEl = svg.querySelector("[data-dim]"), headEl = svg.querySelector("[data-head]"), propsEl = svg.querySelector("[data-props]");
   const phaseEl = root.querySelector("[data-phase]");
@@ -3754,21 +3936,23 @@ function startIllus(root, id) {
     mainEl.setAttribute("d", f.main); dimEl.setAttribute("d", f.dim); propsEl.innerHTML = f.props;
     const h = f.J.head; headEl.setAttribute("cx", r1(h[0])); headEl.setAttribute("cy", r1(h[1]));
   };
-  if (reduced()) { draw(1); if (phaseEl) phaseEl.textContent = spec.iso ? "MAINTIEN" : "POSITION FINALE · DÉPART EN POINTILLÉS"; return; }
-  const period = spec.iso ? 3200 : spec.neg ? 5600 : 2600, t0 = performance.now();
+  if (reduced()) { draw(1); if (phaseEl) phaseEl.textContent = spec.plabel || (spec.iso ? "MAINTIEN" : "POSITION FINALE · DÉPART EN POINTILLÉS"); return; }
+  const period = spec.iso ? 3200 : spec.neg ? 5600 : spec.stretch ? 5200 : 2600, t0 = performance.now();
   let lastLabel = "";
   const loop = (now) => {
-    if (!svg.isConnected) { stopIllus(); return; }
+    if (!svg.isConnected) { cancelAnimationFrame(slot.id); illusRAFs = illusRAFs.filter(r => r !== slot); return; }
     const ph = ((now - t0) % period) / period;
     const t = spec.neg ? (ph < 0.12 ? ph / 0.12 : ph < 0.22 ? 1 : Math.max(0, 1 - (ph - 0.22) / 0.72)) : ph < 0.5 ? ph * 2 : 2 - ph * 2;
     draw(t);
-    const label = spec.iso ? "MAINTIEN · RESPIRATION CONTRÔLÉE"
+    const label = spec.plabel ? spec.plabel : spec.iso ? "MAINTIEN · RESPIRATION CONTRÔLÉE"
+      : spec.stretch ? (ph < 0.5 ? "ON S'ÉTIRE EN EXPIRANT" : "ON RELÂCHE UN PEU · INSPIRATION")
       : spec.neg ? (ph < 0.12 ? "MONTÉE SANS TIRER · SAUT OU MARCHE" : ph < 0.22 ? "MENTON AU-DESSUS · ON VERROUILLE" : ph < 0.94 ? "DESCENTE LENTE · 3 À 5 SECONDES" : "BRAS TENDUS · ON REMONTE")
       : ph < 0.5 ? "PHASE CONCENTRIQUE · POUSSER / TIRER" : "PHASE EXCENTRIQUE · RETOUR CONTRÔLÉ";
     if (phaseEl && label !== lastLabel) { phaseEl.textContent = label; lastLabel = label; }
-    illusRAF = requestAnimationFrame(loop);
+    slot.id = requestAnimationFrame(loop);
   };
-  illusRAF = requestAnimationFrame(loop);
+  slot.id = requestAnimationFrame(loop);
+  illusRAFs.push(slot);
 }
 
 
@@ -4392,7 +4576,7 @@ const PROG_LEVELS = [
 ];
 const PROG_XP = [150, 250, 400, 600];
 /* exercices d'isolation ou trop techniques : jamais tirés comme exercice principal d'une séance */
-const PROG_SKIP = new Set(["bw_calf", "calf", "shrug", "scap_pull", "dead_hang", "wall_walk", "ytw", "handstand_hold", "pushup_spiderman", "leg_ext", "leg_curl", "pec_deck", "cable_cross", "russian", "pallof", "jump_squat"]);
+const PROG_SKIP = new Set(["bw_calf", "calf", "shrug", "scap_pull", "dead_hang", "wall_walk", "ytw", "handstand_hold", "pushup_spiderman", "leg_ext", "leg_curl", "pec_deck", "cable_cross", "russian", "pallof", "jump_squat", "clamshell", "side_tapout", "y_raise"]);
 function seededRng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 function progReps(e, lvl) {
   const i = lvl - 1, r5 = v => Math.max(15, Math.round(v / 5) * 5);
@@ -4586,7 +4770,7 @@ function openExSheet(id) {
     <div class="grip" aria-hidden="true"></div>
     <div class="sheet-top"><div><div class="eyebrow">TERMINAL D'ANALYSE · ${CAT_BY_ID[e.cat].code}</div><h2>${esc(e.name)}</h2></div>
       <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
-    ${ILL_MAP[e.id] ? `<div class="sec"><h3>SCHÉMA DU MOUVEMENT</h3><div class="illus-wrap" id="illus-box">${illusSVG(e.id)}<div class="illus-cap"><span data-phase>PHASE CONCENTRIQUE</span><span>${ILL_MAP[e.id][1] && ILL_MAP[e.id][1].neg ? "POINTILLÉS = BRAS TENDUS, FIN DE LA DESCENTE" : "POINTILLÉS = POSITION DE DÉPART"}</span></div></div></div>` : ""}
+    ${ILL_MAP[e.id] ? illusBlock(e.id) : ""}
     ${GRIPS[e.id] ? `<div class="sec"><h3>PLACEMENT DES MAINS · ${GRIPS[e.id].bar ? "VUE DE FACE" : "VUE DU DESSUS"}</h3><div class="illus-wrap">${gripSVG(e.id)}<div class="illus-cap"><span data-grip>${esc(GRIPS[e.id].label)}</span></div></div></div>` : ""}
     <div class="sec"><h3>ANALYSE BIOMÉCANIQUE</h3><p>${esc(e.desc)}</p></div>
     <div class="sec"><h3>PROGRESSION</h3>${progressChart(e.id)}</div>
@@ -4605,6 +4789,13 @@ function openExSheet(id) {
     <button class="btn ${on ? "btn-ghost" : "btn-neon"}" data-act="toggle-ex" data-id="${e.id}">${on ? "RETIRER DU LOADOUT" : "AJOUTER AU LOADOUT"}</button>`;
   showSheet(".x-close");
   startIllus($("#illus-box"), id);
+  if (ILL_ALT[id]) startIllus($("#illus-box2"), id, true, true);
+}
+function illusBlock(id) {
+  const sp = illusSpec(id) || {}, alt = ILL_ALT[id] ? illusSpec(id, true) : null;
+  const cap = (spec, main) => `<div class="illus-cap"><span data-phase>${spec.plabel || "PHASE CONCENTRIQUE"}</span><span>${spec.vlabel ? spec.vlabel + " · " : main && !alt ? "" : "VUE DE PROFIL · "}${ILL_MAP[id][1] && ILL_MAP[id][1].neg ? "POINTILLÉS = BRAS TENDUS, FIN DE LA DESCENTE" : "POINTILLÉS = POSITION DE DÉPART"}</span></div>`;
+  return `<div class="sec"><h3>SCHÉMA DU MOUVEMENT</h3><div class="illus-wrap" id="illus-box">${illusSVG(id)}${cap(sp, true)}</div>
+    ${alt ? `<div class="illus-wrap illus-alt" id="illus-box2">${illusSVG(id, true)}${cap(alt, false)}</div>` : ""}</div>`;
 }
 function showSheet(focusSel) {
   const w = $("#sheet");
