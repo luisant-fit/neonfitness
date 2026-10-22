@@ -1333,7 +1333,9 @@ button.sq-row:hover{background:var(--panel-2)}
 .cat-ill .mn>*{fill:var(--panel-2);stroke:var(--line);stroke-width:.45}
 .cat-ill .mr>*{fill:var(--panel-2);stroke:var(--line-hi);stroke-width:.45;stroke-linejoin:round}
 .cat-ill .mr.l1>*{fill:rgba(var(--neon-rgb),.22);stroke:rgba(var(--neon-rgb),.5)}
-.cat-ill .mr.l3>*{fill:var(--neon);stroke:var(--neon);filter:drop-shadow(0 0 1.5px rgba(var(--neon-rgb),.8))}
+.cat-ill .mr.l3>*{fill:var(--neon);stroke:var(--panel);stroke-width:.9}
+.cat-ill .mr.l2>*{fill:rgba(var(--neon-rgb),.55);stroke:var(--panel);stroke-width:.9}
+.cat-ill .mr.l3{filter:drop-shadow(0 0 1.5px rgba(var(--neon-rgb),.7))}
 .cat.sel .cat-ill .mn>*,.cat.sel .cat-ill .mr.l0>*{fill:var(--panel)}
 </style>
 <script>window.NEON_STANDALONE = true;
@@ -4262,7 +4264,7 @@ function agoTxt(ts) {
 }
 const CAT_ZONES = {
   pecs: { view: "front", main: ["pecs"], sub: ["delts", "triceps"], box: "14 4 72 80" },
-  dos: { view: "back", main: ["lats", "traps", "lowerback"], sub: ["delts", "triceps"], box: "14 4 72 80" },
+  dos: { view: "back", main: ["lats"], mid: ["traps", "lowerback"], sub: ["delts"], box: "14 4 72 80" },
   epaules: { view: "front", main: ["delts"], sub: ["traps", "pecs"], box: "14 4 72 80" },
   bras: { view: "front", main: ["biceps", "forearms"], sub: ["delts"], box: "14 4 72 80" },
   jambes: { view: "front", main: ["quads", "calves"], sub: [], box: "33 72 34 92" },
@@ -4270,7 +4272,7 @@ const CAT_ZONES = {
 };
 function catIllus(cat) {
   const z = CAT_ZONES[cat]; if (!z) return "";
-  const lvl = r => z.main.includes(r) ? 3 : z.sub.includes(r) ? 1 : 0;
+  const lvl = r => z.main.includes(r) ? 3 : (z.mid || []).includes(r) ? 2 : z.sub.includes(r) ? 1 : 0;
   return `<svg class="cat-ill" viewBox="${z.box}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${bodyFig(z.view, lvl)}</svg>`;
 }
 function renderSystems() {
