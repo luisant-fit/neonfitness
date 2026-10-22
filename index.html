@@ -1066,6 +1066,134 @@ button.sq-row:hover{background:var(--panel-2)}
 .ef-pv{font-size:13px;color:var(--muted)}.ef-pv b{font-family:var(--f-display);font-size:16px;color:var(--neon)}
 .ring.paused .fg{stroke:var(--muted);filter:none}
 .btn[disabled]{opacity:.45}
+
+/* ---------- succès ---------- */
+.ach-b{flex:none;display:block}
+.ach-b .hx{stroke-width:2;fill:var(--panel-2)}
+.ach-b .hx2{fill:none;stroke-width:.8;opacity:.6}
+.ach-b .gl{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ach-b.t0{--m:#C98A4B}.ach-b.t1{--m:#B9C6D2}.ach-b.t2{--m:#F2B53A}.ach-b.t3{--m:var(--neon)}
+.ach-b.got .hx{stroke:var(--m);fill:color-mix(in srgb,var(--m) 16%,var(--panel))}
+.ach-b.got .hx2,.ach-b.got .gl{stroke:var(--m)}
+.ach-b.got.t2,.ach-b.got.t3{filter:drop-shadow(0 0 3px color-mix(in srgb,var(--m) 60%,transparent))}
+.ach-b.lock .hx{stroke:var(--line)}.ach-b.lock .hx2,.ach-b.lock .gl{stroke:var(--dim)}
+.ach-favs{display:flex;gap:10px;align-items:flex-start}
+.ach-fav{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;flex:1;text-align:center}
+.ach-fav small{font-size:10px;line-height:1.2;color:var(--muted);max-width:90px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.op-ach{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:10px 0 0;border-top:1px solid var(--line);text-align:left;width:100%}
+.op-ach .ach-favs{flex:1;min-width:0;justify-content:flex-start}
+.op-ach .ach-fav{flex:0 1 92px}
+.op-ach-empty{flex:1;font-size:12.5px;color:var(--muted)}
+.op-ach-n{font-family:var(--f-display);font-size:10px;letter-spacing:.12em;color:var(--neon);white-space:nowrap}
+.ach-sum{display:flex;align-items:center;gap:14px;padding:14px;width:100%;text-align:left}
+.ach-sum>div:first-child{display:flex;flex-direction:column;gap:2px}
+.ach-sum b{font-family:var(--f-display);font-size:24px;color:var(--neon)}.ach-sum b small{font-size:12px;color:var(--muted)}
+.ach-sum span{font-size:12px;color:var(--muted)}
+.ach-sum .ach-favs{flex:1;justify-content:center;gap:6px}
+.ach-sum .go{font-family:var(--f-display);font-size:10px;letter-spacing:.14em;color:var(--neon);white-space:nowrap}
+.ach-list{display:flex;flex-direction:column;gap:8px}
+.ach-row{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid var(--line);border-radius:4px;background:var(--panel-2)}
+.ach-row.got{border-color:var(--line-hi)}
+.ach-i{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ach-i b{font-size:14.5px;font-weight:600;color:var(--text)}
+.ach-i span{font-size:12.5px;color:var(--muted)}
+.ach-i small{font-family:var(--f-display);font-size:8.5px;letter-spacing:.12em;color:var(--muted)}
+.ach-i small.ok{color:var(--neon)}
+.ach-i .mini-bar{margin-top:2px}
+.ach-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pips{display:inline-flex;gap:3px}.pips i{width:7px;height:7px;border-radius:50%;border:1px solid var(--line-hi);background:transparent}
+.pips i.t0{--m:#C98A4B}.pips i.t1{--m:#B9C6D2}.pips i.t2{--m:#F2B53A}.pips i.t3{--m:var(--neon)}
+.pips i.on{background:var(--m);border-color:var(--m)}
+.tier-leg{display:flex;gap:12px;flex-wrap:wrap;font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;color:var(--muted);margin-bottom:4px}
+.tier-leg span{display:flex;align-items:center;gap:5px}.tier-leg i{width:10px;height:10px;border-radius:50%}
+.tier-leg i.t0{background:#C98A4B}.tier-leg i.t1{background:#B9C6D2}.tier-leg i.t2{background:#F2B53A}.tier-leg i.t3{background:var(--neon)}
+.ach-pin{width:40px;height:40px;flex:none;font-size:22px;color:var(--dim);border:1px solid var(--line);border-radius:4px;background:var(--panel)}
+.ach-pin.on{color:var(--legend);border-color:var(--legend)}
+.ach-pinned{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 10px}
+.ach-pinned .slot{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border:1px dashed var(--line);border-radius:4px;text-align:center;min-height:92px;justify-content:center}
+.ach-pinned .slot.on{border-style:solid;border-color:var(--line-hi)}
+.ach-pinned .slot i{width:34px;height:38px;border:1px dashed var(--dim);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.ach-pinned .slot small{font-size:10.5px;color:var(--muted);line-height:1.2}
+.ach-toast{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));z-index:140;display:flex;align-items:center;gap:12px;padding:10px 16px 10px 10px;max-width:calc(100vw - 24px);
+  background:var(--panel);border:1px solid var(--neon);border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 20px var(--neon-soft);transform:translate(-50%,-160%);transition:transform .45s cubic-bezier(.2,1.3,.4,1);text-align:left}
+.ach-toast.show{transform:translate(-50%,0)}
+.ach-toast span{display:flex;flex-direction:column;gap:1px;min-width:0}
+.ach-toast small{font-family:var(--f-display);font-size:8.5px;letter-spacing:.16em;color:var(--neon)}
+.ach-toast b{font-size:15px;font-weight:700;color:var(--text)}
+.ach-toast em{font-style:normal;font-family:var(--f-display);font-size:11px;color:var(--legend)}
+.sq-row .row-ach{display:inline-flex;gap:3px;margin-left:6px;vertical-align:middle}
+/* ---------- carte des muscles ---------- */
+.mmap{padding:14px;display:flex;flex-direction:column;gap:12px}
+.mm-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mm-tog .pick{height:30px;min-width:46px;font-size:9px}
+.mm-figs{display:grid;grid-template-columns:1fr 1fr;gap:6px;justify-items:center}
+.mm-figs figure{margin:0;width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
+.mm-figs svg{width:100%;max-width:150px;height:auto;display:block}
+.mm-figs figcaption{font-family:var(--f-display);font-size:8.5px;letter-spacing:.24em;color:var(--muted)}
+.mm-figs .mn>*{fill:var(--panel-2);stroke:var(--line);stroke-width:.45}
+.mm-figs .mr>*{fill:var(--panel-2);stroke:var(--line-hi);stroke-width:.45;stroke-linejoin:round;transition:fill .3s}
+.mm-figs .mr.l1>*{fill:rgba(var(--neon-rgb),.3);stroke:rgba(var(--neon-rgb),.65)}
+.mm-figs .mr.l2>*{fill:rgba(var(--neon-rgb),.6);stroke:var(--neon)}
+.mm-figs .mr.l3>*{fill:var(--neon);stroke:var(--neon);filter:drop-shadow(0 0 1.5px rgba(var(--neon-rgb),.8))}
+.mm-leg{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:11.5px;color:var(--muted)}
+.mm-leg span{display:flex;align-items:center;gap:6px}
+.mm-leg i{width:12px;height:12px;border-radius:3px;border:1px solid var(--line-hi);background:var(--panel-2)}
+.mm-leg i.l1{background:rgba(var(--neon-rgb),.3)}.mm-leg i.l2{background:rgba(var(--neon-rgb),.6)}.mm-leg i.l3{background:var(--neon)}
+.mm-list{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;border-top:1px solid var(--line);padding-top:10px}
+.mm-row{display:grid;grid-template-columns:76px minmax(0,1fr) 30px;align-items:center;gap:6px;font-size:12px;color:var(--text)}
+.mm-row.zero{color:var(--muted)}
+.mm-row i{height:5px;background:var(--panel-2);border-radius:3px;overflow:hidden}
+.mm-row i b{display:block;height:100%;background:rgba(var(--neon-rgb),.6)}.mm-row i b.l3{background:var(--neon)}.mm-row i b.l1{background:rgba(var(--neon-rgb),.35)}
+.mm-row em{font-style:normal;font-family:var(--f-display);font-size:10.5px;color:var(--neon);text-align:right}
+.mm-row.zero em{color:var(--dim)}
+/* ---------- calendrier ---------- */
+.cal{padding:14px;display:flex;flex-direction:column;gap:12px}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cal-nav b{font-family:var(--f-display);font-size:13px;letter-spacing:.12em;color:var(--text);text-transform:uppercase}
+.cal-btn{width:40px;height:36px;border:1px solid var(--line-hi);border-radius:4px;color:var(--neon);font-size:20px;line-height:1;background:var(--panel-2)}
+.cal-btn[disabled]{opacity:.3;pointer-events:none}
+.cal-month{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.cal-month .cw{font-family:var(--f-display);font-size:9px;letter-spacing:.1em;color:var(--muted);text-align:center;padding-bottom:2px}
+.cal-month .cd{position:relative;aspect-ratio:1;display:grid;place-items:center;border-radius:4px;border:1px solid var(--line);background:var(--panel-2);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cal-month .cd.blank{border:0;background:none}
+.cal-month .cd.fut{opacity:.35}
+.cal-month .cd.a1{background:rgba(var(--neon-rgb),.28);border-color:var(--neon);color:var(--text);font-weight:600}
+.cal-month .cd.a2{background:var(--neon);border-color:var(--neon);color:var(--ink);font-weight:700;box-shadow:0 0 8px var(--neon-glow)}
+.cal-month .cd.now{outline:2px solid var(--text);outline-offset:1px}
+.cal-month sup{position:absolute;top:2px;right:4px;font-size:8px;font-family:var(--f-display)}
+.cal-leg{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:11.5px;color:var(--muted)}
+.cal-leg span{display:flex;align-items:center;gap:6px}
+.cal-leg i{width:12px;height:12px;border-radius:3px;border:1px solid var(--line);background:var(--panel-2)}
+.cal-leg i.a1{background:rgba(var(--neon-rgb),.28);border-color:var(--neon)}.cal-leg i.a2{background:var(--neon);border-color:var(--neon)}
+.cal-leg i.now{outline:2px solid var(--text);outline-offset:0}
+.cal-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border-top:1px solid var(--line);padding-top:10px}
+.cal-sum div{display:flex;flex-direction:column;gap:2px}
+.cal-sum b{font-family:var(--f-display);font-size:18px;color:var(--neon)}
+.cal-sum span{font-size:11.5px;color:var(--muted);line-height:1.3}
+/* ---------- poids de corps ---------- */
+.wt{padding:14px;display:flex;flex-direction:column;gap:12px}
+.wt-top{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.wt-top div{display:flex;flex-direction:column;gap:3px}
+.wt-top b{font-family:var(--f-display);font-size:20px;color:var(--text)}
+.wt-top b small{font-size:11px;color:var(--muted)}
+.wt-top b.up{color:var(--legend)}.wt-top b.down{color:var(--neon)}
+/* ---------- échauffement ---------- */
+.warm{border:1px dashed var(--line-hi);border-radius:4px;background:var(--panel-2)}
+.warm:empty{display:none}
+.warm.done{border-style:solid}
+.warm summary{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;list-style:none}
+.warm summary::-webkit-details-marker{display:none}
+.warm summary::after{content:"▾";color:var(--neon);font-size:12px;transition:transform .2s}
+.warm[open] summary::after{transform:rotate(180deg)}
+.warm .w-t{font-family:var(--f-display);font-size:9.5px;letter-spacing:.16em;color:var(--neon)}
+.warm .w-s{flex:1;text-align:right;font-size:12px;color:var(--muted)}
+.warm-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.warm-row{display:grid;grid-template-columns:24px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;align-items:center;padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+.warm-row .check{grid-row:1/3;width:20px;height:20px}
+.warm-row b{font-size:14px;font-weight:600;color:var(--text)}
+.warm-row small{font-size:11.5px;color:var(--muted)}
+.warm-row.on b{color:var(--muted);text-decoration:line-through}
+.warm .hint{padding:8px 12px 10px;font-size:11.5px}
 </style>
 <script>window.NEON_STANDALONE = true;
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
@@ -1360,6 +1488,7 @@ const GEAR = [
   { id:"neural_sync",  slot:"neural", rarity:"ÉPIQUE",     name:"Synapse Quantique",             desc:"Interface neuro-musculaire à latence nulle. Recrutement de fibres optimisé.",   fx:{xp:{global:12},rest:15},             cond:{type:"level",v:12} },
   { id:"arms_plasma",  slot:"arms",   rarity:"LÉGENDAIRE", name:"Bras Plasma Ω",                 desc:"Myofibrilles synthétiques gainées de plasma. Prototype non homologué.",         fx:{xp:{power:25},stat:{power:8}},       cond:{type:"level",v:14} },
   { id:"legs_quant",   slot:"legs",   rarity:"LÉGENDAIRE", name:"Jambes Quantiques",             desc:"Membres inférieurs à intrication de phase. La gravité devient une suggestion.", fx:{xp:{propulsion:30},stat:{propulsion:10}}, cond:{type:"tonnage",v:75000} },
+  { id:"core_raid",    slot:"core",   rarity:"ÉPIQUE",     name:"Noyau de Raid Ω-7",             desc:"Cœur énergétique arraché lors d'un raid d'escouade. Ne s'obtient qu'en équipe.",   fx:{xp:{core:10,global:8},stat:{core:4}},  cond:{type:"raid",v:1} },
   { id:"neural_ghost", slot:"neural", rarity:"LÉGENDAIRE", name:"Coprocesseur FANTÔME",          desc:"IA tactique embarquée, récupérée sur une unité d'élite.",                       fx:{xp:{global:20},rest:20},             cond:{type:"missions",v:25} }
 ];
 const GEAR_BY_ID = Object.fromEntries(GEAR.map(g => [g.id, g]));
@@ -1444,6 +1573,7 @@ function condMet(c, st) {
     case "missions": return st.missions >= c.v;
     case "tonnage": return st.tonnage >= c.v;
     case "stat": return (st.stats[c.stat] || 0) >= c.v;
+    case "raid": return (st.raidWins || 0) >= c.v;
   }
   return false;
 }
@@ -1451,6 +1581,7 @@ function condProgress(c, st) {
   switch (c.type) {
     case "level": return [st.level, c.v];
     case "missions": return [st.missions, c.v];
+    case "raid": return [Math.min(st.raidWins || 0, c.v), c.v];
     case "tonnage": return [st.tonnage, c.v];
     case "stat": return [st.stats[c.stat] || 0, c.v];
   }
@@ -1463,6 +1594,7 @@ function condText(c) {
     case "missions": return `${c.v} MISSION${c.v > 1 ? "S" : ""} ACCOMPLIE${c.v > 1 ? "S" : ""}`;
     case "tonnage": return `${fmt(c.v)} KG SOULEVÉS AU TOTAL`;
     case "stat": return `${STATS[c.stat].short} ≥ ${c.v}`;
+    case "raid": return "EXCLUSIF · 1 RAID D'ESCOUADE RÉUSSI";
   }
   return "";
 }
@@ -1488,6 +1620,10 @@ function fxLines(fx) {
 /* =====================================================================
    État & persistance
    ===================================================================== */
+function defaultLife() {
+  return { reps: 0, push: 0, pull: 0, core: 0, sets: 0, recs: 0, maxPush: 0, maxTon: 0, maxSets: 0, maxXp: 0, longHold: 0, maxCats: 0,
+           early: 0, late: 0, weekend: 0, contracts: 0, warm: 0, notes: 0, bestStreak: 0, exDone: [] };
+}
 function defaultState() {
   return {
     version: 1,
@@ -1500,7 +1636,8 @@ function defaultState() {
     category: "pecs", loadoutSession: [], mission: null,
     updatedAt: 0, onboarded: false, tips: { catalog: false, briefing: false },
     squads: [], equip: defaultEquip(),
-    exLog: {}, favorites: [], contracts: { week: 0, picks: [], claimed: [] }, squadClaims: {}, squadWins: 0, undo: null
+    exLog: {}, favorites: [], contracts: { week: 0, picks: [], claimed: [] }, squadClaims: {}, squadWins: 0, undo: null,
+    life: defaultLife(), ach: {}, achFav: [], activity: {}, weights: [], raidClaims: {}, raidWins: 0
   };
 }
 const num = (v, def, min = -Infinity, max = Infinity) => { v = Number(v); return Number.isFinite(v) ? Math.min(max, Math.max(min, v)) : def; };
@@ -1557,7 +1694,7 @@ function sanitize(s) {
     const x = {
       date: num(h.date, Date.now()), xp: num(h.xp, 0, 0), ton: num(h.ton, 0, 0), sets: num(h.sets, 0, 0),
       exCount: num(h.exCount, 0, 0), dur: num(h.dur, 0, 0), level: num(h.level, 1, 1), focus: typeof h.focus === "string" ? h.focus.slice(0, 40) : "",
-      recs: num(h.recs, 0, 0), push: num(h.push, 0, 0), coreSec: num(h.coreSec, 0, 0),
+      recs: num(h.recs, 0, 0), push: num(h.push, 0, 0), coreSec: num(h.coreSec, 0, 0), reps: num(h.reps, 0, 0),
       xpStat: {}, cats: Array.isArray(h.cats) ? h.cats.filter(c => CAT_BY_ID[c]) : []
     };
     STAT_KEYS.forEach(k => { x.xpStat[k] = num(isObj(h.xpStat) ? h.xpStat[k] : 0, 0, 0); });
@@ -1579,11 +1716,32 @@ function sanitize(s) {
   };
   if (isObj(s.squadClaims)) for (const [k, v] of Object.entries(s.squadClaims)) if (/^[A-Z0-9]{6}$/.test(k)) o.squadClaims[k] = num(v, 0, 0);
   o.squadWins = Math.floor(num(s.squadWins, 0, 0));
+  o.raidWins = Math.floor(num(s.raidWins, 0, 0));
+  if (isObj(s.raidClaims)) for (const [k, v] of Object.entries(s.raidClaims)) if (/^[A-Z0-9]{6}$/.test(k)) o.raidClaims[k] = num(v, 0, 0);
+  if (isObj(s.ach)) for (const [k, v] of Object.entries(s.ach)) if (/^[a-z0-9_]{2,30}$/.test(k)) o.ach[k] = num(v, Date.now(), 0);
+  o.achFav = Array.isArray(s.achFav) ? [...new Set(s.achFav.filter(k => typeof k === "string" && /^[a-z0-9_]{2,30}$/.test(k)))].slice(0, 3) : [];
+  if (isObj(s.activity)) { const lim = dayKey(Date.now() - 420 * 86400000); for (const [k, v] of Object.entries(s.activity)) if (/^\d{8}$/.test(k) && +k >= lim) o.activity[k] = Math.floor(num(v, 0, 0, 20)); }
+  if (Array.isArray(s.weights)) o.weights = s.weights.filter(x => isObj(x) && Number.isFinite(+x.d)).map(x => ({ d: num(x.d, 0, 0), kg: num(x.kg, 75, 30, 250) })).sort((a, z) => a.d - z.d).slice(-300);
+  if (isObj(s.life)) {
+    const L = s.life; for (const k in o.life) if (k !== "exDone") o.life[k] = num(L[k], 0, 0);
+    o.life.exDone = Array.isArray(L.exDone) ? [...new Set(L.exDone.filter(id => EX[id]))] : [];
+  } else o.lifeBackfill = true;
   if (isObj(s.undo) && typeof s.undo.snap === "string" && Date.now() - num(s.undo.at, 0) < 86400000) o.undo = { at: num(s.undo.at, 0), snap: s.undo.snap.slice(0, 400000) };
   if (isObj(s.lastSets)) for (const [id, v] of Object.entries(s.lastSets)) {
     if (EX[id] && isObj(v)) o.lastSets[id] = { kg: num(v.kg, EX[id].defKg, 0, 1000), reps: num(v.reps, EX[id].defReps, 1, 3600) };
   }
   o.category = CAT_BY_ID[s.category] ? s.category : "pecs";
+  if (o.lifeBackfill) {
+    delete o.lifeBackfill;
+    const H = o.history, L = o.life;
+    L.push = sumOf(H, h => h.push); L.core = sumOf(H, h => h.coreSec); L.sets = sumOf(H, h => h.sets); L.recs = sumOf(H, h => h.recs);
+    L.maxTon = Math.max(0, ...H.map(h => h.ton)); L.maxXp = Math.max(0, ...H.map(h => h.xp)); L.maxSets = Math.max(0, ...H.map(h => h.sets));
+    L.maxPush = Math.max(0, ...H.map(h => h.push)); L.maxCats = Math.max(0, ...H.map(h => (h.cats || []).length));
+    L.exDone = Object.keys(o.exLog);
+    for (const [id, log] of Object.entries(o.exLog)) { const e = EX[id]; if (e && e.type !== "time") L.reps += log.reduce((a, x) => a + x.reps * (x.sets || 1), 0); if (e && /^(pullup|chinup|muscle_up)/.test(id)) L.pull += log.reduce((a, x) => a + x.reps * (x.sets || 1), 0); }
+    H.forEach(h => { const d = new Date(h.date), hr = d.getHours(), wd = d.getDay(); if (hr < 8) L.early++; if (hr >= 22) L.late++; if (wd === 0 || wd === 6) L.weekend++; });
+  }
+  if (!Object.keys(o.activity).length) o.history.forEach(h => { const k = dayKey(h.date); o.activity[k] = (o.activity[k] || 0) + 1; });
   o.loadoutSession = Array.isArray(s.loadoutSession) ? [...new Set(s.loadoutSession.filter(id => EX[id]))] : [];
   if (isObj(s.mission)) {
     const m = s.mission, sets = {};
@@ -1851,7 +2009,7 @@ function vibrate(p) { try { if (navigator.vibrate) navigator.vibrate(p); } catch
    Réglages propres à chaque appareil : Archives → Paramètres → Audio
    ===================================================================== */
 const SND_KEY = "neonfitness-sound";
-const SND_DEF = { sfx: true, sfxVol: 0.7, scroll: true, music: false, musicVol: 0.5 };
+const SND_DEF = { sfx: true, sfxVol: 0.7, scroll: true, music: false, musicVol: 0.5, voice: true };
 let sndMem = Object.assign({}, SND_DEF);
 function sndPrefs() {
   let v = null;
@@ -1882,7 +2040,8 @@ function audioBuild() {
   au.sfx = actx.createGain(); au.sfx.connect(au.master);
   au.music = actx.createGain(); au.music.gain.value = 0;
   au.mlp = actx.createBiquadFilter(); au.mlp.type = "lowpass"; au.mlp.frequency.value = MUS.rest ? 750 : 20000; au.mlp.Q.value = 0.7;
-  au.music.connect(au.mlp).connect(au.master);
+  au.duck = actx.createGain(); au.duck.gain.value = 1;
+  au.music.connect(au.mlp).connect(au.duck).connect(au.master);
   // réverbération : réponse impulsionnelle générée (bruit décroissant stéréo)
   const len = Math.floor(actx.sampleRate * 3.2), ir = actx.createBuffer(2, len, actx.sampleRate);
   for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
@@ -1923,7 +2082,7 @@ function audioApply() {
   audUI();
 }
 /* ---- petit menu audio (icône haut-parleur dans les barres du haut) ---- */
-const audLevel = p => (p.music ? 1 : 0) + (p.sfx ? 1 : 0);
+const audLevel = p => Math.min(2, (p.music ? 1 : 0) + (p.sfx ? 1 : 0) + (p.voice && voiceOk() ? 1 : 0));
 function audBtn() {
   const p = sndPrefs(), open = !!$("#aud-pop");
   return `<button class="aud-btn s${audLevel(p)}" data-act="aud-open" aria-haspopup="true" aria-expanded="${open}" aria-label="Son : musique ${p.music ? "activée" : "coupée"}, sons ${p.sfx ? "activés" : "coupés"}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w w1" d="M16 9.5a3.5 3.5 0 0 1 0 5"/><path class="w w2" d="M18.5 7a7 7 0 0 1 0 10"/><path class="x" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></svg></button>`;
@@ -1935,9 +2094,10 @@ function audPopHTML() {
   return row("music", p.music, "MUSIQUE DE FOND", "Change selon l'écran, plus intense en séance")
     + (p.music ? vol("snd-musvol", p.musicVol, "Volume de la musique") : "")
     + row("sfx", p.sfx, "SONS", "Clics, validations, chrono")
-    + (p.sfx ? vol("snd-sfxvol", p.sfxVol, "Volume des sons") : "");
+    + (p.sfx ? vol("snd-sfxvol", p.sfxVol, "Volume des sons") : "")
+    + (voiceOk() ? row("voice", p.voice, "VOIX", "Annonces du chrono, du repos et des succès") : "");
 }
-function audFill(pop) { const p = sndPrefs(), sig = `${p.music}|${p.sfx}`; if (pop.dataset.sig !== sig) { pop.innerHTML = audPopHTML(); pop.dataset.sig = sig; } }
+function audFill(pop) { const p = sndPrefs(), sig = `${p.music}|${p.sfx}|${p.voice}`; if (pop.dataset.sig !== sig) { pop.innerHTML = audPopHTML(); pop.dataset.sig = sig; } }
 function audUI() {
   const p = sndPrefs();
   document.querySelectorAll(".aud-btn").forEach(b => { b.className = "aud-btn s" + audLevel(p); });
@@ -2385,7 +2545,7 @@ function contractRows() {
 function claimContract(id) {
   const r = contractRows().find(x => x.id === id);
   if (!r || !r.done || r.claimed) return;
-  state.contracts.claimed.push(id);
+  state.contracts.claimed.push(id); state.life.contracts++; achSoon(1500);
   const res = addXp(r.xp);
   save(); render();
   rewardToast("Contrat rempli", r.xp, res);
@@ -2430,9 +2590,10 @@ function claimSquad(code) {
   const res = addXp(SQ_REWARD);
   save(); render();
   rewardToast("Défi d'escouade réussi", SQ_REWARD, res);
+  achSoon(1500);
 }
 /* ---- Annulation de la dernière mission (24 h) ---- */
-const PROG_KEYS = ["level", "xp", "totalXp", "perkPoints", "perks", "stats", "missions", "tonnage", "records", "gear", "history", "exLog", "contracts", "squadClaims", "squadWins", "lastSets"];
+const PROG_KEYS = ["level", "xp", "totalXp", "perkPoints", "perks", "stats", "missions", "tonnage", "records", "gear", "history", "exLog", "contracts", "squadClaims", "squadWins", "lastSets", "life", "ach", "achFav", "activity", "raidWins", "raidClaims"];
 function progressSnapshot() { const o = {}; PROG_KEYS.forEach(k => { o[k] = state[k]; }); return JSON.stringify(o); }
 const canUndo = () => !!(state.undo && Date.now() - state.undo.at < DAY);
 function undoLastMission() {
@@ -2555,6 +2716,7 @@ function avatarSVG(st, opts) {
   G.core_belt = `<rect class="fillsoft" x="${f1(cx - wh - 1)}" y="${yW - 7}" width="${f1(2 * wh + 2)}" height="7" rx="1.5"/><rect x="${cx - 4}" y="${yW - 6}" width="8" height="5" rx="1"/>`;
   G.core_gyro = `<circle cx="${cx}" cy="${yC + 9}" r="7.5"/><path d="M${cx - 7.5} ${yC + 9}H${cx + 7.5}M${cx} ${yC + 1.5}V${yC + 16.5}"/><circle cx="${cx}" cy="${yC + 9}" r="2.2" class="fill"/>`;
   G.core_arc = `<circle class="fillsoft" cx="${cx}" cy="${yC + 9}" r="9"/><circle cx="${cx}" cy="${yC + 9}" r="5"/><circle cx="${cx}" cy="${yC + 9}" r="2.2" class="fill"/><path d="M${cx} ${yC - 3}V${yC - 7}M${cx - 11} ${yC + 15}l-3 2M${cx + 11} ${yC + 15}l3 2"/>`;
+  G.core_raid = `<polygon class="fillsoft" points="${[0, 1, 2, 3, 4, 5].map(i => { const a = Math.PI / 3 * i + Math.PI / 6; return (cx + 9.5 * Math.cos(a)).toFixed(1) + "," + (yC + 9 + 9.5 * Math.sin(a)).toFixed(1); }).join(" ")}"/><polygon points="${cx},${yC + 3.5} ${cx + 5},${yC + 12} ${cx - 5},${yC + 12}"/><circle cx="${cx}" cy="${yC + 9.5}" r="1.7" class="fill"/><path d="M${cx - 12.5} ${yC + 9}h-3M${cx + 12.5} ${yC + 9}h3M${cx} ${yC - 3}v-3"/>`;
   // module jambier
   G.legs_g0 = both(s => { const a = side(ankR, s); return `<polygon class="fillsoft" points="${pts([[a[0] - 8, 200], [a[0] + 8, 200], [a[0] + 9, 213], [a[0] - 9, 213]])}"/><path d="M${f1(a[0] - 5)} 216v3M${f1(a[0])} 216v4M${f1(a[0] + 5)} 216v3"/>`; });
   G.legs_titan = both(s => { const h = side(hipR, s), k = side(kneeR, s), o = s * (thW + 2); return `<path d="M${f1(h[0] + o)} ${h[1] + 4}L${f1(k[0] + o * 0.8)} ${k[1] - 4}"/><circle cx="${f1(h[0] + o)}" cy="${h[1] + 4}" r="2" class="fill"/><circle cx="${f1(k[0])}" cy="${k[1]}" r="4.2"/>`; });
@@ -2622,6 +2784,9 @@ function renderHQ() {
       <div class="xpbar" role="progressbar" aria-valuemin="0" aria-valuemax="${need}" aria-valuenow="${Math.round(st.xp)}" aria-label="Expérience"><i style="width:${pct}%"></i></div>
       <div class="xp-meta"><span>${fmt(st.xp)} / ${fmt(need)} XP</span><span>${fmt(need - st.xp)} XP avant NIV ${st.level + 1}</span></div>
     </div>
+    <button class="op-ach" data-act="ach-open" aria-label="Badges : ${badgesGot(st)} obtenus. Ouvrir le tableau d'honneur">
+      ${favFams(st).length ? achFavRow(favFams(st), 30, true) : `<span class="op-ach-empty">${badgesGot(st) ? "Épinglez jusqu'à 3 badges ici" : "Aucun badge pour l'instant"}</span>`}
+      <span class="op-ach-n">${badgesGot(st)}/${FAM_KEYS.length} ★</span></button>
   </section>
   ${st.mission ? `<button class="banner" data-act="go" data-to="briefing"><div><div class="d">MISSION EN COURS · ${hms(Date.now() - st.mission.start)}</div><p>${plural(mSets, "série").toLowerCase()} validée${mSets > 1 ? "s" : ""}, ${state.loadoutSession.length} exercice${state.loadoutSession.length > 1 ? "s" : ""} au loadout</p></div><span class="go">REPRENDRE →</span></button>` : ""}
   ${STANDALONE && fb.user ? `<button class="banner sq-banner" data-act="go" data-to="squad"><div><div class="d">ESCOUADES</div><p>${st.squads.length ? `${st.squads.length} escouade${st.squads.length > 1 ? "s" : ""} · classement de la semaine` : "Comparez vos progressions avec vos amis"}</p></div><span class="go">OUVRIR →</span></button>` : ""}
@@ -2744,6 +2909,23 @@ function tabArchives() {
       <div class="panel kpi"><b>${fmt(st.totalXp)}</b><span>XP totale</span></div>
       <div class="panel kpi"><b>${fmt(Object.keys(st.records).length)}</b><span>exercices avec record</span></div>
     </div>
+  </section>
+  <section class="block">
+    <h2 class="h2">BADGES</h2>
+    <button class="panel ach-sum" data-act="ach-open"><div><b class="num">${badgesGot(st)}<small> / ${FAM_KEYS.length}</small></b><span>badges obtenus · ${favFams(st).length}/3 épinglés</span></div>
+      ${favFams(st).length ? achFavRow(favFams(st), 34) : ""}<span class="go">OUVRIR →</span></button>
+  </section>
+  <section class="block">
+    <h2 class="h2">CARTE DES MUSCLES</h2>
+    ${muscleMapHTML()}
+  </section>
+  <section class="block">
+    <h2 class="h2">ACTIVITÉ</h2>
+    ${activityHTML()}
+  </section>
+  <section class="block">
+    <h2 class="h2">POIDS DE CORPS</h2>
+    ${weightHTML()}
   </section>
   <section class="block">
     <h2 class="h2">JOURNAL DES MISSIONS</h2>
@@ -3323,6 +3505,490 @@ function startIllus(root, id) {
 
 
 /* =====================================================================
+   Annonces vocales (désactivables dans le menu son)
+   ===================================================================== */
+let frVoice = null;
+function pickVoice() {
+  try {
+    const vs = speechSynthesis.getVoices().filter(v => /^fr/i.test(v.lang));
+    frVoice = vs.find(v => /fr-FR/i.test(v.lang) && /google|natural|neural/i.test(v.name)) || vs.find(v => /fr-FR/i.test(v.lang)) || vs[0] || null;
+  } catch (e) { frVoice = null; }
+}
+try { if (window.speechSynthesis) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; } } catch (e) {}
+const voiceOk = () => !!window.speechSynthesis && typeof SpeechSynthesisUtterance !== "undefined";
+function speak(text, opts) {
+  if (!voiceOk() || !sndPrefs().voice || document.hidden) return;
+  try {
+    if (opts && opts.interrupt) speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "fr-FR"; if (frVoice) u.voice = frVoice;
+    u.rate = 1.06; u.pitch = 0.92; u.volume = 1;
+    u.onstart = () => musicDuck(true);
+    u.onend = u.onerror = () => { if (!speechSynthesis.speaking) musicDuck(false); };
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function musicDuck(on) {
+  if (!actx || !au.duck) return;
+  const t = actx.currentTime;
+  au.duck.gain.cancelScheduledValues(t);
+  au.duck.gain.setTargetAtTime(on ? 0.35 : 1, t, on ? 0.08 : 0.4);
+}
+const secWords = n => n === 1 ? "une seconde" : `${n} secondes`;
+function durWords(sec) {
+  const m = Math.floor(sec / 60), r = Math.round(sec % 60);
+  if (!m) return secWords(r);
+  const mw = m === 1 ? "une minute" : `${m} minutes`;
+  return r ? `${mw} ${r}` : mw;
+}
+
+/* =====================================================================
+   Échauffement des gros exercices à la barre
+   ===================================================================== */
+const BIG_LIFTS = new Set(["squat", "front_squat", "bench", "decline", "close_bench", "deadlift", "rdl", "ohp", "row_bb", "hip_thrust"]);
+function warmupSets(id, work) {
+  const bar = curPlace().barKg || 20;
+  if (!BIG_LIFTS.has(id) || !Number.isFinite(work) || work < bar + 10) return [];
+  const snap = w => bar + Math.max(0, Math.round((w - bar) / 2.5) * 2.5);
+  const plan = [[bar, 10, "Barre à vide"], [snap(work * 0.4), 8], [snap(work * 0.6), 5]];
+  if (work >= 60) plan.push([snap(work * 0.8), 3]);
+  const out = []; let prev = 0;
+  plan.forEach(([kg, reps, label]) => { if (kg > prev && kg <= work - 2.5) { out.push({ kg, reps, label }); prev = kg; } });
+  return out;
+}
+function platesTxt(total) {
+  const bar = curPlace().barKg || 20; let side = (total - bar) / 2; const used = [];
+  for (const p of PLATES) while (side >= p - 0.001) { used.push(p); side -= p; }
+  return used.length ? `${used.map(p => fmt2(p)).join(" + ")} par côté` : "barre seule";
+}
+function warmupHTML(e, work) {
+  const list = warmupSets(e.id, work);
+  if (!list.length) return BIG_LIFTS.has(e.id) ? `<div class="warm" id="warm-${e.id}"></div>` : "";
+  const ticks = (ui.warm && ui.warm[e.id]) || [];
+  const done = ticks.length >= list.length;
+  return `<details class="warm ${done ? "done" : ""}" id="warm-${e.id}" ${ui.warmOpen && ui.warmOpen[e.id] ? "open" : ""} data-warm="${e.id}">
+    <summary><span class="w-t">ÉCHAUFFEMENT CONSEILLÉ</span><span class="w-s">${done ? "TERMINÉ ✓" : `${list.length} séries · facultatif`}</span></summary>
+    <div class="warm-list">${list.map((w, i) => `<button class="warm-row ${ticks.includes(i) ? "on" : ""}" data-act="warm-tick" data-id="${e.id}" data-i="${i}" role="checkbox" aria-checked="${ticks.includes(i)}">
+      <span class="check ${ticks.includes(i) ? "on" : ""}"></span><b>${w.label ? `${w.label} · ${fmt1(w.kg)} kg` : `${fmt1(w.kg)} kg`} × ${w.reps}</b><small>${platesTxt(w.kg)}</small></button>`).join("")}</div>
+    <p class="hint">Calculé sur votre charge de travail (${fmt1(work)} kg) : environ 40, 60 puis 80 %. Peu de répétitions, 1 min de repos entre chaque. Ces séries ne rapportent pas d'XP : elles préparent les articulations.</p>
+  </details>`;
+}
+function warmTick(id, i) {
+  ui.warm = ui.warm || {}; const arr = ui.warm[id] = ui.warm[id] || [];
+  const k = arr.indexOf(i); if (k >= 0) arr.splice(k, 1); else arr.push(i);
+  const d = getDraft(id), n = warmupSets(id, d.kg).length;
+  ui.warmOpen = ui.warmOpen || {}; ui.warmOpen[id] = true;
+  if (n && arr.length >= n && !ui.warmDone) ui.warmDone = {};
+  if (n && arr.length >= n && !ui.warmDone[id]) {
+    ui.warmDone[id] = true; state.life.warm++; save();
+    sfx("reward"); speak("Échauffement terminé. Place à la charge de travail.");
+    toast("Échauffement terminé : place à la charge de travail.");
+    ui.warmOpen[id] = false;
+  } else sfx(k >= 0 ? "off" : "on");
+  const el = document.getElementById("warm-" + id);
+  if (el) el.outerHTML = warmupHTML(EX[id], d.kg);
+}
+
+/* =====================================================================
+   Statistiques de carrière (pour les succès)
+   ===================================================================== */
+const PULL_IDS = id => /^(pullup|chinup|muscle_up)/.test(id);
+function dayKey(ts) { const d = new Date(ts); return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
+function lifeOnMission(st, m, t, xp, records, now) {
+  const L = st.life; let reps = 0, push = 0, pull = 0, core = 0, longHold = 0;
+  for (const id in m.sets) {
+    const e = EX[id]; if (!e) continue;
+    if (!L.exDone.includes(id)) L.exDone.push(id);
+    m.sets[id].forEach(s => {
+      if (e.type === "time") { if (e.cat === "abdos") core += s.reps; longHold = Math.max(longHold, s.reps); }
+      else { reps += s.reps; if (PUSH_IDS(id)) push += s.reps; if (PULL_IDS(id)) pull += s.reps; }
+    });
+  }
+  const d = new Date(now), h = d.getHours(), wd = d.getDay();
+  L.reps += reps; L.push += push; L.pull += pull; L.core += core; L.sets += t.sets; L.recs += records.length;
+  L.maxPush = Math.max(L.maxPush, push); L.maxTon = Math.max(L.maxTon, Math.round(t.ton)); L.maxSets = Math.max(L.maxSets, t.sets);
+  L.maxXp = Math.max(L.maxXp, xp); L.longHold = Math.max(L.longHold, longHold);
+  L.maxCats = Math.max(L.maxCats, new Set(Object.keys(m.sets).map(id => EX[id] && EX[id].cat).filter(Boolean)).size);
+  if (h < 8) L.early++; if (h >= 22) L.late++; if (wd === 0 || wd === 6) L.weekend++;
+  const k = dayKey(now); st.activity[k] = (st.activity[k] || 0) + 1;
+  return reps;
+}
+
+/* =====================================================================
+   Succès
+   ===================================================================== */
+const GLYPH = {
+  flag: "M6 21V4M6 4h11l-2 4 2 4H6", weight: "M3 9v6M6 6v12M18 6v12M21 9v6M6 12h12", push: "M3 18h18M7 14l5-7 5 7",
+  pull: "M3 5h18M8 5v5a4 4 0 0 0 8 0V5", hourglass: "M7 3h10M7 21h10M8 3c0 5 8 6 8 9s-8 4-8 9M16 3c0 5-8 6-8 9s8 4 8 9",
+  level: "M5 14l7-6 7 6M5 20l7-6 7 6", star: "M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.8l-5.3 2.6 1.2-6-4.5-4.1 6-.7z",
+  flame: "M12 21c-4 0-6-3-6-6 0-4 4-6 4-10 3 2 5 5 5 8 1-1 1-2 1-3 2 2 2 4 2 5 0 3-2 6-6 6z", grid: "M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z",
+  repeat: "M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 5v4h-4M4 19v-4h4", doc: "M6 3h9l3 3v15H6zM9 13l2 2 4-4",
+  people: "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M18 15c2 .6 3 2.4 3 5",
+  swords: "M4 4l10 10M4 4h4M4 4v4M20 4L10 14M20 4h-4M20 4v4M6 16l-2 4 4-2M18 16l2 4-4-2", chip: "M8 8h8v8H8zM10 4v4M14 4v4M10 16v4M14 16v4M4 10h4M4 14h4M16 10h4M16 14h4",
+  nodes: "M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 7.5l4 8.5M17 7.5l-4 8.5M8 6h8",
+  scale: "M4 20h16l-2-12H6zM12 8V4M9.5 14l2.5-3", thermo: "M10 14V5a2 2 0 0 1 4 0v9a4 4 0 1 1-4 0zM12 10v6", note: "M4 5h16v11H9l-5 4z",
+  sun: "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2", moon: "M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10z",
+  bolt: "M13 2L4 14h7l-1 8 9-12h-7z", timer: "M12 9v4l3 2M9 2h6M12 21a8 8 0 1 0 0-16 8 8 0 0 0 0 16z", body: "M12 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 9h10l-1.5 6h-7zM9 15l-1 6M15 15l1 6",
+  shield: "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z", cal: "M4 6h16v14H4zM4 10h16M8 3v4M16 3v4", heart: "M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"
+};
+const ACH = [];
+const ACH_XP = [50, 100, 200, 400, 800, 1200];
+function achFam(key, glyph, goals, names, desc, val) {
+  goals.forEach((g, i) => ACH.push({ id: `${key}_${i + 1}`, fam: key, tier: Math.min(3, i), step: i + 1, steps: goals.length, glyph, goal: g, name: names[i], desc: desc(g), val, xp: ACH_XP[Math.min(i, 5)] }));
+}
+function achOne(id, glyph, tier, goal, name, desc, val, xp) { ACH.push({ id, fam: id, tier, step: 1, steps: 1, glyph, goal, name, desc, val, xp: xp || 150, single: true }); }
+const pl = (n, w, ws) => `${fmt(n)} ${n > 1 ? (ws || w + "s") : w}`;
+achFam("missions", "flag", [1, 10, 25, 50, 100, 250], ["Premier déploiement", "Recrue assidue", "Vétéran de terrain", "Cinquante opérations", "Centurion", "Légende vivante"], g => `Accomplir ${pl(g, "mission")}.`, (st) => st.missions);
+achFam("ton", "weight", [1000, 10000, 50000, 100000, 500000], ["Première tonne", "Dix tonnes", "Poids lourd", "Cent tonnes", "Broyeur de montagnes"], g => `Soulever ${fmt(g)} kg au total.`, st => st.tonnage);
+achFam("reps", "repeat", [1000, 5000, 20000, 50000], ["Mille répétitions", "Cinq mille", "Vingt mille", "Infatigable"], g => `Cumuler ${fmt(g)} répétitions, tous exercices confondus.`, st => st.life.reps);
+achFam("push", "push", [100, 500, 1000, 5000, 10000], ["Cent pompes", "Bras d'acier", "Mille pompes", "Marteau-piqueur", "Pompe infinie"], g => `Cumuler ${fmt(g)} pompes, toutes variantes.`, st => st.life.push);
+achFam("pull", "pull", [25, 100, 500, 1000], ["Premier tirage", "Grimpeur", "Dos de titan", "Mille tractions"], g => `Cumuler ${fmt(g)} tractions (pronation, supination, neutre, muscle-up…).`, st => st.life.pull);
+achFam("core", "hourglass", [300, 1800, 3600, 7200], ["Cinq minutes de béton", "Noyau renforcé", "Une heure de gainage", "Bloc de granit"], g => `Cumuler ${g >= 3600 ? pl(g / 3600, "heure") : pl(g / 60, "minute")} de gainage.`, st => st.life.core);
+achFam("sets", "grid", [50, 250, 1000, 2500], ["Cinquante séries", "Volume", "Mille séries", "Usine à séries"], g => `Valider ${fmt(g)} séries au total.`, st => st.life.sets);
+achFam("level", "level", [5, 10, 20, 30, 50], ["Opérateur confirmé", "Spécialiste", "Élite", "Commandant", "Mythe"], g => `Atteindre le niveau ${g}.`, st => st.level);
+achFam("recs", "star", [1, 10, 25, 50, 100], ["Premier record", "Chasseur de records", "Briseur de limites", "Machine à records", "Hors catégorie"], g => `Battre ${pl(g, "record personnel", "records personnels")}.`, st => st.life.recs);
+achFam("streak", "flame", [2, 4, 8, 12, 26], ["Régulier", "Un mois sans faille", "Deux mois de feu", "Trimestre de fer", "Six mois sans relâche"], g => `Enchaîner ${g} semaines actives (au moins 2 missions par semaine).`, st => st.life.bestStreak);
+achFam("variety", "body", [10, 25, 50, 75], ["Curieux", "Polyvalent", "Encyclopédie", "Maître du catalogue"], g => `Pratiquer ${g} exercices différents.`, st => st.life.exDone.length);
+achFam("contracts", "doc", [1, 10, 25, 50], ["Contrat rempli", "Mercenaire", "Chasseur de primes", "Agent d'élite"], g => `Remplir ${pl(g, "contrat")} de la semaine.`, st => st.life.contracts);
+achFam("sqwins", "people", [1, 5, 20], ["Esprit d'équipe", "Escouade soudée", "Unité d'élite"], g => `Réussir ${pl(g, "défi")} d'escouade.`, st => st.squadWins || 0);
+achFam("raids", "swords", [1, 3, 6, 12], ["Premier raid", "Raider", "Conquérant", "Seigneur de guerre"], g => `Réussir ${pl(g, "raid mensuel", "raids mensuels")} avec votre escouade.`, st => st.raidWins || 0);
+achFam("gear", "chip", [5, 10, 17], ["Collectionneur", "Arsenal fourni", "Arsenal complet"], g => `Débloquer ${g} pièces de cyberware.`, st => st.gear.unlocked.length);
+achFam("perks", "nodes", [3, 6, 12], ["Spécialisation", "Expertise", "Maîtrise totale"], g => `Installer ${g} aptitudes.`, st => st.perks.length);
+achFam("stat", "shield", [25, 50, 100], ["Spécialisé", "Surhumain", "Transcendant"], g => `Porter un attribut à ${g}.`, st => Math.max(...STAT_KEYS.map(k => st.stats[k])));
+achFam("weigh", "scale", [1, 4, 12, 52], ["Première pesée", "Suivi mensuel", "Trimestre suivi", "Un an de pesées"], g => `Enregistrer ${pl(g, "pesée")}.`, st => st.weights.length);
+achFam("warm", "thermo", [5, 25, 100], ["Prudent", "Méthodique", "Moteur chaud"], g => `Terminer ${pl(g, "échauffement")} complet${g > 1 ? "s" : ""}.`, st => st.life.warm);
+achFam("notes", "note", [5, 25, 100], ["Introspection", "Journal de bord", "Mémoires de guerre"], g => `Enregistrer ${pl(g, "note")} de débriefing.`, st => st.life.notes);
+achFam("days", "cal", [30, 100, 200], ["Un mois actif", "Cent jours", "Deux cents jours"], g => `Vous entraîner ${g} jours différents.`, st => Object.keys(st.activity).length);
+achOne("push_session", "bolt", 2, 100, "Centurion des pompes", "Faire 100 pompes au cours d'une seule mission.", st => st.life.maxPush, 200);
+achOne("ton_session", "bolt", 1, 5000, "Déménageur", "Soulever 5 000 kg en une seule mission.", st => st.life.maxTon);
+achOne("ton_session2", "bolt", 3, 10000, "Grue humaine", "Soulever 10 000 kg en une seule mission.", st => st.life.maxTon, 300);
+achOne("sets_session", "grid", 2, 20, "Marathon", "Valider 20 séries au cours d'une seule mission.", st => st.life.maxSets, 200);
+achOne("xp_session", "star", 1, 1000, "Moisson", "Gagner 1 000 XP en une seule mission.", st => st.life.maxXp);
+achOne("xp_session2", "star", 3, 2500, "Jackpot", "Gagner 2 500 XP en une seule mission.", st => st.life.maxXp, 300);
+achOne("hold_2", "timer", 1, 120, "Statue", "Tenir 2 minutes d'affilée sur un exercice en durée.", st => st.life.longHold);
+achOne("hold_5", "timer", 3, 300, "Inébranlable", "Tenir 5 minutes d'affilée sur un exercice en durée.", st => st.life.longHold, 300);
+achOne("full_body", "body", 1, 4, "Corps complet", "Travailler 4 systèmes musculaires dans la même mission.", st => st.life.maxCats);
+achOne("full_body6", "body", 2, 6, "Rien ne m'échappe", "Travailler les 6 systèmes musculaires dans la même mission.", st => st.life.maxCats, 200);
+achOne("early", "sun", 1, 1, "Lève-tôt", "Terminer une mission avant 8 h.", st => st.life.early);
+achOne("early10", "sun", 2, 10, "Aube éternelle", "Terminer 10 missions avant 8 h.", st => st.life.early, 250);
+achOne("late", "moon", 1, 1, "Oiseau de nuit", "Terminer une mission après 22 h.", st => st.life.late);
+achOne("weekend", "cal", 2, 10, "Guerrier du week-end", "Accomplir 10 missions le samedi ou le dimanche.", st => st.life.weekend, 200);
+achOne("favorite", "heart", 0, 1, "Routine", "Enregistrer une mission favorite.", st => st.favorites.length, 50);
+achOne("squad", "people", 0, 1, "Recrue d'escouade", "Rejoindre ou créer une escouade.", st => st.squads.length, 50);
+achOne("full_gear", "chip", 2, 5, "Châssis complet", "Équiper les 5 emplacements de cyberware.", st => SLOT_KEYS.filter(s => st.gear.equipped[s]).length, 200);
+achOne("legend", "star", 3, 1, "Légendaire", "Débloquer une pièce de cyberware légendaire.", st => st.gear.unlocked.filter(id => GEAR_BY_ID[id] && GEAR_BY_ID[id].rarity === "LÉGENDAIRE").length, 300);
+const ACH_BY_ID = Object.fromEntries(ACH.map(a => [a.id, a]));
+/* Un badge = une famille de paliers : il change de métal à chaque palier (bronze → argent → or → néon). */
+const FAMS = {}; ACH.forEach(a => { (FAMS[a.fam] = FAMS[a.fam] || []).push(a); });
+const FAM_KEYS = Object.keys(FAMS);
+const famOf = x => FAMS[x] ? x : ACH_BY_ID[x] ? ACH_BY_ID[x].fam : null;
+const famTop = (f, st) => { st = st || state; const t = FAMS[f] || []; let top = null; t.forEach(a => { if (st.ach[a.id]) top = a; }); return top; };
+const famNext = (f, st) => (FAMS[f] || []).find(a => !(st || state).ach[a.id]) || null;
+const favFams = st => [...new Set((st.achFav || []).map(famOf).filter(f => f && famTop(f, st)))].slice(0, 3);
+const badgesGot = st => FAM_KEYS.filter(f => famTop(f, st)).length;
+const TIER_NAMES = ["BRONZE", "ARGENT", "OR", "NÉON"];
+function tierPips(f) {
+  const t = FAMS[f]; if (!t || t.length < 2) return "";
+  return `<span class="pips">${t.map(a => `<i class="t${a.tier} ${state.ach[a.id] ? "on" : ""}"></i>`).join("")}</span>`;
+}
+function achBadge(a, opts) {
+  opts = opts || {};
+  const got = !!(state.ach[a.id] || opts.force);
+  const size = opts.size || 44;
+  return `<svg class="ach-b t${a.tier} ${got ? "got" : "lock"}" viewBox="0 0 48 52" width="${size}" height="${Math.round(size * 52 / 48)}" aria-hidden="true">
+    <polygon class="hx" points="24,2 45,14 45,38 24,50 3,38 3,14"/><polygon class="hx2" points="24,7 40.5,16.5 40.5,35.5 24,45 7.5,35.5 7.5,16.5"/>
+    <g transform="translate(12 14)"><path class="gl" d="${GLYPH[a.glyph] || GLYPH.star}"/></g></svg>`;
+}
+function achSweep() {
+  if (ui.achBusy) return;
+  ui.achBusy = true;
+  try {
+    const st = state, fresh = [];
+    st.life.bestStreak = Math.max(st.life.bestStreak, streakInfo().weeks);
+    for (let pass = 0; pass < 3; pass++) {
+      let got = 0;
+      ACH.forEach(a => {
+        if (st.ach[a.id]) return;
+        let v = 0; try { v = a.val(st) || 0; } catch (e) { v = 0; }
+        if (v >= a.goal) { st.ach[a.id] = Date.now(); fresh.push(a); got++; }
+      });
+      if (!got) break;
+      const xp = fresh.slice(-got).reduce((s, a) => s + a.xp, 0);
+      const res = addXp(xp);
+      if (res.levels) levelFlash(st.level);
+    }
+    if (fresh.length) {
+      save();
+      const a = fresh[0], xp = fresh.reduce((s, x) => s + x.xp, 0);
+      sfx("reward"); vibrate([40, 30, 90]);
+      showAchToast(fresh, xp);
+      speak(fresh.length > 1 ? `${fresh.length} paliers de succès débloqués.` : a.step > 1 ? `Badge amélioré : ${a.name}, niveau ${TIER_NAMES[a.tier].toLowerCase()}.` : `Nouveau badge : ${a.name}.`);
+      if (ui.screen === "hq" || ui.screen === "report") render();
+    }
+  } finally { ui.achBusy = false; }
+}
+function showAchToast(list, xp) {
+  let el = $("#ach-toast");
+  if (!el) { el = document.createElement("button"); el.id = "ach-toast"; el.className = "ach-toast"; el.setAttribute("data-act", "ach-open"); document.body.appendChild(el); }
+  const a = list[0];
+  const up = a.step > 1;
+  el.innerHTML = `${achBadge(a, { size: 38, force: true })}<span><small>${up ? `BADGE AMÉLIORÉ · ${TIER_NAMES[a.tier]}` : "NOUVEAU BADGE"}${list.length > 1 ? ` · +${list.length - 1} AUTRE${list.length > 2 ? "S" : ""}` : ""}</small><b>${esc(a.name)}</b><em>+${fmt(xp)} XP</em></span>`;
+  el.classList.remove("show"); void el.offsetWidth; el.classList.add("show");
+  clearTimeout(ui.achToastT); ui.achToastT = setTimeout(() => el.classList.remove("show"), 4200);
+}
+let achSweepT = null;
+function achSoon(ms) { clearTimeout(achSweepT); achSweepT = setTimeout(achSweep, ms || 400); }
+function achFavRow(ids, size, withNames) {
+  const list = (ids || []).map(x => ACH_BY_ID[x] && !FAMS[x] ? (ACH_BY_ID[x].single ? ACH_BY_ID[x] : ACH_BY_ID[x]) : famTop(x)).filter(Boolean);
+  if (!list.length) return "";
+  return `<div class="ach-favs">${list.map(a => `<span class="ach-fav" title="${esc(a.name)} · ${TIER_NAMES[a.tier]}">${achBadge(a, { size, force: true })}${withNames ? `<small>${esc(a.name)}</small>` : ""}</span>`).join("")}</div>`;
+}
+function openAchSheet() {
+  ui.sheetEx = null;
+  const st = state, favs = favFams(st), got = badgesGot(st), steps = ACH.filter(a => st.ach[a.id]).length;
+  const row = f => {
+    const top = famTop(f), next = famNext(f), show = top || next;
+    let v = 0; try { v = (next || top).val(st) || 0; } catch (e) {}
+    const fav = favs.includes(f);
+    return `<div class="ach-row ${top ? "got" : ""}">${achBadge(show, { force: !!top })}<div class="ach-i">
+      <div class="ach-h"><b>${esc(show.name)}</b>${tierPips(f)}</div>
+      ${top ? `<small class="ok">${TIER_NAMES[top.tier]}${top.steps > 1 ? ` · PALIER ${top.step}/${top.steps}` : ""}</small>` : `<small>VERROUILLÉ</small>`}
+      ${next ? `<span>${top ? "Prochain palier" + (next.tier !== top.tier ? ` (${TIER_NAMES[next.tier].toLowerCase()})` : "") + " : " : ""}${esc(next.desc)}</span>
+        <div class="mini-bar"><i style="width:${Math.min(100, v / next.goal * 100)}%"></i></div><small>${fmt(Math.min(v, next.goal))} / ${fmt(next.goal)} · +${next.xp} XP</small>`
+        : `<span>${esc(top.desc)} Badge au maximum.</span>`}</div>
+      ${top ? `<button class="ach-pin ${fav ? "on" : ""}" data-act="ach-pin" data-id="${f}" aria-pressed="${fav}" aria-label="${fav ? "Retirer des favoris" : "Épingler sous le personnage"}">${fav ? "★" : "☆"}</button>` : ""}</div>`;
+  };
+  const prog = f => { const n = famNext(f); if (!n) return 2; let v = 0; try { v = n.val(st) || 0; } catch (e) {} return v / n.goal; };
+  const owned = FAM_KEYS.filter(f => famTop(f)).sort((a, z) => famTop(z).tier - famTop(a).tier || st.ach[famTop(z).id] - st.ach[famTop(a).id]);
+  const locked = FAM_KEYS.filter(f => !famTop(f)).sort((a, z) => prog(z) - prog(a));
+  $("#sheet-in").innerHTML = `
+    <div class="grip" aria-hidden="true"></div>
+    <div class="sheet-top"><div><div class="eyebrow">TABLEAU D'HONNEUR · ${steps} PALIERS SUR ${ACH.length}</div><h2>BADGES · ${got} / ${FAM_KEYS.length}</h2></div>
+      <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
+    <div class="tier-leg">${TIER_NAMES.map((n, i) => `<span><i class="t${i}"></i>${n}</span>`).join("")}</div>
+    <p class="hint">Chaque badge évolue : il passe de bronze à argent, puis or, puis néon à chaque palier atteint. Touchez l'étoile pour épingler un badge sous votre personnage : vos <b>3</b> favoris sont visibles par votre escouade.</p>
+    <div class="ach-pinned">${[0, 1, 2].map(i => { const a = favs[i] && famTop(favs[i]); return a ? `<span class="slot on">${achBadge(a, { size: 40, force: true })}<small>${esc(a.name)}</small></span>` : `<span class="slot"><i></i><small>LIBRE</small></span>`; }).join("")}</div>
+    ${owned.length ? `<div class="sec"><h3>OBTENUS · ${owned.length}</h3><div class="ach-list">${owned.map(row).join("")}</div></div>` : ""}
+    <div class="sec"><h3>À DÉBLOQUER · ${locked.length}</h3><div class="ach-list">${locked.map(row).join("")}</div></div>`;
+  showSheet(".x-close");
+}
+function achPin(f) {
+  const st = state; f = famOf(f); if (!f || !famTop(f)) return;
+  st.achFav = favFams(st);
+  const i = st.achFav.indexOf(f);
+  if (i >= 0) st.achFav.splice(i, 1);
+  else { if (st.achFav.length >= 3) { toast("3 badges épinglés au maximum : retirez-en un d'abord.", true); return; } st.achFav.push(f); }
+  save(); sfx(i >= 0 ? "off" : "on");
+  const sc = $("#sheet-in") && $("#sheet-in").scrollTop;
+  openAchSheet(); if ($("#sheet-in")) $("#sheet-in").scrollTop = sc;
+  if (ui.screen === "hq") render();
+}
+
+/* =====================================================================
+   Archives : carte des muscles
+   ===================================================================== */
+const REGIONS = {
+  pecs: "Pectoraux", delts: "Épaules", biceps: "Biceps", triceps: "Triceps", forearms: "Avant-bras", abs: "Abdos", obliques: "Obliques",
+  traps: "Trapèzes", lats: "Dorsaux", lowerback: "Lombaires", glutes: "Fessiers", quads: "Quadriceps", hams: "Ischios", calves: "Mollets"
+};
+const REG_RULES = [
+  [/brachio|avant-bras/i, "forearms"], [/pector|faisceau claviculaire|faisceau sternal/i, "pecs"], [/deltoïde|épaule|coiffe/i, "delts"],
+  [/triceps/i, "triceps"], [/biceps|brachial antérieur/i, "biceps"], [/trapèze/i, "traps"], [/grand dorsal|grand rond|rhomboïde/i, "lats"],
+  [/érecteur|lombaire|carré des lombes|chaîne postérieure/i, "lowerback"], [/oblique/i, "obliques"],
+  [/grand droit|transverse|sangle|gainage|fléchisseurs de hanche/i, "abs"], [/fessier|stabilisateurs de hanche/i, "glutes"],
+  [/quadriceps|adducteur/i, "quads"], [/ischio/i, "hams"], [/mollet|gastrocn|soléaire|cheville/i, "calves"]
+];
+const exRegionsCache = {};
+function exRegions(id) {
+  if (exRegionsCache[id]) return exRegionsCache[id];
+  const e = EX[id], w = {};
+  e.muscles.forEach((m, i) => { for (const [re, r] of REG_RULES) if (re.test(m)) { w[r] = Math.max(w[r] || 0, i === 0 ? 1 : 0.5); break; } });
+  return exRegionsCache[id] = w;
+}
+function muscleLoad(days) {
+  const since = Date.now() - days * DAY, load = {};
+  Object.keys(REGIONS).forEach(r => { load[r] = 0; });
+  for (const [id, log] of Object.entries(state.exLog)) {
+    if (!EX[id]) continue;
+    const sets = log.filter(x => x.d >= since).reduce((a, x) => a + (x.sets || 1), 0);
+    if (!sets) continue;
+    const w = exRegions(id);
+    for (const r in w) load[r] += sets * w[r];
+  }
+  return load;
+}
+function muscleMapHTML() {
+  const days = ui.mapDays === 30 ? 30 : 7, load = muscleLoad(days), k = days / 7;
+  const lvl = r => { const v = load[r] / k; return v <= 0 ? 0 : v < 3 ? 1 : v < 8 ? 2 : 3; };
+  const mx = d => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${(100 - +x).toFixed(1)} ${y}`);
+  const both = d => `<path d="${d}"/><path d="${mx(d)}"/>`;
+  const R = (r, d) => `<g class="mr l${lvl(r)}"><title>${REGIONS[r]} : ${fmt1(load[r])} séries</title>${d}</g>`;
+  const N = d => `<g class="mn">${d}</g>`;
+  // gauche de la figure (x < 50) ; la droite est le miroir exact
+  const head = `<ellipse cx="50" cy="13.5" rx="7" ry="8.5"/>` + `<path d="M46 21 50 22.5 54 21 55 28.5 45 28.5Z"/>`;
+  const hands = both("M23.5 81 C22 83 22 87 23.5 89 C25.5 90 27 88.5 27.5 86 C27.8 84 27.2 82 26.5 81 Z");
+  const knees = both("M40.5 115.5 C41.5 113.5 45.5 113.5 46.8 115.5 C46.8 118 46 120 43.6 120.5 C41.4 120 40.5 118 40.5 115.5 Z");
+  const feet = both("M40.8 152 L46.6 152 C47.6 154.5 48.2 157 47.6 158.5 L39.4 158.5 C39.2 156.5 39.8 154 40.8 152 Z");
+  const delts = both("M37.5 30 C32 29.5 28.5 32.5 27.6 39.5 C29.8 41.5 32.8 41.2 35.2 39 C35.8 35.8 36.6 32.6 37.5 30 Z");
+  const arms = (r1, r2) => R(r1, both("M28 42.5 C26.6 47.5 26.2 53.5 27.2 58.5 C29 60 31 59.6 32.6 57.6 C33.2 52.6 33.6 47 33.2 41.8 C31.3 42.7 29.7 43 28 42.5 Z"))
+    + R(r2, both("M27 60.8 C25.3 66.5 23.8 73.5 23.4 79.5 C24.6 80.6 26.3 80.6 27.4 79.6 C28.8 73.5 31 67 32.3 60.2 C30.4 61.3 28.7 61.4 27 60.8 Z"));
+  const front = N(head + hands + knees + feet + both("M41.2 69.5 L49.4 78.5 L49.4 85 C46.5 84 43 82 40.2 79.5 Z"))
+    + R("traps", both("M45.2 28.6 L38.2 30.4 L46 31.2 Z"))
+    + R("delts", delts)
+    + R("pecs", both("M38.6 31.6 L49.4 31.6 L49.4 43.6 C45.4 46.2 40.4 45.8 36.4 42.4 C36.5 38.5 37.2 34.8 38.6 31.6 Z"))
+    + arms("biceps", "forearms")
+    + R("obliques", both("M37 44.2 C38.6 52 39.4 60 41.2 68 L43.8 69.6 L43.8 47 C41.2 46.9 38.9 46 37 44.2 Z"))
+    + R("abs", both("M44.6 46.4 L49.4 46.4 L49.4 52.4 L44.6 52.4 Z") + both("M44.6 53.4 L49.4 53.4 L49.4 59.6 L44.6 59.6 Z") + both("M44.6 60.6 L49.4 60.6 L49.4 67.4 L44.6 67.4 Z") + both("M44.8 68.4 L49.4 68.4 L49.4 77.4 C47.4 75.6 45.8 73 44.8 70.6 Z"))
+    + R("quads", both("M39.6 80.4 C37.2 89.5 37.2 101.5 39.6 112.6 C42 114.4 45.6 114.2 47.8 112.4 C49 103.5 49.4 94 49.2 86.4 C46 85 42.6 83 39.6 80.4 Z"))
+    + R("calves", both("M40.2 122.5 C38.8 131 39.2 141 41.2 149.6 C43.2 151 45 150.8 46.2 149 C47.6 140 47.6 131 46.6 122.5 C44.6 123.8 42.2 123.8 40.2 122.5 Z"));
+  const back = N(head + hands + knees + feet)
+    + R("traps", `<path d="M50 22.5 L39.5 29.8 L44.2 33.6 L50 47 L55.8 33.6 L60.5 29.8 Z"/>`)
+    + R("delts", delts)
+    + arms("triceps", "forearms")
+    + R("lats", both("M37.4 33.4 L43.8 34.6 L49.4 47.8 L49.4 63 L43 61.4 C39.4 53.8 37.4 44.2 37.4 33.4 Z"))
+    + R("lowerback", both("M43.6 62.4 L49.4 64 L49.4 76 L44 74 Z"))
+    + R("glutes", both("M39.6 76 C38 82 38.6 88 41 92 C44 94 47.6 93.6 49.4 91 L49.4 77.6 C46 77 43 76.6 39.6 76 Z"))
+    + R("hams", both("M39.6 94.2 C38.6 101.8 39 109.2 40.6 114.4 C43 115.8 46 115.8 47.6 114.4 C49 107.8 49.4 100.6 49.2 94 C46 95 42.6 95 39.6 94.2 Z"))
+    + R("calves", both("M39.8 122 C38 129 38.6 138.4 41 147 C43 148.6 45.6 148.2 46.6 146 C48 137.4 48 129 46.8 122 C44.6 123.4 42 123.4 39.8 122 Z"));
+  const order = Object.keys(REGIONS).sort((a, z) => load[z] - load[a]);
+  const maxv = Math.max(1, ...order.map(r => load[r]));
+  return `<div class="panel mmap">
+    <div class="mm-head"><span class="eyebrow">SÉRIES PAR MUSCLE · ${days === 7 ? "7 DERNIERS JOURS" : "30 DERNIERS JOURS"}</span>
+      <div class="chips-pick mm-tog"><button class="pick wide ${days === 7 ? "on" : ""}" data-act="map-days" data-n="7">7 J</button><button class="pick wide ${days === 30 ? "on" : ""}" data-act="map-days" data-n="30">30 J</button></div></div>
+    <div class="mm-figs"><figure><svg viewBox="19 3 62 158" role="img" aria-label="Muscles travaillés, vue de face">${front}</svg><figcaption>FACE</figcaption></figure>
+      <figure><svg viewBox="19 3 62 158" role="img" aria-label="Muscles travaillés, vue de dos">${back}</svg><figcaption>DOS</figcaption></figure></div>
+    <div class="mm-leg"><span><i></i>repos</span><span><i class="l1"></i>1-2 séries</span><span><i class="l2"></i>3-7</span><span><i class="l3"></i>8 et +</span></div>
+    <div class="mm-list">${order.map(r => `<div class="mm-row ${load[r] ? "" : "zero"}"><span>${REGIONS[r]}</span><i><b class="l${lvl(r)}" style="width:${load[r] / maxv * 100}%"></b></i><em>${load[r] ? fmt1(load[r]) : "—"}</em></div>`).join("")}</div>
+    <p class="hint">Séries comptées sur le muscle principal de chaque exercice ; un muscle secondaire compte pour une demi-série.${days === 7 ? " Repère : 10 à 20 séries par semaine et par grand groupe musculaire." : ""}</p>
+  </div>`;
+}
+
+/* =====================================================================
+   Archives : calendrier d'activité
+   ===================================================================== */
+function activityHTML() {
+  const off = Math.min(0, ui.calOff || 0), base = new Date(); base.setHours(0, 0, 0, 0);
+  const first = new Date(base.getFullYear(), base.getMonth() + off, 1), y = first.getFullYear(), mo = first.getMonth();
+  const nDays = new Date(y, mo + 1, 0).getDate(), lead = (first.getDay() + 6) % 7;
+  const act = state.activity, today = base.getTime();
+  let cells = "", activeDays = 0, missions = 0;
+  for (let i = 0; i < lead; i++) cells += `<span class="cd blank"></span>`;
+  for (let d = 1; d <= nDays; d++) {
+    const t = new Date(y, mo, d).getTime(), n = act[dayKey(t)] || 0;
+    if (n) { activeDays++; missions += n; }
+    cells += `<span class="cd ${n >= 2 ? "a2" : n ? "a1" : ""}${t === today ? " now" : ""}${t > today ? " fut" : ""}" title="${new Date(t).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}${n ? ` : ${n} mission${n > 1 ? "s" : ""}` : ""}">${d}${n >= 2 ? `<sup>${n}</sup>` : ""}</span>`;
+  }
+  const label = first.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+  const canPrev = off > -12;
+  const sk = streakInfo().weeks;
+  return `<div class="panel cal">
+    <div class="cal-nav"><button class="cal-btn" data-act="cal-nav" data-d="-1" ${canPrev ? "" : "disabled"} aria-label="Mois précédent">‹</button>
+      <b>${label.charAt(0).toUpperCase() + label.slice(1)}</b>
+      <button class="cal-btn" data-act="cal-nav" data-d="1" ${off < 0 ? "" : "disabled"} aria-label="Mois suivant">›</button></div>
+    <div class="cal-month">${["L", "M", "M", "J", "V", "S", "D"].map(l => `<span class="cw">${l}</span>`).join("")}${cells}</div>
+    <div class="cal-leg"><span><i class="a1"></i>jour d'entraînement</span><span><i class="a2"></i>2 missions ou plus</span><span><i class="now"></i>aujourd'hui</span></div>
+    <div class="cal-sum"><div><b>${activeDays}</b><span>jour${activeDays > 1 ? "s" : ""} d'entraînement ${off ? "ce mois-là" : "ce mois-ci"}</span></div><div><b>${missions}</b><span>mission${missions > 1 ? "s" : ""}</span></div><div><b>${sk}</b><span>semaine${sk > 1 ? "s" : ""} active${sk > 1 ? "s" : ""} d'affilée</span></div></div>
+  </div>`;
+}
+
+/* =====================================================================
+   Archives : suivi du poids de corps
+   ===================================================================== */
+function logWeight(kg) {
+  const st = state, now = Date.now();
+  const last = st.weights[st.weights.length - 1];
+  if (last && dayKey(last.d) === dayKey(now)) { last.kg = kg; last.d = now; } else st.weights.push({ d: now, kg });
+  if (st.weights.length > 300) st.weights.splice(0, st.weights.length - 300);
+  st.operator.bodyweight = kg;
+}
+function weightHTML() {
+  const W = state.weights, cur = state.operator.bodyweight;
+  const last = W[W.length - 1];
+  const ago = last ? Math.round((Date.now() - last.d) / DAY) : null;
+  const ref = W.filter(x => x.d <= Date.now() - 28 * DAY).pop();
+  const d30 = ref ? cur - ref.kg : null;
+  let chart = "";
+  const pts = W.slice(-24);
+  if (pts.length >= 2) {
+    const w = 300, h = 110, pL = 34, pR = 10, pT = 10, pB = 20;
+    const vals = pts.map(x => x.kg), lo = Math.min(...vals), hi = Math.max(...vals), span = Math.max(1, hi - lo);
+    const y0 = lo - span * 0.3, y1 = hi + span * 0.3;
+    const X = i => pL + i * (w - pL - pR) / (pts.length - 1), Y = v => pT + (1 - (v - y0) / (y1 - y0)) * (h - pT - pB);
+    const path = vals.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join("");
+    chart = `<svg class="pchart" viewBox="0 0 ${w} ${h}" role="img" aria-label="Évolution du poids de corps">
+      ${[y0, (y0 + y1) / 2, y1].map(t => `<path class="pc-grid" d="M${pL} ${Y(t).toFixed(1)}H${w - pR}"/><text class="pc-tick" x="${pL - 6}" y="${(Y(t) + 3).toFixed(1)}">${fmt1(t)}</text>`).join("")}
+      <path class="pc-area" d="${path}L${X(vals.length - 1).toFixed(1)} ${h - pB}L${X(0).toFixed(1)} ${h - pB}Z"/><path class="pc-line" d="${path}"/>
+      ${vals.map((v, i) => `<circle class="pc-dot${i === vals.length - 1 ? " last" : ""}" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="${i === vals.length - 1 ? 4 : 2.6}"/>`).join("")}
+      <text class="pc-tick" x="${pL}" y="${h - 5}" text-anchor="start">${new Date(pts[0].d).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}</text>
+      <text class="pc-tick" x="${w - pR}" y="${h - 5}" text-anchor="end">${new Date(pts[pts.length - 1].d).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}</text></svg>`;
+  }
+  return `<div class="panel wt">
+    <div class="wt-top"><div><span class="eyebrow">ACTUEL</span><b class="num">${fmt1(cur)} <small>kg</small></b></div>
+      <div><span class="eyebrow">SUR 4 SEMAINES</span><b class="num ${d30 > 0 ? "up" : d30 < 0 ? "down" : ""}">${d30 === null ? "—" : `${d30 > 0 ? "+" : ""}${fmt1(d30)} <small>kg</small>`}</b></div>
+      <div><span class="eyebrow">PESÉES</span><b class="num">${W.length}</b></div></div>
+    ${chart || `<p class="hint">La courbe apparaît à partir de 2 pesées.</p>`}
+    <div class="row-inline"><input class="txt" id="wt-in" inputmode="decimal" placeholder="${fmt1(cur)}" aria-label="Poids du jour en kg" autocomplete="off"><button class="btn btn-ghost btn-sm" data-act="weigh-save">ENREGISTRER</button></div>
+    <p class="hint">${ago === null ? "Aucune pesée enregistrée. " : ago === 0 ? "Pesée enregistrée aujourd'hui. " : `Dernière pesée il y a ${ago} jour${ago > 1 ? "s" : ""}. `}${ago === null || ago >= 7 ? "<b>Pesez-vous une fois par semaine, le matin à jeun</b>, pour une courbe fiable. " : ""}Chaque pesée met aussi à jour le poids utilisé pour les exercices au poids du corps.</p>
+  </div>`;
+}
+function weighSave() {
+  const el = $("#wt-in"); const v = parseNum(el ? el.value : "");
+  if (!Number.isFinite(v) || v < 30 || v > 250) { toast("Poids : entre 30 et 250 kg.", true); if (el) shake(el); return; }
+  logWeight(Math.round(v * 10) / 10); save(); sfx("confirm"); render();
+  toast(`Pesée enregistrée : ${fmt1(state.operator.bodyweight)} kg.`); achSoon(200);
+}
+
+/* =====================================================================
+   Raid mensuel coopératif d'escouade
+   ===================================================================== */
+function monthStartOf(ts) { const d = new Date(ts || Date.now()); return new Date(d.getFullYear(), d.getMonth(), 1).getTime(); }
+const monthIndex = ms => { const d = new Date(ms); return d.getFullYear() * 12 + d.getMonth(); };
+const RAIDS = [
+  { id: "ton", name: "OPÉRATION TITAN", per: 20000, val: c => c.monthTon, desc: t => `Soulever ${fmt(t)} kg à vous tous ce mois-ci, poids du corps compris.`, fmtV: v => fmt(v) + " kg" },
+  { id: "reps", name: "MILLE-PATTES", per: 1500, val: c => c.monthReps, desc: t => `${fmt(t)} répétitions à vous tous ce mois-ci, tous exercices confondus.`, fmtV: v => fmt(v) + " rép." },
+  { id: "core", name: "FORTERESSE", per: 2400, val: c => c.monthCore, desc: t => `${fmt(Math.round(t / 60))} minutes de gainage cumulées à vous tous ce mois-ci.`, fmtV: v => Math.floor(v / 60) + " min" },
+  { id: "missions", name: "ASSAUT CONTINU", per: 8, val: c => c.monthMissions, desc: t => `${t} missions accomplies à vous tous ce mois-ci.`, fmtV: v => fmt(v) },
+  { id: "xp", name: "SURCHARGE", per: 8000, val: c => c.monthXp, desc: t => `${fmt(t)} XP gagnée en mission à vous tous ce mois-ci.`, fmtV: v => fmt(v) + " XP" }
+];
+const RAID_XP = 1000;
+function squadRaid(code, members) {
+  const ms = monthStartOf(), mi = monthIndex(ms);
+  const r = RAIDS[(mi + hashStr("raid" + code)) % RAIDS.length];
+  const n = Math.max(1, members.length), target = r.per * n;
+  const contrib = members.map(m => ({ id: m.id, name: m.callsign, me: m.me, v: m.monthStart === ms ? (r.val(m) || 0) : 0 })).sort((a, z) => z.v - a.v);
+  const value = contrib.reduce((a, c) => a + c.v, 0);
+  const end = new Date(new Date(ms).getFullYear(), new Date(ms).getMonth() + 1, 1).getTime();
+  return { r, ms, target, value, pct: Math.min(100, value / target * 100), done: value >= target, contrib, daysLeft: Math.max(0, Math.ceil((end - Date.now()) / DAY)), desc: r.desc(target) };
+}
+function claimRaid(code) {
+  const ms = monthStartOf();
+  if (state.raidClaims[code] === ms) return;
+  const sr = squadRaid(code, squadList().list);
+  if (!sr.done) return;
+  state.raidClaims[code] = ms;
+  state.raidWins = (state.raidWins || 0) + 1;
+  const res = addXp(RAID_XP);
+  save(); render();
+  rewardToast("Raid réussi", RAID_XP, res);
+  speak("Raid réussi. Bien joué, escouade.");
+  if (res.newGear && res.newGear.length) setTimeout(() => toast(`Pièce exclusive débloquée : ${GEAR_BY_ID[res.newGear[0]].name} !`), 2800);
+  achSoon(600);
+}
+function raidPanelHTML(code, list) {
+  const sr = squadRaid(code, list), claimed = state.raidClaims[code] === sr.ms;
+  const first = !(state.raidWins > 0);
+  return `<section class="panel sq-challenge raid ${sr.done ? "done" : ""}">
+    <div class="sqc-top"><span class="eyebrow">RAID DU MOIS · ${sr.daysLeft} J RESTANT${sr.daysLeft > 1 ? "S" : ""}</span><span class="ct-xp">+${fmt(RAID_XP)} XP chacun</span></div>
+    <h3 class="sqc-name">${esc(sr.r.name)}</h3><p class="hint" style="color:var(--text)">${esc(sr.desc)}</p>
+    <div class="mini-bar ct-bar"><i style="width:${sr.pct}%"></i></div>
+    <div class="ct-bot"><span>${sr.r.fmtV(sr.value)} / ${sr.r.fmtV(sr.target)}</span>
+      ${claimed ? `<span class="ct-ok">RÉCOMPENSE REÇUE</span>` : sr.done ? `<button class="btn btn-neon btn-sm" data-act="raid-claim">RÉCUPÉRER</button>` : ""}</div>
+    <div class="sqc-contrib">${sr.contrib.map(c => `<span class="${c.me ? "me" : ""}">${esc(c.name)} · ${sr.r.fmtV(c.v)}</span>`).join("")}</div>
+    <p class="hint">${first ? "Premier raid réussi : débloque une pièce de cyberware exclusive, le <b>Noyau de Raid Ω-7</b>, qu'on ne gagne qu'en équipe." : "Objectif commun sur tout le mois, il grandit avec le nombre de membres. Nouveau raid le 1er du mois."}</p>
+  </section>`;
+}
+
+/* =====================================================================
    Écran — Exercices : choix du système musculaire
    ===================================================================== */
 function lastByCat() {
@@ -3733,6 +4399,7 @@ function gripSVG(id) {
 
 /* ---- Fiches : châssis et pièces d'arsenal ---- */
 const GEAR_LORE = {
+  core_raid: "On raconte qu'il ne s'allume qu'au contact de plusieurs opérateurs synchronisés. Personne ne l'a jamais obtenu en solo.",
   neural_civ: "Distribuée à chaque recrue à l'entrée du programme. Rien d'exceptionnel, mais elle ne tombe jamais en panne.",
   arms_mk0: "Les gantelets de la première promotion : coque en polymère, aimants de préhension et beaucoup de rayures.",
   core_belt: "Tressée dans les ateliers du QG. Elle se déverrouille d'un seul geste entre deux séries.",
@@ -4172,7 +4839,10 @@ function buildCard() {
     tonnage: Math.round(state.tonnage), missions: state.missions, stats, gear,
     lastMission: state.history.length ? state.history[0].date : 0,
     ...(() => { const h = state.history.filter(x => x.date >= ws); const xs = {}; STAT_KEYS.forEach(k => { xs[k] = sumOf(h, x => x.xpStat && x.xpStat[k]); });
-      return { weekTon: Math.round(sumOf(h, x => x.ton)), weekPush: sumOf(h, x => x.push), weekMissions: h.length, weekCore: sumOf(h, x => x.coreSec), weekRecs: sumOf(h, x => x.recs), weekXpStat: xs, streak: streakInfo().weeks, wins: state.squadWins || 0 }; })()
+      const ms = monthStartOf(), hm = state.history.filter(x => x.date >= ms);
+      return { monthStart: ms, monthTon: Math.round(sumOf(hm, x => x.ton)), monthReps: sumOf(hm, x => x.reps), monthCore: sumOf(hm, x => x.coreSec), monthMissions: hm.length, monthXp: sumOf(hm, x => x.xp),
+        ach: favFams(state).map(f => famTop(f).id), achN: badgesGot(state), raids: state.raidWins || 0,
+        weekTon: Math.round(sumOf(h, x => x.ton)), weekPush: sumOf(h, x => x.push), weekMissions: h.length, weekCore: sumOf(h, x => x.coreSec), weekRecs: sumOf(h, x => x.recs), weekXpStat: xs, streak: streakInfo().weeks, wins: state.squadWins || 0 }; })()
   };
 }
 function cleanCard(d) {
@@ -4185,7 +4855,9 @@ function cleanCard(d) {
     level: Math.floor(num(d.level, 1, 1, 999)), xp: num(d.xp, 0, 0), weekXp: num(d.weekXp, 0, 0), weekStart: num(d.weekStart, 0, 0),
     tonnage: num(d.tonnage, 0, 0), missions: Math.floor(num(d.missions, 0, 0)), stats, gear, lastMission: num(d.lastMission, 0, 0),
     weekTon: num(d.weekTon, 0, 0), weekPush: num(d.weekPush, 0, 0), weekMissions: num(d.weekMissions, 0, 0), weekCore: num(d.weekCore, 0, 0), weekRecs: num(d.weekRecs, 0, 0),
-    weekXpStat: Object.fromEntries(STAT_KEYS.map(k => [k, num(isObj(d.weekXpStat) ? d.weekXpStat[k] : 0, 0, 0)])), streak: num(d.streak, 0, 0), wins: num(d.wins, 0, 0)
+    weekXpStat: Object.fromEntries(STAT_KEYS.map(k => [k, num(isObj(d.weekXpStat) ? d.weekXpStat[k] : 0, 0, 0)])), streak: num(d.streak, 0, 0), wins: num(d.wins, 0, 0),
+    monthStart: num(d.monthStart, 0, 0), monthTon: num(d.monthTon, 0, 0), monthReps: num(d.monthReps, 0, 0), monthCore: num(d.monthCore, 0, 0), monthMissions: num(d.monthMissions, 0, 0), monthXp: num(d.monthXp, 0, 0),
+    ach: Array.isArray(d.ach) ? d.ach.filter(k => ACH_BY_ID[k]).slice(0, 3) : [], achN: num(d.achN, 0, 0), raids: num(d.raids, 0, 0)
   };
 }
 function scheduleCards() {
@@ -4333,6 +5005,7 @@ function renderSquad() {
           ${claimed ? `<span class="ct-ok">RÉCOMPENSE REÇUE</span>` : sc.done ? `<button class="btn btn-neon btn-sm" data-act="squad-claim">RÉCUPÉRER</button>` : ""}</div>
         <div class="sqc-contrib">${sc.contrib.map(c => `<span class="${c.me ? "me" : ""}">${esc(c.name)} · ${sc.ch.fmtV(c.v)}${sc.ch.all ? (c.v >= sc.ch.per ? " ✓" : "") : ""}</span>`).join("")}</div>
       </section>`; })()}
+    ${raidPanelHTML(squad.code, list)}
     <div class="seg seg4" role="tablist" aria-label="Classement">
       ${Object.entries(SORTS).map(([k, l]) => `<button role="tab" aria-selected="${squad.sort === k}" class="${squad.sort === k ? "on" : ""}" data-act="squad-sort" data-sort="${k}">${l}</button>`).join("")}</div>
     <p class="hint" style="margin-top:8px">${squad.sort === "week" ? "XP gagnée depuis lundi. Le compteur repart à zéro chaque semaine." : squad.sort === "level" ? "Classement par XP totale accumulée." : squad.sort === "ton" ? "Charge totale soulevée depuis l'inscription." : "Nombre de missions accomplies."}</p>
@@ -4340,7 +5013,7 @@ function renderSquad() {
     <div class="panel board" role="list">
       ${list.map((m, i) => `<button class="sq-row ${m.me ? "me" : ""}" role="listitem" data-act="squad-member" data-id="${esc(m.id)}">
         <span class="pos ${i < 3 ? "p" + (i + 1) : ""}">${i + 1}</span>
-        <span class="who"><b>${esc(m.callsign)}${m.me ? "<em>VOUS</em>" : ""}${m.id === squad.createdBy ? '<em class="chief">CHEF</em>' : ""}</b><small>${subTxt(m)}</small></span>
+        <span class="who"><b>${esc(m.callsign)}${m.me ? "<em>VOUS</em>" : ""}${m.id === squad.createdBy ? '<em class="chief">CHEF</em>' : ""}</b><small>${subTxt(m)}</small>${m.ach && m.ach.length ? `<span class="row-ach">${m.ach.map(id => achBadge(ACH_BY_ID[id], { size: 16, force: true })).join("")}</span>` : ""}</span>
         <span class="val">${valTxt(m)}</span></button>`).join("")}
       ${squad.loading ? `<div class="sq-row" style="cursor:default"><span class="pos">…</span><span class="who"><small>Chargement des autres membres…</small></span><span></span></div>` : ""}
     </div>
@@ -4367,6 +5040,7 @@ function openMemberSheet(id) {
       <div><span>Tonnage cumulé</span><b>${fmt(m.tonnage)} kg</b></div>
     </div>
     <p class="hint">${lastSeen(m.lastMission).replace(/^./, c => c.toUpperCase())} · cette semaine : +${fmt(m.weekStart === weekStart() ? m.weekXp : 0)} XP</p>
+    <div class="sec"><h3>BADGES ÉPINGLÉS · ${fmt(m.achN || 0)} OBTENU${(m.achN || 0) > 1 ? "S" : ""}${m.raids ? ` · ${m.raids} RAID${m.raids > 1 ? "S" : ""}` : ""}</h3>${m.ach && m.ach.length ? achFavRow(m.ach, 46, true) : `<p class="hint">Aucun succès épinglé pour l'instant.</p>`}</div>
     <div class="sec"><h3>ATTRIBUTS</h3><div class="stats" style="padding:0">
       ${STAT_KEYS.map(k => `<div class="stat"><div class="stat-head"><span class="stat-name">${STATS[k].label}</span><span class="stat-val">${fmt1(m.stats[k])}</span></div>
         <div class="stat-bar"><i style="width:${m.stats[k] / scale * 100}%"></i></div></div>`).join("")}</div></div>
@@ -4542,6 +5216,7 @@ function exCardHTML(e, b) {
     <header><div><div class="eyebrow">${CAT_BY_ID[e.cat].code} · ×${e.coef.toFixed(2)} · REPOS ${restFor(e, b)} S</div><button class="ex-link" data-act="sheet-ex" data-id="${e.id}" aria-label="Voir la fiche et le schéma de ${esc(e.name)}">${esc(e.name)}<span class="i" aria-hidden="true">i</span></button></div>
       <span class="setc">${plural(sets.length, "SÉRIE")}</span></header>
     ${sets.length ? "" : suggestionHTML(e)}
+    ${sets.length ? "" : warmupHTML(e, d.kg)}
     ${singleDbMode(e.id) ? `<p class="bw-note">Une seule haltère : faites toutes les répétitions d'un côté, puis de l'autre. Saisissez les répétitions par bras.</p>` : ""}
     ${sets.length ? `<div class="sets">${sets.map((s, i) => {
       const armed = ui.delArm === `${e.id}:${i}`;
@@ -4624,6 +5299,7 @@ function validateSet(id, btn) {
   save();
   vibrate([30, 40, 30]);
   sfx("confirm");
+  setTimeout(() => speak(`Repos. ${durWords(rest)}.`, { interrupt: true }), 350);
   floatXp(`+${fmt(xp)} XP`, btn);
   render();
   openRest();
@@ -4704,6 +5380,7 @@ function tickEffort() {
     }
     effort.t0 = effort.prepEnd; effort.lastSec = null;
     sfx("count", 1); vibrate([60, 40, 60]);
+    setTimeout(() => speak("C'est parti.", { interrupt: true }), 150);
     stEl.textContent = "TENEZ !";
   }
   const el = (now - effort.t0) / 1000, held = Math.floor(el), left = effort.target - el;
@@ -4711,10 +5388,14 @@ function tickEffort() {
     const sec = Math.ceil(left);
     tEl.textContent = mmss(sec);
     fg.setAttribute("stroke-dashoffset", (RING_C * (el / effort.target)).toFixed(2));
+    if (sec !== effort.lastSec && effort.lastSec !== null) {
+      if (sec === 10 && effort.target >= 25) speak("Dix secondes.");
+      else if (effort.target >= 30 && sec === Math.ceil(effort.target / 2) && sec > 12) speak("Mi-parcours.");
+    }
     if (sec !== effort.lastSec) { if (effort.lastSec !== null) { if (sec <= 3) sfx("count", sec); else sfx("sec", sec % 2); } effort.lastSec = sec; }
     if (left < effort.target - 0.5) stEl.textContent = left <= 5 ? "DERNIÈRES SECONDES" : "TENEZ !";
   } else {
-    if (!effort.reached) { effort.reached = true; ring.classList.add("done"); fg.setAttribute("stroke-dashoffset", "0"); sfx("restDone"); vibrate([200, 100, 200]); }
+    if (!effort.reached) { setTimeout(() => speak("Objectif atteint. Chaque seconde en plus compte.", { interrupt: true }), 700); effort.reached = true; ring.classList.add("done"); fg.setAttribute("stroke-dashoffset", "0"); sfx("restDone"); vibrate([200, 100, 200]); }
     tEl.textContent = "+" + mmss(-left);
     stEl.textContent = "OBJECTIF ATTEINT · BONUS";
     const sec = Math.floor(-left); if (sec !== effort.lastSec) { effort.lastSec = sec; if (sec > 0) sfx("sec", sec % 2); }
@@ -4826,7 +5507,7 @@ function tickRest() {
     ring.classList.remove("done");
     $("#rest-time").textContent = mmss(Math.ceil(left));
     const sec = Math.ceil(left);
-    if (sec !== restLastSec) { if (restLastSec !== null) { if (sec <= 3) sfx("count", sec); else sfx("sec", sec % 2); } restLastSec = sec; }
+    if (sec !== restLastSec) { if (restLastSec !== null) { if (sec <= 3) sfx("count", sec); else sfx("sec", sec % 2); if (sec === 10 && r.total > 20) speak("Dix secondes."); } restLastSec = sec; }
     $("#rest-state").textContent = "RÉCUPÉRATION";
     fg.setAttribute("stroke-dashoffset", (RING_C * (1 - Math.min(1, left / r.total))).toFixed(2));
     $("#rest-btn").textContent = "PASSER LE REPOS";
@@ -4836,7 +5517,9 @@ function tickRest() {
     $("#rest-state").textContent = "SYSTÈMES PRÊTS";
     fg.setAttribute("stroke-dashoffset", "0");
     $("#rest-btn").textContent = "REPRENDRE LE COMBAT";
-    if (!restDoneFired) { restDoneFired = true; vibrate([200, 100, 200]); sfx("restDone"); musicRest(false); }
+    if (!restDoneFired) { restDoneFired = true; vibrate([200, 100, 200]); sfx("restDone"); musicRest(false);
+      const ne = EX[r.exId], nn = ((state.mission.sets[r.exId] || []).length) + 1;
+      setTimeout(() => speak(ne ? `Repos terminé. ${ne.name}, série ${nn}.` : "Repos terminé."), 900); }
   }
 }
 function closeRest() {
@@ -4908,7 +5591,8 @@ function finishMission() {
   perEx.forEach(p => { const c = EX[p.id].cat; catCount[c] = (catCount[c] || 0) + p.sets; });
   const focus = Object.keys(catCount).sort((a, z) => catCount[z] - catCount[a]).slice(0, 2).map(c => CAT_BY_ID[c].label.toLowerCase()).join(" + ");
   STAT_KEYS.forEach(k => { xpStat[k] = Math.round(xpStat[k]); });
-  st.history.unshift({ date: now, xp: totalXp, ton: Math.round(t.ton), sets: t.sets, exCount: perEx.length, dur, level: st.level, focus: focus.charAt(0).toUpperCase() + focus.slice(1),
+  const repsTot = lifeOnMission(st, m, t, totalXp, records, now);
+  st.history.unshift({ reps: repsTot, date: now, xp: totalXp, ton: Math.round(t.ton), sets: t.sets, exCount: perEx.length, dur, level: st.level, focus: focus.charAt(0).toUpperCase() + focus.slice(1),
     recs: records.length, push, coreSec, xpStat, cats: Object.keys(catCount) });
   st.undo = { at: now, snap: undoSnap };
   st.history = st.history.slice(0, 60);
@@ -4922,6 +5606,8 @@ function finishMission() {
   ui.screen = "report";
   render();
   window.scrollTo(0, 0);
+  speak(levels ? `Mission accomplie. Niveau ${st.level} atteint.` : "Mission accomplie.", { interrupt: true });
+  achSoon(2600);
 }
 
 function renderReport() {
@@ -5025,6 +5711,7 @@ function animateReport() {
 }
 function levelFlash(level) {
   vibrate([60, 40, 120]); sfx("levelup");
+  if (ui.screen !== "report") speak(`Niveau ${level} atteint.`);
   const f = document.createElement("div");
   f.className = "lvl-flash"; f.setAttribute("aria-hidden", "true");
   f.innerHTML = `<div>LEVEL UP<small>NIVEAU ${level} · ${rankFor(level)}</small></div>`;
@@ -5088,6 +5775,7 @@ const actions = {
     if (k === "sfx" && !v) sfx("off");
     setSnd({ [k]: v });
     if (v) { audioPrime(); sfx("on"); }
+    if (k === "voice") { if (v) speak("Annonces vocales activées."); else try { speechSynthesis.cancel(); } catch (e) {} }
     const pop = $("#aud-pop"); if (pop) { audFill(pop); const nb = pop.querySelector(`[data-k="${k}"]`); if (nb) nb.focus({ preventScroll: true }); }
   },
   "set-accent": el => { setAccent(el.dataset.n); render(); },
@@ -5114,6 +5802,7 @@ const actions = {
   "note-save": () => {
     if (!ui.report || !state.history.length) return;
     keepNoteText();
+    if (!ui.report.noteSaved) state.life.notes++;
     state.history[0].note = Object.assign({}, ui.report.note);
     ui.report.noteSaved = true; save(); render(); toast("Note de ressenti enregistrée.");
   },
@@ -5157,6 +5846,13 @@ const actions = {
   "finish-mission": () => finishMission(),
   "rest-add": el => { const m = state.mission; if (!m || !m.rest) return; const d = +el.dataset.d * 1000; m.rest.endAt = Math.max(Date.now(), m.rest.endAt + d); m.rest.total = Math.max(1, m.rest.total + (+el.dataset.d)); if (m.rest.endAt > Date.now()) restDoneFired = false; save(); tickRest(); },
   "rest-skip": () => endRest(),
+  "ach-open": () => { const t = $("#ach-toast"); if (t) t.classList.remove("show"); openAchSheet(); },
+  "ach-pin": el => achPin(el.dataset.id),
+  "cal-nav": el => { ui.calOff = Math.max(-12, Math.min(0, (ui.calOff || 0) + (+el.dataset.d))); render(); },
+  "map-days": el => { ui.mapDays = +el.dataset.n; render(); },
+  "weigh-save": () => weighSave(),
+  "warm-tick": el => warmTick(el.dataset.id, +el.dataset.i),
+  "raid-claim": () => claimRaid(squad.code),
   "effort-start": el => startEffort(el.dataset.id),
   "effort-stop": () => stopEffort(),
   "effort-cancel": () => cancelEffort(),
@@ -5241,7 +5937,7 @@ const holdActions = {
   }
 };
 
-const SND_OWN = new Set(["toggle-ex", "validate-set", "step", "close-sheet", "finish-mission", "aud-toggle"]);
+const SND_OWN = new Set(["toggle-ex", "validate-set", "step", "close-sheet", "finish-mission", "aud-toggle", "warm-tick", "ach-pin"]);
 const SND_NAV = new Set(["go", "tab", "validate-loadout", "report-done", "squad-select", "pick-cat"]);
 document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]");
@@ -5253,6 +5949,7 @@ document.addEventListener("click", e => {
       const own = SND_OWN.has(act);
       if (!own) sfx(SND_NAV.has(act) ? "nav" : "tap");
       fn(el, e);
+      achSoon(900);
       if (act === "toggle-ex") sfx(state.loadoutSession.includes(el.dataset.id) ? "on" : "off");
       else if (act === "step") sfx("step", +el.dataset.d > 0);
       else if (act === "finish-mission" && ui.screen === "report") sfx("complete");
@@ -5296,6 +5993,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "Enter" && e.target.matches("[data-field]")) { e.preventDefault(); validateSet(e.target.dataset.id, e.target); }
   if (e.key === "Enter" && e.target.id === "name-input") { e.preventDefault(); actions["save-name"](); }
   if (e.key === "Enter" && e.target.id === "ob-name") { e.preventDefault(); obNext(); }
+  if (e.key === "Enter" && e.target.id === "wt-in") { e.preventDefault(); weighSave(); }
   if (e.key === "Enter" && e.target.id === "ef-secs") { e.preventDefault(); saveEffort(); }
   if (e.key === "Enter" && e.target.id === "sq-name") { e.preventDefault(); squadCreate(); }
   if (e.key === "Enter" && e.target.id === "fav-name") { e.preventDefault(); saveFavorite(); }
@@ -5307,6 +6005,7 @@ document.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter"
 function onDraftInput(id) {
   const { kg, reps } = readDraftInputs(id);
   const pl = document.getElementById("pl-" + id); if (pl) pl.innerHTML = plateHTML(kg);
+  const wm = document.getElementById("warm-" + id); if (wm && Number.isFinite(kg)) wm.outerHTML = warmupHTML(EX[id], kg);
   storeDraft(id, kg, reps);
   const pv = document.getElementById("pv-" + id);
   if (pv) pv.textContent = previewXp(id, kg, reps);
@@ -5337,9 +6036,10 @@ document.addEventListener("change", e => {
   } else if (t.id === "set-bw") {
     const v = parseNum(t.value);
     if (!Number.isFinite(v) || v < 30 || v > 250) { toast("Poids de corps : entre 30 et 250 kg.", true); t.value = fmt1(state.operator.bodyweight); return; }
-    state.operator.bodyweight = Math.round(v * 10) / 10; save(); toast("Poids de corps enregistré.");
+    logWeight(Math.round(v * 10) / 10); save(); toast("Poids de corps enregistré."); if (ui.screen === "hq") render(); achSoon(300);
   }
 });
+document.addEventListener("toggle", e => { const d = e.target; if (d && d.dataset && d.dataset.warm) { ui.warmOpen = ui.warmOpen || {}; ui.warmOpen[d.dataset.warm] = d.open; } }, true);
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) { if (sync.ref && sync.mode === "saving") pushNow(); return; }
   if (effort) tickEffort();
