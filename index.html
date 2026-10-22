@@ -1326,6 +1326,15 @@ button.sq-row:hover{background:var(--panel-2)}
 .sq-t b{font-family:var(--f-display);font-size:11.5px;letter-spacing:.18em;color:var(--neon)}
 .sq-t small{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sq-strip .go{font-size:22px;line-height:1;color:var(--neon)}
+
+/* ---------- illustrations des systèmes ---------- */
+.cat{position:relative;overflow:hidden;min-height:0;padding-top:10px}
+.cat-ill{display:block;width:100%;height:78px;margin:0 0 6px;pointer-events:none}
+.cat-ill .mn>*{fill:var(--panel-2);stroke:var(--line);stroke-width:.45}
+.cat-ill .mr>*{fill:var(--panel-2);stroke:var(--line-hi);stroke-width:.45;stroke-linejoin:round}
+.cat-ill .mr.l1>*{fill:rgba(var(--neon-rgb),.22);stroke:rgba(var(--neon-rgb),.5)}
+.cat-ill .mr.l3>*{fill:var(--neon);stroke:var(--neon);filter:drop-shadow(0 0 1.5px rgba(var(--neon-rgb),.8))}
+.cat.sel .cat-ill .mn>*,.cat.sel .cat-ill .mr.l0>*{fill:var(--panel)}
 </style>
 <script>window.NEON_STANDALONE = true;
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
@@ -3071,7 +3080,7 @@ function tabArchives() {
   </section>
   <section class="block">
     <h2 class="h2">RECORDS PERSONNELS · ${recs.length}</h2>
-    ${recs.length ? `<div class="panel rows">${recs.slice(0, ui.recsAll ? 200 : 8).map(r => { const e = EX[r.id]; return `<div class="r"><div>${esc(e.name)}<div class="s">${new Date(r.date).toLocaleDateString("fr-FR")}</div></div><div class="v">${e.type === "time" ? `${fmt(r.reps)} s${r.kg ? ` · ${fmt1(r.kg)} kg` : ""}` : `${fmt1(r.kg)} kg × ${fmt(r.reps)}`}</div></div>`; }).join("")}</div>
+    ${recs.length ? `<div class="panel rows">${recs.slice(0, ui.recsAll ? 200 : 8).map(r => { const e = EX[r.id]; return `<div class="r"><div>${esc(e.name)}<div class="s">${new Date(r.date).toLocaleDateString("fr-FR")}</div></div><div class="v">${setTxt(e, r.kg, r.reps)}</div></div>`; }).join("")}</div>
       ${recs.length > 8 && !ui.recsAll ? `<button class="more-btn" data-act="recs-all">VOIR LES ${recs.length} RECORDS</button>` : ""}`
       : `<div class="empty-note">Les records sont enregistrés à la fin de chaque mission.</div>`}
   </section>`;
@@ -3937,12 +3946,11 @@ function muscleLoad(days) {
   }
   return load;
 }
-function muscleMapHTML() {
-  const days = ui.mapDays === 30 ? 30 : 7, load = muscleLoad(days), k = days / 7;
-  const lvl = r => { const v = load[r] / k; return v <= 0 ? 0 : v < 3 ? 1 : v < 8 ? 2 : 3; };
+/* Silhouette anatomique (face ou dos) : lvl(région) → 0 à 3, title(région) → info-bulle facultative */
+function bodyFig(view, lvl, title) {
   const mx = d => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${(100 - +x).toFixed(1)} ${y}`);
   const both = d => `<path d="${d}"/><path d="${mx(d)}"/>`;
-  const R = (r, d) => `<g class="mr l${lvl(r)}"><title>${REGIONS[r]} : ${fmt1(load[r])} séries</title>${d}</g>`;
+  const R = (r, d) => `<g class="mr l${lvl(r)}">${title ? `<title>${title(r)}</title>` : ""}${d}</g>`;
   const N = d => `<g class="mn">${d}</g>`;
   // gauche de la figure (x < 50) ; la droite est le miroir exact
   const head = `<ellipse cx="50" cy="13.5" rx="7" ry="8.5"/>` + `<path d="M46 21 50 22.5 54 21 55 28.5 45 28.5Z"/>`;
@@ -3962,14 +3970,20 @@ function muscleMapHTML() {
     + R("quads", both("M39.6 80.4 C37.2 89.5 37.2 101.5 39.6 112.6 C42 114.4 45.6 114.2 47.8 112.4 C49 103.5 49.4 94 49.2 86.4 C46 85 42.6 83 39.6 80.4 Z"))
     + R("calves", both("M40.2 122.5 C38.8 131 39.2 141 41.2 149.6 C43.2 151 45 150.8 46.2 149 C47.6 140 47.6 131 46.6 122.5 C44.6 123.8 42.2 123.8 40.2 122.5 Z"));
   const back = N(head + hands + knees + feet)
-    + R("traps", `<path d="M50 22.5 L39.5 29.8 L44.2 33.6 L50 47 L55.8 33.6 L60.5 29.8 Z"/>`)
+    + R("traps", both("M50 23.2 L46.4 23.2 C46.1 25.6 44.8 27.3 42.8 28.3 C41.2 29.1 39.5 29.6 37.9 30.1 C39.9 31.6 42.3 33.1 44.2 35 C46.3 39.2 48.2 43.8 50 48.6 Z"))
     + R("delts", delts)
     + arms("triceps", "forearms")
-    + R("lats", both("M37.4 33.4 L43.8 34.6 L49.4 47.8 L49.4 63 L43 61.4 C39.4 53.8 37.4 44.2 37.4 33.4 Z"))
+    + R("lats", both("M37.4 33 C39.6 34 42.2 34.8 44.6 35.6 C46.6 39.6 48.4 44 49.4 48.6 L49.4 63 L43 61.4 C39.4 53.8 37.4 44.2 37.4 33 Z"))
     + R("lowerback", both("M43.6 62.4 L49.4 64 L49.4 76 L44 74 Z"))
     + R("glutes", both("M39.6 76 C38 82 38.6 88 41 92 C44 94 47.6 93.6 49.4 91 L49.4 77.6 C46 77 43 76.6 39.6 76 Z"))
     + R("hams", both("M39.6 94.2 C38.6 101.8 39 109.2 40.6 114.4 C43 115.8 46 115.8 47.6 114.4 C49 107.8 49.4 100.6 49.2 94 C46 95 42.6 95 39.6 94.2 Z"))
     + R("calves", both("M39.8 122 C38 129 38.6 138.4 41 147 C43 148.6 45.6 148.2 46.6 146 C48 137.4 48 129 46.8 122 C44.6 123.4 42 123.4 39.8 122 Z"));
+  return view === "back" ? back : front;
+}
+function muscleMapHTML() {
+  const days = ui.mapDays === 30 ? 30 : 7, load = muscleLoad(days), k = days / 7;
+  const lvl = r => { const v = load[r] / k; return v <= 0 ? 0 : v < 3 ? 1 : v < 8 ? 2 : 3; };
+  const front = bodyFig("front", lvl, r => `${REGIONS[r]} : ${fmt1(load[r])} séries`), back = bodyFig("back", lvl, r => `${REGIONS[r]} : ${fmt1(load[r])} séries`);
   const order = Object.keys(REGIONS).sort((a, z) => load[z] - load[a]);
   const maxv = Math.max(1, ...order.map(r => load[r]));
   return `<div class="panel mmap">
@@ -4246,6 +4260,19 @@ function agoTxt(ts) {
   const days = Math.max(0, Math.round((new Date().setHours(0, 0, 0, 0) - new Date(ts).setHours(0, 0, 0, 0)) / DAY));
   return days === 0 ? "travaillé aujourd'hui" : days === 1 ? "travaillé hier" : `il y a ${days} jours`;
 }
+const CAT_ZONES = {
+  pecs: { view: "front", main: ["pecs"], sub: ["delts", "triceps"], box: "14 4 72 80" },
+  dos: { view: "back", main: ["lats", "traps", "lowerback"], sub: ["delts", "triceps"], box: "14 4 72 80" },
+  epaules: { view: "front", main: ["delts"], sub: ["traps", "pecs"], box: "14 4 72 80" },
+  bras: { view: "front", main: ["biceps", "forearms"], sub: ["delts"], box: "14 4 72 80" },
+  jambes: { view: "front", main: ["quads", "calves"], sub: [], box: "33 72 34 92" },
+  abdos: { view: "front", main: ["abs", "obliques"], sub: [], box: "14 4 72 80" }
+};
+function catIllus(cat) {
+  const z = CAT_ZONES[cat]; if (!z) return "";
+  const lvl = r => z.main.includes(r) ? 3 : z.sub.includes(r) ? 1 : 0;
+  return `<svg class="cat-ill" viewBox="${z.box}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${bodyFig(z.view, lvl)}</svg>`;
+}
 function renderSystems() {
   const st = state, last = lastByCat(), pl = curPlace(), lo = st.loadoutSession.length;
   const cards = CATS.map(c => {
@@ -4254,6 +4281,7 @@ function renderSystems() {
     const main = Object.keys(aff).sort((a, z) => aff[z] - aff[a])[0];
     const inLo = st.loadoutSession.filter(id => EX[id].cat === c.id).length;
     return `<button class="panel cat ${inLo ? "sel" : ""}" data-act="pick-cat" data-cat="${c.id}">
+      ${catIllus(c.id)}
       <span class="code">${c.code}${inLo ? ` · <em>${inLo} AU LOADOUT</em>` : ""}</span><span class="lab">${c.label}</span>
       <span class="meta">${st.equip.filter ? `${doable}/${list.length}` : list.length} exercices · ${STATS[main].short.toLowerCase()}</span>
       <span class="when ${last[c.id] ? "" : "never"}">${agoTxt(last[c.id])}</span></button>`;
@@ -4516,7 +4544,7 @@ function suggestNext(id) {
   }
   return { last, kg: last.kg, reps: last.reps + 1, why: "même charge, une répétition de plus" };
 }
-const setTxt = (e, kg, reps) => e.type === "time" ? `${fmt(reps)} s${kg ? ` · lest ${fmt1(kg)} kg` : ""}` : e.type === "bw" ? `${kg ? `PDC + ${fmt1(kg)} kg` : "PDC"} × ${fmt(reps)}` : `${fmt1(kg)} kg × ${fmt(reps)}`;
+const setTxt = (e, kg, reps) => e.type === "time" ? `${fmt(reps)} s${kg ? ` · lest ${fmt1(kg)} kg` : ""}` : e.type === "bw" ? `${fmt(reps)} rép.${kg ? ` · lest ${fmt1(kg)} kg` : ""}` : `${fmt1(kg)} kg × ${fmt(reps)}`;
 function suggestionHTML(e) {
   const sg = suggestNext(e.id); if (!sg) return "";
   const d = new Date(sg.last.d).toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
@@ -5461,7 +5489,7 @@ function exCardHTML(e, b) {
       const armed = ui.delArm === `${e.id}:${i}`;
       const tags = s.tags;
       return `<div class="set"><span class="n">S${i + 1}</span>
-        <span class="w">${time ? `${fmt(s.reps)} s${s.kg ? ` · lest ${fmt1(s.kg)} kg` : ""}` : `${e.type === "bw" ? (s.kg ? `PDC + ${fmt1(s.kg)} kg` : "PDC") : `${fmt1(s.kg)} kg`} × ${fmt(s.reps)}`}
+        <span class="w">${setTxt(e, s.kg, s.reps)}
           ${tags.length ? `<small class="${tags.some(t => t.startsWith("ADR")) ? "leg" : ""}">${tags.join(" · ")}</small>` : ""}</span>
         <span class="xp">+${fmt(s.xp)} XP</span>
         <button class="del ${armed ? "confirm" : ""}" data-act="del-set" data-id="${e.id}" data-i="${i}" aria-label="${armed ? "Confirmer la suppression" : "Supprimer la série"} ${i + 1}">${armed ? "SUPPR ?" : "✕"}</button></div>`;
@@ -5886,7 +5914,7 @@ function renderReport() {
         <button class="btn btn-ghost btn-sm" data-act="go-perks">OUVRIR L'ARBRE</button></article>` : ""}
     ${!r.newGear.length && !r.levels ? `<div class="empty-note">Aucun nouveau matériel cette fois.${nextGear ? ` Prochain déblocage : <b style="color:var(--neon)">${esc(nextGear.g.name)}</b> (${condText(nextGear.g.cond).toLowerCase()}, ${Math.round(Math.min(1, nextGear.p) * 100)} %).` : ""}</div>` : ""}
   </section>
-  ${r.records.length ? `<section class="block"><h2 class="h2">NOUVEAUX RECORDS</h2><div class="panel rows">${r.records.map(x => { const e = EX[x.id]; const f = (kg, reps) => e.type === "time" ? `${fmt(reps)} s` : `${fmt1(kg)} kg × ${fmt(reps)}`;
+  ${r.records.length ? `<section class="block"><h2 class="h2">NOUVEAUX RECORDS</h2><div class="panel rows">${r.records.map(x => { const e = EX[x.id]; const f = (kg, reps) => setTxt(e, kg, reps);
       return `<div class="r"><div>${esc(e.name)}<div class="s">ancien : ${f(x.prev.kg, x.prev.reps)}</div></div><div class="v">${f(x.kg, x.reps)}</div></div>`; }).join("")}</div></section>` : ""}
   <section class="block">
     <h2 class="h2">DÉTAIL DU LOADOUT</h2>
