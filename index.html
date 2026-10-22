@@ -2128,7 +2128,7 @@ function syncInfo() {
         : "Votre profil est sauvegardé sur votre compte Claude. Ouvrez ce même lien sur un autre appareil connecté au même compte : vous retrouvez votre niveau, votre cyberware, vos records et même une mission en cours.";
     case "connecting": return "Connexion au stockage de votre compte en cours. La progression est déjà enregistrée sur cet appareil.";
     case "offline": return "Pas de réseau pour l'instant. La progression est enregistrée sur cet appareil et sera envoyée automatiquement au retour de la connexion.";
-    case "error": return "Le stockage du compte ne répond pas. La progression reste enregistrée sur cet appareil et sera envoyée automatiquement à la prochaine sauvegarde.";
+    case "error": return "Le stockage du compte ne répond pas. La progression reste enregistrée sur cet appareil et sera envoyée automatiquement à la prochaine sauvegarde." + (sync.errCode ? ` (code : ${sync.errCode})` : "");
     default: return sync.reason || "Ce profil est enregistré uniquement dans ce navigateur.";
   }
 }
@@ -2160,10 +2160,15 @@ async function pushNow() {
   let code = null;
   if (STANDALONE && !navigator.onLine) setSyncMode("offline");
   try {
-    await sync.ref.set({ v: 1, updatedAt: state.updatedAt || Date.now(), device: sync.device, state: JSON.parse(JSON.stringify(state)) });
+    /* Profil envoyé sous forme de texte JSON : Firestore refuse les tableaux imbriqués
+       (détail des séries [[kg, reps, xp]], séances de la semaine…), ce qui bloquait toute sauvegarde. */
+    await sync.ref.set({ v: 2, updatedAt: state.updatedAt || Date.now(), device: sync.device, json: JSON.stringify(state) });
+    sync.errCode = "";
     setSyncMode(navigator.onLine === false ? "offline" : "cloud");
   } catch (e) {
     code = (e && e.code) || "unavailable";
+    sync.errCode = String(code);
+    try { console.warn("[NeonFitness] sauvegarde cloud refusée :", code, e && e.message); } catch (x) {}
     if (["invalid_argument", "not_granted", "revoked", "capability_disabled", "capability_removed", "transform_error", "permission-denied", "unauthenticated"].includes(code)) {
       dropCloud(STANDALONE
         ? "Le serveur refuse la sauvegarde (règles de sécurité Firestore). La progression est gardée sur cet appareil : vérifiez l'étape « Règles » du guide d'installation."
@@ -2194,6 +2199,7 @@ function applyRemote(snap, initial) {
   }
   if (snap.metadata && snap.metadata.hasPendingWrites) return;
   const d = snap.data() || {};
+  if (typeof d.json === "string") { try { d.state = JSON.parse(d.json); } catch (e) { d.state = null; } }
   const remoteAt = num(d.updatedAt, 0, 0);
   if (initial) setSyncMode("cloud");
   if ((remoteAt > (state.updatedAt || 0) || (initial && bootPristine)) && isObj(d.state)) {
