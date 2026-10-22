@@ -307,6 +307,7 @@ p{margin:0}
 
 .actionbar{position:fixed;left:0;right:0;bottom:0;z-index:35;background:linear-gradient(180deg,rgba(var(--void-rgb),0),var(--void) 26%);padding:22px var(--gut-r) calc(12px + env(safe-area-inset-bottom,0px)) var(--gut-l)}
 .actionbar-in{max-width:568px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+.actionbar-in:has(.fav-star:not([hidden])){grid-template-columns:1fr 52px 1.4fr}
 .actionbar .btn{min-height:56px}
 .badge-n{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:11px;background:var(--ink);color:var(--neon);font-size:11px;padding:0 6px}
 
@@ -1072,10 +1073,11 @@ button.sq-row:hover{background:var(--panel-2)}
 .ach-b .hx{stroke-width:2;fill:var(--panel-2)}
 .ach-b .hx2{fill:none;stroke-width:.8;opacity:.6}
 .ach-b .gl{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ach-b.ex{--m:var(--legend)}.ach-b.ex .gl{transform:translate(0,1.5px)}
 .ach-b.t0{--m:#C98A4B}.ach-b.t1{--m:#B9C6D2}.ach-b.t2{--m:#F2B53A}.ach-b.t3{--m:var(--neon)}
 .ach-b.got .hx{stroke:var(--m);fill:color-mix(in srgb,var(--m) 16%,var(--panel))}
 .ach-b.got .hx2,.ach-b.got .gl{stroke:var(--m)}
-.ach-b.got.t2,.ach-b.got.t3{filter:drop-shadow(0 0 3px color-mix(in srgb,var(--m) 60%,transparent))}
+.ach-b.got.t2,.ach-b.got.t3,.ach-b.got.ex{filter:drop-shadow(0 0 3px color-mix(in srgb,var(--m) 60%,transparent))}
 .ach-b.lock .hx{stroke:var(--line)}.ach-b.lock .hx2,.ach-b.lock .gl{stroke:var(--dim)}
 .ach-favs{display:flex;gap:10px;align-items:flex-start}
 .ach-fav{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;flex:1;text-align:center}
@@ -1194,6 +1196,54 @@ button.sq-row:hover{background:var(--panel-2)}
 .warm-row small{font-size:11.5px;color:var(--muted)}
 .warm-row.on b{color:var(--muted);text-decoration:line-through}
 .warm .hint{padding:8px 12px 10px;font-size:11.5px}
+
+/* ---------- épuration ---------- */
+.top-r{gap:6px}
+.sync{width:34px;height:31px;padding:0;justify-content:center}
+.sync span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sync i{width:9px;height:9px}
+.icon-btn{width:34px;height:31px;display:grid;place-items:center;border:1px solid var(--line);border-radius:3px;color:var(--muted);background:var(--panel)}
+.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.icon-btn:hover{color:var(--neon);border-color:var(--line-hi)}
+.hq-go{margin-top:10px;display:grid;grid-template-columns:1fr;gap:10px}
+.hq-go.two{grid-template-columns:1.25fr 1fr}
+.hq-go .ex-entry{margin-top:0}
+.ex-entry,.sq-entry{padding:12px;gap:10px}
+.sq-entry{display:flex;align-items:center;border:1px solid var(--line-hi);border-radius:4px;background:var(--panel);text-align:left;min-width:0}
+.sq-entry .ex-ic{background:transparent;border:1px solid var(--line-hi);color:var(--neon)}
+.sq-entry .ex-ic svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;width:20px;height:20px}
+.sq-entry .ex-txt b{font-size:12.5px;color:var(--text)}
+.ex-entry .ex-txt b{font-size:13.5px}
+.ex-txt small{font-size:11.5px;line-height:1.3}
+.ex-ic{width:34px;height:34px}
+.h2-sub{margin-left:auto;order:3;font-size:9.5px;letter-spacing:.14em;color:var(--muted);font-weight:400}
+.h2 .h2-sub{flex:none}
+.streak-line{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.streak-line b{font-family:var(--f-display);font-size:22px;font-weight:900;color:var(--muted);line-height:1}
+.streak-line span{font-size:13px;color:var(--text)}
+.streak-line em{font-style:normal;color:var(--legend);font-weight:600}
+.streak-line small{font-family:var(--f-display);font-size:9px;letter-spacing:.1em;color:var(--muted);white-space:nowrap}
+.streak-line.hot b{color:var(--legend)}
+.sugg{display:flex;align-items:center;gap:10px;padding:9px 12px}
+.sugg .sg-t{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;font-size:12.5px;color:var(--muted)}
+.sugg .sg-t b{font-size:14px}
+.sugg .sg-t small{flex-basis:100%;font-size:11px}
+.fav-star{min-width:0;padding:0;font-size:20px;color:var(--legend)}
+.eq-bar{padding:6px 10px}
+.eq-set{padding:6px 4px;font-size:11px;font-family:var(--f-display);letter-spacing:.12em;text-decoration:none;color:var(--neon)}
+.eq-lab{flex-direction:row;align-items:baseline;gap:8px}
+.eq-lab small{font-size:11.5px}
+.seg.seg3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.suivi-seg{margin-top:18px}
+.more-btn{width:100%;margin-top:8px;padding:10px;border:1px dashed var(--line-hi);border-radius:4px;font-family:var(--f-display);font-size:9.5px;letter-spacing:.14em;color:var(--neon);background:var(--panel)}
+.ach-sum{margin-top:10px}
+.ach-sum-t{flex:1;font-size:12.5px;color:var(--muted);text-align:right}
+.mm-det summary{cursor:pointer;list-style:none;font-family:var(--f-display);font-size:9.5px;letter-spacing:.16em;color:var(--neon);padding:4px 0;display:flex;justify-content:center;gap:6px}
+.mm-det summary::-webkit-details-marker{display:none}
+.mm-det summary::after{content:"▾";transition:transform .2s}.mm-det[open] summary::after{transform:rotate(180deg)}
+.mm-det[open] .mm-list{margin-top:8px}
+.set-links{display:flex;flex-direction:column;gap:10px}
+#sheet-in .theme-picks .pick{flex:1 1 0}
 </style>
 <script>window.NEON_STANDALONE = true;
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
@@ -1718,8 +1768,10 @@ function sanitize(s) {
   o.squadWins = Math.floor(num(s.squadWins, 0, 0));
   o.raidWins = Math.floor(num(s.raidWins, 0, 0));
   if (isObj(s.raidClaims)) for (const [k, v] of Object.entries(s.raidClaims)) if (/^[A-Z0-9]{6}$/.test(k)) o.raidClaims[k] = num(v, 0, 0);
-  if (isObj(s.ach)) for (const [k, v] of Object.entries(s.ach)) if (/^[a-z0-9_]{2,30}$/.test(k)) o.ach[k] = num(v, Date.now(), 0);
-  o.achFav = Array.isArray(s.achFav) ? [...new Set(s.achFav.filter(k => typeof k === "string" && /^[a-z0-9_]{2,30}$/.test(k)))].slice(0, 3) : [];
+  const ACH_LEGACY = { push_session: "pushm_2", ton_session: "heavy_2", ton_session2: "heavy_3", sets_session: "setsm_2", xp_session: "xpm_2", xp_session2: "xpm_3",
+    hold_5: "hold_3", full_body: "body_1", full_body6: "body_3", early: "early_1", early10: "early_2", late: "late_1", weekend: "weekend_2" };
+  if (isObj(s.ach)) for (const [k0, v] of Object.entries(s.ach)) { const k = ACH_LEGACY[k0] || k0; if (/^[a-z0-9_]{2,30}$/.test(k)) o.ach[k] = num(v, Date.now(), 0); }
+  o.achFav = Array.isArray(s.achFav) ? [...new Set(s.achFav.filter(k => typeof k === "string").map(k => ACH_LEGACY[k] || k).filter(k => /^[a-z0-9_]{2,30}$/.test(k)))].slice(0, 3) : [];
   if (isObj(s.activity)) { const lim = dayKey(Date.now() - 420 * 86400000); for (const [k, v] of Object.entries(s.activity)) if (/^\d{8}$/.test(k) && +k >= lim) o.activity[k] = Math.floor(num(v, 0, 0, 20)); }
   if (Array.isArray(s.weights)) o.weights = s.weights.filter(x => isObj(x) && Number.isFinite(+x.d)).map(x => ({ d: num(x.d, 0, 0), kg: num(x.kg, 75, 30, 250) })).sort((a, z) => a.d - z.d).slice(-300);
   if (isObj(s.life)) {
@@ -2009,7 +2061,7 @@ function vibrate(p) { try { if (navigator.vibrate) navigator.vibrate(p); } catch
    Réglages propres à chaque appareil : Archives → Paramètres → Audio
    ===================================================================== */
 const SND_KEY = "neonfitness-sound";
-const SND_DEF = { sfx: true, sfxVol: 0.7, scroll: true, music: false, musicVol: 0.5, voice: true };
+const SND_DEF = { sfx: true, sfxVol: 0.7, scroll: true, music: false, musicVol: 0.5 };
 let sndMem = Object.assign({}, SND_DEF);
 function sndPrefs() {
   let v = null;
@@ -2040,8 +2092,7 @@ function audioBuild() {
   au.sfx = actx.createGain(); au.sfx.connect(au.master);
   au.music = actx.createGain(); au.music.gain.value = 0;
   au.mlp = actx.createBiquadFilter(); au.mlp.type = "lowpass"; au.mlp.frequency.value = MUS.rest ? 750 : 20000; au.mlp.Q.value = 0.7;
-  au.duck = actx.createGain(); au.duck.gain.value = 1;
-  au.music.connect(au.mlp).connect(au.duck).connect(au.master);
+  au.music.connect(au.mlp).connect(au.master);
   // réverbération : réponse impulsionnelle générée (bruit décroissant stéréo)
   const len = Math.floor(actx.sampleRate * 3.2), ir = actx.createBuffer(2, len, actx.sampleRate);
   for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
@@ -2082,7 +2133,7 @@ function audioApply() {
   audUI();
 }
 /* ---- petit menu audio (icône haut-parleur dans les barres du haut) ---- */
-const audLevel = p => Math.min(2, (p.music ? 1 : 0) + (p.sfx ? 1 : 0) + (p.voice && voiceOk() ? 1 : 0));
+const audLevel = p => (p.music ? 1 : 0) + (p.sfx ? 1 : 0);
 function audBtn() {
   const p = sndPrefs(), open = !!$("#aud-pop");
   return `<button class="aud-btn s${audLevel(p)}" data-act="aud-open" aria-haspopup="true" aria-expanded="${open}" aria-label="Son : musique ${p.music ? "activée" : "coupée"}, sons ${p.sfx ? "activés" : "coupés"}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w w1" d="M16 9.5a3.5 3.5 0 0 1 0 5"/><path class="w w2" d="M18.5 7a7 7 0 0 1 0 10"/><path class="x" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></svg></button>`;
@@ -2094,10 +2145,9 @@ function audPopHTML() {
   return row("music", p.music, "MUSIQUE DE FOND", "Change selon l'écran, plus intense en séance")
     + (p.music ? vol("snd-musvol", p.musicVol, "Volume de la musique") : "")
     + row("sfx", p.sfx, "SONS", "Clics, validations, chrono")
-    + (p.sfx ? vol("snd-sfxvol", p.sfxVol, "Volume des sons") : "")
-    + (voiceOk() ? row("voice", p.voice, "VOIX", "Annonces du chrono, du repos et des succès") : "");
+    + (p.sfx ? vol("snd-sfxvol", p.sfxVol, "Volume des sons") : "");
 }
-function audFill(pop) { const p = sndPrefs(), sig = `${p.music}|${p.sfx}|${p.voice}`; if (pop.dataset.sig !== sig) { pop.innerHTML = audPopHTML(); pop.dataset.sig = sig; } }
+function audFill(pop) { const p = sndPrefs(), sig = `${p.music}|${p.sfx}`; if (pop.dataset.sig !== sig) { pop.innerHTML = audPopHTML(); pop.dataset.sig = sig; } }
 function audUI() {
   const p = sndPrefs();
   document.querySelectorAll(".aud-btn").forEach(b => { b.className = "aud-btn s" + audLevel(p); });
@@ -2764,12 +2814,13 @@ function renderHQ() {
   const st = state, b = computeBonuses(st), need = xpNeeded(st.level), pct = Math.min(100, st.xp / need * 100);
   const availPerks = PERKS.filter(p => perkState(p) === "avail").length;
   const mSets = st.mission ? missionTotals().sets : 0;
-  const tabs = [["fiche", "FICHE"], ["arsenal", "ARSENAL"], ["aptitudes", "APTITUDES"], ["archives", "ARCHIVES"]];
+  const tabs = [["fiche", "FICHE"], ["arsenal", "ARSENAL"], ["aptitudes", "APTITUDES"], ["archives", "SUIVI"]];
   return `
   <header class="topbar">
     <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>NEONFITNESS<b>PRO</b></span></div>
     <div class="top-r">${audBtn()}
-    <button class="sync ${sync.mode}" id="sync-chip" data-act="sync-info" aria-label="État de la sauvegarde"><i aria-hidden="true"></i><span>${SYNC_LABEL[sync.mode]}</span></button></div>
+    <button class="sync ${sync.mode}" id="sync-chip" data-act="sync-info" aria-label="État de la sauvegarde"><i aria-hidden="true"></i><span>${SYNC_LABEL[sync.mode]}</span></button>
+    <button class="icon-btn" data-act="settings-open" aria-label="Réglages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div>
   </header>
   <section class="panel bracket op-card" aria-label="Fiche de l'opérateur">
     <button class="av-btn" data-act="chassis" aria-label="Ouvrir la fiche du châssis">${avatarSVG(st)}</button>
@@ -2789,11 +2840,13 @@ function renderHQ() {
       <span class="op-ach-n">${badgesGot(st)}/${FAM_KEYS.length} ★</span></button>
   </section>
   ${st.mission ? `<button class="banner" data-act="go" data-to="briefing"><div><div class="d">MISSION EN COURS · ${hms(Date.now() - st.mission.start)}</div><p>${plural(mSets, "série").toLowerCase()} validée${mSets > 1 ? "s" : ""}, ${state.loadoutSession.length} exercice${state.loadoutSession.length > 1 ? "s" : ""} au loadout</p></div><span class="go">REPRENDRE →</span></button>` : ""}
-  ${STANDALONE && fb.user ? `<button class="banner sq-banner" data-act="go" data-to="squad"><div><div class="d">ESCOUADES</div><p>${st.squads.length ? `${st.squads.length} escouade${st.squads.length > 1 ? "s" : ""} · classement de la semaine` : "Comparez vos progressions avec vos amis"}</p></div><span class="go">OUVRIR →</span></button>` : ""}
   <nav class="tabs" role="tablist">
     ${tabs.map(([id, l]) => `<button class="tab" role="tab" aria-selected="${ui.tab === id}" data-act="tab" data-tab="${id}">${l}${id === "aptitudes" && st.perkPoints > 0 && availPerks ? '<span class="pip" aria-label="points disponibles"></span>' : ""}</button>`).join("")}
   </nav>
-  <button class="ex-entry" data-act="go" data-to="systems"><span class="ex-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="f" d="M1.5 10h2v4h-2zM4.5 6.5h3.5v11H4.5zM16 6.5h3.5v11H16zM20.5 10h2v4h-2zM8 11h8v2H8z"/></svg></span><span class="ex-txt"><b>EXERCICES</b><small>${CATS.length} systèmes musculaires · ${EXERCISES.length} exercices</small></span><span class="go">OUVRIR →</span></button>
+  <div class="hq-go ${STANDALONE && fb.user ? "two" : ""}">
+    <button class="ex-entry" data-act="go" data-to="systems"><span class="ex-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="f" d="M1.5 10h2v4h-2zM4.5 6.5h3.5v11H4.5zM16 6.5h3.5v11H16zM20.5 10h2v4h-2zM8 11h8v2H8z"/></svg></span><span class="ex-txt"><b>EXERCICES</b><small>${EXERCISES.length} exercices · 6 systèmes</small></span></button>
+    ${STANDALONE && fb.user ? `<button class="sq-entry" data-act="go" data-to="squad"><span class="ex-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M18 15c2 .6 3 2.4 3 5"/></svg></span><span class="ex-txt"><b>ESCOUADES</b><small>${st.squads.length ? `${st.squads.length} escouade${st.squads.length > 1 ? "s" : ""} · classement` : "Jouer avec des amis"}</small></span></button>` : ""}
+  </div>
   <div>${ui.tab === "arsenal" ? tabArsenal(b) : ui.tab === "aptitudes" ? tabPerks() : ui.tab === "archives" ? tabArchives() : tabFiche(b)}</div>`;
 }
 
@@ -2817,19 +2870,7 @@ function tabFiche(b) {
   </section>`;
   if (rookie) return `<section class="block"><div class="empty-note">Pour votre première mission, touchez <b>EXERCICES</b> juste au-dessus, choisissez un système musculaire puis cochez vos exercices.</div></section>` + contractsBlock() + attrs + `
   <section class="block"><div class="empty-note">Le cyberware et les aptitudes se débloquent en jouant. Consultez les onglets <b>Arsenal</b> et <b>Aptitudes</b> quand vous voulez.</div></section>`;
-  return contractsBlock() + attrs + `
-  <section class="block">
-    <h2 class="h2">CYBERWARE ÉQUIPÉ</h2>
-    <div class="panel slot-list">
-      ${SLOT_KEYS.map(s => { const g = GEAR_BY_ID[st.gear.equipped[s]];
-        return `<button class="slot-line slot-btn" ${g ? `data-act="gear-sheet" data-id="${g.id}"` : `data-act="tab" data-tab="arsenal"`}><span class="eyebrow">${SLOTS[s]}</span><div>${g ? `<b>${esc(g.name)}</b><span class="fx">${fxLines(g.fx).join(" · ")}</span>` : `<span class="empty">EMPLACEMENT LIBRE</span>`}</div></button>`; }).join("")}
-    </div>
-  </section>
-  <section class="block">
-    <h2 class="h2">APTITUDES ACTIVES</h2>
-    ${st.perks.length ? `<div class="chips-wrap">${st.perks.map(id => { const p = PERK_BY_ID[id]; return `<span class="chip ${p.type === "ACTIVE" ? "active-type" : ""}">${esc(p.name)}</span>`; }).join("")}</div>`
-      : `<div class="empty-note">Aucune aptitude installée. ${st.perkPoints ? `Vous avez ${st.perkPoints} point à dépenser dans l'onglet Aptitudes.` : "Montez de niveau pour gagner des points."}</div>`}
-  </section>`;
+  return contractsBlock() + attrs;
 }
 
 function tabArsenal() {
@@ -2898,69 +2939,64 @@ function tabPerks() {
 }
 
 function tabArchives() {
-  const st = state;
-  const recs = Object.entries(st.records).map(([id, r]) => ({ id, ...r })).sort((a, z) => z.date - a.date).slice(0, 8);
-  return `
-  <section class="block">
-    <h2 class="h2">BILAN DE SERVICE</h2>
-    <div class="kpis">
-      <div class="panel kpi"><b>${fmt(st.missions)}</b><span>missions accomplies</span></div>
-      <div class="panel kpi"><b>${fmt(st.tonnage)} kg</b><span>tonnage cumulé</span></div>
-      <div class="panel kpi"><b>${fmt(st.totalXp)}</b><span>XP totale</span></div>
-      <div class="panel kpi"><b>${fmt(Object.keys(st.records).length)}</b><span>exercices avec record</span></div>
-    </div>
-  </section>
-  <section class="block">
-    <h2 class="h2">BADGES</h2>
-    <button class="panel ach-sum" data-act="ach-open"><div><b class="num">${badgesGot(st)}<small> / ${FAM_KEYS.length}</small></b><span>badges obtenus · ${favFams(st).length}/3 épinglés</span></div>
-      ${favFams(st).length ? achFavRow(favFams(st), 34) : ""}<span class="go">OUVRIR →</span></button>
-  </section>
-  <section class="block">
-    <h2 class="h2">CARTE DES MUSCLES</h2>
-    ${muscleMapHTML()}
-  </section>
-  <section class="block">
-    <h2 class="h2">ACTIVITÉ</h2>
-    ${activityHTML()}
-  </section>
-  <section class="block">
-    <h2 class="h2">POIDS DE CORPS</h2>
-    ${weightHTML()}
-  </section>
+  const st = state, view = ui.suivi || "bilan";
+  const recs = Object.entries(st.records).map(([id, r]) => ({ id, ...r })).sort((a, z) => z.date - a.date);
+  const seg = `<div class="seg seg3 suivi-seg" role="tablist" aria-label="Suivi">${[["bilan", "BILAN"], ["corps", "CORPS"], ["journal", "JOURNAL"]].map(([k, l]) => `<button role="tab" aria-selected="${view === k}" class="${view === k ? "on" : ""}" data-act="suivi" data-v="${k}">${l}</button>`).join("")}</div>`;
+  if (view === "corps") return seg + `
+  <section class="block"><h2 class="h2">CARTE DES MUSCLES</h2>${muscleMapHTML()}</section>
+  <section class="block"><h2 class="h2">POIDS DE CORPS</h2>${weightHTML()}</section>`;
+  if (view === "journal") return seg + `
   <section class="block">
     <h2 class="h2">JOURNAL DES MISSIONS</h2>
-    ${st.history.length ? `<div class="panel rows">${st.history.slice(0, 12).map((h, i) => `<div class="r"><div>${new Date(h.date).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${esc(h.focus || "Mission")}<div class="s">${h.sets} séries · ${fmt(h.ton)} kg · ${hms(h.dur)}</div>${h.note && (h.note.energy || h.note.rpe || h.note.text) ? `<div class="note-line">${h.note.energy ? `Énergie ${h.note.energy}/5` : ""}${h.note.energy && h.note.rpe ? " · " : ""}${h.note.rpe ? ["", "Facile", "Correcte", "Dure", "Épuisante"][h.note.rpe] : ""}${h.note.text ? `${h.note.energy || h.note.rpe ? " · " : ""}« ${esc(h.note.text)} »` : ""}</div>` : ""}</div><div class="v">+${fmt(h.xp)} XP<div class="s">NIV ${h.level}</div></div></div>`).join("")}</div>
+    ${st.history.length ? `<div class="panel rows">${st.history.slice(0, ui.journalAll ? 60 : 8).map(h => `<div class="r"><div>${new Date(h.date).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })} · ${esc(h.focus || "Mission")}<div class="s">${h.sets} séries · ${fmt(h.ton)} kg · ${hms(h.dur)}</div>${h.note && (h.note.energy || h.note.rpe || h.note.text) ? `<div class="note-line">${h.note.energy ? `Énergie ${h.note.energy}/5` : ""}${h.note.energy && h.note.rpe ? " · " : ""}${h.note.rpe ? ["", "Facile", "Correcte", "Dure", "Épuisante"][h.note.rpe] : ""}${h.note.text ? `${h.note.energy || h.note.rpe ? " · " : ""}« ${esc(h.note.text)} »` : ""}</div>` : ""}</div><div class="v">+${fmt(h.xp)} XP<div class="s">NIV ${h.level}</div></div></div>`).join("")}</div>
+      ${st.history.length > 8 && !ui.journalAll ? `<button class="more-btn" data-act="journal-all">VOIR LES ${st.history.length} MISSIONS</button>` : ""}
       ${canUndo() ? `<div class="danger-zone"><button class="btn btn-quiet hold" data-hold="undo-mission" data-ms="1500"><span class="stack">ANNULER LA DERNIÈRE MISSION<small>APPUI LONG 1,5 S · POSSIBLE ENCORE ${Math.max(1, Math.ceil((state.undo.at + DAY - Date.now()) / 3600000))} H</small></span></button></div>` : ""}`
       : `<div class="empty-note">Aucune mission archivée. Votre premier rapport apparaîtra ici.</div>`}
   </section>
   <section class="block">
-    <h2 class="h2">RECORDS PERSONNELS</h2>
-    ${recs.length ? `<div class="panel rows">${recs.map(r => { const e = EX[r.id]; return `<div class="r"><div>${esc(e.name)}<div class="s">${new Date(r.date).toLocaleDateString("fr-FR")}</div></div><div class="v">${e.type === "time" ? `${fmt(r.reps)} s${r.kg ? ` · ${fmt1(r.kg)} kg` : ""}` : `${fmt1(r.kg)} kg × ${fmt(r.reps)}`}</div></div>`; }).join("")}</div>`
+    <h2 class="h2">RECORDS PERSONNELS · ${recs.length}</h2>
+    ${recs.length ? `<div class="panel rows">${recs.slice(0, ui.recsAll ? 200 : 8).map(r => { const e = EX[r.id]; return `<div class="r"><div>${esc(e.name)}<div class="s">${new Date(r.date).toLocaleDateString("fr-FR")}</div></div><div class="v">${e.type === "time" ? `${fmt(r.reps)} s${r.kg ? ` · ${fmt1(r.kg)} kg` : ""}` : `${fmt1(r.kg)} kg × ${fmt(r.reps)}`}</div></div>`; }).join("")}</div>
+      ${recs.length > 8 && !ui.recsAll ? `<button class="more-btn" data-act="recs-all">VOIR LES ${recs.length} RECORDS</button>` : ""}`
       : `<div class="empty-note">Les records sont enregistrés à la fin de chaque mission.</div>`}
-  </section>
+  </section>`;
+  return seg + `
   <section class="block">
-    <h2 class="h2">SAUVEGARDE</h2>
-    <div class="panel settings">
-      ${STANDALONE && fb.user ? `<div class="field-line"><label>COMPTE</label><p style="font-size:14px;overflow-wrap:anywhere">${esc(fb.user.email || "Compte Google")}</p></div>` : ""}
-      <div class="field-line"><label>ÉTAT</label><p id="sync-info-text" class="sync-sheet" style="font-size:14px">${esc(syncInfo())}</p></div>
+    <div class="kpis">
+      <div class="panel kpi"><b>${fmt(st.missions)}</b><span>missions</span></div>
+      <div class="panel kpi"><b>${fmt(st.tonnage)} kg</b><span>tonnage cumulé</span></div>
+      <div class="panel kpi"><b>${fmt(st.totalXp)}</b><span>XP totale</span></div>
+      <div class="panel kpi"><b>${fmt(Object.keys(st.records).length)}</b><span>exercices avec record</span></div>
+    </div>
+    <button class="panel ach-sum" data-act="ach-open"><div><b class="num">${badgesGot(st)}<small> / ${FAM_KEYS.length}</small></b><span>badges</span></div>
+      ${favFams(st).length ? achFavRow(favFams(st), 34) : `<span class="ach-sum-t">Voir le tableau d'honneur</span>`}<span class="go">→</span></button>
+  </section>
+  <section class="block"><h2 class="h2">ACTIVITÉ</h2>${activityHTML()}</section>`;
+}
+function settingsHTML() {
+  const st = state;
+  return `
+    <div class="grip" aria-hidden="true"></div>
+    <div class="sheet-top"><div><div class="eyebrow">CONFIGURATION</div><h2>RÉGLAGES</h2></div>
+      <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
+    <div class="sec"><h3>OPÉRATEUR</h3>
+      <div class="field-line"><label for="set-callsign">NOM DE CODE</label><input class="txt" id="set-callsign" maxlength="20" value="${esc(st.operator.callsign)}" autocomplete="off"></div>
+      <p class="hint">Le poids de corps se règle dans Suivi → Corps, à chaque pesée.</p></div>
+    <div class="sec"><h3>APPARENCE</h3>
+      <div class="chips-pick theme-picks">${[["auto", "AUTO"], ["dark", "SOMBRE"], ["light", "CLAIR"]].map(([k, l]) => `<button class="pick wide ${themePref() === k ? "on" : ""}" data-act="set-theme" data-n="${k}" aria-pressed="${themePref() === k}">${l}</button>`).join("")}</div>
+      <div class="swatches" role="group" aria-label="Palette de couleurs">${ACCENTS.map(a => `<button class="swatch" data-act="set-accent" data-n="${a.id}" aria-pressed="${accentPref() === a.id}" style="--sw-d:${a.d};--sw-l:${a.l}" aria-label="Palette ${a.name.toLowerCase()}"><i></i><span>${a.name}</span></button>`).join("")}</div>
+      <p class="hint">AUTO suit le mode clair/sombre du téléphone. Réglages propres à cet appareil, comme le son (icône haut-parleur).</p></div>
+    <div class="sec"><h3>SAUVEGARDE</h3>
+      ${STANDALONE && fb.user ? `<p style="font-size:14px;overflow-wrap:anywhere;margin-bottom:6px">${esc(fb.user.email || "Compte Google")}</p>` : ""}
+      <p id="sync-info-text" class="hint">${esc(syncInfo())}</p>
       <div class="btn-row"><button class="btn btn-ghost" data-act="export">EXPORTER</button><button class="btn btn-ghost" data-act="import">IMPORTER</button></div>
-      <p class="hint">L'export produit un code contenant toute votre progression : copie de secours, ou transfert vers une autre version de l'app.</p>
+      <p class="hint">L'export donne un code de secours contenant toute votre progression.</p></div>
+    <div class="sec set-links">
       <button class="btn btn-quiet" data-act="replay-guide">REVOIR LE GUIDE D'ACCUEIL</button>
       ${STANDALONE ? `<button class="btn btn-quiet" data-act="sign-out">SE DÉCONNECTER</button>` : ""}
-    </div>
-  </section>
-  <section class="block">
-    <h2 class="h2">PARAMÈTRES</h2>
-    <div class="panel settings">
-      <div class="field-line"><label for="set-callsign">NOM DE CODE</label><input class="txt" id="set-callsign" maxlength="20" value="${esc(st.operator.callsign)}" autocomplete="off"></div>
-      <div class="field-line"><label>THÈME</label><div class="chips-pick theme-picks">${[["auto", "AUTO"], ["dark", "SOMBRE"], ["light", "CLAIR"]].map(([k, l]) => `<button class="pick wide ${themePref() === k ? "on" : ""}" data-act="set-theme" data-n="${k}" aria-pressed="${themePref() === k}">${l}</button>`).join("")}</div><div class="swatches" role="group" aria-label="Palette de couleurs">${ACCENTS.map(a => `<button class="swatch" data-act="set-accent" data-n="${a.id}" aria-pressed="${accentPref() === a.id}" style="--sw-d:${a.d};--sw-l:${a.l}" aria-label="Palette ${a.name.toLowerCase()}"><i></i><span>${a.name}</span></button>`).join("")}</div><span class="hint">AUTO suit le réglage clair/sombre du téléphone. Chaque palette existe en sombre et en clair. Réglages propres à cet appareil.</span></div>
-      <div class="field-line"><label for="set-bw">POIDS DE CORPS (KG)</label><input class="txt" id="set-bw" inputmode="decimal" value="${fmt1(st.operator.bodyweight)}"><span class="hint">Sert au calcul de la charge des exercices au poids du corps (tractions, dips, pompes).</span></div>
-      <div class="danger-zone">
-        <button class="btn btn-alert hold" data-hold="wipe-save" data-ms="1500"><span class="stack">RÉINITIALISER L'OPÉRATEUR<small>APPUI LONG 1,5 S · EFFACE TOUTE LA PROGRESSION</small></span></button>
-      </div>
-    </div>
-  </section>`;
+      <div class="danger-zone"><button class="btn btn-alert hold" data-hold="wipe-save" data-ms="1500"><span class="stack">RÉINITIALISER L'OPÉRATEUR<small>APPUI LONG 1,5 S · EFFACE TOUTE LA PROGRESSION</small></span></button></div>
+    </div>`;
 }
+function openSettings() { ui.sheetEx = null; ui.settingsOpen = true; $("#sheet-in").innerHTML = settingsHTML(); showSheet(".x-close"); }
 
 /* =====================================================================
    Schémas de mouvement : squelette filaire animé (départ ↔ contraction)
@@ -3505,44 +3541,6 @@ function startIllus(root, id) {
 
 
 /* =====================================================================
-   Annonces vocales (désactivables dans le menu son)
-   ===================================================================== */
-let frVoice = null;
-function pickVoice() {
-  try {
-    const vs = speechSynthesis.getVoices().filter(v => /^fr/i.test(v.lang));
-    frVoice = vs.find(v => /fr-FR/i.test(v.lang) && /google|natural|neural/i.test(v.name)) || vs.find(v => /fr-FR/i.test(v.lang)) || vs[0] || null;
-  } catch (e) { frVoice = null; }
-}
-try { if (window.speechSynthesis) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; } } catch (e) {}
-const voiceOk = () => !!window.speechSynthesis && typeof SpeechSynthesisUtterance !== "undefined";
-function speak(text, opts) {
-  if (!voiceOk() || !sndPrefs().voice || document.hidden) return;
-  try {
-    if (opts && opts.interrupt) speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "fr-FR"; if (frVoice) u.voice = frVoice;
-    u.rate = 1.06; u.pitch = 0.92; u.volume = 1;
-    u.onstart = () => musicDuck(true);
-    u.onend = u.onerror = () => { if (!speechSynthesis.speaking) musicDuck(false); };
-    speechSynthesis.speak(u);
-  } catch (e) {}
-}
-function musicDuck(on) {
-  if (!actx || !au.duck) return;
-  const t = actx.currentTime;
-  au.duck.gain.cancelScheduledValues(t);
-  au.duck.gain.setTargetAtTime(on ? 0.35 : 1, t, on ? 0.08 : 0.4);
-}
-const secWords = n => n === 1 ? "une seconde" : `${n} secondes`;
-function durWords(sec) {
-  const m = Math.floor(sec / 60), r = Math.round(sec % 60);
-  if (!m) return secWords(r);
-  const mw = m === 1 ? "une minute" : `${m} minutes`;
-  return r ? `${mw} ${r}` : mw;
-}
-
-/* =====================================================================
    Échauffement des gros exercices à la barre
    ===================================================================== */
 const BIG_LIFTS = new Set(["squat", "front_squat", "bench", "decline", "close_bench", "deadlift", "rdl", "ohp", "row_bb", "hip_thrust"]);
@@ -3581,7 +3579,7 @@ function warmTick(id, i) {
   if (n && arr.length >= n && !ui.warmDone) ui.warmDone = {};
   if (n && arr.length >= n && !ui.warmDone[id]) {
     ui.warmDone[id] = true; state.life.warm++; save();
-    sfx("reward"); speak("Échauffement terminé. Place à la charge de travail.");
+    sfx("reward");
     toast("Échauffement terminé : place à la charge de travail.");
     ui.warmOpen[id] = false;
   } else sfx(k >= 0 ? "off" : "on");
@@ -3659,23 +3657,19 @@ achFam("weigh", "scale", [1, 4, 12, 52], ["Première pesée", "Suivi mensuel", "
 achFam("warm", "thermo", [5, 25, 100], ["Prudent", "Méthodique", "Moteur chaud"], g => `Terminer ${pl(g, "échauffement")} complet${g > 1 ? "s" : ""}.`, st => st.life.warm);
 achFam("notes", "note", [5, 25, 100], ["Introspection", "Journal de bord", "Mémoires de guerre"], g => `Enregistrer ${pl(g, "note")} de débriefing.`, st => st.life.notes);
 achFam("days", "cal", [30, 100, 200], ["Un mois actif", "Cent jours", "Deux cents jours"], g => `Vous entraîner ${g} jours différents.`, st => Object.keys(st.activity).length);
-achOne("push_session", "bolt", 2, 100, "Centurion des pompes", "Faire 100 pompes au cours d'une seule mission.", st => st.life.maxPush, 200);
-achOne("ton_session", "bolt", 1, 5000, "Déménageur", "Soulever 5 000 kg en une seule mission.", st => st.life.maxTon);
-achOne("ton_session2", "bolt", 3, 10000, "Grue humaine", "Soulever 10 000 kg en une seule mission.", st => st.life.maxTon, 300);
-achOne("sets_session", "grid", 2, 20, "Marathon", "Valider 20 séries au cours d'une seule mission.", st => st.life.maxSets, 200);
-achOne("xp_session", "star", 1, 1000, "Moisson", "Gagner 1 000 XP en une seule mission.", st => st.life.maxXp);
-achOne("xp_session2", "star", 3, 2500, "Jackpot", "Gagner 2 500 XP en une seule mission.", st => st.life.maxXp, 300);
-achOne("hold_2", "timer", 1, 120, "Statue", "Tenir 2 minutes d'affilée sur un exercice en durée.", st => st.life.longHold);
-achOne("hold_5", "timer", 3, 300, "Inébranlable", "Tenir 5 minutes d'affilée sur un exercice en durée.", st => st.life.longHold, 300);
-achOne("full_body", "body", 1, 4, "Corps complet", "Travailler 4 systèmes musculaires dans la même mission.", st => st.life.maxCats);
-achOne("full_body6", "body", 2, 6, "Rien ne m'échappe", "Travailler les 6 systèmes musculaires dans la même mission.", st => st.life.maxCats, 200);
-achOne("early", "sun", 1, 1, "Lève-tôt", "Terminer une mission avant 8 h.", st => st.life.early);
-achOne("early10", "sun", 2, 10, "Aube éternelle", "Terminer 10 missions avant 8 h.", st => st.life.early, 250);
-achOne("late", "moon", 1, 1, "Oiseau de nuit", "Terminer une mission après 22 h.", st => st.life.late);
-achOne("weekend", "cal", 2, 10, "Guerrier du week-end", "Accomplir 10 missions le samedi ou le dimanche.", st => st.life.weekend, 200);
-achOne("favorite", "heart", 0, 1, "Routine", "Enregistrer une mission favorite.", st => st.favorites.length, 50);
-achOne("squad", "people", 0, 1, "Recrue d'escouade", "Rejoindre ou créer une escouade.", st => st.squads.length, 50);
-achOne("full_gear", "chip", 2, 5, "Châssis complet", "Équiper les 5 emplacements de cyberware.", st => SLOT_KEYS.filter(s => st.gear.equipped[s]).length, 200);
+achFam("pushm", "bolt", [50, 100, 200], ["Rafale", "Centurion des pompes", "Tempête de pompes"], g => `Faire ${g} pompes au cours d'une seule mission.`, st => st.life.maxPush);
+achFam("heavy", "weight", [2500, 5000, 10000, 20000], ["Bonne charge", "Déménageur", "Grue humaine", "Titan d'un jour"], g => `Soulever ${fmt(g)} kg en une seule mission.`, st => st.life.maxTon);
+achFam("setsm", "grid", [15, 20, 30], ["Endurant", "Marathon", "Ultra-marathon"], g => `Valider ${g} séries au cours d'une seule mission.`, st => st.life.maxSets);
+achFam("xpm", "star", [500, 1000, 2500, 5000], ["Belle prise", "Moisson", "Jackpot", "Pluie d'XP"], g => `Gagner ${fmt(g)} XP en une seule mission.`, st => st.life.maxXp);
+achFam("hold", "timer", [60, 120, 300, 600], ["Tenace", "Statue", "Inébranlable", "Monolithe"], g => `Tenir ${g >= 60 ? pl(g / 60, "minute") : pl(g, "seconde")} d'affilée sur un exercice en durée.`, st => st.life.longHold);
+achFam("body", "body", [4, 5, 6], ["Corps complet", "Presque tout", "Rien ne m'échappe"], g => `Travailler ${g} systèmes musculaires dans la même mission.`, st => st.life.maxCats);
+achFam("early", "sun", [1, 10, 25, 50], ["Lève-tôt", "Matinal", "Aube éternelle", "Soldat de l'aube"], g => `Terminer ${pl(g, "mission")} avant 8 h.`, st => st.life.early);
+achFam("late", "moon", [1, 10, 25], ["Oiseau de nuit", "Noctambule", "Créature de la nuit"], g => `Terminer ${pl(g, "mission")} après 22 h.`, st => st.life.late);
+achFam("weekend", "cal", [5, 10, 25, 50], ["Week-end actif", "Guerrier du week-end", "Pas de grasse matinée", "Le week-end, c'est sacré"], g => `Accomplir ${pl(g, "mission")} le samedi ou le dimanche.`, st => st.life.weekend);
+/* Exploits : s'obtiennent une seule fois, ils n'ont pas de paliers. */
+achOne("favorite", "heart", 3, 1, "Routine", "Enregistrer une mission favorite.", st => st.favorites.length, 50);
+achOne("squad", "people", 3, 1, "Recrue d'escouade", "Rejoindre ou créer une escouade.", st => st.squads.length, 50);
+achOne("full_gear", "chip", 3, 5, "Châssis complet", "Équiper les 5 emplacements de cyberware.", st => SLOT_KEYS.filter(s => st.gear.equipped[s]).length, 200);
 achOne("legend", "star", 3, 1, "Légendaire", "Débloquer une pièce de cyberware légendaire.", st => st.gear.unlocked.filter(id => GEAR_BY_ID[id] && GEAR_BY_ID[id].rarity === "LÉGENDAIRE").length, 300);
 const ACH_BY_ID = Object.fromEntries(ACH.map(a => [a.id, a]));
 /* Un badge = une famille de paliers : il change de métal à chaque palier (bronze → argent → or → néon). */
@@ -3695,12 +3689,15 @@ function achBadge(a, opts) {
   opts = opts || {};
   const got = !!(state.ach[a.id] || opts.force);
   const size = opts.size || 44;
-  return `<svg class="ach-b t${a.tier} ${got ? "got" : "lock"}" viewBox="0 0 48 52" width="${size}" height="${Math.round(size * 52 / 48)}" aria-hidden="true">
-    <polygon class="hx" points="24,2 45,14 45,38 24,50 3,38 3,14"/><polygon class="hx2" points="24,7 40.5,16.5 40.5,35.5 24,45 7.5,35.5 7.5,16.5"/>
+  const shape = a.single ? `<polygon class="hx" points="24,1.5 46.5,26 24,50.5 1.5,26"/><polygon class="hx2" points="24,7 41,26 24,45 7,26"/>`
+    : `<polygon class="hx" points="24,2 45,14 45,38 24,50 3,38 3,14"/><polygon class="hx2" points="24,7 40.5,16.5 40.5,35.5 24,45 7.5,35.5 7.5,16.5"/>`;
+  return `<svg class="ach-b ${a.single ? "ex" : "t" + a.tier} ${got ? "got" : "lock"}" viewBox="0 0 48 52" width="${size}" height="${Math.round(size * 52 / 48)}" aria-hidden="true">
+    ${shape}
     <g transform="translate(12 14)"><path class="gl" d="${GLYPH[a.glyph] || GLYPH.star}"/></g></svg>`;
 }
 function achSweep() {
   if (ui.achBusy) return;
+  if (typeof hold !== "undefined" && hold) { achSoon(1500); return; }
   ui.achBusy = true;
   try {
     const st = state, fresh = [];
@@ -3722,7 +3719,6 @@ function achSweep() {
       const a = fresh[0], xp = fresh.reduce((s, x) => s + x.xp, 0);
       sfx("reward"); vibrate([40, 30, 90]);
       showAchToast(fresh, xp);
-      speak(fresh.length > 1 ? `${fresh.length} paliers de succès débloqués.` : a.step > 1 ? `Badge amélioré : ${a.name}, niveau ${TIER_NAMES[a.tier].toLowerCase()}.` : `Nouveau badge : ${a.name}.`);
       if (ui.screen === "hq" || ui.screen === "report") render();
     }
   } finally { ui.achBusy = false; }
@@ -3732,7 +3728,7 @@ function showAchToast(list, xp) {
   if (!el) { el = document.createElement("button"); el.id = "ach-toast"; el.className = "ach-toast"; el.setAttribute("data-act", "ach-open"); document.body.appendChild(el); }
   const a = list[0];
   const up = a.step > 1;
-  el.innerHTML = `${achBadge(a, { size: 38, force: true })}<span><small>${up ? `BADGE AMÉLIORÉ · ${TIER_NAMES[a.tier]}` : "NOUVEAU BADGE"}${list.length > 1 ? ` · +${list.length - 1} AUTRE${list.length > 2 ? "S" : ""}` : ""}</small><b>${esc(a.name)}</b><em>+${fmt(xp)} XP</em></span>`;
+  el.innerHTML = `${achBadge(a, { size: 38, force: true })}<span><small>${a.single ? "EXPLOIT RÉALISÉ" : up ? `BADGE AMÉLIORÉ · ${TIER_NAMES[a.tier]}` : "NOUVEAU BADGE · BRONZE"}${list.length > 1 ? ` · +${list.length - 1} AUTRE${list.length > 2 ? "S" : ""}` : ""}</small><b>${esc(a.name)}</b><em>+${fmt(xp)} XP</em></span>`;
   el.classList.remove("show"); void el.offsetWidth; el.classList.add("show");
   clearTimeout(ui.achToastT); ui.achToastT = setTimeout(() => el.classList.remove("show"), 4200);
 }
@@ -3752,24 +3748,29 @@ function openAchSheet() {
     const fav = favs.includes(f);
     return `<div class="ach-row ${top ? "got" : ""}">${achBadge(show, { force: !!top })}<div class="ach-i">
       <div class="ach-h"><b>${esc(show.name)}</b>${tierPips(f)}</div>
-      ${top ? `<small class="ok">${TIER_NAMES[top.tier]}${top.steps > 1 ? ` · PALIER ${top.step}/${top.steps}` : ""}</small>` : `<small>VERROUILLÉ</small>`}
+      ${top ? `<small class="ok">${top.single ? "EXPLOIT RÉALISÉ" : `${TIER_NAMES[top.tier]} · PALIER ${top.step}/${top.steps}`}</small>` : `<small>${show.single ? "EXPLOIT" : `${show.steps} PALIERS`}</small>`}
       ${next ? `<span>${top ? "Prochain palier" + (next.tier !== top.tier ? ` (${TIER_NAMES[next.tier].toLowerCase()})` : "") + " : " : ""}${esc(next.desc)}</span>
         <div class="mini-bar"><i style="width:${Math.min(100, v / next.goal * 100)}%"></i></div><small>${fmt(Math.min(v, next.goal))} / ${fmt(next.goal)} · +${next.xp} XP</small>`
-        : `<span>${esc(top.desc)} Badge au maximum.</span>`}</div>
+        : `<span>${esc(top.desc)}${top.single ? "" : " Palier maximum atteint."}</span>`}</div>
       ${top ? `<button class="ach-pin ${fav ? "on" : ""}" data-act="ach-pin" data-id="${f}" aria-pressed="${fav}" aria-label="${fav ? "Retirer des favoris" : "Épingler sous le personnage"}">${fav ? "★" : "☆"}</button>` : ""}</div>`;
   };
   const prog = f => { const n = famNext(f); if (!n) return 2; let v = 0; try { v = n.val(st) || 0; } catch (e) {} return v / n.goal; };
-  const owned = FAM_KEYS.filter(f => famTop(f)).sort((a, z) => famTop(z).tier - famTop(a).tier || st.ach[famTop(z).id] - st.ach[famTop(a).id]);
-  const locked = FAM_KEYS.filter(f => !famTop(f)).sort((a, z) => prog(z) - prog(a));
+  const evo = FAM_KEYS.filter(f => !FAMS[f][0].single), exp = FAM_KEYS.filter(f => FAMS[f][0].single);
+  const owned = evo.filter(f => famTop(f)).sort((a, z) => famTop(z).tier - famTop(a).tier || st.ach[famTop(z).id] - st.ach[famTop(a).id]);
+  const locked = evo.filter(f => !famTop(f)).sort((a, z) => prog(z) - prog(a));
   $("#sheet-in").innerHTML = `
     <div class="grip" aria-hidden="true"></div>
-    <div class="sheet-top"><div><div class="eyebrow">TABLEAU D'HONNEUR · ${steps} PALIERS SUR ${ACH.length}</div><h2>BADGES · ${got} / ${FAM_KEYS.length}</h2></div>
+    <div class="sheet-top"><div><div class="eyebrow">TABLEAU D'HONNEUR</div><h2>BADGES · ${got} / ${FAM_KEYS.length}</h2></div>
       <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
-    <div class="tier-leg">${TIER_NAMES.map((n, i) => `<span><i class="t${i}"></i>${n}</span>`).join("")}</div>
-    <p class="hint">Chaque badge évolue : il passe de bronze à argent, puis or, puis néon à chaque palier atteint. Touchez l'étoile pour épingler un badge sous votre personnage : vos <b>3</b> favoris sont visibles par votre escouade.</p>
     <div class="ach-pinned">${[0, 1, 2].map(i => { const a = favs[i] && famTop(favs[i]); return a ? `<span class="slot on">${achBadge(a, { size: 40, force: true })}<small>${esc(a.name)}</small></span>` : `<span class="slot"><i></i><small>LIBRE</small></span>`; }).join("")}</div>
-    ${owned.length ? `<div class="sec"><h3>OBTENUS · ${owned.length}</h3><div class="ach-list">${owned.map(row).join("")}</div></div>` : ""}
-    <div class="sec"><h3>À DÉBLOQUER · ${locked.length}</h3><div class="ach-list">${locked.map(row).join("")}</div></div>`;
+    <p class="hint">Touchez ☆ pour épingler un badge sous votre personnage (3 maximum, visibles par votre escouade).</p>
+    <div class="sec"><h3>BADGES ÉVOLUTIFS · ${owned.length} / ${evo.length}</h3>
+      <div class="tier-leg">${TIER_NAMES.map((n, i) => `<span><i class="t${i}"></i>${n}</span>`).join("")}</div>
+      <p class="hint">Plus vous répétez l'action, plus le badge monte : bronze au premier palier, puis argent, or et néon.</p>
+      <div class="ach-list">${owned.concat(locked).map(row).join("")}</div></div>
+    <div class="sec"><h3>EXPLOITS · ${exp.filter(f => famTop(f)).length} / ${exp.length}</h3>
+      <p class="hint">Un exploit s'obtient une seule fois : il n'a pas de paliers.</p>
+      <div class="ach-list">${exp.map(row).join("")}</div></div>`;
   showSheet(".x-close");
 }
 function achPin(f) {
@@ -3858,8 +3859,9 @@ function muscleMapHTML() {
     <div class="mm-figs"><figure><svg viewBox="19 3 62 158" role="img" aria-label="Muscles travaillés, vue de face">${front}</svg><figcaption>FACE</figcaption></figure>
       <figure><svg viewBox="19 3 62 158" role="img" aria-label="Muscles travaillés, vue de dos">${back}</svg><figcaption>DOS</figcaption></figure></div>
     <div class="mm-leg"><span><i></i>repos</span><span><i class="l1"></i>1-2 séries</span><span><i class="l2"></i>3-7</span><span><i class="l3"></i>8 et +</span></div>
+    <details class="mm-det" ${ui.mmOpen ? "open" : ""}><summary>DÉTAIL PAR MUSCLE</summary>
     <div class="mm-list">${order.map(r => `<div class="mm-row ${load[r] ? "" : "zero"}"><span>${REGIONS[r]}</span><i><b class="l${lvl(r)}" style="width:${load[r] / maxv * 100}%"></b></i><em>${load[r] ? fmt1(load[r]) : "—"}</em></div>`).join("")}</div>
-    <p class="hint">Séries comptées sur le muscle principal de chaque exercice ; un muscle secondaire compte pour une demi-série.${days === 7 ? " Repère : 10 à 20 séries par semaine et par grand groupe musculaire." : ""}</p>
+    <p class="hint">Muscle principal = 1 série, muscle secondaire = ½.${days === 7 ? " Repère : 10 à 20 séries par semaine et par grand groupe." : ""}</p></details>
   </div>`;
 }
 
@@ -3928,7 +3930,7 @@ function weightHTML() {
       <div><span class="eyebrow">PESÉES</span><b class="num">${W.length}</b></div></div>
     ${chart || `<p class="hint">La courbe apparaît à partir de 2 pesées.</p>`}
     <div class="row-inline"><input class="txt" id="wt-in" inputmode="decimal" placeholder="${fmt1(cur)}" aria-label="Poids du jour en kg" autocomplete="off"><button class="btn btn-ghost btn-sm" data-act="weigh-save">ENREGISTRER</button></div>
-    <p class="hint">${ago === null ? "Aucune pesée enregistrée. " : ago === 0 ? "Pesée enregistrée aujourd'hui. " : `Dernière pesée il y a ${ago} jour${ago > 1 ? "s" : ""}. `}${ago === null || ago >= 7 ? "<b>Pesez-vous une fois par semaine, le matin à jeun</b>, pour une courbe fiable. " : ""}Chaque pesée met aussi à jour le poids utilisé pour les exercices au poids du corps.</p>
+    <p class="hint">${ago === null ? "Aucune pesée. " : ago === 0 ? "Pesé aujourd'hui. " : `Dernière pesée il y a ${ago} j. `}${ago === null || ago >= 7 ? "Idéal : <b>une fois par semaine, le matin à jeun</b>. " : ""}Sert aussi au calcul des exercices au poids du corps.</p>
   </div>`;
 }
 function weighSave() {
@@ -3970,7 +3972,6 @@ function claimRaid(code) {
   const res = addXp(RAID_XP);
   save(); render();
   rewardToast("Raid réussi", RAID_XP, res);
-  speak("Raid réussi. Bien joué, escouade.");
   if (res.newGear && res.newGear.length) setTimeout(() => toast(`Pièce exclusive débloquée : ${GEAR_BY_ID[res.newGear[0]].name} !`), 2800);
   achSoon(600);
 }
@@ -4053,17 +4054,17 @@ function renderCatalog() {
   <div class="eq-bar ${eqOn ? "on" : ""}">
     <button class="eq-toggle" role="switch" aria-checked="${eqOn}" data-act="eq-filter">
       <span class="sw" aria-hidden="true"><i></i></span>
-      <span class="eq-lab"><b>MATÉRIEL DISPO · ${PLACES[state.equip.active]}</b><small>${eqOn ? (hidden ? `${hidden} exercice${hidden > 1 ? "s" : ""} masqué${hidden > 1 ? "s" : ""}` : "Tout est réalisable ici") : "Masquer les exercices impossibles"}</small></span>
+      <span class="eq-lab"><b>MATÉRIEL · ${PLACES[state.equip.active]}</b><small>${eqOn ? (hidden ? `${hidden} masqué${hidden > 1 ? "s" : ""}` : "tout est faisable") : "filtre coupé"}</small></span>
     </button>
-    <button class="btn btn-ghost btn-sm" data-act="eq-open">RÉGLER</button>
+    <button class="link-btn eq-set" data-act="eq-open">RÉGLER</button>
   </div>
   ${state.tips.catalog ? "" : `<div class="tip"><p>Touchez le <b>nom</b> d'un exercice pour l'analyser, la <b>case</b> pour l'ajouter au loadout, puis <b>VALIDER</b>. Activez <b>MATÉRIEL DISPO</b> pour ne voir que ce que vous pouvez faire.</p><button class="btn btn-quiet btn-sm" data-act="dismiss-tip" data-tip="catalog">COMPRIS</button></div>`}
-  <button class="fav-save" id="fav-save-btn" data-act="fav-open" ${n ? "" : "hidden"}>★ ENREGISTRER CE LOADOUT EN MISSION FAVORITE</button>
   <div class="list-head"><span>${cat ? `${cat.code} · ${cat.label}` : "TOUS SYSTÈMES"}${pdc ? " · PDC" : ""}</span><span>${list.length} EXERCICES</span></div>
   <div class="ex-list" id="ex-list">${list.map(rowHTML).join("")}</div>
   ${!list.length ? `<div class="empty-note">Aucun exercice réalisable ici avec le matériel coché pour « ${PLACES[state.equip.active]} ». <button class="link-btn" style="padding:0 4px" data-act="eq-open">Régler le matériel</button></div>` : ""}
   <footer class="actionbar"><div class="actionbar-in">
     <button class="btn btn-alert hold" data-hold="reset-loadout" data-ms="600" aria-label="Reset du loadout, appui long requis"><span class="stack">RESET<small>APPUI LONG</small></span></button>
+    <button class="btn btn-quiet fav-star" id="fav-save-btn" data-act="fav-open" ${n ? "" : "hidden"} aria-label="Enregistrer ce loadout en mission favorite">★</button>
     <button class="btn btn-neon" data-act="validate-loadout">VALIDER <span class="badge-n" id="lo-badge">${n}</span></button>
   </div></footer>`;
 }
@@ -4149,7 +4150,7 @@ function showSheet(focusSel) {
 function closeSheet() {
   const w = $("#sheet"); if (w.hidden) return;
   sfx("close");
-  w.classList.remove("open"); ui.sheetEx = null; stopIllus();
+  w.classList.remove("open"); ui.sheetEx = null; ui.settingsOpen = false; stopIllus();
   setTimeout(() => { if (!w.classList.contains("open")) w.hidden = true; }, reduced() ? 0 : 320);
 }
 
@@ -4242,20 +4243,15 @@ function contractsBlock() {
   const rows = contractRows(), sk = streakInfo();
   const daysLeft = Math.max(0, Math.ceil((weekStartOf() + 7 * DAY - Date.now()) / DAY));
   return `<section class="block">
-    <h2 class="h2">CONTRATS DE LA SEMAINE</h2>
-    <div class="panel streak ${sk.weeks >= 2 ? "hot" : ""}">
-      <div class="streak-n"><b>${sk.weeks}</b><span>SEMAINE${sk.weeks > 1 ? "S" : ""}</span></div>
-      <div class="streak-t"><b>${sk.weeks >= 2 ? `Série active · bonus de mission +${streakBonus(sk.weeks)} %` : "Série de semaines actives"}</b>
-        <small>${sk.secured ? "Semaine validée : 2 missions ou plus." : `${sk.thisWeek}/2 missions cette semaine pour ${sk.weeks ? "prolonger" : "lancer"} la série.`} Bonus de +2 % d'XP par semaine d'affilée, jusqu'à +20 %.</small></div>
-    </div>
+    <h2 class="h2">CONTRATS DE LA SEMAINE <span class="h2-sub">${daysLeft} J</span></h2>
     <div class="panel contracts">
+      <div class="streak-line ${sk.weeks >= 2 ? "hot" : ""}"><b>${sk.weeks}</b><span>${sk.weeks >= 2 ? `semaines d'affilée · <em>+${streakBonus(sk.weeks)} % d'XP</em>` : `semaine${sk.weeks > 1 ? "" : ""} active · série dès 2 semaines`}</span><small>${sk.secured ? "✓ semaine validée" : `${sk.thisWeek}/2 missions`}</small></div>
       ${rows.map(r => `<div class="ct ${r.done ? "done" : ""}">
         <div class="ct-top"><span class="ct-name">${esc(r.label)}</span><span class="ct-xp">+${r.xp} XP</span></div>
         <div class="mini-bar ct-bar"><i style="width:${r.pct}%"></i></div>
         <div class="ct-bot"><span>${r.fmtV} / ${CONTRACTS[r.id].fmtN ? CONTRACTS[r.id].fmtN(r.target) : r.target}</span>
-          ${r.claimed ? `<span class="ct-ok">RÉCOMPENSE REÇUE</span>` : r.done ? `<button class="btn btn-neon btn-sm" data-act="contract-claim" data-id="${r.id}">RÉCUPÉRER</button>` : ""}</div>
+          ${r.claimed ? `<span class="ct-ok">REÇU</span>` : r.done ? `<button class="btn btn-neon btn-sm" data-act="contract-claim" data-id="${r.id}">RÉCUPÉRER</button>` : ""}</div>
       </div>`).join("")}
-      <p class="hint">Nouveaux contrats chaque lundi · encore ${daysLeft} jour${daysLeft > 1 ? "s" : ""}.</p>
     </div>
   </section>`;
 }
@@ -4280,8 +4276,7 @@ const setTxt = (e, kg, reps) => e.type === "time" ? `${fmt(reps)} s${kg ? ` · l
 function suggestionHTML(e) {
   const sg = suggestNext(e.id); if (!sg) return "";
   const d = new Date(sg.last.d).toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
-  return `<div class="sugg"><div><span class="eyebrow">DERNIÈRE FOIS · ${d}</span><span>${setTxt(e, sg.last.kg, sg.last.reps)} · ${sg.last.sets} série${sg.last.sets > 1 ? "s" : ""}</span></div>
-    <div><span class="eyebrow">OBJECTIF DU JOUR</span><b>${setTxt(e, sg.kg, sg.reps)}</b><small>${esc(sg.why)}</small></div>
+  return `<div class="sugg"><div class="sg-t"><span>${d} : ${setTxt(e, sg.last.kg, sg.last.reps)} · ${sg.last.sets} s.</span><b>→ ${setTxt(e, sg.kg, sg.reps)}</b><small>${esc(sg.why)}</small></div>
     <button class="btn btn-ghost btn-sm" data-act="apply-sugg" data-id="${e.id}">APPLIQUER</button></div>`;
 }
 /* ---- Calculateur de disques ---- */
@@ -4613,7 +4608,7 @@ function openExportSheet() {
     <div class="grip" aria-hidden="true"></div>
     <div class="sheet-top"><div><div class="eyebrow">SAUVEGARDE</div><h2>EXPORTER MA PROGRESSION</h2></div>
       <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
-    <p class="hint">Ce code contient tout votre profil : niveau, attributs, cyberware, aptitudes, records et historique. Collez-le dans <b style="color:var(--neon)">Archives → Importer</b> d'une autre version de l'app pour y transférer votre progression.</p>
+    <p class="hint">Ce code contient tout votre profil : niveau, attributs, cyberware, aptitudes, records et historique. Collez-le dans <b style="color:var(--neon)">Réglages → Importer</b> d'une autre version de l'app pour y transférer votre progression.</p>
     <textarea class="code-box" id="export-code" readonly aria-label="Code d'export">${exportCode()}</textarea>
     <button class="btn btn-neon" data-act="copy-export">COPIER LE CODE</button>`;
   showSheet(".x-close");
@@ -5299,7 +5294,6 @@ function validateSet(id, btn) {
   save();
   vibrate([30, 40, 30]);
   sfx("confirm");
-  setTimeout(() => speak(`Repos. ${durWords(rest)}.`, { interrupt: true }), 350);
   floatXp(`+${fmt(xp)} XP`, btn);
   render();
   openRest();
@@ -5380,7 +5374,6 @@ function tickEffort() {
     }
     effort.t0 = effort.prepEnd; effort.lastSec = null;
     sfx("count", 1); vibrate([60, 40, 60]);
-    setTimeout(() => speak("C'est parti.", { interrupt: true }), 150);
     stEl.textContent = "TENEZ !";
   }
   const el = (now - effort.t0) / 1000, held = Math.floor(el), left = effort.target - el;
@@ -5388,14 +5381,10 @@ function tickEffort() {
     const sec = Math.ceil(left);
     tEl.textContent = mmss(sec);
     fg.setAttribute("stroke-dashoffset", (RING_C * (el / effort.target)).toFixed(2));
-    if (sec !== effort.lastSec && effort.lastSec !== null) {
-      if (sec === 10 && effort.target >= 25) speak("Dix secondes.");
-      else if (effort.target >= 30 && sec === Math.ceil(effort.target / 2) && sec > 12) speak("Mi-parcours.");
-    }
     if (sec !== effort.lastSec) { if (effort.lastSec !== null) { if (sec <= 3) sfx("count", sec); else sfx("sec", sec % 2); } effort.lastSec = sec; }
     if (left < effort.target - 0.5) stEl.textContent = left <= 5 ? "DERNIÈRES SECONDES" : "TENEZ !";
   } else {
-    if (!effort.reached) { setTimeout(() => speak("Objectif atteint. Chaque seconde en plus compte.", { interrupt: true }), 700); effort.reached = true; ring.classList.add("done"); fg.setAttribute("stroke-dashoffset", "0"); sfx("restDone"); vibrate([200, 100, 200]); }
+    if (!effort.reached) { effort.reached = true; ring.classList.add("done"); fg.setAttribute("stroke-dashoffset", "0"); sfx("restDone"); vibrate([200, 100, 200]); }
     tEl.textContent = "+" + mmss(-left);
     stEl.textContent = "OBJECTIF ATTEINT · BONUS";
     const sec = Math.floor(-left); if (sec !== effort.lastSec) { effort.lastSec = sec; if (sec > 0) sfx("sec", sec % 2); }
@@ -5507,7 +5496,7 @@ function tickRest() {
     ring.classList.remove("done");
     $("#rest-time").textContent = mmss(Math.ceil(left));
     const sec = Math.ceil(left);
-    if (sec !== restLastSec) { if (restLastSec !== null) { if (sec <= 3) sfx("count", sec); else sfx("sec", sec % 2); if (sec === 10 && r.total > 20) speak("Dix secondes."); } restLastSec = sec; }
+    if (sec !== restLastSec) { if (restLastSec !== null) { if (sec <= 3) sfx("count", sec); else sfx("sec", sec % 2); } restLastSec = sec; }
     $("#rest-state").textContent = "RÉCUPÉRATION";
     fg.setAttribute("stroke-dashoffset", (RING_C * (1 - Math.min(1, left / r.total))).toFixed(2));
     $("#rest-btn").textContent = "PASSER LE REPOS";
@@ -5517,9 +5506,7 @@ function tickRest() {
     $("#rest-state").textContent = "SYSTÈMES PRÊTS";
     fg.setAttribute("stroke-dashoffset", "0");
     $("#rest-btn").textContent = "REPRENDRE LE COMBAT";
-    if (!restDoneFired) { restDoneFired = true; vibrate([200, 100, 200]); sfx("restDone"); musicRest(false);
-      const ne = EX[r.exId], nn = ((state.mission.sets[r.exId] || []).length) + 1;
-      setTimeout(() => speak(ne ? `Repos terminé. ${ne.name}, série ${nn}.` : "Repos terminé."), 900); }
+    if (!restDoneFired) { restDoneFired = true; vibrate([200, 100, 200]); sfx("restDone"); musicRest(false); }
   }
 }
 function closeRest() {
@@ -5606,7 +5593,6 @@ function finishMission() {
   ui.screen = "report";
   render();
   window.scrollTo(0, 0);
-  speak(levels ? `Mission accomplie. Niveau ${st.level} atteint.` : "Mission accomplie.", { interrupt: true });
   achSoon(2600);
 }
 
@@ -5669,7 +5655,7 @@ function renderReport() {
       <div class="field-line"><label>DIFFICULTÉ RESSENTIE</label><div class="chips-pick">${["FACILE", "CORRECTE", "DURE", "ÉPUISANTE"].map((l, i) => `<button class="pick wide ${r.note.rpe === i + 1 ? "on" : ""}" data-act="note-rpe" data-n="${i + 1}" aria-pressed="${r.note.rpe === i + 1}">${l}</button>`).join("")}</div></div>
       <div class="field-line"><label for="note-text">COMMENTAIRE</label><textarea class="txt" id="note-text" maxlength="200" rows="2" placeholder="Sensations, douleur, à refaire…">${esc(r.note.text)}</textarea></div>
       <button class="btn ${r.noteSaved ? "btn-quiet" : "btn-ghost"}" data-act="note-save">${r.noteSaved ? "NOTE ENREGISTRÉE · MODIFIER" : "ENREGISTRER LA NOTE"}</button>
-      <p class="hint">Retrouvez vos notes dans Archives → Journal des missions.</p>
+      <p class="hint">Retrouvez vos notes dans Suivi → Journal.</p>
     </div>
   </section>
   <div style="margin-top:28px"><button class="btn btn-neon" style="width:100%" data-act="report-done">RETOUR AU QG</button></div>
@@ -5711,7 +5697,6 @@ function animateReport() {
 }
 function levelFlash(level) {
   vibrate([60, 40, 120]); sfx("levelup");
-  if (ui.screen !== "report") speak(`Niveau ${level} atteint.`);
   const f = document.createElement("div");
   f.className = "lvl-flash"; f.setAttribute("aria-hidden", "true");
   f.innerHTML = `<div>LEVEL UP<small>NIVEAU ${level} · ${rankFor(level)}</small></div>`;
@@ -5775,11 +5760,14 @@ const actions = {
     if (k === "sfx" && !v) sfx("off");
     setSnd({ [k]: v });
     if (v) { audioPrime(); sfx("on"); }
-    if (k === "voice") { if (v) speak("Annonces vocales activées."); else try { speechSynthesis.cancel(); } catch (e) {} }
     const pop = $("#aud-pop"); if (pop) { audFill(pop); const nb = pop.querySelector(`[data-k="${k}"]`); if (nb) nb.focus({ preventScroll: true }); }
   },
-  "set-accent": el => { setAccent(el.dataset.n); render(); },
-  "set-theme": el => { setTheme(el.dataset.n); render(); toast(el.dataset.n === "auto" ? "Thème automatique : suit le réglage de l'appareil." : el.dataset.n === "light" ? "Thème clair activé." : "Thème sombre activé."); },
+  "set-accent": el => { setAccent(el.dataset.n); render(); if (ui.settingsOpen) { const sc = $("#sheet-in").scrollTop; $("#sheet-in").innerHTML = settingsHTML(); $("#sheet-in").scrollTop = sc; } },
+  "settings-open": () => openSettings(),
+  "suivi": el => { ui.suivi = el.dataset.v; render(); },
+  "journal-all": () => { ui.journalAll = true; render(); },
+  "recs-all": () => { ui.recsAll = true; render(); },
+  "set-theme": el => { setTheme(el.dataset.n); render(); if (ui.settingsOpen) { const sc = $("#sheet-in").scrollTop; $("#sheet-in").innerHTML = settingsHTML(); $("#sheet-in").scrollTop = sc; } toast(el.dataset.n === "auto" ? "Thème automatique : suit le réglage de l'appareil." : el.dataset.n === "light" ? "Thème clair activé." : "Thème sombre activé."); },
   "eq-dbcount": el => { curPlace().dbCount = el.dataset.n === "1" ? 1 : 2; equipChanged(); },
   "fav-open": () => openFavSheet(),
   "fav-save": () => saveFavorite(),
@@ -5932,7 +5920,7 @@ const holdActions = {
     const keepName = state.operator.callsign;
     state = defaultState(); state.operator.callsign = keepName; state.onboarded = true;
     save(); vibrate([200, 80, 300]); redFlash();
-    ui.tab = "fiche"; toast("Opérateur réinitialisé au niveau 1.");
+    ui.tab = "fiche"; closeSheet(); toast("Opérateur réinitialisé au niveau 1.");
     go("hq");
   }
 };
@@ -6039,7 +6027,7 @@ document.addEventListener("change", e => {
     logWeight(Math.round(v * 10) / 10); save(); toast("Poids de corps enregistré."); if (ui.screen === "hq") render(); achSoon(300);
   }
 });
-document.addEventListener("toggle", e => { const d = e.target; if (d && d.dataset && d.dataset.warm) { ui.warmOpen = ui.warmOpen || {}; ui.warmOpen[d.dataset.warm] = d.open; } }, true);
+document.addEventListener("toggle", e => { const d = e.target; if (d && d.classList && d.classList.contains("mm-det")) ui.mmOpen = d.open; if (d && d.dataset && d.dataset.warm) { ui.warmOpen = ui.warmOpen || {}; ui.warmOpen[d.dataset.warm] = d.open; } }, true);
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) { if (sync.ref && sync.mode === "saving") pushNow(); return; }
   if (effort) tickEffort();
