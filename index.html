@@ -1047,6 +1047,25 @@ button.sq-row:hover{background:var(--panel-2)}
 .swatch i::after{right:7px;background:var(--sw-l)}
 .swatch span{font-family:var(--f-display);font-size:7.5px;letter-spacing:.08em;color:var(--muted);white-space:nowrap}
 .swatch[aria-pressed="true"] span{color:var(--neon)}
+
+/* ---------- total par exercice & chrono d'effort ---------- */
+.ex-total{display:flex;align-items:baseline;gap:10px;margin:-14px -14px 0;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--neon-soft);border-radius:4px 4px 0 0}
+.ex-total span{font-family:var(--f-display);font-size:8.5px;letter-spacing:.2em;color:var(--neon)}
+.ex-total b{flex:1;min-width:0;font-size:13px;font-weight:600;color:var(--text)}
+.ex-total em{font-style:normal;font-family:var(--f-display);font-size:12px;color:var(--neon);white-space:nowrap}
+.btn .play{width:14px;height:14px;fill:currentColor;flex:none}
+.manual-link{grid-column:1/-1;justify-self:start;font-size:12px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:2px 0}
+.effort{background:var(--void)}
+.effort h2{font-size:17px;letter-spacing:.08em;line-height:1.3}
+.effort .btn-quiet{min-height:42px}
+.ef-ctrl{width:100%;display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.ef-review{padding:14px;display:flex;flex-direction:column;gap:10px;text-align:left}
+.ef-step{display:grid;grid-template-columns:44px 40px minmax(0,1fr) 40px 44px}
+.ef-step input{font-family:var(--f-display);font-size:22px;text-align:center;min-width:0}
+.ef-step button{font-family:var(--f-display);font-size:12px}
+.ef-pv{font-size:13px;color:var(--muted)}.ef-pv b{font-family:var(--f-display);font-size:16px;color:var(--neon)}
+.ring.paused .fg{stroke:var(--muted);filter:none}
+.btn[disabled]{opacity:.45}
 </style>
 <script>window.NEON_STANDALONE = true;
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
@@ -4515,7 +4534,11 @@ function exCardHTML(e, b) {
   const kgLabel = e.type === "load" ? "CHARGE (KG)" : "LEST (KG)";
   const repLabel = time ? "DURÉE (S)" : "RÉPÉTITIONS";
   const pv = previewXp(e.id, d.kg, d.reps, b);
+  const tot = sets.reduce((a, x) => { a.reps += x.reps; a.xp += x.xp; a.ton += x.load * x.reps; return a; }, { reps: 0, xp: 0, ton: 0 });
+  const totTxt = time ? (tot.reps >= 60 ? `${Math.floor(tot.reps / 60)} min ${String(Math.round(tot.reps % 60)).padStart(2, "0")} s tenues` : `${fmt(tot.reps)} s tenues`)
+    : `${fmt(tot.reps)} rép.${e.type === "load" && tot.ton ? ` · ${fmt(Math.round(tot.ton))} kg` : ""}`;
   return `<article class="panel ex-card" data-card="${e.id}">
+    ${sets.length ? `<div class="ex-total"><span>TOTAL</span><b>${plural(sets.length, "série").toLowerCase()} · ${totTxt}</b><em>+${fmt(tot.xp)} XP</em></div>` : ""}
     <header><div><div class="eyebrow">${CAT_BY_ID[e.cat].code} · ×${e.coef.toFixed(2)} · REPOS ${restFor(e, b)} S</div><button class="ex-link" data-act="sheet-ex" data-id="${e.id}" aria-label="Voir la fiche et le schéma de ${esc(e.name)}">${esc(e.name)}<span class="i" aria-hidden="true">i</span></button></div>
       <span class="setc">${plural(sets.length, "SÉRIE")}</span></header>
     ${sets.length ? "" : suggestionHTML(e)}
@@ -4538,8 +4561,10 @@ function exCardHTML(e, b) {
       <div class="field"><label for="reps-${e.id}">${repLabel}</label>
         <div class="stepper"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="${time ? -5 : -1}" aria-label="Moins">−</button><input id="reps-${e.id}" data-field="reps" data-id="${e.id}" inputmode="numeric" autocomplete="off" value="${Math.round(d.reps)}"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="${time ? 5 : 1}" aria-label="Plus">+</button></div></div>
       <div class="entry-go">
-        <button class="btn btn-neon" data-act="validate-set" data-id="${e.id}">VALIDER SÉRIE ${sets.length + 1}</button>
+        ${time ? `<button class="btn btn-neon" data-act="effort-start" data-id="${e.id}"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>LANCER LE CHRONO · S${sets.length + 1}</button>`
+          : `<button class="btn btn-neon" data-act="validate-set" data-id="${e.id}">VALIDER SÉRIE ${sets.length + 1}</button>`}
         <span class="pv">≈ <b id="pv-${e.id}">${pv}</b> XP</span>
+        ${time ? `<button class="manual-link" data-act="validate-set" data-id="${e.id}">Déjà fait sans chrono ? Valider la durée saisie</button>` : ""}
       </div>
     </div>
   </article>`;
@@ -4617,6 +4642,153 @@ function deleteSet(id, i) {
 }
 
 /* ---- Repos tactique ---- */
+
+/* =====================================================================
+   Chrono d'effort : exercices en durée (gainage, chaise, suspension…)
+   3 s de mise en place, décompte jusqu'à l'objectif, puis chaque seconde tenue en plus compte aussi.
+   L'XP suit le temps réellement tenu.
+   ===================================================================== */
+let effort = null, effortTick = null, effortLock = null;
+function startEffort(id) {
+  const e = EX[id]; if (!e || e.type !== "time") return;
+  audioPrime();
+  const { kg, reps, kgEl, rEl } = readDraftInputs(id);
+  const kgOk = Number.isFinite(kg) && kg >= 0 && kg <= 1000, rOk = Number.isFinite(reps) && reps >= 5 && reps <= 3600;
+  if (kgEl) kgEl.parentElement.classList.toggle("bad", !kgOk);
+  if (rEl) rEl.parentElement.classList.toggle("bad", !rOk);
+  if (!kgOk || !rOk) { shake(document.querySelector(`[data-card="${id}"] .entry`)); toast(!kgOk ? "Lest invalide : entre 0 et 1 000 kg." : "Objectif invalide : entre 5 et 3 600 secondes.", true); return; }
+  storeDraft(id, kg, reps);
+  const n = ((state.mission && state.mission.sets[id]) || []).length + 1;
+  effort = { id, target: Math.round(reps), kg: Math.round(kg * 100) / 100, prepEnd: Date.now() + 3000, t0: 0, lastSec: null, reached: false, n };
+  let el = $("#effort");
+  if (!el) { el = document.createElement("div"); el.id = "effort"; document.body.appendChild(el); }
+  el.className = "rest effort"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-labelledby", "ef-title");
+  el.innerHTML = `<div class="rest-in">
+    <div class="eyebrow">CHRONO D'EFFORT · SÉRIE ${n}</div>
+    <h2 id="ef-title">${esc(e.name)}</h2>
+    <div class="ring" id="ef-ring">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><circle class="ticks" cx="100" cy="100" r="93"></circle><circle class="bg" cx="100" cy="100" r="82"></circle>
+      <circle class="fg" id="ef-fg" cx="100" cy="100" r="82" stroke-dasharray="${RING_C.toFixed(2)}" stroke-dashoffset="0"></circle></svg>
+      <div class="ring-txt"><b id="ef-time">3</b><span id="ef-state">EN POSITION</span></div>
+    </div>
+    <div class="panel rest-stats">
+      <div><span>OBJECTIF</span><b>${mmss(effort.target)}</b></div>
+      <div><span>TENU</span><b id="ef-held">0:00</b></div>
+      <div><span>XP</span><b id="ef-xp">+0</b></div>
+    </div>
+    <div class="ef-ctrl" id="ef-ctrl">${effortRunCtrl()}</div>
+  </div>`;
+  el.hidden = false;
+  document.body.style.overflow = "hidden";
+  clearInterval(effortTick); effortTick = setInterval(tickEffort, 100);
+  try { if (navigator.wakeLock && !effortLock) navigator.wakeLock.request("screen").then(w => { effortLock = w; }).catch(() => {}); } catch (e2) {}
+  tickEffort();
+  setTimeout(() => { const b = $("#ef-btn"); if (b) b.focus({ preventScroll: true }); }, 50);
+}
+function effortRunCtrl() {
+  return `<button class="btn btn-neon btn-wide" data-act="effort-stop" id="ef-btn">STOP</button>
+    <button class="btn btn-quiet btn-wide" data-act="effort-cancel">ANNULER CETTE SÉRIE</button>
+    <p class="rest-note">STOP met le chrono en pause : vous vérifiez et corrigez le temps avant de valider. Une fois l'objectif atteint, chaque seconde en plus rapporte de l'XP.</p>`;
+}
+const effortHeld = () => effort && effort.t0 ? Math.max(0, Math.floor(((effort.paused || Date.now()) - effort.t0) / 1000)) : 0;
+function tickEffort() {
+  if (!effort || effort.paused) return;
+  const now = Date.now(), ring = $("#ef-ring"), fg = $("#ef-fg"), tEl = $("#ef-time"), stEl = $("#ef-state");
+  if (!ring) return;
+  if (!effort.t0) {
+    const left = Math.ceil((effort.prepEnd - now) / 1000);
+    if (left > 0) {
+      if (left !== effort.lastSec) { effort.lastSec = left; tEl.textContent = left; sfx("count", 2); vibrate(15); }
+      fg.setAttribute("stroke-dashoffset", (RING_C * (1 - (effort.prepEnd - now) / 3000)).toFixed(2));
+      return;
+    }
+    effort.t0 = effort.prepEnd; effort.lastSec = null;
+    sfx("count", 1); vibrate([60, 40, 60]);
+    stEl.textContent = "TENEZ !";
+  }
+  const el = (now - effort.t0) / 1000, held = Math.floor(el), left = effort.target - el;
+  if (left > 0) {
+    const sec = Math.ceil(left);
+    tEl.textContent = mmss(sec);
+    fg.setAttribute("stroke-dashoffset", (RING_C * (el / effort.target)).toFixed(2));
+    if (sec !== effort.lastSec) { if (effort.lastSec !== null) { if (sec <= 3) sfx("count", sec); else sfx("sec", sec % 2); } effort.lastSec = sec; }
+    if (left < effort.target - 0.5) stEl.textContent = left <= 5 ? "DERNIÈRES SECONDES" : "TENEZ !";
+  } else {
+    if (!effort.reached) { effort.reached = true; ring.classList.add("done"); fg.setAttribute("stroke-dashoffset", "0"); sfx("restDone"); vibrate([200, 100, 200]); }
+    tEl.textContent = "+" + mmss(-left);
+    stEl.textContent = "OBJECTIF ATTEINT · BONUS";
+    const sec = Math.floor(-left); if (sec !== effort.lastSec) { effort.lastSec = sec; if (sec > 0) sfx("sec", sec % 2); }
+  }
+  $("#ef-held").textContent = mmss(held);
+  const pv = held >= 1 ? previewXp(effort.id, effort.kg, held) : "0";
+  $("#ef-xp").textContent = "+" + pv;
+  const btn = $("#ef-btn"); if (btn) btn.textContent = held >= 1 ? `STOP · ${mmss(held)}` : "STOP";
+}
+function closeEffort() {
+  clearInterval(effortTick); effortTick = null;
+  const el = $("#effort"); if (el) el.hidden = true;
+  document.body.style.overflow = "";
+  try { if (effortLock) { effortLock.release(); effortLock = null; } } catch (e) { effortLock = null; }
+}
+/* STOP : pause et vérification. Rien n'est enregistré tant que la personne ne valide pas. */
+function stopEffort() {
+  if (!effort || effort.paused) return;
+  if (!effort.t0) { cancelEffort(); return; }
+  effort.paused = Date.now();
+  const held = effortHeld();
+  sfx("off"); vibrate(30);
+  $("#ef-state").textContent = "EN PAUSE";
+  $("#ef-ring").classList.add("paused");
+  $("#ef-ctrl").innerHTML = `<div class="panel ef-review">
+      <div class="eyebrow">TEMPS À ENREGISTRER</div>
+      <div class="stepper ef-step"><button data-act="ef-adj" data-d="-5" aria-label="Moins 5 secondes">−5</button><button data-act="ef-adj" data-d="-1" aria-label="Moins 1 seconde">−1</button><input id="ef-secs" inputmode="numeric" autocomplete="off" value="${held}" aria-label="Secondes tenues"><button data-act="ef-adj" data-d="1" aria-label="Plus 1 seconde">+1</button><button data-act="ef-adj" data-d="5" aria-label="Plus 5 secondes">+5</button></div>
+      <p class="hint">Chrono : <b>${mmss(held)}</b> tenues · objectif ${mmss(effort.target)}. Corrigez si vous avez lâché avant ou continué après.</p>
+      <div class="ef-pv">≈ <b id="ef-pv">+0</b> XP</div>
+    </div>
+    <button class="btn btn-neon btn-wide" data-act="effort-save" id="ef-save">VALIDER</button>
+    <div class="rest-ctrl"><button class="btn btn-ghost" data-act="effort-resume">REPRENDRE</button><button class="btn btn-quiet" data-act="effort-back">RETOUR SANS VALIDER</button></div>`;
+  effortReviewUpdate();
+}
+function effortSecs() { const el = $("#ef-secs"); const v = el ? Math.round(parseNum(el.value)) : NaN; return v; }
+function effortReviewUpdate() {
+  if (!effort) return;
+  const v = effortSecs(), ok = Number.isFinite(v) && v >= 1 && v <= 3600;
+  const pv = $("#ef-pv"), sv = $("#ef-save");
+  if (pv) pv.textContent = ok ? "+" + previewXp(effort.id, effort.kg, v) : "—";
+  if (sv) { sv.textContent = ok ? `VALIDER ${mmss(v)}` : "DURÉE INVALIDE"; sv.disabled = !ok; }
+}
+function effortAdjust(d) {
+  const el = $("#ef-secs"); if (!el) return;
+  const v = effortSecs();
+  el.value = Math.max(1, Math.min(3600, (Number.isFinite(v) ? v : 0) + d));
+  effortReviewUpdate();
+}
+function resumeEffort() {
+  if (!effort || !effort.paused) return;
+  effort.t0 += Date.now() - effort.paused; effort.paused = 0; effort.lastSec = null;
+  $("#ef-ring").classList.remove("paused");
+  $("#ef-ctrl").innerHTML = effortRunCtrl();
+  sfx("on"); tickEffort();
+}
+function saveEffort() {
+  if (!effort) return;
+  const v = effortSecs();
+  if (!(Number.isFinite(v) && v >= 1 && v <= 3600)) { toast("Durée invalide : entre 1 et 3 600 s.", true); return; }
+  const ef = effort; effort = null; closeEffort();
+  const rEl = document.getElementById("reps-" + ef.id), kgEl = document.getElementById("kg-" + ef.id);
+  if (!rEl) return;
+  rEl.value = v; if (kgEl) kgEl.value = String(ef.kg).replace(".", ",");
+  validateSet(ef.id, null);
+  // l'objectif reste celui choisi pour la série suivante
+  if (state.mission && state.mission.draft[ef.id]) { state.mission.draft[ef.id].reps = ef.target; save(); render(); }
+}
+/* Retour au briefing sans rien enregistrer : le temps tenu est reporté dans le champ Durée, modifiable et à valider plus tard. */
+function backEffort() {
+  if (!effort) return;
+  const ef = effort, v = effortSecs(); effort = null; closeEffort();
+  if (Number.isFinite(v) && v >= 1) { storeDraft(ef.id, ef.kg, v); render(); toast(`${mmss(v)} reportées dans la durée : corrigez puis validez quand vous voulez.`); }
+}
+function cancelEffort() { if (!effort) return; effort = null; closeEffort(); sfx("off"); toast("Série annulée, rien n'a été enregistré."); }
 let restTick = null, wakeLock = null, restDoneFired = false;
 const RING_C = 2 * Math.PI * 82;
 function openRest() {
@@ -4985,6 +5157,13 @@ const actions = {
   "finish-mission": () => finishMission(),
   "rest-add": el => { const m = state.mission; if (!m || !m.rest) return; const d = +el.dataset.d * 1000; m.rest.endAt = Math.max(Date.now(), m.rest.endAt + d); m.rest.total = Math.max(1, m.rest.total + (+el.dataset.d)); if (m.rest.endAt > Date.now()) restDoneFired = false; save(); tickRest(); },
   "rest-skip": () => endRest(),
+  "effort-start": el => startEffort(el.dataset.id),
+  "effort-stop": () => stopEffort(),
+  "effort-cancel": () => cancelEffort(),
+  "effort-resume": () => resumeEffort(),
+  "effort-save": () => saveEffort(),
+  "effort-back": () => backEffort(),
+  "ef-adj": el => effortAdjust(+el.dataset.d),
   "equip": el => { const g = GEAR_BY_ID[el.dataset.id]; if (!g || !state.gear.unlocked.includes(g.id)) return; state.gear.equipped[g.slot] = g.id; save(); vibrate(25); toast(`${g.name} équipé.`); render(); if (el.dataset.reopen) openGearSheet(el.dataset.reopen); },
   "unequip": el => { const s = el.dataset.slot; if (!(s in state.gear.equipped)) return; state.gear.equipped[s] = null; save(); render(); if (el.dataset.reopen) openGearSheet(el.dataset.reopen); },
   "perk": el => {
@@ -5117,6 +5296,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "Enter" && e.target.matches("[data-field]")) { e.preventDefault(); validateSet(e.target.dataset.id, e.target); }
   if (e.key === "Enter" && e.target.id === "name-input") { e.preventDefault(); actions["save-name"](); }
   if (e.key === "Enter" && e.target.id === "ob-name") { e.preventDefault(); obNext(); }
+  if (e.key === "Enter" && e.target.id === "ef-secs") { e.preventDefault(); saveEffort(); }
   if (e.key === "Enter" && e.target.id === "sq-name") { e.preventDefault(); squadCreate(); }
   if (e.key === "Enter" && e.target.id === "fav-name") { e.preventDefault(); saveFavorite(); }
   if (e.key === "Enter" && e.target.id === "sq-code") { e.preventDefault(); squadJoin(); }
@@ -5145,6 +5325,7 @@ document.addEventListener("input", e => {
     t.style.setProperty("--p", t.value + "%");
     setSnd(t.id === "snd-sfxvol" ? { sfxVol: (+t.value || 0) / 100 } : { musicVol: (+t.value || 0) / 100 });
   }
+  if (t.id === "ef-secs") effortReviewUpdate();
   if (t.id === "sq-name") squad.draftName = t.value;
   if (t.id === "sq-code") squad.draftCode = t.value;
 });
@@ -5161,6 +5342,7 @@ document.addEventListener("change", e => {
 });
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) { if (sync.ref && sync.mode === "saving") pushNow(); return; }
+  if (effort) tickEffort();
   if (!$("#rest").hidden) tickRest();
 });
 window.addEventListener("pagehide", () => { if (sync.ref && sync.mode === "saving") pushNow(); });
