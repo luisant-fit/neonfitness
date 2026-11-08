@@ -301,6 +301,57 @@ p{margin:0}
 .search-fake:hover{border-color:var(--neon);color:var(--text)}
 .tag-cat{color:var(--muted)}
 .s-hidden{padding:8px 2px}
+.pdf-drop{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:22px 16px;margin-top:14px;border:1.5px dashed var(--line-hi);border-radius:6px;background:var(--panel-2);cursor:pointer;color:var(--text)}
+.pdf-drop.big{padding:36px 16px}
+.pdf-drop svg{width:34px;height:34px;fill:none;stroke:var(--neon);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pdf-drop b{font-family:var(--f-display);font-size:13px;letter-spacing:.12em;color:var(--neon)}
+.pdf-drop span{font-size:13px;color:var(--muted)}
+.pdf-drop em{font-style:normal;font-size:13px;color:var(--text);min-height:1em}
+.pdf-drop:hover,.pdf-drop.over{border-color:var(--neon);background:rgba(var(--neon-rgb),.08)}
+.pdf-drop.busy{pointer-events:none;opacity:.8}
+.pdf-drop.busy svg{animation:pdfPulse 1s ease-in-out infinite}
+@keyframes pdfPulse{50%{opacity:.35}}
+.hint.small{font-size:12px}
+.plan-pick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.plan-pick .chip{padding:7px 10px;border:1px solid var(--line-hi);border-radius:4px;font-size:12px;color:var(--muted);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plan-pick .chip.on{border-color:var(--neon);color:var(--neon)}
+.plan-head{display:flex;flex-direction:column;gap:10px;padding:14px}
+.plan-head h3{font-family:var(--f-display);font-size:18px;line-height:1.25;margin:0}
+.plan-next{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.plan-next span{display:flex;flex-direction:column;font-family:var(--f-display);font-size:10px;letter-spacing:.14em;color:var(--muted)}
+.plan-next b{font-size:15px;letter-spacing:.04em;color:var(--text);margin-top:3px}
+.plan-lv{display:flex;flex-direction:column;gap:6px}
+.plan-weeks{display:flex;gap:6px;overflow-x:auto;margin:14px 0 10px;padding-bottom:2px}
+.plan-weeks button{flex:none;min-width:58px;padding:8px 10px;border:1px solid var(--line-hi);border-radius:4px;font-family:var(--f-display);font-size:13px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:2px}
+.plan-weeks button small{font-size:10px;letter-spacing:.08em}
+.plan-weeks button.on{border-color:var(--neon);color:var(--neon);background:rgba(var(--neon-rgb),.08)}
+.plan-weeks button.full small{color:var(--neon)}
+.plan-days{display:flex;flex-direction:column;gap:10px}
+.plan-dcard{display:flex;flex-direction:column;gap:10px;padding:14px}
+.plan-dcard.next{border-color:var(--neon)}
+.plan-dcard.done{opacity:.85}
+.pd-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pd-top b{font-family:var(--f-display);font-size:14px;letter-spacing:.12em}
+.pd-top span{font-family:var(--f-display);font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.plan-dcard.done .pd-top span,.plan-dcard.next .pd-top span{color:var(--neon)}
+.plan-unk .unk-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.unk-row span{font-size:14px;display:flex;flex-direction:column}
+.unk-row small{font-size:11px;color:var(--muted)}
+.unk-row select{width:100%;min-width:0;background:var(--panel-2);color:var(--text);border:1px solid var(--line-hi);border-radius:4px;padding:9px 8px;font-size:14px}
+.plan-wk{border:1px solid var(--line);border-radius:4px;margin-bottom:8px}
+.plan-wk summary{display:flex;justify-content:space-between;padding:11px 12px;font-family:var(--f-display);font-size:12px;letter-spacing:.12em;cursor:pointer;list-style:none}
+.plan-wk summary::-webkit-details-marker{display:none}
+.plan-wk summary span{color:var(--muted);font-size:10px}
+.plan-wk[open] summary{border-bottom:1px solid var(--line);color:var(--neon)}
+.plan-day{padding:10px 12px;border-bottom:1px solid var(--line)}
+.plan-day:last-child{border-bottom:0}
+.plan-day b{font-family:var(--f-display);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.plan-day ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+.plan-day li{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.plan-day li span{display:flex;flex-direction:column;min-width:0}
+.plan-day li small{font-size:11px;color:var(--muted)}
+.plan-day li em{font-style:normal;font-family:var(--f-display);font-size:12px;color:var(--neon);white-space:nowrap}
+.plan-day li em.guess{color:var(--muted)}
 .list-head{display:flex;justify-content:space-between;gap:10px;padding:14px 2px 8px;font-family:var(--f-display);font-size:10px;letter-spacing:.18em;color:var(--muted)}
 
 .ex-list{display:flex;flex-direction:column;gap:8px}
@@ -1407,7 +1458,8 @@ button.sq-row:hover{background:var(--panel-2)}
 .md-tot{font-size:12px;color:var(--muted);margin-top:6px}
 
 /* ---------- séances prêtes ---------- */
-.ex-seg{margin-top:14px}
+.ex-seg{margin-top:14px;grid-template-columns:repeat(3,1fr)}
+.seg.n3{grid-template-columns:repeat(3,1fr)}
 .prog-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
 .prog{padding:14px;display:flex;flex-direction:column;gap:8px}
 .prog-top{display:flex;justify-content:space-between;align-items:center}
@@ -1694,36 +1746,36 @@ const EXERCISES = [
 const EX = Object.fromEntries(EXERCISES.map(e => [e.id, e]));
 /* Recherche : noms anglais et synonymes courants, en plus du nom, des muscles, du système et du matériel */
 const EX_ALIAS = {
-  bench: "bench press developpe couche", incline_db: "incline dumbbell press", decline: "decline bench press", dips_chest: "dips chest",
-  pushup: "push up pushups", fly: "dumbbell fly flyes", cable_cross: "cable crossover", pec_deck: "butterfly machine",
-  deadlift: "deadlift sdt", pullup: "pull up pullups", row_bb: "bent over row barbell row", row_db: "one arm row 1 arm row dumbbell row",
-  lat_pd: "lat pulldown", seated_row: "seated cable row", tbar: "t bar row landmine", shrug: "shrugs", hyperext: "back extension hyperextension",
-  ohp: "overhead press military press", db_press: "dumbbell shoulder press", arnold: "arnold press", lat_raise: "side raises lateral raises",
-  face_pull: "face pull", rear_fly: "reverse fly rear delt fly", close_bench: "close grip bench press", skull: "skull crusher",
-  tri_pushdown: "triceps pushdown", dips_bench: "bench dips", curl_bb: "barbell curl biceps curl", curl_hammer: "hammer curls",
-  curl_incline: "incline curl", squat: "back squat", front_squat: "front squat", leg_press: "leg press", rdl: "romanian deadlift rdl",
-  bulgarian: "bulgarian split squats", lunge: "walking lunges", hip_thrust: "hip thrust", leg_ext: "leg extension", leg_curl: "leg curl hamstring curl",
-  calf: "calf raises", plank: "plank planche", side_plank: "side plank", hanging_raise: "hanging leg raises", ab_wheel: "ab rollout ab wheel",
+  bench: "bench press|barbell bench press|developpe couche barre", incline_db: "incline dumbbell press|incline db press", decline: "decline bench press|decline press", dips_chest: "chest dips",
+  pushup: "push up|pushup|press up|pompe", fly: "dumbbell fly|dumbbell flye|db fly|chest fly", cable_cross: "cable crossover|cable fly", pec_deck: "pec deck|butterfly machine",
+  deadlift: "deadlift|conventional deadlift|sdt", pullup: "pull up|pullup|traction", row_bb: "bent over row|barbell row|bent over barbell row", row_db: "one arm row|1 arm row|single arm row|one arm dumbbell row|dumbbell row",
+  lat_pd: "lat pulldown|lat pull down", seated_row: "seated cable row|seated row|cable row", tbar: "t bar row|landmine row", shrug: "shrug|dumbbell shrug", hyperext: "back extension|hyperextension",
+  ohp: "overhead press|military press|barbell shoulder press", db_press: "dumbbell shoulder press|seated dumbbell press|db shoulder press", arnold: "arnold press", lat_raise: "side raise|lateral raise|side lateral raise|dumbbell lateral raise",
+  face_pull: "face pull", rear_fly: "reverse fly|rear delt fly|reverse flye|bent over reverse fly", close_bench: "close grip bench press", skull: "skull crusher|lying tricep extension",
+  tri_pushdown: "tricep pushdown|triceps pushdown|cable pushdown", dips_bench: "bench dip|bench dips", curl_bb: "barbell curl|curl barre", curl_hammer: "hammer curl",
+  curl_incline: "incline curl|incline dumbbell curl", squat: "back squat|barbell squat", front_squat: "front squat", leg_press: "leg press", rdl: "romanian deadlift|rdl|dumbbell rdl",
+  bulgarian: "bulgarian split squat|bulgarian squat|rear foot elevated split squat|fente bulgare|fentes bulgares|squat bulgare", lunge: "walking lunge|dumbbell lunge", hip_thrust: "hip thrust|barbell hip thrust", leg_ext: "leg extension", leg_curl: "leg curl|hamstring curl|lying leg curl",
+  calf: "calf raise|standing calf raise", plank: "plank|forearm plank|planche|gainage|gainage planche", side_plank: "side plank", hanging_raise: "hanging leg raise|hanging knee raise", ab_wheel: "ab rollout|ab wheel|ab wheel rollout",
   cable_crunch: "cable crunch", russian: "russian twist", pallof: "pallof press", pushup_incline: "incline push up", pushup_wide: "wide push up",
-  pushup_decline: "decline push up", pushup_archer: "archer push up", pushup_plyo: "clap push up plyo", dips_rings: "ring dips", chinup: "chin up",
-  pullup_neg: "negative pull up", pullup_neutral: "neutral grip pull up", inverted_row: "inverted row australian pull up", muscle_up: "muscle up",
-  scap_pull: "scapular pull up", superman: "superman", dead_hang: "dead hang", pike_pushup: "pike push up", hspu: "handstand push up",
-  wall_walk: "wall walk", handstand_hold: "handstand", ytw: "ytw", pushup_military: "military push up", pushup_knees: "knee push up",
+  pushup_decline: "decline push up", pushup_archer: "archer push up", pushup_plyo: "clap push up|plyo push up", dips_rings: "ring dip", chinup: "chin up",
+  pullup_neg: "negative pull up|negative pullup", pullup_neutral: "neutral grip pull up", inverted_row: "inverted row|australian pull up", muscle_up: "muscle up",
+  scap_pull: "scapular pull up|scap pull up", superman: "superman", dead_hang: "dead hang", pike_pushup: "pike push up", hspu: "handstand push up",
+  wall_walk: "wall walk", handstand_hold: "handstand|handstand hold", ytw: "ytw|y t w", pushup_military: "military push up", pushup_knees: "knee push up|kneeling push up",
   pushup_hindu: "hindu push up", pushup_spiderman: "spiderman push up", pushup_pseudo: "pseudo planche push up", pushup_diamond: "diamond push up",
-  dips_bars: "parallel bar dips", bw_tri_ext: "bodyweight triceps extension", chinup_close: "close grip chin up", bw_curl: "bodyweight curl",
-  air_squat: "bodyweight squat air squat", jump_squat: "jump squats", pistol: "pistol squat", bw_lunge: "lunges", step_up: "step up",
-  glute_bridge: "glute bridge", nordic: "nordic curl", wall_sit: "wall sit", bw_calf: "single leg calf raises", crunch: "crunches",
-  bicycle: "bicycle crunch", floor_leg_raise: "leg raises lying", v_up: "v up v sit up", dead_bug: "dead bug", mountain: "mountain climbers",
-  shoulder_taps: "shoulder taps", hollow: "hollow hold", l_sit: "l sit", dragon_flag: "dragon flag",
-  db_bench: "dumbbell press dumbbell bench press floor press", upright_row: "upright rows", y_raise: "y raises", curl_db: "bicep curls biceps curl dumbbell curl",
-  oh_tri_one: "single arm tricep extension overhead extension", goblet_squat: "goblet squat", goblet_sumo: "goblet sumo squat", bstance_rdl: "b stance rdl kickstand",
-  sumo_squat: "sumo squat", reverse_lunge: "reverse lunges", static_lunge: "static lunges split squat", frog_jump: "frog jumps frog",
-  bw_hip_thrust: "bodyweight hip thrust", sl_hip_thrust: "single leg hip thrust", glute_march: "glute bridge march", frog_pumps: "frog pumps",
-  donkey_kick: "donkey kickback donkey kicks", clamshell: "banded clamshell", side_tapout: "side tap out", reverse_crunch: "reverse crunches",
-  cross_crunch: "cross crunches", heel_taps: "side to sides heel touches", bicycle_kicks: "bicycle kicks flutter", wipers: "windshield wipers",
-  knee_elbow: "knee to elbow", plank_side_taps: "side taps", st_fig4: "figure 4 glute stretch etirement stretch mobilite souplesse",
-  st_butterfly: "butterfly stretch etirement mobilite souplesse", st_child: "child pose childs pose etirement stretch mobilite souplesse",
-  st_twist: "seated glute twist etirement stretch mobilite souplesse", st_hipflexor: "kneeling hip flexor stretch etirement mobilite souplesse psoas"
+  dips_bars: "parallel bar dip|dips", bw_tri_ext: "bodyweight tricep extension|bodyweight triceps extension", chinup_close: "close grip chin up", bw_curl: "bodyweight curl",
+  air_squat: "bodyweight squat|air squat", jump_squat: "jump squat", pistol: "pistol squat", bw_lunge: "lunge|lunges|forward lunge|alternating lunge", step_up: "step up",
+  glute_bridge: "glute bridge", nordic: "nordic curl|nordic hamstring curl", wall_sit: "wall sit", bw_calf: "calf raise|single leg calf raise|bodyweight calf raise", crunch: "crunch|crunch au sol",
+  bicycle: "bicycle crunch", floor_leg_raise: "leg raise|lying leg raise", v_up: "v up|v sit up|v situp", dead_bug: "dead bug", mountain: "mountain climber|mountainclimber|mountain climbers",
+  shoulder_taps: "shoulder tap", hollow: "hollow hold|hollow body hold", l_sit: "l sit", dragon_flag: "dragon flag",
+  db_bench: "dumbbell press|dumbbell bench press|db bench press|floor press|dumbbell chest press", upright_row: "upright row", y_raise: "y raise", curl_db: "bicep curl|biceps curl|dumbbell curl|db curl",
+  oh_tri_one: "single arm tricep extension|single arm tricep ext|single arm triceps extension|one arm overhead extension|overhead tricep extension", goblet_squat: "goblet squat|squat goblet", goblet_sumo: "goblet sumo squat|sumo goblet squat", bstance_rdl: "b stance rdl|kickstand rdl|b stance romanian deadlift",
+  sumo_squat: "sumo squat", reverse_lunge: "reverse lunge", static_lunge: "static lunge|split squat|stationary lunge", frog_jump: "frog jump|frog",
+  bw_hip_thrust: "bodyweight hip thrust|hip thrust", sl_hip_thrust: "single leg hip thrust|one leg hip thrust", glute_march: "glute bridge march|marching glute bridge", frog_pumps: "frog pump",
+  donkey_kick: "donkey kickback|donkey kick", clamshell: "banded clamshell|clamshell|clam shell", side_tapout: "side tap out|tap out|lateral tap out", reverse_crunch: "reverse crunch",
+  cross_crunch: "cross crunch|cross body crunch", heel_taps: "side to side|heel touch|heel tap", bicycle_kicks: "bicycle kick|flutter kick", wipers: "wiper|windshield wiper",
+  knee_elbow: "knee to elbow|knee elbow", plank_side_taps: "side tap|plank side tap", st_fig4: "figure 4 glute stretch|figure four stretch|figure 4 stretch|etirement stretch mobilite souplesse",
+  st_butterfly: "butterfly stretch|etirement mobilite souplesse", st_child: "child pose with side reach|childs pose with side reach|child pose|childs pose|etirement stretch mobilite souplesse",
+  st_twist: "seated glute twist|seated twist|etirement stretch mobilite souplesse", st_hipflexor: "kneeling hip flexor stretch|hip flexor stretch|etirement mobilite souplesse psoas"
 };
 const normTxt = t => String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
 const exHayCache = {};
@@ -2001,7 +2053,8 @@ function defaultState() {
     updatedAt: 0, onboarded: false, tips: { catalog: false, briefing: false },
     squads: [], equip: defaultEquip(),
     exLog: {}, favorites: [], contracts: { week: 0, picks: [], claimed: [] }, squadClaims: {}, squadWins: 0, undo: null,
-    life: defaultLife(), ach: {}, achFav: [], activity: {}, weights: [], raidClaims: {}, raidWins: 0
+    life: defaultLife(), ach: {}, achFav: [], activity: {}, weights: [], raidClaims: {}, raidWins: 0,
+    programs: [], planSel: null
   };
 }
 const num = (v, def, min = -Infinity, max = Infinity) => { v = Number(v); return Number.isFinite(v) ? Math.min(max, Math.max(min, v)) : def; };
@@ -2130,12 +2183,38 @@ function sanitize(s) {
     o.mission = { start: num(m.start, Date.now()), sets, draft: isObj(m.draft) ? m.draft : {},
                   adrenaline: ["ready", "armed", "used"].includes(m.adrenaline) ? m.adrenaline : "ready", rest: r };
     if (isObj(m.program) && Array.isArray(m.program.ex)) {
+      const cu = isObj(m.program.custom) && typeof m.program.custom.pid === "string" ? { pid: m.program.custom.pid.slice(0, 40), key: String(m.program.custom.key || "").slice(0, 20) } : null;
       const lv = Math.min(4, Math.max(1, Math.floor(num(m.program.lvl, 1))));
-      const ex = m.program.ex.filter(x => Array.isArray(x) && EX[x[0]]).slice(0, 8).map(x => [x[0], Math.floor(num(x[1], 3, 1, 10)), Math.floor(num(x[2], 10, 1, 3600))]);
-      if (ex.length) o.mission.program = { lvl: lv, tag: String(m.program.tag || "").slice(0, 20), name: String(m.program.name || "SÉANCE").slice(0, 30), xp: [150, 250, 400, 600][lv - 1], ex };
+      const ex = m.program.ex.filter(x => Array.isArray(x) && EX[x[0]]).slice(0, cu ? 24 : 8).map(x => { const r = [x[0], Math.floor(num(x[1], 3, 1, 10)), Math.floor(num(x[2], 10, 1, 3600))]; if (x[3] === "s") r.push("s"); return r; });
+      if (ex.length) o.mission.program = cu ? { lvl: 0, tag: String(m.program.tag || "").slice(0, 20), name: String(m.program.name || "PROGRAMME").slice(0, 30), xp: 150, ex, custom: cu }
+        : { lvl: lv, tag: String(m.program.tag || "").slice(0, 20), name: String(m.program.name || "SÉANCE").slice(0, 30), xp: [150, 250, 400, 600][lv - 1], ex };
     }
   }
+  o.programs = cleanPrograms(s.programs);
+  o.planSel = typeof s.planSel === "string" && o.programs.some(p => p.id === s.planSel) ? s.planSel : null;
   return o;
+}
+function cleanPrograms(src) {
+  const out = [];
+  if (!Array.isArray(src)) return out;
+  const n = (v, d, a, b) => Math.floor(num(v, d, a, b));
+  src.slice(-10).forEach(p => {
+    if (!isObj(p) || !Array.isArray(p.weeks) || typeof p.id !== "string") return;
+    const weeks = p.weeks.slice(0, 52).filter(isObj).map(w => ({ n: n(w.n, 1, 1, 99), days: (Array.isArray(w.days) ? w.days : []).slice(0, 14).filter(isObj).map(d => ({ n: n(d.n, 1, 1, 99),
+      items: (Array.isArray(d.items) ? d.items : []).filter(it => isObj(it) && EX[it.id]).slice(0, 24).map(it => {
+        const o = { id: it.id, sets: n(it.sets, 3, 1, 10), reps: n(it.reps, 10, 1, 3600), unit: it.unit === "s" ? "s" : "reps" };
+        if (it.side) o.side = true;
+        if (Array.isArray(it.lv)) o.lv = [0, 1, 2].map(k => isObj(it.lv[k]) ? { sets: n(it.lv[k].sets, 1, 1, 10), reps: n(it.lv[k].reps, 10, 1, 3600) } : null);
+        return o;
+      }) })).filter(d => d.items.length) })).filter(w => w.days.length);
+    if (!weeks.length) return;
+    const done = {};
+    if (isObj(p.done)) for (const [k, v] of Object.entries(p.done)) if (/^w\d{1,2}d\d{1,2}$/.test(k) && isObj(v)) done[k] = { t: num(v.t, 0, 0), ok: !!v.ok };
+    const levels = Array.isArray(p.levels) ? p.levels.filter(k => [0, 1, 2].includes(k)) : [];
+    out.push({ id: p.id.slice(0, 40), name: String(p.name || "Programme").slice(0, 60), src: String(p.src || "").slice(0, 80), at: num(p.at, 0, 0),
+      levels, level: levels.includes(p.level) ? p.level : (levels[0] || 0), weeks, done });
+  });
+  return out;
 }
 function loadState() {
   let raw = null;
@@ -4730,14 +4809,15 @@ function weeklyPrograms() {
 /* séries réussies = séries dont les répétitions (ou secondes) atteignent l'objectif */
 function programProgress(m) {
   const p = m && m.program; if (!p || !p.ex) return null;
-  const rows = p.ex.map(([id, sets, reps]) => {
-    const ok = ((m.sets[id] || []).filter(s => s.reps >= reps)).length;
+  const rows = p.ex.map(([id, sets, reps, u]) => {
+    /* programme importé : « jusqu'à 20 rép. » = chaque série faite compte ; durée prévue sur un exercice en répétitions aussi */
+    const ok = ((m.sets[id] || []).filter(s => p.custom || u === "s" || s.reps >= reps)).length;
     return { id, sets, reps, ok: Math.min(ok, sets), done: ok >= sets };
   });
   const doneN = rows.filter(r => r.done).length;
   return { p, rows, doneN, total: rows.length, done: rows.length > 0 && doneN === rows.length };
 }
-const progTarget = (p, id) => { const x = p && p.ex && p.ex.find(e => e[0] === id); return x ? { sets: x[1], reps: x[2] } : null; };
+const progTarget = (p, id) => { const x = p && p.ex && p.ex.find(e => e[0] === id); return x ? { sets: x[1], reps: x[2], sec: x[3] === "s", any: !!p.custom || x[3] === "s" } : null; };
 function launchProgram(lvl) {
   const p = weeklyPrograms().find(x => x.lvl === +lvl); if (!p || !p.ex.length) return;
   if (state.mission && missionTotals().sets) { toast("Une mission est en cours : terminez-la ou abandonnez-la d'abord.", true); return; }
@@ -4767,6 +4847,402 @@ function programsHTML() {
     }).join("")}</div>
   </section>`;
 }
+/* =====================================================================
+   Mon programme : import d'un programme PDF (semaines › jours › exercices)
+   Le PDF est lu sur l'appareil (pdf.js), rien n'est envoyé ailleurs.
+   ===================================================================== */
+const PDFJS_VER = "4.10.38";
+const PDFJS_BASE = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VER}/legacy/build/`;
+const PLAN_XP = 150;
+const PLAN_LEVELS = ["Débutant", "Intermédiaire", "Avancé"];
+let pdfLib = null;
+async function loadPdfJs() {
+  if (pdfLib) return pdfLib;
+  const m = await import(PDFJS_BASE + "pdf.min.mjs");
+  m.GlobalWorkerOptions.workerSrc = PDFJS_BASE + "pdf.worker.min.mjs";
+  return (pdfLib = m);
+}
+/* Texte de chaque page avec sa position (haut-gauche, en points). Le texte incliné (filigranes) est ignoré. */
+async function pdfRead(buf, onPage) {
+  const lib = await loadPdfJs();
+  const doc = await lib.getDocument({ data: buf, isEvalSupported: false }).promise;
+  let title = "";
+  try { const md = await doc.getMetadata(); title = (md && md.info && md.info.Title) || ""; } catch (e) {}
+  const pages = [], n = Math.min(doc.numPages, 200);
+  for (let i = 1; i <= n; i++) {
+    if (onPage) onPage(i, n);
+    const pg = await doc.getPage(i), vp = pg.getViewport({ scale: 1 }), tc = await pg.getTextContent();
+    const items = [];
+    tc.items.forEach(it => {
+      const s = String(it.str || "").replace(/\s+/g, " ").trim(); if (!s) return;
+      const t = lib.Util.transform(vp.transform, it.transform);
+      if (Math.abs(t[1]) > Math.abs(t[0]) * 0.12 || Math.abs(t[2]) > Math.abs(t[3]) * 0.12) return;
+      const h = Math.abs(t[3]) || it.height || 10;
+      items.push({ s, x: t[4], y: t[5] - h, w: it.width || s.length * h * 0.5, h });
+    });
+    pages.push(items);
+    pg.cleanup();
+  }
+  try { doc.destroy(); } catch (e) {}
+  return { title, pages, total: doc.numPages };
+}
+
+/* ---- Reconnaissance des noms d'exercices ---- */
+const sing = t => t.length > 3 && !/ss$/.test(t) ? t.replace(/s$/, "") : t;
+const normPhrase = t => normTxt(t).split(" ").filter(Boolean).map(sing).join(" ");
+let planDictCache = null;
+function planDict() {
+  if (planDictCache) return planDictCache;
+  const map = new Map();
+  EXERCISES.forEach(e => {
+    [e.name, ...String(EX_ALIAS[e.id] || "").split("|")].forEach(ph => {
+      const p = normPhrase(ph); if (!p || p.length < 3) return;
+      if (!map.has(p)) map.set(p, []);
+      if (!map.get(p).includes(e.id)) map.get(p).push(e.id);
+    });
+  });
+  return (planDictCache = [...map.entries()].map(([p, ids]) => ({ p, c: p.replace(/ /g, ""), n: p.split(" ").length, ids })).sort((a, z) => z.p.length - a.p.length));
+}
+/* distance d'édition minimale entre a et n'importe quel morceau de b (pour les fautes de frappe) */
+function approxIn(a, b) {
+  let prev = new Array(b.length + 1).fill(0), best = Infinity;
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    for (let j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    prev = cur;
+  }
+  for (let j = 0; j <= b.length; j++) best = Math.min(best, prev[j]);
+  return best;
+}
+function matchName(txt) {
+  const s = normPhrase(txt); if (!s || !/[a-z]{3}/.test(s) || /^\d+( \d+)*$/.test(s) || /^\d+ (set|serie|round|tour|rep|sec|s|x|min|minute)\b/.test(s)) return null;
+  const words = s.split(" ").length, padded = " " + s + " ", comp = s.replace(/ /g, "");
+  let best = null;
+  for (const d of planDict()) {
+    if (words > d.n + 3) continue;
+    let q = 0;
+    if (padded.includes(" " + d.p + " ")) q = d.p.length * 2;
+    else if (d.c.length >= 8 && comp.length <= d.c.length * 1.8) { const dist = approxIn(d.c, comp); if (dist <= Math.floor(d.c.length / 8)) q = d.p.length * 2 - dist * 3; }
+    if (q && (!best || q > best.q)) best = { q, d };
+  }
+  if (!best) return null;
+  const pl = curPlace(), ids = best.d.ids;
+  return { id: ids.find(id => canDo(id, pl)) || ids[0], q: best.q };
+}
+
+/* ---- Séries × répétitions ---- */
+const plainLow = t => String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/×/g, "x").replace(/\s+/g, " ");
+function parseDose(txt) {
+  const t = plainLow(txt);
+  const side = /\beach\b|per side|per leg|per arm|chaque|par cote|par jambe|par bras|unilateral/.test(t);
+  const unitOf = u => !u ? "" : /^(s|sec|seconde|second)/.test(u) ? "s" : /^min/.test(u) ? "min" : "reps";
+  let m = t.match(/(\d{1,2})\s*(?:sets?|series?|rounds?|tours?)\b[^\d]{0,18}(\d{1,4})(?:\s*(?:-|–|a|to)\s*(\d{1,4}))?\s*(reps?|repetitions?|rep\b|fois|s\b|sec|secondes?|seconds?|min)?/);
+  let sets = 0, reps = 0, unit = "";
+  if (m) { sets = +m[1]; reps = +(m[3] || m[2]); unit = unitOf(m[4]); }
+  else if ((m = t.match(/(\d{1,2})\s*x\s*(\d{1,4})(?:\s*(?:-|–|a)\s*(\d{1,4}))?\s*(reps?|repetitions?|s\b|sec|secondes?|seconds?|min)?/))) { sets = +m[1]; reps = +(m[3] || m[2]); unit = unitOf(m[4]); }
+  else if ((m = t.match(/(\d{1,4})(?:\s*(?:-|–|a|to)\s*(\d{1,4}))?\s*(reps?|repetitions?|rep\b)/))) { reps = +(m[2] || m[1]); unit = "reps"; }
+  else if ((m = t.match(/(\d{1,4})\s*(s\b|sec|secondes?|seconds?|min)/))) { reps = +m[1]; unit = unitOf(m[2]); }
+  if (unit === "min") { reps *= 60; unit = "s"; }
+  if (!sets && (m = t.match(/(\d{1,2})\s*(?:sets?|series?|rounds?|tours?)\b/))) sets = +m[1];
+  return { sets, reps, unit, side };
+}
+
+/* ---- Lecture de la structure : semaines, jours, tableaux ---- */
+const RE_WEEK = /^(?:w|wk|week|semaine|sem|s) ?(\d{1,2})$/;
+const RE_DAY = /^(?:day|jour|j|seance|session|workout|training|entrainement) ?(\d{1,2})( [a-z]+){0,2}$/;
+const RE_LEVEL = [/^(beginner|debutant|novice|niveau 1|level 1)$/, /^(intermediate|intermediaire|niveau 2|level 2)$/, /^(advanced|avance|confirme|expert|niveau 3|level 3)$/];
+const RE_EXHEAD = /^(exercise|exercises|exercice|exercices|exos?|movement|mouvement)$/;
+const RE_WARM = /^(warm ?up|echauffement|activation)$/;
+function parsePlan(doc) {
+  const out = new Map(); let curW = 0, lastDay = 0;
+  const unknown = new Map(), levelsSeen = new Set();
+  let pagesUsed = 0, textChars = 0;
+  /* mots présents sur la plupart des pages (filigranes, pieds de page) : jamais pris pour un exercice inconnu */
+  const tokPages = new Map();
+  doc.pages.forEach(items => { const seen = new Set(); items.forEach(i => normTxt(i.s).split(" ").forEach(t => { if (t.length >= 3) seen.add(t); })); seen.forEach(t => tokPages.set(t, (tokPages.get(t) || 0) + 1)); });
+  const noiseMin = Math.max(8, doc.pages.length * 0.5);
+  const isNoise = n => { const t = n.split(" ").filter(x => x.length >= 3); return !t.length || t.filter(x => (tokPages.get(x) || 0) >= noiseMin).length * 2 >= t.length; };
+  const addTo = (w, d) => { if (!out.has(w)) out.set(w, new Map()); const dm = out.get(w); if (!dm.has(d)) dm.set(d, []); return dm.get(d); };
+  doc.pages.forEach(items => {
+    items.forEach(i => { i.n = normTxt(i.s); textChars += i.n.length; });
+    const days = items.filter(i => RE_DAY.test(i.n) && i.n.split(" ").length <= 4).sort((a, z) => a.y - z.y);
+    if (!days.length) return;
+    pagesUsed++;
+    let wks = items.filter(i => RE_WEEK.test(i.n) && !/^s ?\d/.test(i.n));
+    if (!wks.length) wks = items.filter(i => /^s ?\d{1,2}$/.test(i.n) && i.h >= 9);
+    wks.sort((a, z) => a.y - z.y);
+    const wnum = i => +i.n.match(/(\d{1,2})$/)[1];
+    /* semaine et jour de chaque titre « Jour N » de la page */
+    days.forEach(h => {
+      h.dn = +h.n.match(RE_DAY)[1];
+      const above = wks.filter(w => w.y <= h.y + 4).pop(), any = wks[0];
+      const wm = above ? wnum(above) : any ? wnum(any) : 0;
+      if (wm) { if (wm !== curW) lastDay = 0; curW = wm; }
+      else if (!curW) curW = 1;
+      else if (h.dn < lastDay) curW++;
+      lastDay = h.dn; h.wk = curW;
+    });
+    const exHeads = items.filter(i => RE_EXHEAD.test(i.n));
+    const inExCol = (x0, x1, y0) => exHeads.some(h => y0 >= h.y + h.h * 0.5 && Math.abs((x0 + x1) / 2 - (h.x + h.w / 2)) <= 90);
+    const warm = items.filter(i => RE_WARM.test(i.n));
+    const lvHeads = items.map(i => { const k = RE_LEVEL.findIndex(r => r.test(i.n)); return k >= 0 ? { k, cx: i.x + i.w / 2, y: i.y } : null; }).filter(Boolean);
+    lvHeads.forEach(l => levelsSeen.add(l.k));
+    /* blocs de texte : éléments empilés dans la même colonne (nom sur deux lignes) */
+    const sorted = items.slice().sort((a, z) => a.y - z.y);
+    const below = i => sorted.find(j => j !== i && j.y > i.y && j.y - (i.y + i.h) < i.h * 0.75 && (Math.abs(j.x - i.x) < 10 || Math.abs((j.x + j.w / 2) - (i.x + i.w / 2)) < 10));
+    const cands = [];
+    sorted.forEach(i => {
+      if (RE_DAY.test(i.n) || RE_WEEK.test(i.n) || RE_EXHEAD.test(i.n)) return;
+      let grp = [i], j = i;
+      for (let k = 0; k < 3; k++) {
+        cands.push(grp.slice());
+        j = below(j); if (!j || RE_DAY.test(j.n) || RE_WEEK.test(j.n)) break; grp = grp.concat(j);
+      }
+    });
+    const used = new Set(), blocks = [];
+    const mk = (g, id) => { const x0 = Math.min(...g.map(x => x.x)), x1 = Math.max(...g.map(x => x.x + x.w)), y0 = g[0].y, y1 = Math.max(...g.map(x => x.y + x.h));
+      return { id, x0, x1, y0, y1, cy: (y0 + y1) / 2, txt: g.map(x => x.s).join(" "), dose: [] }; };
+    cands.map(g => ({ g, m: matchName(g.map(x => x.s).join(" ")) })).filter(c => c.m).sort((a, z) => z.m.q - a.m.q || a.g.length - z.g.length)
+      .forEach(c => {
+        if (c.g.some(x => used.has(x))) return;
+        const b = mk(c.g, c.m.id);
+        if (exHeads.length && !inExCol(b.x0, b.x1, b.y0)) return;
+        if (!exHeads.length && warm.some(w => Math.abs(b.y0 - w.y) < 45 && b.x0 > w.x)) return;
+        c.g.forEach(x => used.add(x));
+        blocks.push(b);
+      });
+    /* noms non reconnus dans une colonne « Exercice » */
+    if (exHeads.length) {
+      const rest = sorted.filter(i => !used.has(i) && inExCol(i.x, i.x + i.w, i.y) && i.y > Math.min(...exHeads.map(h => h.y + h.h)) && /[a-z]{3}/.test(i.n) && !/\d/.test(i.n)
+        && !RE_DAY.test(i.n) && !RE_WEEK.test(i.n) && !RE_EXHEAD.test(i.n) && !RE_WARM.test(i.n) && !exHeads.some(h => Math.abs(h.y - i.y) < 3)
+        && !isNoise(i.n) && !/[a-z]\.[a-z]|@|www|http/.test(i.s.toLowerCase()));
+      const seen = new Set();
+      rest.forEach(i => {
+        if (seen.has(i)) return;
+        const g = [i]; let j = i; while ((j = below(j)) && rest.includes(j)) { g.push(j); seen.add(j); }
+        if (g.length > 3) return;
+        g.forEach(x => used.add(x));
+        blocks.push(mk(g, null));
+      });
+    }
+    if (!blocks.length) return;
+    /* chiffres de la ligne : rattachés au nom le plus proche verticalement, à sa droite */
+    const cys = blocks.map(b => b.cy).sort((a, z) => a - z), gaps = cys.slice(1).map((v, k) => v - cys[k]).filter(g => g > 4).sort((a, z) => a - z);
+    const pitch = gaps.length ? Math.max(14, Math.min(60, gaps[Math.floor(gaps.length / 2)])) : 40;
+    items.forEach(i => {
+      if (used.has(i) || !/\d|each|side|chaque|cote/.test(i.n) || RE_DAY.test(i.n) || RE_WEEK.test(i.n)) return;
+      if (i.n.split(" ").length > 8) return;
+      let best = null;
+      blocks.forEach(b => { if (i.x < b.x0 + 4) return; const d = Math.abs((i.y + i.h / 2) - b.cy); if (d < pitch * 0.6 && (!best || d < best.d)) best = { b, d }; });
+      if (best) best.b.dose.push(i);
+    });
+    const rounds = items.filter(i => /^\d{1,2} (rounds?|tours?|circuits?)$/.test(i.n)).map(i => ({ n: +i.n.split(" ")[0], cx: i.x + i.w / 2 }));
+    blocks.sort((a, z) => a.cy - z.cy || a.x0 - z.x0).forEach(b => {
+      const h = days.filter(d => d.y <= b.y0 + 2).pop() || days[0];
+      const list = addTo(h.wk, h.dn);
+      const dose = b.dose.sort((a, z) => a.y - z.y || a.x - z.x);
+      let it;
+      if (lvHeads.length) {
+        const secs = dose.map(i => ({ v: (plainLow(i.s).match(/(\d{1,4})\s*(s\b|sec|secondes?|seconds?|min)/) || [])[1], u: /min/.test(plainLow(i.s)) ? 60 : 1, cx: i.x + i.w / 2 })).filter(x => x.v);
+        const lv = lvHeads.slice().sort((a, z) => a.cx - z.cx).map((L, k, arr) => {
+          const lo = k ? (arr[k - 1].cx + L.cx) / 2 : -1e9, hi = k < arr.length - 1 ? (L.cx + arr[k + 1].cx) / 2 : 1e9;
+          const mine = secs.filter(x => x.cx >= lo && x.cx < hi).sort((a, z) => a.cx - z.cx);
+          const r = rounds.filter(x => x.cx >= lo && x.cx < hi)[0];
+          return { k: L.k, sets: r ? r.n : 1, reps: mine.length ? +mine[0].v * mine[0].u : 0 };
+        }).filter(x => x.reps);
+        if (lv.length) { const f = lv[0]; it = { sets: f.sets, reps: f.reps, unit: "s", side: false, lv: [0, 1, 2].map(k => { const x = lv.find(y => y.k === k); return x ? { sets: x.sets, reps: x.reps } : null; }) }; }
+      }
+      if (!it) { const d = parseDose(dose.map(i => i.s).join(" ")); it = { sets: d.sets, reps: d.reps, unit: d.unit, side: d.side }; }
+      const e = b.id && EX[b.id];
+      if (!it.sets) it.sets = 3;
+      if (!it.reps) { it.reps = e ? e.defReps : 10; it.unit = e && e.type === "time" ? "s" : "reps"; it.guess = true; }
+      if (!it.unit) it.unit = e && e.type === "time" ? "s" : "reps";
+      it.sets = Math.max(1, Math.min(10, it.sets)); it.reps = Math.max(1, Math.min(3600, it.reps));
+      if (b.id) { if (!list.some(x => x.id === b.id)) list.push(Object.assign({ id: b.id, src: b.txt }, it)); }
+      else {
+        const key = normPhrase(b.txt);
+        if (!unknown.has(key)) unknown.set(key, { name: b.txt, occ: [] });
+        unknown.get(key).occ.push(Object.assign({ w: h.wk, d: h.dn }, it));
+      }
+    });
+  });
+  const weeks = [...out.entries()].sort((a, z) => a[0] - z[0]).map(([n, dm]) => ({ n, days: [...dm.entries()].sort((a, z) => a[0] - z[0]).map(([dn, items]) => ({ n: dn, items })).filter(d => d.items.length) })).filter(w => w.days.length);
+  return { weeks, unknown: [...unknown.values()], levels: [...levelsSeen].sort(), pagesUsed, noText: textChars < 40 };
+}
+
+/* ---- Import : fichier → lecture → vérification ---- */
+async function planImportFile(file) {
+  if (!file) return;
+  if (!/\.pdf$/i.test(file.name || "") && file.type !== "application/pdf") { toast("Le programme doit être un fichier PDF.", true); return; }
+  if (file.size > 40 * 1024 * 1024) { toast("PDF trop lourd (40 Mo maximum).", true); return; }
+  const zone = $("#pdf-status");
+  const say = t => { const z = $("#pdf-status"); if (z) z.textContent = t; };
+  say("Ouverture du lecteur PDF…"); ui.planBusy = true;
+  document.querySelectorAll(".pdf-drop").forEach(d => d.classList.add("busy"));
+  try {
+    const buf = new Uint8Array(await file.arrayBuffer());
+    let doc;
+    try { doc = await pdfRead(buf, (i, n) => say(`Lecture : page ${i} / ${n}`)); }
+    catch (e) {
+      if (!pdfLib) throw new Error("Lecteur PDF indisponible : vérifiez la connexion internet puis réessayez.");
+      throw new Error(/password/i.test(e && e.name) ? "Ce PDF est protégé par un mot de passe." : "Ce fichier PDF n'a pas pu être lu.");
+    }
+    say("Analyse du programme…");
+    const r = parsePlan(doc);
+    if (r.noText) throw new Error("Ce PDF ne contient pas de texte lisible (scan ou photo). Il faut un PDF avec du texte sélectionnable.");
+    if (!r.weeks.length && !r.unknown.length) throw new Error("Aucun jour d'entraînement trouvé. Le programme doit indiquer les jours (« Jour 1 », « Day 1 »…) et les exercices.");
+    const base = (file.name || "Programme").replace(/\.pdf$/i, "").replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
+    ui.planDraft = Object.assign(r, { name: (doc.title || base).slice(0, 60), src: (file.name || "").slice(0, 80), map: {}, level: 0, pages: doc.total });
+    say("");
+    openPlanReview();
+  } catch (e) {
+    say(""); toast(e.message || "Import impossible.", true); sfx("error");
+  } finally {
+    ui.planBusy = false; document.querySelectorAll(".pdf-drop").forEach(d => d.classList.remove("busy"));
+  }
+}
+function doseTxt(e, it, lvl) {
+  const x = it.lv && it.lv[lvl] ? Object.assign({}, it, it.lv[lvl]) : it;
+  return `${x.sets} × ${x.unit === "s" ? x.reps + " s" : x.reps}${it.side ? " / côté" : ""}`;
+}
+function exOptions(sel) {
+  return CATS.map(c => `<optgroup label="${c.label}">${exByCat(c.id).map(e => `<option value="${e.id}" ${sel === e.id ? "selected" : ""}>${esc(e.name)}</option>`).join("")}</optgroup>`).join("");
+}
+function planDraftWeeks(dr) {
+  const weeks = dr.weeks.map(w => ({ n: w.n, days: w.days.map(d => ({ n: d.n, items: d.items.map(x => Object.assign({}, x)) })) }));
+  dr.unknown.forEach(u => {
+    const id = dr.map[normPhrase(u.name)]; if (!id || !EX[id]) return;
+    u.occ.forEach(o => {
+      let w = weeks.find(x => x.n === o.w); if (!w) { w = { n: o.w, days: [] }; weeks.push(w); }
+      let d = w.days.find(x => x.n === o.d); if (!d) { d = { n: o.d, items: [] }; w.days.push(d); }
+      if (!d.items.some(x => x.id === id)) d.items.push(Object.assign({ id, src: u.name }, o, { w: undefined, d: undefined }));
+    });
+  });
+  weeks.sort((a, z) => a.n - z.n).forEach(w => w.days.sort((a, z) => a.n - z.n));
+  return weeks.filter(w => w.days.some(d => d.items.length));
+}
+function openPlanReview() {
+  const dr = ui.planDraft; if (!dr) return;
+  ui.sheetEx = null; ui.planReview = true;
+  const weeks = planDraftWeeks(dr);
+  const nDays = weeks.reduce((a, w) => a + w.days.length, 0);
+  const exSet = new Set(); weeks.forEach(w => w.days.forEach(d => d.items.forEach(x => exSet.add(x.id))));
+  const lvls = dr.levels;
+  $("#sheet-in").innerHTML = `
+    <div class="grip" aria-hidden="true"></div>
+    <div class="sheet-top"><div><div class="eyebrow">IMPORT PDF · VÉRIFICATION</div><h2>${weeks.length} SEMAINE${weeks.length > 1 ? "S" : ""} · ${nDays} SÉANCE${nDays > 1 ? "S" : ""}</h2></div>
+      <button class="x-close" data-act="plan-cancel" aria-label="Fermer sans enregistrer">✕</button></div>
+    <div class="field"><label for="plan-name">NOM DU PROGRAMME</label><input class="txt" id="plan-name" maxlength="60" value="${esc(dr.name)}"></div>
+    <p class="hint">${esc(dr.src)} · ${dr.pages} pages · ${exSet.size} exercices reconnus. Vérifiez ci-dessous ce que l'application a compris, puis enregistrez.</p>
+    ${lvls.length > 1 ? `<div class="sec"><h3>NIVEAU DES CIRCUITS</h3><p class="hint">Le PDF propose plusieurs niveaux pour les circuits chronométrés. Modifiable ensuite.</p>
+      <div class="seg ${lvls.length === 3 ? "n3" : ""}">${lvls.map(k => `<button class="${dr.level === k ? "on" : ""}" data-act="plan-dlevel" data-k="${k}">${PLAN_LEVELS[k].toUpperCase()}</button>`).join("")}</div></div>` : ""}
+    ${dr.unknown.length ? `<div class="sec plan-unk"><h3>À ASSOCIER · ${dr.unknown.length}</h3><p class="hint">Ces noms n'ont pas été reconnus. Choisissez l'exercice correspondant, ou laissez « Ignorer ».</p>
+      ${dr.unknown.map(u => { const k = normPhrase(u.name); return `<label class="unk-row"><span>« ${esc(u.name)} »<small>${u.occ.length} séance${u.occ.length > 1 ? "s" : ""}</small></span>
+        <select data-unk="${esc(k)}"><option value="">Ignorer</option>${exOptions(dr.map[k])}</select></label>`; }).join("")}</div>` : ""}
+    <div class="sec"><h3>CONTENU DÉTECTÉ</h3>
+      ${weeks.map((w, wi) => `<details class="plan-wk" ${wi === 0 ? "open" : ""}><summary>SEMAINE ${w.n}<span>${w.days.length} séance${w.days.length > 1 ? "s" : ""}</span></summary>
+        ${w.days.map(d => `<div class="plan-day"><b>JOUR ${d.n}</b><ul>${d.items.map(x => { const e = EX[x.id]; return `<li><span>${esc(e.name)}${normPhrase(x.src) !== normPhrase(e.name) ? `<small>« ${esc(x.src)} »</small>` : ""}</span><em class="${x.guess ? "guess" : ""}">${doseTxt(e, x, dr.level)}${x.guess ? " ?" : ""}</em></li>`; }).join("")}</ul></div>`).join("")}
+      </details>`).join("")}
+      ${weeks.some(w => w.days.some(d => d.items.some(x => x.guess))) ? `<p class="hint">« ? » : séries non trouvées dans le PDF, valeurs par défaut de l'exercice.</p>` : ""}
+    </div>
+    <button class="btn btn-neon btn-wide" data-act="plan-save" ${weeks.length ? "" : "disabled"}>ENREGISTRER LE PROGRAMME</button>
+    <button class="btn btn-quiet btn-wide" data-act="plan-cancel">ANNULER</button>`;
+  showSheet("#plan-name");
+}
+function planSave() {
+  const dr = ui.planDraft; if (!dr) return;
+  const nm = $("#plan-name"); if (nm && nm.value.trim()) dr.name = nm.value.trim().slice(0, 60);
+  const weeks = planDraftWeeks(dr).map(w => ({ n: w.n, days: w.days.map(d => ({ n: d.n, items: d.items.map(x => {
+    const o = { id: x.id, sets: x.sets, reps: x.reps, unit: EX[x.id].type === "time" ? "s" : x.unit === "s" ? "s" : "reps" };
+    if (x.side) o.side = true;
+    if (x.lv && x.lv.some(Boolean)) o.lv = x.lv.map(l => l ? { sets: l.sets, reps: l.reps } : null);
+    return o; }) })) }));
+  if (!weeks.length) { toast("Rien à enregistrer.", true); return; }
+  const id = "p" + Date.now().toString(36);
+  state.programs = (state.programs || []).concat({ id, name: dr.name, src: dr.src, at: Date.now(), levels: dr.levels.length > 1 ? dr.levels : [], level: dr.level || 0, weeks, done: {} }).slice(-10);
+  state.planSel = id;
+  ui.planDraft = null; ui.planReview = false; ui.planWeek = null;
+  save(); closeSheet(); sfx("reward");
+  ui.exView = "plan"; render();
+  toast(`Programme « ${dr.name} » enregistré.`);
+}
+
+/* ---- Utilisation : choisir un jour → loadout + objectifs → séance ---- */
+const planCur = () => { const ps = state.programs || []; return ps.find(p => p.id === state.planSel) || ps[ps.length - 1] || null; };
+const planKey = (w, d) => `w${w.n}d${d.n}`;
+function planDose(P, it) { return it.lv && it.lv[P.level] ? { sets: it.lv[P.level].sets, reps: it.lv[P.level].reps } : { sets: it.sets, reps: it.reps }; }
+function planNext(P) {
+  for (const w of P.weeks) for (const d of w.days) if (!P.done[planKey(w, d)]) return { w, d };
+  return null;
+}
+function launchPlanDay(wn, dn) {
+  const P = planCur(); if (!P) return;
+  const w = P.weeks.find(x => x.n === +wn), d = w && w.days.find(x => x.n === +dn); if (!d) return;
+  if (state.mission && missionTotals().sets) { toast("Une mission est en cours : terminez-la ou abandonnez-la d'abord.", true); return; }
+  const items = d.items.filter(x => EX[x.id]);
+  if (!items.length) return;
+  state.mission = null;
+  state.loadoutSession = items.map(x => x.id);
+  ensureMission();
+  const ex = items.map(x => { const ds = planDose(P, x), r = [x.id, ds.sets, ds.reps]; if (x.unit === "s" && EX[x.id].type !== "time") r.push("s"); return r; });
+  state.mission.program = { lvl: 0, tag: `S${w.n} · J${d.n}`, name: P.name.slice(0, 30), xp: PLAN_XP, ex, custom: { pid: P.id, key: planKey(w, d) } };
+  items.forEach(x => { const ds = planDose(P, x), dr = getDraft(x.id), e = EX[x.id];
+    state.mission.draft[x.id] = { kg: e.type === "load" ? dr.kg : 0, reps: x.unit === "s" && e.type !== "time" ? dr.reps : ds.reps }; });
+  save(); sfx("confirm");
+  go("briefing");
+  toast(`Semaine ${w.n} · Jour ${d.n} chargé : +${PLAN_XP} XP si toutes les séries sont faites.`);
+}
+function planHTML() {
+  const ps = state.programs || [], P = planCur();
+  const drop = (big) => `<label class="pdf-drop ${big ? "big" : ""}" for="pdf-input">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3-3 3 3"/></svg>
+      <b>${big ? "DÉPOSER LE PDF DU PROGRAMME" : "IMPORTER UN AUTRE PDF"}</b>
+      <span>${big ? "Glissez le fichier ici ou touchez pour le choisir" : "Toucher pour choisir un fichier"}</span>
+      <em id="pdf-status" aria-live="polite"></em>
+      <input type="file" id="pdf-input" accept="application/pdf,.pdf" hidden></label>`;
+  if (!P) return `<section class="block plan-empty">
+    <div class="prog-head"><span class="eyebrow">MON PROGRAMME</span></div>
+    <p class="hint">Importez le PDF de votre programme : l'application repère les <b>semaines</b>, les <b>jours</b>, les <b>exercices</b> et les <b>séries × répétitions</b>. Vous vérifiez avant d'enregistrer, puis il suffit de toucher un jour pour lancer la séance.</p>
+    ${drop(true)}
+    <p class="hint small">Le PDF doit contenir du texte sélectionnable (pas une photo ni un scan). Il est lu sur cet appareil.</p></section>`;
+  const nx = planNext(P);
+  const wsel = P.weeks.find(w => w.n === ui.planWeek) || (nx ? nx.w : P.weeks[0]);
+  const doneN = Object.keys(P.done).length, total = P.weeks.reduce((a, w) => a + w.days.length, 0);
+  return `<section class="block plan">
+    ${ps.length > 1 ? `<div class="plan-pick">${ps.map(p => `<button class="chip ${p.id === P.id ? "on" : ""}" data-act="plan-sel" data-id="${p.id}">${esc(p.name)}</button>`).join("")}</div>` : ""}
+    <article class="panel plan-head">
+      <div class="eyebrow">MON PROGRAMME · ${doneN}/${total} SÉANCES</div>
+      <h3>${esc(P.name)}</h3>
+      <div class="mini-bar"><i style="width:${total ? doneN / total * 100 : 0}%"></i></div>
+      ${nx ? `<div class="plan-next"><span>PROCHAINE SÉANCE<b>Semaine ${nx.w.n} · Jour ${nx.d.n}</b></span><button class="btn btn-neon" data-act="plan-launch" data-w="${nx.w.n}" data-d="${nx.d.n}">LANCER</button></div>`
+        : `<p class="hint"><b>Programme terminé.</b> Toutes les séances ont été faites. Vous pouvez en relancer une ou importer le programme suivant.</p>`}
+      ${P.levels.length ? `<div class="plan-lv"><span class="eyebrow">NIVEAU DES CIRCUITS</span><div class="seg ${P.levels.length === 3 ? "n3" : ""}">${P.levels.map(k => `<button class="${P.level === k ? "on" : ""}" data-act="plan-level" data-k="${k}">${PLAN_LEVELS[k].toUpperCase()}</button>`).join("")}</div></div>` : ""}
+    </article>
+    <div class="plan-weeks" role="tablist">${P.weeks.map(w => { const dn = w.days.filter(d => P.done[planKey(w, d)]).length;
+      return `<button role="tab" aria-selected="${w === wsel}" class="${w === wsel ? "on" : ""} ${dn === w.days.length ? "full" : ""}" data-act="plan-week" data-w="${w.n}">S${w.n}<small>${dn}/${w.days.length}</small></button>`; }).join("")}</div>
+    <div class="plan-days">${wsel.days.map(d => { const k = planKey(wsel, d), dn = P.done[k], isNext = nx && nx.w === wsel && nx.d === d;
+      return `<article class="panel plan-dcard ${dn ? "done" : ""} ${isNext ? "next" : ""}">
+        <div class="pd-top"><b>JOUR ${d.n}</b><span>${dn ? `✓ ${dn.ok ? "FAITE" : "FAITE EN PARTIE"} · ${new Date(dn.t).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}` : isNext ? "PROCHAINE" : `${d.items.length} exercices`}</span></div>
+        <ul class="prog-ex">${d.items.map(x => { const e = EX[x.id]; return e ? `<li><button class="link-ex" data-act="sheet-ex" data-id="${x.id}">${esc(e.name)}</button><b>${doseTxt(e, x, P.level)}</b></li>` : ""; }).join("")}</ul>
+        <button class="btn ${isNext ? "btn-neon" : "btn-ghost"}" data-act="plan-launch" data-w="${wsel.n}" data-d="${d.n}">${dn ? "REFAIRE" : "LANCER"} LE JOUR ${d.n}</button>
+      </article>`; }).join("")}</div>
+    ${drop(false)}
+    <div class="danger-zone"><button class="btn btn-quiet hold" data-hold="plan-del" data-ms="1000"><span class="stack">SUPPRIMER CE PROGRAMME<small>APPUI LONG 1 S</small></span></button></div>
+  </section>`;
+}
+function planDelete() {
+  const P = planCur(); if (!P) return;
+  state.programs = state.programs.filter(p => p.id !== P.id);
+  state.planSel = state.programs.length ? state.programs[state.programs.length - 1].id : null;
+  ui.planWeek = null; save(); render(); toast(`Programme « ${P.name} » supprimé.`);
+}
+/* fin de mission : la séance du programme est cochée */
+function planMarkDone(m, progRes) {
+  const c = m && m.program && m.program.custom; if (!c) return;
+  const P = (state.programs || []).find(p => p.id === c.pid); if (!P) return;
+  const prev = P.done[c.key];
+  P.done[c.key] = { t: Date.now(), ok: !!(progRes && progRes.done) || !!(prev && prev.ok) };
+}
 function renderSystems() {
   const st = state, last = lastByCat(), pl = curPlace(), lo = st.loadoutSession.length;
   const cards = CATS.map(c => {
@@ -4787,8 +5263,8 @@ function renderSystems() {
     <div class="cmd-r">${audBtn()}</div>
   </header>
   ${st.mission ? `<button class="banner" data-act="go" data-to="briefing"><div><div class="d">MISSION EN COURS · ${hms(Date.now() - st.mission.start)}</div><p>Reprendre le briefing</p></div><span class="go">REPRENDRE →</span></button>` : ""}
-  <div class="seg ex-seg" role="tablist" aria-label="Choisir">${[["sys", "PAR SYSTÈME"], ["prog", "SÉANCES PRÊTES"]].map(([k, l]) => `<button role="tab" aria-selected="${(ui.exView || "sys") === k}" class="${(ui.exView || "sys") === k ? "on" : ""}" data-act="ex-view" data-v="${k}">${l}</button>`).join("")}</div>
-  ${ui.exView === "prog" ? programsHTML() : `<button class="search search-fake" data-act="search-open"><svg class="s-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Rechercher un exercice…</span></button>
+  <div class="seg ex-seg" role="tablist" aria-label="Choisir">${[["sys", "SYSTÈMES"], ["prog", "SÉANCES"], ["plan", "PROGRAMME"]].map(([k, l]) => `<button role="tab" aria-selected="${(ui.exView || "sys") === k}" class="${(ui.exView || "sys") === k ? "on" : ""}" data-act="ex-view" data-v="${k}">${l}</button>`).join("")}</div>
+  ${ui.exView === "plan" ? planHTML() : ui.exView === "prog" ? programsHTML() : `<button class="search search-fake" data-act="search-open"><svg class="s-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Rechercher un exercice…</span></button>
   ${favoritesBlock()}
   <section class="block">
     <h2 class="h2">SYSTÈMES MUSCULAIRES</h2>
@@ -4950,7 +5426,7 @@ function showSheet(focusSel) {
 function closeSheet() {
   const w = $("#sheet"); if (w.hidden) return;
   sfx("close");
-  w.classList.remove("open"); ui.sheetEx = null; ui.settingsOpen = false; stopIllus();
+  w.classList.remove("open"); ui.sheetEx = null; ui.settingsOpen = false; ui.planReview = false; stopIllus();
   setTimeout(() => { if (!w.classList.contains("open")) w.hidden = true; }, reduced() ? 0 : 320);
 }
 
@@ -5990,7 +6466,7 @@ function renderBriefing() {
   ${state.tips.briefing || !lo.length ? "" : `<div class="tip"><p>Réglez la charge et les répétitions, puis <b>VALIDER SÉRIE</b> : le repos démarre seul. <b>TERMINER LA MISSION</b> encaisse l'XP.</p><button class="btn btn-quiet btn-sm" data-act="dismiss-tip" data-tip="briefing">COMPRIS</button></div>`}
   ${hasAdr && m ? `<button class="adren ${m.adrenaline}" data-act="adrenaline"><div><div class="d">INJECTION D'ADRÉNALINE</div><p>${m.adrenaline === "armed" ? "Armée : la prochaine série rapporte ×2 XP. Toucher pour annuler." : m.adrenaline === "used" ? "Déjà utilisée pendant cette mission." : "Aptitude active, une fois par mission."}</p></div><span class="d">${m.adrenaline === "armed" ? "ARMÉE" : m.adrenaline === "used" ? "UTILISÉE" : "ARMER"}</span></button>` : ""}
   ${(() => { const pr = programProgress(m); if (!pr) return "";
-    return `<section class="panel prog-bar ${pr.done ? "ok" : ""}"><div><span class="eyebrow">SÉANCE PRÊTE · ${pr.p.tag}</span><b>${pr.p.name}</b></div>
+    return `<section class="panel prog-bar ${pr.done ? "ok" : ""}"><div><span class="eyebrow">${pr.p.custom ? "MON PROGRAMME" : "SÉANCE PRÊTE"} · ${pr.p.tag}</span><b>${pr.p.name}</b></div>
       <div class="pb-r"><b>${pr.doneN}/${pr.total}</b><span>${pr.done ? "BONUS ACQUIS" : `+${pr.p.xp} XP SI COMPLÈTE`}</span></div>
       <div class="mini-bar"><i style="width:${pr.doneN / pr.total * 100}%"></i></div></section>`; })()}
   ${lo.length ? `<div class="ex-cards">${lo.map(id => exCardHTML(EX[id], b)).join("")}</div>` :
@@ -6017,8 +6493,8 @@ function exCardHTML(e, b) {
     <header><div><div class="eyebrow">${CAT_BY_ID[e.cat].code} · ×${e.coef.toFixed(2)} · REPOS ${restFor(e, b)} S</div><button class="ex-link" data-act="sheet-ex" data-id="${e.id}" aria-label="Voir la fiche et le schéma de ${esc(e.name)}">${esc(e.name)}<span class="i" aria-hidden="true">i</span></button></div>
       <span class="setc">${plural(sets.length, "SÉRIE")}</span></header>
     ${(() => { const m = state.mission, tg = m && progTarget(m.program, e.id); if (!tg) return "";
-      const ok = Math.min(tg.sets, sets.filter(s => s.reps >= tg.reps).length);
-      return `<div class="prog-goal ${ok >= tg.sets ? "ok" : ""}"><span>OBJECTIF SÉANCE</span><b>${tg.sets} × ${e.type === "time" ? tg.reps + " s" : tg.reps + " rép."}</b><em>${ok >= tg.sets ? "✓ ACCOMPLI" : `${ok}/${tg.sets}`}</em></div>`; })()}
+      const ok = Math.min(tg.sets, sets.filter(s => tg.any || s.reps >= tg.reps).length);
+      return `<div class="prog-goal ${ok >= tg.sets ? "ok" : ""}"><span>OBJECTIF SÉANCE</span><b>${tg.sets} × ${e.type === "time" || tg.sec ? tg.reps + " s" : (m.program.custom ? "jusqu'à " : "") + tg.reps + " rép."}</b><em>${ok >= tg.sets ? "✓ ACCOMPLI" : `${ok}/${tg.sets}`}</em></div>`; })()}
     ${sets.length ? "" : suggestionHTML(e)}
     ${sets.length ? "" : warmupHTML(e, d.kg)}
     ${singleDbMode(e.id) ? `<p class="bw-note">Une seule haltère : faites toutes les répétitions d'un côté, puis de l'autre. Saisissez les répétitions par bras.</p>` : ""}
@@ -6486,7 +6962,8 @@ function finishMission() {
   const bonusPct = 10 + b.missionBonus + sBonus;
   const bonusXp = Math.round(t.xp * bonusPct / 100);
   const progRes = programProgress(m), progXp = progRes && progRes.done ? progRes.p.xp : 0;
-  if (progXp) { st.life.programs++; const pk = "w" + weekIndex(weekStartOf()) + "l" + progRes.p.lvl; st.life.programsBy[pk] = (st.life.programsBy[pk] || 0) + 1; }
+  if (progXp) { st.life.programs++; if (!progRes.p.custom) { const pk = "w" + weekIndex(weekStartOf()) + "l" + progRes.p.lvl; st.life.programsBy[pk] = (st.life.programsBy[pk] || 0) + 1; } }
+  planMarkDone(m, progRes);
   const totalXp = t.xp + bonusXp + progXp;
   const oldLevel = st.level, oldXp = st.xp, oldStats = { ...st.stats };
   const oldPct = oldXp / xpNeeded(oldLevel) * 100;
@@ -6704,6 +7181,13 @@ const actions = {
   "suivi": el => { ui.suivi = el.dataset.v; render(); },
   "ex-view": el => { ui.exView = el.dataset.v; render(); },
   "prog-launch": el => launchProgram(el.dataset.id),
+  "plan-launch": el => launchPlanDay(el.dataset.w, el.dataset.d),
+  "plan-week": el => { ui.planWeek = +el.dataset.w; render(); },
+  "plan-sel": el => { state.planSel = el.dataset.id; ui.planWeek = null; save(); render(); },
+  "plan-level": el => { const P = planCur(); if (!P) return; P.level = +el.dataset.k; save(); render(); },
+  "plan-dlevel": el => { if (!ui.planDraft) return; const nm = $("#plan-name"); if (nm) ui.planDraft.name = nm.value; ui.planDraft.level = +el.dataset.k; const sc = $("#sheet-in").scrollTop; openPlanReview(); $("#sheet-in").scrollTop = sc; },
+  "plan-save": () => planSave(),
+  "plan-cancel": () => { ui.planDraft = null; ui.planReview = false; closeSheet(); },
   "mission-sheet": el => openMissionSheet(+el.dataset.i),
   "journal-all": () => { ui.journalAll = true; render(); },
   "recs-all": () => { ui.recsAll = true; render(); },
@@ -6837,6 +7321,7 @@ const actions = {
 };
 function keepNoteText() { const t = $("#note-text"); if (t && ui.report) ui.report.note.text = t.value.slice(0, 200); }
 const holdActions = {
+  "plan-del": () => planDelete(),
   "undo-mission": () => undoLastMission(),
   "squad-leave": () => squadLeave(),
   "squad-kick": el => squadKick(el.dataset.id),
@@ -6970,8 +7455,24 @@ document.addEventListener("input", e => {
   if (t.id === "sq-name") squad.draftName = t.value;
   if (t.id === "sq-code") squad.draftCode = t.value;
 });
+const planDropOk = e => ui.screen === "systems" && ui.exView === "plan" && e.dataTransfer && [...(e.dataTransfer.types || [])].includes("Files");
+document.addEventListener("dragover", e => { if (!planDropOk(e)) return; e.preventDefault(); document.querySelectorAll(".pdf-drop").forEach(d => d.classList.add("over")); });
+document.addEventListener("dragleave", e => { if (e.target === document.documentElement || !e.relatedTarget) document.querySelectorAll(".pdf-drop").forEach(d => d.classList.remove("over")); });
+document.addEventListener("drop", e => {
+  if (!planDropOk(e)) return;
+  e.preventDefault(); document.querySelectorAll(".pdf-drop").forEach(d => d.classList.remove("over"));
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (ui.planBusy) return;
+  if (f) planImportFile(f);
+});
 document.addEventListener("change", e => {
   const t = e.target;
+  if (t.id === "pdf-input") { const f = t.files && t.files[0]; t.value = ""; if (f) planImportFile(f); return; }
+  if (t.dataset && t.dataset.unk !== undefined && ui.planDraft) {
+    const nm = $("#plan-name"); if (nm) ui.planDraft.name = nm.value;
+    if (t.value) ui.planDraft.map[t.dataset.unk] = t.value; else delete ui.planDraft.map[t.dataset.unk];
+    const sc = $("#sheet-in").scrollTop; openPlanReview(); $("#sheet-in").scrollTop = sc; return;
+  }
   if (t.id === "snd-sfxvol") { sfx("confirm"); return; }
   if (t.id === "set-callsign") {
     if (commitName(t.value)) { toast("Nom de code mis à jour."); render(); } else t.value = state.operator.callsign;
