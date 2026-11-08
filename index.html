@@ -396,6 +396,36 @@ p{margin:0}
 
 /* ---------- rest ---------- */
 .rest{position:fixed;inset:0;z-index:80;background:rgba(var(--void-rgb),.96);overflow-y:auto;padding:calc(20px + env(safe-area-inset-top,0px)) var(--gut-r) calc(20px + env(safe-area-inset-bottom,0px)) var(--gut-l)}
+.min-btn{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px));z-index:2;display:inline-flex;align-items:center;gap:6px;padding:8px 12px 8px 9px;border:1px solid var(--line-hi);border-radius:4px;background:var(--panel-2);color:var(--text);font-family:var(--f-display);font-size:11px;letter-spacing:.12em}
+.min-btn svg{width:16px;height:16px;fill:none;stroke:var(--neon);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.min-btn:hover{border-color:var(--neon)}
+.min-btn[hidden],.mini[hidden]{display:none}
+.ef-prep{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%}
+.ef-prep>span{font-family:var(--f-display);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.ef-prep>span b{color:var(--neon)}
+.ef-prep .rest-ctrl{grid-template-columns:1fr 1fr 1fr}
+.mini{position:fixed;left:calc(10px + env(safe-area-inset-left,0px));right:calc(10px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:45;max-width:548px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:8px;background:var(--panel-2);border:1px solid var(--neon);border-radius:6px;box-shadow:0 8px 28px rgba(0,0,0,.45),0 0 18px rgba(var(--neon-rgb),.25)}
+body:has(.actionbar) .mini{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+body.mini-on .app.has-footer{padding-bottom:calc(184px + env(safe-area-inset-bottom,0px))}
+.mini-main{display:flex;align-items:center;gap:10px;min-width:0;text-align:left;color:var(--text)}
+.mini-ring{flex:none;width:40px;height:40px}
+.mini-ring svg{width:40px;height:40px;transform:rotate(-90deg)}
+.mini-ring circle{fill:none;stroke-width:4}
+.mini-ring .bg{stroke:var(--line-hi)}
+.mini-ring .fg{stroke:var(--neon);stroke-linecap:round;transition:stroke-dashoffset .25s linear}
+.mini-txt{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:8px;align-items:baseline;min-width:0;flex:1}
+.mini-txt small{font-family:var(--f-display);font-size:10px;letter-spacing:.14em;color:var(--muted)}
+.mini-txt b{font-family:var(--f-display);font-size:20px;color:var(--neon);grid-row:span 2;order:-1;font-variant-numeric:tabular-nums}
+.mini-txt em{font-style:normal;font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-up{flex:none;width:18px;height:18px;fill:none;stroke:var(--muted);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mini-act{align-self:stretch;padding:0 14px;border:1px solid var(--neon);border-radius:4px;color:var(--neon);font-family:var(--f-display);font-size:12px;letter-spacing:.12em;min-width:72px}
+.mini.done{animation:miniPulse 1.4s ease-in-out infinite}
+.mini.done .mini-act{background:var(--neon);color:var(--void)}
+@keyframes miniPulse{50%{box-shadow:0 8px 28px rgba(0,0,0,.45),0 0 30px rgba(var(--neon-rgb),.6)}}
+@media (prefers-reduced-motion:reduce){.mini.done{animation:none}}
+.fin-arm{position:relative;overflow:hidden;background:linear-gradient(90deg,var(--neon) calc(var(--p) * 100%),rgba(var(--neon-rgb),.35) calc(var(--p) * 100%))}
+.fin-arm small{opacity:.85}
+.fin-arm b{font:inherit;color:inherit}
 .rest-in{max-width:440px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;min-height:100%;justify-content:center}
 .rest h2{font-family:var(--f-display);font-size:20px;letter-spacing:.2em;color:var(--neon)}
 .gain{font-family:var(--f-display);font-weight:900;font-size:30px;color:var(--neon);text-shadow:0 0 18px var(--neon-glow);animation:pop .5s}
@@ -1427,6 +1457,7 @@ if ("serviceWorker" in navigator) window.addEventListener("load", () => navigato
 </div>
 
 <div id="rest" class="rest" hidden role="dialog" aria-modal="true" aria-labelledby="rest-title">
+  <button class="min-btn" data-act="rest-min" aria-label="Réduire le chrono pour voir la mission"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>RÉDUIRE</button>
   <div class="rest-in">
     <div class="eyebrow">CHRONOMÈTRE TACTIQUE</div>
     <h2 id="rest-title">REPOS TACTIQUE</h2>
@@ -1453,6 +1484,15 @@ if ("serviceWorker" in navigator) window.addEventListener("load", () => navigato
     <button class="btn btn-neon btn-wide" data-act="rest-skip" id="rest-btn">PASSER LE REPOS</button>
     <p class="rest-note" id="rest-note"></p>
   </div>
+</div>
+
+<div id="mini" class="mini" hidden>
+  <button class="mini-main" data-act="mini-open" aria-label="Agrandir le chrono">
+    <span class="mini-ring"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bg" cx="20" cy="20" r="16"/><circle class="fg" id="mini-fg" cx="20" cy="20" r="16" stroke-dasharray="100.53" stroke-dashoffset="0"/></svg></span>
+    <span class="mini-txt"><small id="mini-lbl">REPOS</small><b id="mini-time">0:00</b><em id="mini-sub"></em></span>
+    <svg class="mini-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+  <button class="mini-act" data-act="mini-act" id="mini-act">PASSER</button>
 </div>
 
 <div id="flash" class="flash"></div>
@@ -2280,7 +2320,7 @@ async function initSync() {
 }
 
 let state = loadState();
-const ui = { screen: "hq", tab: "fiche", filter: null, report: null, sheetEx: null, delArm: null };
+const ui = { screen: "hq", tab: "fiche", filter: null, report: null, sheetEx: null, delArm: null, mini: null, finishAt: 0 };
 
 /* =====================================================================
    Utilitaires
@@ -5956,8 +5996,10 @@ function renderBriefing() {
   ${lo.length ? `<div class="ex-cards">${lo.map(id => exCardHTML(EX[id], b)).join("")}</div>` :
     `<div class="panel empty-lo"><div class="eyebrow">LOADOUT VIDE</div><p class="hint">Aucun exercice sélectionné pour cette mission.</p><button class="btn btn-ghost" data-act="go" data-to="catalog">OUVRIR LE CATALOGUE</button></div>`}
   <footer class="actionbar"><div class="actionbar-in">
-    <button class="btn btn-alert hold" data-hold="abort-mission" data-ms="800" aria-label="Abandonner la mission, appui long requis"><span class="stack">ABANDON<small>APPUI LONG</small></span></button>
-    <button class="btn btn-neon" data-act="finish-mission" ${t.sets ? "" : "disabled"}>TERMINER LA MISSION</button>
+    ${ui.finishAt ? `<button class="btn btn-ghost" data-act="finish-cancel">ANNULER</button>
+    <button class="btn btn-neon fin-arm" id="finish-go" data-act="finish-now" style="--p:0"><span class="stack"><span>VALIDATION DANS <b id="finish-left">${FINISH_DELAY}</b> S</span><small>OU TOUCHER POUR VALIDER</small></span></button>`
+    : `<button class="btn btn-alert hold" data-hold="abort-mission" data-ms="800" aria-label="Abandonner la mission, appui long requis"><span class="stack">ABANDON<small>APPUI LONG</small></span></button>
+    <button class="btn btn-neon" data-act="finish-mission" ${t.sets ? "" : "disabled"}>TERMINER LA MISSION</button>`}
   </div></footer>`;
 }
 function exCardHTML(e, b) {
@@ -5996,7 +6038,8 @@ function exCardHTML(e, b) {
         ${loadCap(e.id) ? `<div class="bw-note">Matériel ${PLACES[state.equip.active].toLowerCase()} : ${fmt1(loadCap(e.id))} kg max${loadKind(e.id) === "db" ? " par haltère" : ""}</div>` : ""}</div>
       ${loadKind(e.id) === "bb" ? `<div class="plates" id="pl-${e.id}">${plateHTML(d.kg)}</div>` : ""}
       <div class="field"><label for="reps-${e.id}">${repLabel}</label>
-        <div class="stepper"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="${time ? -5 : -1}" aria-label="Moins">−</button><input id="reps-${e.id}" data-field="reps" data-id="${e.id}" inputmode="numeric" autocomplete="off" value="${Math.round(d.reps)}"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="${time ? 5 : 1}" aria-label="Plus">+</button></div></div>
+        ${time ? `<div class="stepper ef-step"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="-5" aria-label="Moins 5 secondes">−5</button><button data-act="step" data-id="${e.id}" data-f="reps" data-d="-1" aria-label="Moins 1 seconde">−1</button><input id="reps-${e.id}" data-field="reps" data-id="${e.id}" inputmode="numeric" autocomplete="off" value="${Math.round(d.reps)}"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="1" aria-label="Plus 1 seconde">+1</button><button data-act="step" data-id="${e.id}" data-f="reps" data-d="5" aria-label="Plus 5 secondes">+5</button></div>`
+          : `<div class="stepper"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="-1" aria-label="Moins">−</button><input id="reps-${e.id}" data-field="reps" data-id="${e.id}" inputmode="numeric" autocomplete="off" value="${Math.round(d.reps)}"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="1" aria-label="Plus">+</button></div>`}</div>
       <div class="entry-go">
         ${time ? `<button class="btn btn-neon" data-act="effort-start" data-id="${e.id}"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>LANCER LE CHRONO · S${sets.length + 1}</button>`
           : `<button class="btn btn-neon" data-act="validate-set" data-id="${e.id}">VALIDER SÉRIE ${sets.length + 1}</button>`}
@@ -6063,6 +6106,7 @@ function validateSet(id, btn) {
   sfx("confirm");
   floatXp(`+${fmt(xp)} XP`, btn);
   render();
+  if (ui.mini === "rest") hideMini();
   openRest();
 }
 function deleteSet(id, i) {
@@ -6086,8 +6130,23 @@ function deleteSet(id, i) {
    L'XP suit le temps réellement tenu.
    ===================================================================== */
 let effort = null, effortTick = null, effortLock = null;
+/* Délai de mise en place avant le départ du chrono : réglable, retenu pour les fois suivantes. */
+const PREP_KEY = "neonfitness-prep";
+function prepPref() { try { const v = +localStorage.getItem(PREP_KEY); return v >= 3 && v <= 60 ? Math.round(v) : 3; } catch (e) { return 3; } }
+function prepSave(v) { try { localStorage.setItem(PREP_KEY, String(v)); } catch (e) {} }
+function prepAdjust(d) {
+  if (!effort || effort.t0) return;
+  const now = Date.now(), left = Math.max(0, effort.prepEnd - now);
+  const nl = Math.max(1000, Math.min(60000, left + d * 1000));
+  effort.prepEnd = now + nl; effort.prepTotal = Math.max(3, Math.min(60, Math.round(effort.prepTotal + d)));
+  effort.lastSec = null; prepSave(effort.prepTotal);
+  const p = $("#ef-prepv"); if (p) p.textContent = effort.prepTotal + " s";
+  tickEffort();
+}
+function prepGo() { if (effort && !effort.t0) { effort.prepEnd = Date.now(); tickEffort(); } }
 function startEffort(id) {
   const e = EX[id]; if (!e || e.type !== "time") return;
+  if (effort && ui.mini === "effort") { miniOpen(); return; }
   audioPrime();
   const { kg, reps, kgEl, rEl } = readDraftInputs(id);
   const kgOk = Number.isFinite(kg) && kg >= 0 && kg <= 1000, rOk = Number.isFinite(reps) && reps >= 5 && reps <= 3600;
@@ -6096,18 +6155,22 @@ function startEffort(id) {
   if (!kgOk || !rOk) { shake(document.querySelector(`[data-card="${id}"] .entry`)); toast(!kgOk ? "Lest invalide : entre 0 et 1 000 kg." : "Objectif invalide : entre 5 et 3 600 secondes.", true); return; }
   storeDraft(id, kg, reps);
   const n = ((state.mission && state.mission.sets[id]) || []).length + 1;
-  effort = { id, target: Math.round(reps), kg: Math.round(kg * 100) / 100, prepEnd: Date.now() + 3000, t0: 0, lastSec: null, reached: false, n };
+  const prep = prepPref();
+  effort = { id, target: Math.round(reps), kg: Math.round(kg * 100) / 100, prepEnd: Date.now() + prep * 1000, prepTotal: prep, t0: 0, lastSec: null, reached: false, n };
+  if (ui.mini) hideMini();
   let el = $("#effort");
   if (!el) { el = document.createElement("div"); el.id = "effort"; document.body.appendChild(el); }
   el.className = "rest effort"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-labelledby", "ef-title");
-  el.innerHTML = `<div class="rest-in">
+  el.innerHTML = `<button class="min-btn" data-act="effort-min" aria-label="Réduire le chrono pour voir la mission"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>RÉDUIRE</button><div class="rest-in">
     <div class="eyebrow">CHRONO D'EFFORT · SÉRIE ${n}</div>
     <h2 id="ef-title">${esc(e.name)}</h2>
     <div class="ring" id="ef-ring">
       <svg viewBox="0 0 200 200" aria-hidden="true"><circle class="ticks" cx="100" cy="100" r="93"></circle><circle class="bg" cx="100" cy="100" r="82"></circle>
       <circle class="fg" id="ef-fg" cx="100" cy="100" r="82" stroke-dasharray="${RING_C.toFixed(2)}" stroke-dashoffset="0"></circle></svg>
-      <div class="ring-txt"><b id="ef-time">3</b><span id="ef-state">EN POSITION</span></div>
+      <div class="ring-txt"><b id="ef-time">${prep}</b><span id="ef-state">EN POSITION</span></div>
     </div>
+    <div class="ef-prep" id="ef-prep"><span>MISE EN PLACE · <b id="ef-prepv">${prep} s</b></span>
+      <div class="rest-ctrl"><button class="btn btn-ghost" data-act="prep-adj" data-d="-5">−5 s</button><button class="btn btn-ghost" data-act="prep-adj" data-d="5">+5 s</button><button class="btn btn-ghost" data-act="prep-go">GO</button></div></div>
     <div class="panel rest-stats">
       <div><span>OBJECTIF</span><b>${mmss(effort.target)}</b></div>
       <div><span>TENU</span><b id="ef-held">0:00</b></div>
@@ -6135,11 +6198,13 @@ function tickEffort() {
   if (!effort.t0) {
     const left = Math.ceil((effort.prepEnd - now) / 1000);
     if (left > 0) {
-      if (left !== effort.lastSec) { effort.lastSec = left; tEl.textContent = left; sfx("count", 2); vibrate(15); }
-      fg.setAttribute("stroke-dashoffset", (RING_C * (1 - (effort.prepEnd - now) / 3000)).toFixed(2));
+      if (left !== effort.lastSec) { effort.lastSec = left; tEl.textContent = left; if (left <= 3) { sfx("count", 2); vibrate(15); } else sfx("sec", left % 2); }
+      fg.setAttribute("stroke-dashoffset", (RING_C * (1 - Math.min(1, (effort.prepEnd - now) / (effort.prepTotal * 1000)))).toFixed(2));
+      setMini("EN POSITION", String(left), EX[effort.id] ? EX[effort.id].name : "", 1 - (effort.prepEnd - now) / (effort.prepTotal * 1000), false, "ANNULER");
       return;
     }
     effort.t0 = effort.prepEnd; effort.lastSec = null;
+    const pp = $("#ef-prep"); if (pp) pp.remove();
     sfx("count", 1); vibrate([60, 40, 60]);
     stEl.textContent = "TENEZ !";
   }
@@ -6156,6 +6221,7 @@ function tickEffort() {
     stEl.textContent = "OBJECTIF ATTEINT · BONUS";
     const sec = Math.floor(-left); if (sec !== effort.lastSec) { effort.lastSec = sec; if (sec > 0) sfx("sec", sec % 2); }
   }
+  setMini(left > 0 ? "TENEZ !" : "OBJECTIF ATTEINT", left > 0 ? mmss(Math.ceil(left)) : "+" + mmss(-left), `${EX[effort.id] ? EX[effort.id].name + " · " : ""}tenu ${mmss(held)}`, el / effort.target, left <= 0, "STOP");
   $("#ef-held").textContent = mmss(held);
   const pv = held >= 1 ? previewXp(effort.id, effort.kg, held) : "0";
   $("#ef-xp").textContent = "+" + pv;
@@ -6163,6 +6229,7 @@ function tickEffort() {
 }
 function closeEffort() {
   clearInterval(effortTick); effortTick = null;
+  if (ui.mini === "effort") hideMini();
   const el = $("#effort"); if (el) el.hidden = true;
   document.body.style.overflow = "";
   try { if (effortLock) { effortLock.release(); effortLock = null; } } catch (e) { effortLock = null; }
@@ -6173,6 +6240,7 @@ function stopEffort() {
   if (!effort.t0) { cancelEffort(); return; }
   effort.paused = Date.now();
   const held = effortHeld();
+  const mb = $("#effort .min-btn"); if (mb) mb.hidden = true;
   sfx("off"); vibrate(30);
   $("#ef-state").textContent = "EN PAUSE";
   $("#ef-ring").classList.add("paused");
@@ -6204,6 +6272,7 @@ function resumeEffort() {
   if (!effort || !effort.paused) return;
   effort.t0 += Date.now() - effort.paused; effort.paused = 0; effort.lastSec = null;
   $("#ef-ring").classList.remove("paused");
+  const mb = $("#effort .min-btn"); if (mb) mb.hidden = false;
   $("#ef-ctrl").innerHTML = effortRunCtrl();
   sfx("on"); tickEffort();
 }
@@ -6228,8 +6297,58 @@ function backEffort() {
 function cancelEffort() { if (!effort) return; effort = null; closeEffort(); sfx("off"); toast("Série annulée, rien n'a été enregistré."); }
 let restTick = null, wakeLock = null, restDoneFired = false;
 const RING_C = 2 * Math.PI * 82;
+/* ---- Chrono réduit : barre flottante pour consulter la mission (matériel, exercices suivants) ---- */
+const MINI_C = 100.53;
+function showMini(kind) {
+  ui.mini = kind;
+  const el = $("#mini"); if (!el) return;
+  el.hidden = false; el.dataset.kind = kind;
+  document.body.classList.add("mini-on");
+  document.body.style.overflow = "";
+}
+function hideMini() {
+  ui.mini = null;
+  const el = $("#mini"); if (el) el.hidden = true;
+  document.body.classList.remove("mini-on");
+}
+function setMini(lbl, time, sub, frac, done, act) {
+  if (!ui.mini) return;
+  const el = $("#mini"); if (!el || el.hidden) return;
+  $("#mini-lbl").textContent = lbl; $("#mini-time").textContent = time; $("#mini-sub").textContent = sub;
+  $("#mini-fg").setAttribute("stroke-dashoffset", (MINI_C * (1 - Math.max(0, Math.min(1, frac)))).toFixed(2));
+  el.classList.toggle("done", !!done);
+  const a = $("#mini-act"); if (a.textContent !== act) a.textContent = act;
+}
+function minimizeRest() {
+  if (!state.mission || !state.mission.rest) return;
+  $("#rest").hidden = true;
+  showMini("rest"); tickRest();
+}
+function minimizeEffort() {
+  if (!effort || effort.paused) return;
+  const el = $("#effort"); if (el) el.hidden = true;
+  showMini("effort"); tickEffort();
+}
+function miniOpen() {
+  if (ui.mini === "effort" && effort) {
+    hideMini();
+    const el = $("#effort"); if (el) { el.hidden = false; document.body.style.overflow = "hidden"; }
+    tickEffort(); return;
+  }
+  if (ui.mini === "rest") {
+    hideMini();
+    if (ui.screen !== "briefing") go("briefing"); else openRest();
+    return;
+  }
+  hideMini();
+}
+function miniAct() {
+  if (ui.mini === "effort") { miniOpen(); stopEffort(); return; }
+  if (ui.mini === "rest") endRest();
+}
 function openRest() {
   const m = state.mission; if (!m || !m.rest) return;
+  if (ui.mini === "rest") { clearInterval(restTick); restTick = setInterval(tickRest, 250); showMini("rest"); tickRest(); return; }
   const r = m.rest, e = EX[r.exId];
   const el = $("#rest");
   $("#rest-gain").textContent = `+${fmt(r.xp)} XP`;
@@ -6259,6 +6378,9 @@ function tickRest() {
   const r = m.rest, left = (r.endAt - Date.now()) / 1000;
   const ring = $("#ring"), fg = $("#ring-fg");
   fg.setAttribute("stroke-dasharray", RING_C.toFixed(2));
+  const nx = EX[r.exId], nxt = nx ? `${nx.name} · S${(m.sets[r.exId] || []).length + 1}` : "";
+  if (left > 0) setMini("REPOS", mmss(Math.ceil(left)), nxt ? "Ensuite : " + nxt : "", 1 - left / r.total, false, "PASSER");
+  else setMini("SYSTÈMES PRÊTS", "+" + mmss(-left), nxt ? "À vous : " + nxt : "", 1, true, "GO");
   if (left > 0) {
     ring.classList.remove("done");
     $("#rest-time").textContent = mmss(Math.ceil(left));
@@ -6278,6 +6400,7 @@ function tickRest() {
 }
 function closeRest() {
   clearInterval(restTick); restTick = null; musicRest(false);
+  if (ui.mini === "rest") hideMini();
   $("#rest").hidden = true;
   document.body.style.overflow = "";
   try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch (e) { wakeLock = null; }
@@ -6290,6 +6413,38 @@ function endRest() {
 /* =====================================================================
    Écran 4 — Rapport de mission
    ===================================================================== */
+/* Délai de validation : quelques secondes pour annuler un appui involontaire sur TERMINER LA MISSION. */
+const FINISH_DELAY = 5;
+let finishTimer = null;
+function armFinish() {
+  const m = state.mission; if (!m) return;
+  if (!missionTotals().sets) { toast("Validez au moins une série avant de terminer.", true); return; }
+  ui.finishAt = Date.now() + FINISH_DELAY * 1000; ui.finishArmed = Date.now();
+  sfx("open"); vibrate(20);
+  render();
+  clearInterval(finishTimer); finishTimer = setInterval(tickFinish, 100); tickFinish();
+}
+function tickFinish() {
+  if (!ui.finishAt || ui.screen !== "briefing" || !state.mission) { cancelFinish(true); return; }
+  const left = ui.finishAt - Date.now();
+  if (left <= 0) { finishNow(); return; }
+  const b = $("#finish-go"), n = $("#finish-left");
+  if (b) b.style.setProperty("--p", (1 - left / (FINISH_DELAY * 1000)).toFixed(3));
+  if (n) { const s2 = String(Math.ceil(left / 1000)); if (n.textContent !== s2) { n.textContent = s2; sfx("sec", +s2 % 2); } }
+}
+function cancelFinish(silent) {
+  clearInterval(finishTimer); finishTimer = null;
+  if (!ui.finishAt) return;
+  ui.finishAt = 0;
+  if (!silent) { sfx("close"); render(); }
+}
+function finishNow() {
+  clearInterval(finishTimer); finishTimer = null;
+  if (!ui.finishAt) return;
+  ui.finishAt = 0;
+  finishMission();
+  if (ui.screen === "report") sfx("complete");
+}
 function finishMission() {
   const st = state, m = st.mission;
   if (!m) return;
@@ -6520,6 +6675,7 @@ function go(to) {
   if (ui.screen === "squad" && to !== "squad") { closeSquadSub(); squad.panel = null; squad.msg = ""; }
   if (to === "catalog" && !ui.filter) ui.filter = state.category;
   if (to !== "catalog") ui.q = "";
+  if (to !== "briefing" && ui.finishAt) cancelFinish(true);
   ui.screen = to; ui.delArm = null;
   closeSheet();
   render();
@@ -6617,7 +6773,15 @@ const actions = {
     if (m.adrenaline === "armed") { vibrate([20, 30, 60]); toast("Injection armée : prochaine série ×2 XP."); }
     save(); render();
   },
-  "finish-mission": () => finishMission(),
+  "finish-mission": () => armFinish(),
+  "finish-now": () => { if (Date.now() - (ui.finishArmed || 0) > 700) finishNow(); },
+  "finish-cancel": () => cancelFinish(),
+  "rest-min": () => minimizeRest(),
+  "effort-min": () => minimizeEffort(),
+  "mini-open": () => miniOpen(),
+  "mini-act": () => miniAct(),
+  "prep-adj": el => prepAdjust(+el.dataset.d),
+  "prep-go": () => prepGo(),
   "rest-add": el => { const m = state.mission; if (!m || !m.rest) return; const d = +el.dataset.d * 1000; m.rest.endAt = Math.max(Date.now(), m.rest.endAt + d); m.rest.total = Math.max(1, m.rest.total + (+el.dataset.d)); if (m.rest.endAt > Date.now()) restDoneFired = false; save(); tickRest(); },
   "rest-skip": () => endRest(),
   "ach-open": () => { const t = $("#ach-toast"); if (t) t.classList.remove("show"); openAchSheet(); },
@@ -6713,7 +6877,7 @@ const holdActions = {
   }
 };
 
-const SND_OWN = new Set(["toggle-ex", "validate-set", "step", "close-sheet", "finish-mission", "aud-toggle", "warm-tick", "ach-pin"]);
+const SND_OWN = new Set(["toggle-ex", "validate-set", "step", "close-sheet", "finish-mission", "finish-now", "finish-cancel", "aud-toggle", "warm-tick", "ach-pin"]);
 const SND_NAV = new Set(["go", "tab", "validate-loadout", "report-done", "squad-select", "pick-cat"]);
 document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]");
@@ -6728,7 +6892,7 @@ document.addEventListener("click", e => {
       achSoon(900);
       if (act === "toggle-ex") sfx(state.loadoutSession.includes(el.dataset.id) ? "on" : "off");
       else if (act === "step") sfx("step", +el.dataset.d > 0);
-      else if (act === "finish-mission" && ui.screen === "report") sfx("complete");
+
     }
     return;
   }
