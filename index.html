@@ -119,8 +119,19 @@ p{margin:0}
 .av-btn{display:block;width:100%;border-radius:4px}
 .av-btn:hover .avatar{filter:brightness(1.15)}
 .avatar .av-grid{stroke:rgba(var(--neon-rgb),.05);stroke-width:.5;fill:none}
-.avatar .av-body polygon,.avatar .av-body circle{fill:rgba(var(--neon-rgb),.05);stroke:rgba(var(--neon-rgb),.5);stroke-width:1.1;stroke-linejoin:round}
+.avatar .av-body polygon,.avatar .av-body circle,.avatar .av-body rect{fill:rgba(var(--neon-rgb),.05);stroke:rgba(var(--neon-rgb),.5);stroke-width:1.1;stroke-linejoin:round}
 .avatar .av-body path{fill:none;stroke:rgba(var(--neon-rgb),.5);stroke-width:1.1}
+.avatar .av-body path.pl{fill:rgba(var(--neon-rgb),.07);stroke-linejoin:round}
+.avatar .av-body path.hair{stroke:rgba(var(--neon-rgb),.4);stroke-width:4.2;stroke-linecap:round}
+.avatar .av-det path,.avatar .av-det polygon,.avatar .av-det circle,.avatar .av-det rect{fill:none;stroke:rgba(var(--neon-rgb),.38);stroke-width:.75;stroke-linejoin:round;stroke-linecap:round}
+.avatar .av-det .vis{fill:rgba(var(--neon-rgb),.22);stroke:rgba(var(--neon-rgb),.85);stroke-width:1}
+.avatar .av-det .vis-l{stroke:var(--neon);stroke-width:1.1;filter:drop-shadow(0 0 2px var(--neon))}
+.avatar .av-det .mdef path,.avatar .av-det .mdef circle{stroke:rgba(var(--neon-rgb),.75);stroke-width:.8}
+.avatar .av-det .mdef .mcl{stroke:rgba(var(--neon-rgb),.6);stroke-width:1;fill:none;stroke-linecap:round}
+.avatar .av-det .mdef .mpl{fill:rgba(var(--neon-rgb),.08);stroke:rgba(var(--neon-rgb),.6);stroke-width:.9;stroke-linejoin:round}
+.avatar .av-det .mdef .mline{stroke:var(--neon);stroke-width:.6;stroke-linecap:round}
+.avatar .av-det .dot{fill:rgba(var(--neon-rgb),.75);stroke:none}
+.avatar .av-gear .thin{stroke-width:.85}
 .avatar .av-lines path,.avatar .av-lines circle{fill:none;stroke:rgba(var(--neon-rgb),.45);stroke-width:.9}
 .avatar .av-trace{fill:none;stroke:var(--neon);stroke-width:1;opacity:.9}
 .avatar .av-heart{fill:var(--legend);filter:drop-shadow(0 0 3px var(--legend))}
@@ -151,6 +162,51 @@ p{margin:0}
 .avatar.tier-legende .fr-thick{animation:legendPulse 2.4s ease-in-out infinite}
 @keyframes legendPulse{50%{filter:drop-shadow(0 0 9px rgba(var(--legend-rgb),.95))}}
 .avatar .scan{animation:scan 3.6s linear infinite;opacity:.55}
+.avatar .av-heat .h1{fill:rgba(var(--neon-rgb),.16)}
+.avatar .av-heat .h2{fill:rgba(var(--neon-rgb),.32)}
+.avatar .av-heat .h3{fill:rgba(var(--neon-rgb),.52);filter:drop-shadow(0 0 3px rgba(var(--neon-rgb),.8));animation:heatPulse 2.6s ease-in-out infinite}
+@keyframes heatPulse{50%{fill:rgba(var(--neon-rgb),.36)}}
+.avatar .av-idle{animation:avIdle 4.8s ease-in-out infinite}
+@keyframes avIdle{50%{transform:translateY(-1.2px)}}
+.avatar .av-det .vis-l{animation:visor 5s steps(1) infinite}
+@keyframes visor{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.35}49%{opacity:1}51%{opacity:.5}52%{opacity:1}}
+.avatar .av-floor ellipse{fill:none;stroke:rgba(var(--neon-rgb),.45);stroke-width:.9}
+.avatar .av-floor .ring{transform-box:fill-box;transform-origin:center;animation:floorRing 3s ease-out infinite}
+.avatar .av-floor .r2{animation-delay:-1.5s}
+@keyframes floorRing{from{transform:scale(.55);opacity:.9}to{transform:scale(1.25);opacity:0}}
+.avatar .av-floor.fr-legend ellipse{stroke:rgba(var(--legend-rgb),.6)}
+.avatar .av-floor .beam{stroke:none}
+.avatar .fr-comet{fill:none;stroke:var(--neon);stroke-width:2.6;stroke-linecap:round;stroke-dasharray:7 93;filter:drop-shadow(0 0 4px var(--neon));animation:comet 3.2s linear infinite}
+.avatar .fr-comet.fr-legend{stroke:var(--legend);filter:drop-shadow(0 0 5px var(--legend))}
+@keyframes comet{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
+.avatar .fr-glow{animation:frGlow 2.8s ease-in-out infinite}
+@keyframes frGlow{50%{filter:drop-shadow(0 0 5px var(--neon))}}
+.avatar .fr-tick{fill:none;stroke:var(--neon);stroke-width:2;stroke-dasharray:2 5;animation:frRun 2.4s linear infinite}
+.avatar .fr-ret circle{fill:none;stroke:rgba(var(--neon-rgb),.35);stroke-width:.8}
+.avatar .fr-ret.fr-legend circle{stroke:rgba(var(--legend-rgb),.5)}
+.avatar .fr-ret .spin{transform-box:fill-box;transform-origin:center;animation:spin 14s linear infinite}
+.avatar .fr-ret .rev{animation-direction:reverse;animation-duration:22s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar .fr-status circle{fill:var(--neon);animation:blink 1.6s steps(1) infinite}
+.avatar .fr-status text{font-family:var(--f-display);font-size:5px;letter-spacing:.14em;fill:rgba(var(--neon-rgb),.7);text-anchor:end}
+.avatar .fr-status.fr-legend circle{fill:var(--legend)}.avatar .fr-status.fr-legend text{fill:rgba(var(--legend-rgb),.8)}
+@keyframes blink{50%{opacity:.15}}
+.avatar .av-sparks circle{fill:var(--legend);filter:drop-shadow(0 0 2px var(--legend));animation:rise 4.8s ease-out infinite;opacity:0}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-150px);opacity:0}}
+.kind-pick .avatar .av-floor,.kind-pick .avatar .fr-status,.evo .avatar .fr-status{display:none}
+.evo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;margin:6px 0 10px}
+.evo figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.evo .avatar{width:100%;max-width:150px}
+.evo figcaption{font-family:var(--f-display);font-size:10px;letter-spacing:.14em;color:var(--muted)}
+.evo-arr{font-size:26px;color:var(--neon)}
+.dev-list{display:flex;flex-direction:column;gap:7px;margin-top:8px}
+.dev-row{display:grid;grid-template-columns:110px minmax(0,1fr) 40px;align-items:center;gap:10px;font-size:13px}
+.dev-row span{display:flex;align-items:center;gap:6px}
+.dev-row .hd{width:7px;height:7px;border-radius:50%;background:var(--neon);opacity:.45}
+.dev-row .hd.l2{opacity:.7}.dev-row .hd.l3{opacity:1;box-shadow:0 0 6px var(--neon)}
+.dev-bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.dev-bar b{display:block;height:100%;background:var(--neon)}
+.dev-row em{font-style:normal;font-family:var(--f-display);font-size:12px;color:var(--neon);text-align:right}
 @keyframes scan{from{transform:translateY(-22px)}to{transform:translateY(250px)}}
 .op-info{min-width:0;display:flex;flex-direction:column;gap:6px}
 .callsign{font-family:var(--f-display);font-size:19px;font-weight:700;letter-spacing:.06em;color:var(--text);overflow-wrap:anywhere;line-height:1.2}
@@ -301,6 +357,29 @@ p{margin:0}
 .search-fake:hover{border-color:var(--neon);color:var(--text)}
 .tag-cat{color:var(--muted)}
 .s-hidden{padding:8px 2px}
+.mem-av .avatar{width:min(170px,50vw)}
+.sq-feed{margin-top:22px}
+.ls-card{margin-bottom:8px}
+.ls-card summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;cursor:pointer;list-style:none}
+.ls-card summary::-webkit-details-marker{display:none}
+.ls-card summary .who{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ls-card summary .who b{font-family:var(--f-display);font-size:13px;letter-spacing:.08em}
+.ls-card summary .who em{font-style:normal;font-size:9px;letter-spacing:.14em;color:var(--neon);margin-left:6px}
+.ls-card summary small{font-size:12px;color:var(--muted)}
+.ls-card summary .go{transition:transform .2s;color:var(--neon)}
+.ls-card[open] summary .go{transform:rotate(90deg)}
+.ls-card .ls{padding:0 14px 12px;border-top:1px solid var(--line)}
+.ls{display:flex;flex-direction:column;gap:8px}
+.ls-top{display:flex;flex-direction:column;gap:2px;padding-top:10px;font-size:13px;color:var(--muted)}
+.ls-top b{color:var(--text);font-size:14px}
+.ls-kpi{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.ls-kpi b{font-family:var(--f-display);color:var(--neon);font-size:14px}
+.ls-ex{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.ls-ex li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.ls-ex li:last-child{border-bottom:0}
+.ls-ex li b{font-family:var(--f-display);font-size:12px;color:var(--neon);white-space:nowrap}
+.share-line{display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:13px;color:var(--muted);cursor:pointer}
+.share-line input{accent-color:var(--neon);width:18px;height:18px;flex:none;margin-top:1px}
 .pdf-drop{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:22px 16px;margin-top:14px;border:1.5px dashed var(--line-hi);border-radius:6px;background:var(--panel-2);cursor:pointer;color:var(--text)}
 .pdf-drop.big{padding:36px 16px}
 .pdf-drop svg{width:34px;height:34px;fill:none;stroke:var(--neon);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -474,6 +553,8 @@ body.mini-on .app.has-footer{padding-bottom:calc(184px + env(safe-area-inset-bot
 .mini.done .mini-act{background:var(--neon);color:var(--void)}
 @keyframes miniPulse{50%{box-shadow:0 8px 28px rgba(0,0,0,.45),0 0 30px rgba(var(--neon-rgb),.6)}}
 @media (prefers-reduced-motion:reduce){.mini.done{animation:none}}
+.fin-hold::after{background:rgba(255,255,255,.45)}
+.fin-hold.arming{box-shadow:0 0 22px var(--neon-glow)}
 .fin-arm{position:relative;overflow:hidden;background:linear-gradient(90deg,var(--neon) calc(var(--p) * 100%),rgba(var(--neon-rgb),.35) calc(var(--p) * 100%))}
 .fin-arm small{opacity:.85}
 .fin-arm b{font:inherit;color:inherit}
@@ -632,6 +713,10 @@ textarea.txt{resize:vertical;min-height:58px;font-family:var(--f-body)}
 .avatar .badge.bw text{fill:var(--neon)}
 
 /* ---------- fiches arsenal / châssis ---------- */
+.kind-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.kind-pick .kind{display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px 4px 9px;border:1px solid var(--line-hi);border-radius:4px;background:var(--deep);color:var(--muted);font-family:var(--f-display);font-size:10px;letter-spacing:.12em}
+.kind-pick .kind .avatar{width:100%;max-width:92px}
+.kind-pick .kind.on{border-color:var(--neon);color:var(--neon);box-shadow:0 0 10px var(--neon-soft)}
 .gear-preview{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border:1px solid var(--line-hi);border-radius:4px;background:var(--deep)}
 .gear-preview .avatar{width:min(240px,70vw)}
 .gear-preview.locked .avatar{filter:saturate(.6)}
@@ -1157,6 +1242,10 @@ button.sq-row:hover{background:var(--panel-2)}
 .ef-ctrl{width:100%;display:flex;flex-direction:column;gap:12px;align-items:stretch}
 .ef-review{padding:14px;display:flex;flex-direction:column;gap:10px;text-align:left}
 .ef-step{display:grid;grid-template-columns:44px 40px minmax(0,1fr) 40px 44px}
+.entry.t-entry{grid-template-columns:minmax(0,1fr)}
+.entry.t-entry .f-dur{order:-1}
+.entry.t-entry .f-dur .ef-step{grid-template-columns:52px 48px minmax(64px,1fr) 48px 52px}
+.entry.t-entry .f-dur .ef-step input{font-size:26px}
 .ef-step input{font-family:var(--f-display);font-size:22px;text-align:center;min-width:0}
 .ef-step button{font-family:var(--f-display);font-size:12px}
 .ef-pv{font-size:13px;color:var(--muted)}.ef-pv b{font-family:var(--f-display);font-size:16px;color:var(--neon)}
@@ -1357,6 +1446,7 @@ button.sq-row:hover{background:var(--panel-2)}
 .g-lock{position:absolute;right:-3px;bottom:-3px;width:18px;height:18px;padding:2px;border-radius:50%;background:var(--panel);border:1px solid var(--line);fill:none;stroke:var(--muted);stroke-width:2.2;stroke-linecap:round}
 .g-ic{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .g-ic .f{fill:currentColor;stroke:none}.g-ic .fs{fill:currentColor;fill-opacity:.2;stroke:none}
+.g-ic .fs{fill-opacity:.16}.g-ic .t{stroke-width:1.2}.g-ic .o{opacity:.55}
 .g-ic.r-COMMUN{color:var(--common)}.g-ic.r-RARE{color:var(--neon)}.g-ic.r-EPIQUE{color:var(--neon);filter:drop-shadow(0 0 3px var(--neon-glow))}.g-ic.r-LEGENDAIRE{color:var(--legend);filter:drop-shadow(0 0 3px rgba(var(--legend-rgb),.6))}
 .g-tile.locked .g-ic{color:var(--muted);filter:none}
 .g-head{display:flex;align-items:center;gap:12px}
@@ -2043,7 +2133,7 @@ function defaultLife() {
 function defaultState() {
   return {
     version: 1,
-    operator: { callsign: "OPÉRATEUR-07", bodyweight: 75 },
+    operator: { callsign: "OPÉRATEUR-07", bodyweight: 75, body: "m" },
     level: 1, xp: 0, totalXp: 0,
     stats: { power: 10, armor: 10, propulsion: 10, core: 10 },
     perkPoints: 1, perks: [],
@@ -2067,6 +2157,7 @@ function sanitize(s) {
   const op = isObj(s.operator) ? s.operator : {};
   o.operator.callsign = typeof op.callsign === "string" && op.callsign.trim() ? op.callsign.trim().slice(0, 20) : d.operator.callsign;
   o.operator.bodyweight = num(op.bodyweight, 75, 30, 250);
+  o.operator.body = ["m", "f", "r"].includes(op.body) ? op.body : "m";
   o.updatedAt = num(s.updatedAt, 0, 0);
   o.onboarded = s.onboarded === true;
   if (isObj(s.tips)) Object.keys(o.tips).forEach(k => { o.tips[k] = s.tips[k] === true; });
@@ -2191,6 +2282,7 @@ function sanitize(s) {
     }
   }
   o.programs = cleanPrograms(s.programs);
+  o.shareLast = s.shareLast !== false;
   o.planSel = typeof s.planSel === "string" && o.programs.some(p => p.id === s.planSel) ? s.planSel : null;
   return o;
 }
@@ -3097,14 +3189,17 @@ const VISUAL_MILESTONES = [
 ];
 const RARITY_CLASS = { "COMMUN": "rc", "RARE": "rr", "ÉPIQUE": "re", "LÉGENDAIRE": "rl" };
 let avatarSeq = 0;
+let AV_MSTYLE = "A"; /* A : silhouette seule · B : lignes nettes · C : plaques d'armure */
+const AV_KINDS = [{ id: "m", name: "Masculin" }, { id: "f", name: "Féminin" }, { id: "r", name: "Robot" }];
+const avKind = st => ["m", "f", "r"].includes(st && st.operator && st.operator.body) ? st.operator.body : "m";
 function avatarSVG(st, opts) {
   opts = opts || {};
   const uid = "av" + (++avatarSeq);
-  const b = computeBonuses(st);
+  const b = opts.rawStats ? { stat: {} } : computeBonuses(st);
   const stat = k => (st.stats[k] || 0) + (b.stat[k] || 0);
   const k01 = v => Math.max(0, Math.min(1, (v - 10) / 70));
   const P = k01(stat("power")), A = k01(stat("armor")), L = k01(stat("propulsion")), C = k01(stat("core"));
-  const lvl = st.level, tier = tierFor(lvl);
+  const lvl = st.level, tier = tierFor(lvl), kind = opts.kind || avKind(st);
   const cx = 80, f1 = v => Math.round(v * 10) / 10;
   const pts = arr => arr.map(p => f1(p[0]) + "," + f1(p[1])).join(" ");
   const mir = (x) => 2 * cx - x;
@@ -3112,35 +3207,209 @@ function avatarSVG(st, opts) {
     const dx = p2[0] - p1[0], dy = p2[1] - p1[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
     return pts([[p1[0] + nx * w1, p1[1] + ny * w1], [p2[0] + nx * w2, p2[1] + ny * w2], [p2[0] - nx * w2, p2[1] - ny * w2], [p1[0] - nx * w1, p1[1] - ny * w1]]);
   };
-  // --- morphologie
-  const ch = 21 + A * 7, wh = 13 + C * 3, sh = ch + 5 + P * 3;
-  const yS = 62, yC = 96, yW = 118, yP = 132;
-  const shR = 6.5 + P * 3.5;
-  const armW = 5.5 + P * 2.5, foreW = 4.5 + P * 2;
-  const thW = 8 + L * 4, shinW = 6 + L * 2.5;
-  const S = [cx + sh, yS + 3], E = [cx + sh + 5 + P * 2, yS + 36], H = [cx + sh + 7 + P * 2, yS + 68];
-  const hipR = [cx + 8 + L * 2, yP], kneeR = [cx + 12 + L * 2, 172], ankR = [cx + 13 + L * 2, 204];
+  const lerp = (a, z, t) => [a[0] + (z[0] - a[0]) * t, a[1] + (z[1] - a[1]) * t];
   const both = (fn) => fn(1) + fn(-1);
   const side = (p, s) => s === 1 ? p : [mir(p[0]), p[1]];
+  const X = (x, s) => s === 1 ? x : mir(x);
+  // --- développement musculaire (volume cumulé) et chaleur (14 derniers jours)
+  const F = kind === "f", R = kind === "r";
+  const dv = opts.dev || (st === state ? muscleDev().dev : {}), ht = opts.heat || (st === state ? muscleDev().heat : {});
+  const d = r => Math.max(0, Math.min(1, dv[r] || 0)), hv = () => 0; /* zones colorées retirées : l'évolution se voit à la taille */
+  const K = F ? { ch: [17, 2.6, 1.8, 1], wh: [11.8, 1, -1.8], sh: [2.5, 2.8, .8], shR: [5.2, 2.4, .6], arm: [4.3, 1, .4], fore: [3.6, .9, .4], th: [8.2, 2.2, 1, .6], shin: [5.2, 1.6, .4], hip: [10, 2, .5], trap: [1.5, 2.5], lat: 2 }
+    : R ? { ch: [21, 3, 2, 1.5], wh: [14, 1.5, -1], sh: [4, 2.5, 1], shR: [6.5, 2.5, .8], arm: [4.2, 1, .5], fore: [4, 1, .4], th: [7.2, 1.8, .8, .6], shin: [5.6, 1.6, .4], hip: [8, 1, .5], trap: [2, 3], lat: 2 }
+    : { ch: [19, 4, 2.5, 1.5], wh: [13.8, 1.5, -2.4], sh: [4, 3.6, 1], shR: [6, 3.2, .8], arm: [5, 1.2, .6], fore: [4.2, 1.2, .5], th: [7.6, 2.2, 1, .8], shin: [5.6, 1.8, .4], hip: [8, 1.2, .5], trap: [2, 4], lat: 3.6 };
+  const ch = K.ch[0] + K.ch[1] * d("pecs") + K.ch[2] * d("lats") + K.ch[3] * A;
+  const wh = K.wh[0] + K.wh[1] * C + K.wh[2] * Math.max(d("abs"), d("obliques"));
+  const sh = ch + K.sh[0] + K.sh[1] * d("delts") + K.sh[2] * P;
+  const yS = 62, yC = 96, yW = F ? 116 : 118, yP = 132;
+  const shR = K.shR[0] + K.shR[1] * d("delts") + K.shR[2] * P;
+  const armW = K.arm[0] + K.arm[1] * (d("biceps") + d("triceps")) + K.arm[2] * P, foreW = K.fore[0] + K.fore[1] * d("forearms") + K.fore[2] * d("biceps");
+  const thW = K.th[0] + K.th[1] * d("quads") + K.th[2] * d("hams") + K.th[3] * L, shinW = K.shin[0] + K.shin[1] * d("calves") + K.shin[2] * L;
+  const hipX = K.hip[0] + K.hip[1] * d("glutes") + K.hip[2] * L;
+  const trapH = K.trap[0] + K.trap[1] * d("traps"), lat = K.lat * d("lats");
+  const bicB = 1.7 * d("biceps") + .5 * d("triceps"), calfB = 1.9 * d("calves"), quadB = 1.5 * d("quads");
+  const S = [cx + sh, yS + 3], E = [cx + sh + (F ? 3 : 5) + P * 2, yS + 36], H = [cx + sh + (F ? 5 : 7) + P * 2, yS + 68];
+  const hipR = [cx + hipX, yP], kneeR = [cx + hipX + 4, 172], ankR = [cx + hipX + 5, 204];
+  /* membre au contour lissé : courbe continue de l'attache à l'extrémité, plus pleine au niveau du muscle */
+  const limbP = (p1, p2, w1, w2, bg, at, inner) => {
+    const dx = p2[0] - p1[0], dy = p2[1] - p1[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l, m = lerp(p1, p2, at || 0.4);
+    const wo = (w1 + w2) / 2 + bg, wi = (w1 + w2) / 2 + bg * (inner === undefined ? 0.45 : inner);
+    const P2 = (p, k) => f1(p[0] + nx * k) + " " + f1(p[1] + ny * k);
+    return `M${P2(p1, w1)}Q${P2(m, wo * 1.18)} ${P2(p2, w2)}Q${P2(p2, 0)} ${P2(p2, -w2)}Q${P2(m, -wi * 1.18)} ${P2(p1, -w1)}Q${P2(p1, 0)} ${P2(p1, w1)}Z`;
+  };
+  /* segment avec renflement musculaire au tiers (biceps, quadriceps, mollet) */
+  const bulge = (p1, p2, w1, w2, bg, at) => {
+    const dx = p2[0] - p1[0], dy = p2[1] - p1[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l, m = lerp(p1, p2, at || 0.4), wm = (w1 + w2) / 2 + bg;
+    return pts([[p1[0] + nx * w1, p1[1] + ny * w1], [m[0] + nx * wm, m[1] + ny * wm], [p2[0] + nx * w2, p2[1] + ny * w2], [p2[0] - nx * w2, p2[1] - ny * w2], [m[0] - nx * wm, m[1] - ny * wm], [p1[0] - nx * w1, p1[1] - ny * w1]]);
+  };
   // --- couches
   const eq = st.gear.equipped;
   const gearCls = slot => { const g = GEAR_BY_ID[eq[slot]]; return g ? RARITY_CLASS[g.rarity] : ""; };
   const hl = slot => opts.highlight === slot ? " hl" : "";
-  const torso = pts([[cx - ch, yS], [cx + ch, yS], [cx + ch - 3, yC], [cx + wh, yW], [cx - wh, yW], [cx - ch + 3, yC]]);
-  const pelvis = pts([[cx - wh - 1, yW], [cx + wh + 1, yW], [cx + 12, yP + 2], [cx - 12, yP + 2]]);
-  const helmet = pts([[68, 16], [92, 16], [97, 29], [94, 43], [87, 50], [73, 50], [66, 43], [63, 29]]);
-  let body = `<g class="av-body">
-    <polygon points="${helmet}"/><path d="M70 31H90"/>
-    <polygon points="${pts([[75, 50], [85, 50], [86, yS], [74, yS]])}"/>
-    <polygon points="${torso}"/><polygon points="${pelvis}"/>
-    ${both(s => `<circle cx="${f1(side(S, s)[0])}" cy="${f1(side(S, s)[1] - 1)}" r="${f1(shR)}"/>`)}
-    ${both(s => `<polygon points="${quad(side(S, s), side(E, s), armW, armW - 1)}"/><polygon points="${quad(side(E, s), side(H, s), foreW, foreW - 1)}"/><circle cx="${f1(side(H, s)[0])}" cy="${f1(side(H, s)[1] + 3)}" r="3.6"/>`)}
-    ${both(s => `<polygon points="${quad(side(hipR, s), side(kneeR, s), thW, thW - 2)}"/><polygon points="${quad(side(kneeR, s), side(ankR, s), shinW, shinW - 2)}"/><polygon points="${pts([side([ankR[0] - 6, 204], s), side([ankR[0] + 6, 204], s), side([ankR[0] + 8 + 2 * s * 0, 212], s), side([ankR[0] - 7, 212], s)])}"/>`)}
-  </g>`;
+  let body = "", det = "";
+  /* tête */
+  if (R) {
+    body += `<polygon points="66,18 94,18 97,24 97,44 91,50 69,50 63,44 63,24"/><rect x="61" y="27" width="4" height="12" rx="1"/><rect x="95" y="27" width="4" height="12" rx="1"/>
+      <path d="M80 18V9"/><circle cx="80" cy="7.5" r="2"/>`;
+    det += `<rect class="vis" x="67" y="27" width="26" height="7" rx="1.5"/><path class="vis-l" d="M70 30.5H90"/><path d="M71 40h18M71 43h18M71 46h18M66 22h28"/>
+      <circle class="dot" cx="66.5" cy="47" r="0.9"/><circle class="dot" cx="93.5" cy="47" r="0.9"/>`;
+  } else if (F) {
+    body += `<path class="hair" d="M66 26Q55 32 58 48Q61 58 55 68"/><polygon points="69,17 91,17 95,29 93,42 86,49 74,49 67,42 65,29"/>`;
+    det += `<polygon class="vis" points="68,27 92,27 90,34 82,35 80,33 78,35 70,34"/><path class="vis-l" d="M71 30.5H89"/>
+      <path d="M72 42L76 46H84L88 42M69 20Q80 14 91 20M66 31h-2M94 31h2"/><rect x="63" y="28" width="3" height="7" rx="1"/>`;
+  } else {
+    body += `<polygon points="68,16 92,16 97,29 94,43 87,50 73,50 66,43 63,29"/>`;
+    det += `<polygon class="vis" points="66,27 94,27 92,35 68,35"/><path class="vis-l" d="M70 31H90"/>
+      <path d="M70 43L75 48H85L90 43M76 45.5h8M68 19Q80 12 92 19M80 16V22"/><rect x="62" y="28" width="3.5" height="8" rx="1"/>`;
+  }
+  /* cou */
+  body += R ? `<rect x="74" y="50" width="12" height="12"/>` : `<polygon points="${pts([[75, 49], [85, 49], [86, yS], [74, yS]])}"/>`;
+  det += R ? `<path d="M74 53.5h12M74 56.5h12M74 59.5h12"/>` : `<path d="M76 53l4 2l4-2M75.5 57h9"/>`;
+  /* buste */
+  const torso = R ? [[cx - ch, yS], [cx + ch, yS], [cx + ch + lat, yS + 18], [cx + ch, yC - 4], [cx + wh + 2, yW], [cx - wh - 2, yW], [cx - ch, yC - 4], [cx - ch - lat, yS + 18]]
+    : F ? [[cx - ch, yS], [cx + ch, yS], [cx + ch + lat * .6, yS + 16], [cx + ch - 1, yS + 22], [cx + wh, yW - 4], [cx + wh + 1, yW], [cx - wh - 1, yW], [cx - wh, yW - 4], [cx - ch + 1, yS + 22], [cx - ch - lat * .6, yS + 16]]
+    : [[cx - ch, yS], [cx + ch, yS], [cx + ch + lat, yS + 18], [cx + ch - 3, yC], [cx + wh, yW], [cx - wh, yW], [cx - ch + 3, yC], [cx - ch - lat, yS + 18]];
+  const trapPts = [[cx - 5.5, yS - 3 - trapH], [cx + 5.5, yS - 3 - trapH], [cx + ch - 3, yS + 0.5], [cx - ch + 3, yS + 0.5]];
+  const pelvis = R ? [[cx - wh - 3, yW], [cx + wh + 3, yW], [cx + wh, yP + 3], [cx - wh, yP + 3]]
+    : F ? [[cx - wh - 1, yW], [cx + wh + 1, yW], [cx + hipX + 6, yP + 1], [cx + 5, yP + 6], [cx - 5, yP + 6], [cx - hipX - 6, yP + 1]]
+    : [[cx - wh - 1, yW], [cx + wh + 1, yW], [cx + 12, yP + 2], [cx - 12, yP + 2]];
+  body += `<polygon points="${pts(trapPts)}"/><polygon points="${pts(torso)}"/><polygon points="${pts(pelvis)}"/>`;
+  if (R) {
+    det += `<rect x="${f1(cx - ch + 5)}" y="${yS + 5}" width="${f1(2 * ch - 10)}" height="24" rx="2"/><circle cx="${cx}" cy="${yS + 17}" r="6"/><circle class="dot" cx="${cx}" cy="${yS + 17}" r="2.2"/>
+      <path d="M${f1(cx - ch + 8)} ${yS + 35}h${f1(2 * ch - 16)}M${f1(cx - ch + 9)} ${yS + 40}h${f1(2 * ch - 18)}M${f1(cx - wh + 1)} ${yC + 4}h${f1(2 * wh - 2)}M${f1(cx - wh + 2)} ${yC + 10}h${f1(2 * wh - 4)}M${f1(cx - wh + 3)} ${yC + 16}h${f1(2 * wh - 6)}"/>`
+      + [[cx - ch + 7, yS + 7], [cx + ch - 7, yS + 7], [cx - ch + 7, yS + 27], [cx + ch - 7, yS + 27]].map(p => `<circle class="dot" cx="${f1(p[0])}" cy="${f1(p[1])}" r="0.9"/>`).join("")
+      + `<path d="M${f1(cx - wh - 1)} ${yW + 6}h${f1(2 * wh + 2)}M${cx} ${yW}v${yP - yW + 3}"/>`;
+  } else if (F) {
+    det += both(s => `<path d="M${X(cx + 1.5, s)} ${yS + 9}Q${f1(X(cx + ch - 2, s))} ${yS + 6} ${f1(X(cx + ch - 3, s))} ${yS + 20}Q${f1(X(cx + 9, s))} ${yS + 29} ${X(cx + 1.5, s)} ${yS + 22}"/>`)
+      + `<path d="M${f1(cx - ch + 2)} ${yS + 1}Q${cx} ${yS + 7} ${f1(cx + ch - 2)} ${yS + 1}M${f1(cx - wh + 1)} ${yW - 9}Q${cx} ${yW - 5} ${f1(cx + wh - 1)} ${yW - 9}M${cx} ${yS + 26}V${yW - 6}"/>`
+      + both(s => `<path d="M${f1(X(cx + ch - 3, s))} ${yS + 30}l${-s * 4} 10M${f1(X(cx + ch - 4, s))} ${yS + 38}l${-s * 3} 7"/>`)
+      + `<path d="M${f1(cx - wh - 1)} ${yW + 1}h${f1(2 * wh + 2)}"/><rect x="${cx - 3}" y="${yW - 1}" width="6" height="4" rx="1"/>`;
+  } else {
+    det += (d("pecs") > 0.06 ? "" : both(s => `<polygon points="${pts([side([cx + 2, yS + 5], s), side([cx + ch - 4, yS + 4], s), side([cx + ch - 5, yS + 21], s), side([cx + 6, yS + 25], s)])}"/>`))
+      + `<path d="M${f1(cx - ch + 2)} ${yS + 1}Q${cx} ${yS + 9} ${f1(cx + ch - 2)} ${yS + 1}"/>${d("abs") > 0.1 ? "" : `<polygon points="${pts([[cx - wh + 2, yC - 2], [cx + wh - 2, yC - 2], [cx + wh - 3, yW - 4], [cx - wh + 3, yW - 4]])}"/>`}`
+      + both(s => `<path d="M${f1(X(cx + ch - 4, s))} ${yS + 30}l${-s * 5} 4M${f1(X(cx + ch - 4, s))} ${yS + 35}l${-s * 5} 4"/>`)
+      + `<path d="M${f1(cx - wh - 1)} ${yW + 1}h${f1(2 * wh + 2)}"/><rect x="${cx - 4}" y="${yW - 1}" width="8" height="4.5" rx="1"/>`;
+  }
+  /* épaules et bras */
+  body += both(s => {
+    const sp = side(S, s), e = side(E, s), h = side(H, s);
+    let o = R ? `<rect x="${f1(sp[0] - shR)}" y="${f1(sp[1] - shR)}" width="${f1(2 * shR)}" height="${f1(2 * shR - 2)}" rx="2"/>`
+      : `<path class="pl" d="M${f1(sp[0] - s * shR * 1.1)} ${f1(sp[1] + shR * 0.2)}Q${f1(sp[0] - s * shR * 0.4)} ${f1(sp[1] - shR * 1.35)} ${f1(sp[0] + s * shR * 0.95)} ${f1(sp[1] - shR * 0.15)}Q${f1(sp[0] + s * shR * 1.15)} ${f1(sp[1] + shR * 0.7)} ${f1(sp[0] + s * shR * 0.6)} ${f1(sp[1] + shR * 1.05)}Z"/>`;
+    o += R ? `<polygon points="${quad(sp, e, armW, armW - 0.5)}"/><polygon points="${quad(e, h, foreW, foreW)}"/>`
+      : `<path class="pl" d="${limbP(sp, e, armW, armW - 1.2, bicB + 0.3, 0.48)}"/><path class="pl" d="${limbP(e, h, foreW, foreW - 1.3, 0.6 + 0.8 * d("forearms"), 0.28, 0.7)}"/>`;
+    // main / pince
+    const g1 = [h[0], h[1] + 1], g2 = [h[0] + s * 0.6, h[1] + 8];
+    o += R ? `<rect x="${f1(h[0] - 3.4)}" y="${f1(h[1])}" width="6.8" height="5" rx="1"/><path d="M${f1(h[0] - 2.6)} ${f1(h[1] + 5)}l-1 4M${f1(h[0])} ${f1(h[1] + 5)}v4.5M${f1(h[0] + 2.6)} ${f1(h[1] + 5)}l1 4"/>`
+      : `<polygon points="${quad(g1, g2, 3.6, 3)}"/>`;
+    return o;
+  });
+  det += both(s => {
+    const sp = side(S, s), e = side(E, s), h = side(H, s);
+    if (R) return `<circle cx="${f1(e[0])}" cy="${f1(e[1])}" r="${f1(armW)}"/><circle class="dot" cx="${f1(e[0])}" cy="${f1(e[1])}" r="1.2"/>`
+      + `<path d="M${f1(sp[0] + s * 1.5)} ${f1(sp[1] + 6)}L${f1(e[0] + s * 1.5)} ${f1(e[1] - armW)}M${f1(e[0] - s * 1.6)} ${f1(e[1] + armW)}L${f1(h[0] - s * 1.6)} ${f1(h[1] - 1)}"/>`
+      + `<circle class="dot" cx="${f1(sp[0])}" cy="${f1(sp[1] - 1)}" r="1"/>`;
+    return `<circle cx="${f1(e[0])}" cy="${f1(e[1])}" r="${f1(Math.max(2, foreW - 1.6))}"/>`
+      + `<path d="M${f1(h[0] - 1.3)} ${f1(h[1] + 6)}v2.6M${f1(h[0] + 1.3)} ${f1(h[1] + 6)}v2.6"/>`;
+  });
+  /* jambes et bottes */
+  body += both(s => {
+    const hp = side(hipR, s), k = side(kneeR, s), a = side(ankR, s);
+    let o = R ? `<polygon points="${quad(hp, k, thW, thW - 2)}"/><polygon points="${quad(k, a, shinW, shinW - 1)}"/>`
+      : `<path class="pl" d="${limbP(hp, k, thW, thW - 2.4, quadB + 0.5, 0.36, 0.6)}"/><path class="pl" d="${limbP(k, a, shinW, shinW - 2.6, calfB + 0.6, 0.28, 0.8)}"/>`;
+    o += R ? `<polygon points="${pts([[a[0] - 7, 203], [a[0] + 7, 203], [a[0] + 10, 213], [a[0] - 10, 213]])}"/>`
+      : `<polygon points="${pts([[a[0] - shinW + 1.5, 199], [a[0] + shinW - 1.5, 199], [a[0] + s * 1 + (s === 1 ? 9 : 7), 212], [a[0] - (s === 1 ? 7 : 9), 212]])}"/>`;
+    return o;
+  });
+  det += both(s => {
+    const hp = side(hipR, s), k = side(kneeR, s), a = side(ankR, s);
+    if (R) return `<circle cx="${f1(k[0])}" cy="${k[1]}" r="${f1(shinW - 1)}"/><circle class="dot" cx="${f1(k[0])}" cy="${k[1]}" r="1.3"/><circle cx="${f1(hp[0])}" cy="${hp[1] + 2}" r="3"/>`
+      + `<path d="M${f1(hp[0] + s * (thW - 3))} ${hp[1] + 6}L${f1(k[0] + s * (thW - 4))} ${k[1] - 7}M${f1(k[0] - s * 2)} ${k[1] + 7}L${f1(a[0] - s * 2)} ${a[1] - 4}M${f1(a[0] - 9)} 209.5h18"/>`;
+    return `<path d="M${f1(k[0] - shinW + 1.5)} ${k[1] - 2}Q${f1(k[0])} ${k[1] + 3} ${f1(k[0] + shinW - 1.5)} ${k[1] - 2}"/>`
+      + `<path d="M${f1(a[0] - shinW + 1.5)} 202.5h${f1(2 * shinW - 3)}M${f1(a[0] - 8)} 210h16"/>`;
+  });
+  /* ---- définition musculaire : de nouveaux traits apparaissent à mesure que chaque muscle se développe ---- */
+  const nrm = (p1, p2) => { const dx = p2[0] - p1[0], dy = p2[1] - p1[1], l = Math.hypot(dx, dy) || 1; return [-dy / l, dx / l]; };
+  const at = (p1, p2, t, off, sg) => { const n = nrm(p1, p2), m = lerp(p1, p2, t); return [m[0] + n[0] * off * sg, m[1] + n[1] * off * sg]; }; // off > 0 : vers l'intérieur
+  const Q = p => f1(p[0]) + " " + f1(p[1]);
+  const on = (r, min) => d(r) > min;
+  const md = (r, path) => path ? `<path style="opacity:${f1(0.45 + 0.55 * d(r))}" d="${path}"/>` : "";
+  let mdef = "";
+  if (!R) {
+    const MS = opts.mstyle || AV_MSTYLE;
+    const angOf = (p1, p2) => Math.atan2(p2[1] - p1[1], p2[0] - p1[0]) * 180 / Math.PI - 90;
+    const op = r => f1(0.4 + 0.45 * d(r));
+    if (MS === "B") {
+      /* B : quelques lignes nettes, du même trait que la silhouette */
+      const ln = (r, min, dd) => d(r) > min ? `<path class="mcl" style="opacity:${op(r)}" d="${dd}"/>` : "";
+      const pd = d("pecs"), ad = d("abs");
+      if (!F) mdef += ln("pecs", 0.1, both(s2 => `M${X(cx + 1, s2)} ${f1(yS + 21 + 3 * pd)}Q${f1(X(cx + ch * 0.6, s2))} ${f1(yS + 25 + 3 * pd)} ${f1(X(cx + ch - 3, s2))} ${yS + 16}`));
+      if (pd > 0.1 || ad > 0.1) mdef += ln(pd > ad ? "pecs" : "abs", 0.1, `M${cx} ${yS + 5}V${yW - 6}`);
+      if (ad > 0.15) { const rows = ad > 0.6 ? 3 : ad > 0.35 ? 2 : 1; let p = ""; for (let i = 1; i <= rows; i++) { const y = yC + i * ((yW - 6 - yC) / (rows + 1)); p += `M${f1(cx - wh + 3.5)} ${f1(y)}Q${cx} ${f1(y + 1.5)} ${f1(cx + wh - 3.5)} ${f1(y)}`; } mdef += ln("abs", 0.15, p); }
+      mdef += both(s2 => {
+        const sp = side(S, s2), e = side(E, s2), hp = side(hipR, s2), k = side(kneeR, s2), a = side(ankR, s2);
+        return ln("delts", 0.15, `M${f1(sp[0] - s2 * shR * 0.9)} ${f1(sp[1] + shR * 0.4)}Q${f1(sp[0])} ${f1(sp[1] + shR * 1.45)} ${f1(sp[0] + s2 * shR * 0.95)} ${f1(sp[1] + shR * 0.3)}`)
+          + ln("biceps", 0.25, `M${Q(at(sp, e, 0.32, armW * 0.1, s2))}Q${Q(at(sp, e, 0.58, armW * 0.75, s2))} ${Q(at(sp, e, 0.88, armW * 0.15, s2))}`)
+          + ln("quads", 0.2, `M${Q(at(hp, k, 0.15, -thW * 0.35, s2))}Q${Q(at(hp, k, 0.5, -thW * 0.05, s2))} ${Q(at(hp, k, 0.9, thW * 0.1, s2))}`)
+          + ln("quads", 0.55, `M${Q(at(hp, k, 0.62, thW * 0.75, s2))}Q${Q(at(hp, k, 0.86, thW * 0.35, s2))} ${Q(at(hp, k, 0.95, thW * 0.6, s2))}`)
+          + ln("calves", 0.25, `M${Q(at(k, a, 0.1, shinW * 0.55, s2))}Q${Q(at(k, a, 0.3, -shinW * 0.2, s2))} ${Q(at(k, a, 0.55, shinW * 0.35, s2))}`);
+      });
+    } else if (MS === "C") {
+      /* C : plaques d'armure qui apparaissent et s'étendent sur chaque muscle */
+      const pl = (r, min, pp) => d(r) > min ? `<polygon class="mpl" style="opacity:${op(r)}" points="${pts(pp)}"/>` : "";
+      const pd = d("pecs"), ad = d("abs");
+      mdef += both(s2 => pl("pecs", 0.1, [side([cx + 1.5, yS + 4], s2), side([cx + ch - 3, yS + 4], s2), side([cx + ch - 3.5, yS + 13 + 4 * pd], s2), side([cx + ch * 0.55, yS + 19 + 4 * pd], s2), side([cx + 1.5, yS + 18 + 3 * pd], s2)]));
+      if (ad > 0.12) { const rows = ad > 0.65 ? 3 : 2, top = yC, rh = (yW - 6 - top) / rows, w = wh - 3.5; for (let i = 0; i < rows; i++) mdef += both(s2 => pl("abs", 0.12, [side([cx + 0.9, top + i * rh + 0.5], s2), side([cx + w - i * 0.4, top + i * rh + 0.5], s2), side([cx + w - i * 0.4 - 0.6, top + (i + 1) * rh - 0.6], s2), side([cx + 0.9, top + (i + 1) * rh - 0.6], s2)])); }
+      mdef += both(s2 => {
+        const sp = side(S, s2), e = side(E, s2), hp = side(hipR, s2), k = side(kneeR, s2), a = side(ankR, s2);
+        const band = (r, min, p1, p2, t0, t1, w) => pl(r, min, [at(p1, p2, t0, -w, s2), at(p1, p2, t0, w, s2), at(p1, p2, t1, w * 0.85, s2), at(p1, p2, t1, -w * 0.85, s2)]);
+        let o = "";
+        if (d("delts") > 0.15) o += `<path class="mcl" style="opacity:${op("delts")}" d="M${f1(sp[0] - s2 * shR)} ${f1(sp[1] + 1)}Q${f1(sp[0] + s2 * 1)} ${f1(sp[1] - shR * 1.2)} ${f1(sp[0] + s2 * (shR + 1))} ${f1(sp[1] + 2)}${d("delts") > 0.55 ? `M${f1(sp[0] - s2 * shR * 0.7)} ${f1(sp[1] + 4)}Q${f1(sp[0] + s2 * 1)} ${f1(sp[1] - shR * 0.5)} ${f1(sp[0] + s2 * (shR + 0.5))} ${f1(sp[1] + 5)}` : ""}"/>`;
+        o += band("biceps", 0.2, sp, e, 0.32, 0.82, armW * (0.45 + 0.2 * d("biceps")));
+        o += band("quads", 0.15, hp, k, 0.14, 0.72, thW * (0.5 + 0.2 * d("quads")));
+        if (d("quads") > 0.5) o += band("quads", 0.5, hp, k, 0.78, 0.96, thW * 0.55);
+        o += band("calves", 0.2, k, a, 0.12, 0.6, shinW * (0.5 + 0.2 * d("calves")));
+        return o;
+      });
+    }
+  } else {
+    // robot : le développement ajoute des plaques, des vérins et des rivets
+    if (on("pecs", 0.15)) mdef += md("pecs", `M${f1(cx - ch + 3)} ${yS + 3}H${f1(cx + ch - 3)}V${yS + 31}H${f1(cx - ch + 3)}Z` + (on("pecs", 0.5) ? both(s2 => `M${f1(X(cx + 4, s2))} ${yS + 3}V${yS + 31}`) : ""));
+    if (on("abs", 0.2)) mdef += md("abs", `M${f1(cx - wh + 1)} ${yC - 3}H${f1(cx + wh - 1)}` + (on("abs", 0.55) ? `M${cx - 4} ${yC}V${yW - 3}M${cx + 4} ${yC}V${yW - 3}` : ""));
+    if (on("traps", 0.2)) mdef += md("traps", both(s2 => `M${X(cx + 6, s2)} ${f1(yS - 2 - trapH * 0.6)}L${f1(X(cx + ch - 4, s2))} ${yS}M${X(cx + 6, s2)} ${f1(yS - trapH * 0.3)}L${f1(X(cx + ch - 8, s2))} ${yS}`));
+    mdef += both(s2 => {
+      const sp = side(S, s2), e = side(E, s2), h = side(H, s2), hp = side(hipR, s2), k = side(kneeR, s2), a = side(ankR, s2);
+      let o = "";
+      if (on("delts", 0.15)) o += md("delts", `M${f1(sp[0] - shR + 1)} ${f1(sp[1] - 1)}h${f1(2 * shR - 2)}` + (on("delts", 0.5) ? `M${f1(sp[0] - shR + 1)} ${f1(sp[1] + 2.5)}h${f1(2 * shR - 2)}` : ""));
+      if (on("biceps", 0.15) || on("triceps", 0.15)) o += md("biceps", `M${Q(at(sp, e, 0.2, armW * 0.5, s2))}L${Q(at(sp, e, 0.8, armW * 0.5, s2))}` + (on("triceps", 0.4) ? `M${Q(at(sp, e, 0.2, -armW * 0.5, s2))}L${Q(at(sp, e, 0.8, -armW * 0.5, s2))}` : ""));
+      if (on("forearms", 0.2)) o += md("forearms", `M${Q(at(e, h, 0.25, -foreW, s2))}L${Q(at(e, h, 0.25, foreW, s2))}M${Q(at(e, h, 0.6, -foreW, s2))}L${Q(at(e, h, 0.6, foreW, s2))}`);
+      if (on("quads", 0.15)) o += md("quads", `M${Q(at(hp, k, 0.3, -thW, s2))}L${Q(at(hp, k, 0.3, thW, s2))}` + (on("quads", 0.5) ? `M${Q(at(hp, k, 0.6, -thW + 1, s2))}L${Q(at(hp, k, 0.6, thW - 1, s2))}` : ""));
+      if (on("calves", 0.2)) o += md("calves", `M${Q(at(k, a, 0.35, -shinW, s2))}L${Q(at(k, a, 0.35, shinW, s2))}`) + (on("calves", 0.5) ? `<circle cx="${f1(at(k, a, 0.2, 0, s2)[0])}" cy="${f1(at(k, a, 0.2, 0, s2)[1])}" r="1.2"/>` : "");
+      return o;
+    });
+  }
+  det += `<g class="mdef">${mdef}</g>`;
+  /* chaleur : zones travaillées ces 14 derniers jours (même code couleur que la carte des muscles) */
+  const hz = (lv, shape) => lv ? shape.replace("<polygon ", `<polygon class="h${lv}" `).replace("<circle ", `<circle class="h${lv}" `) : "";
+  let heat = "";
+  heat += hz(hv("traps"), `<polygon points="${pts(trapPts)}"/>`);
+  heat += both(s => hz(hv("pecs"), `<polygon points="${pts([side([cx + 1.5, yS + 4], s), side([cx + ch - 3, yS + 3], s), side([cx + ch - 4, yS + 21], s), side([cx + 5, yS + 25], s)])}"/>`));
+  heat += both(s => hz(hv("lats"), `<polygon points="${pts([side([cx + ch - 2, yS + 6], s), side([cx + ch + lat, yS + 18], s), side([cx + ch - (R ? 0 : 3), yC - 4], s), side([cx + ch - 7, yS + 24], s)])}"/>`));
+  heat += hz(hv("abs"), `<polygon points="${pts([[cx - wh + 2, yC - 2], [cx + wh - 2, yC - 2], [cx + wh - 3, yW - 4], [cx - wh + 3, yW - 4]])}"/>`);
+  heat += both(s => hz(hv("obliques"), `<polygon points="${pts([side([cx + wh - 1, yC - 4], s), side([cx + ch - (F ? 2 : 4), yC - 6], s), side([cx + wh + 1, yW - 2], s)])}"/>`));
+  heat += hz(hv("glutes"), `<polygon points="${pts(pelvis)}"/>`);
+  heat += both(s => {
+    const sp = side(S, s), e = side(E, s), h = side(H, s), hp = side(hipR, s), k = side(kneeR, s), a = side(ankR, s);
+    return hz(hv("delts"), `<circle cx="${f1(sp[0])}" cy="${f1(sp[1] - 1)}" r="${f1(shR)}"/>`)
+      + hz(Math.max(hv("biceps"), hv("triceps")), `<polygon points="${R ? quad(sp, e, armW, armW - 0.5) : bulge(sp, e, armW, armW - 1, bicB, 0.45)}"/>`)
+      + hz(hv("forearms"), `<polygon points="${quad(e, h, foreW, foreW - 1)}"/>`)
+      + hz(Math.max(hv("quads"), hv("hams")), `<polygon points="${R ? quad(hp, k, thW, thW - 2) : bulge(hp, k, thW, thW - 2, quadB, 0.35)}"/>`)
+      + hz(hv("calves"), `<polygon points="${R ? quad(k, a, shinW, shinW - 1) : bulge(k, a, shinW, shinW - 2, calfB, 0.3)}"/>`);
+  });
+  body = `<g class="av-body">${body}</g><g class="av-heat">${heat}</g><g class="av-det">${det}</g>`;
   // --- détails par niveau
   let lines = "";
   if (lvl >= 3) lines += `<path d="M${cx} ${yS + 2}V${yC + 2}M${f1(cx - ch + 6)} ${yS + 18}Q${cx} ${yS + 27} ${f1(cx + ch - 6)} ${yS + 18}M${f1(cx - 8)} ${yS + 2}L${cx} ${yS + 8}L${f1(cx + 8)} ${yS + 2}"/>`;
-  if (lvl >= 6) lines += `<path d="M${f1(cx - wh + 2)} ${yC + 6}H${f1(cx + wh - 2)}M${f1(cx - wh + 1)} ${yC + 13}H${f1(cx + wh - 1)}M${f1(cx - wh)} ${yC + 20}H${f1(cx + wh)}"/>` + both(s => `<circle cx="${f1(side(kneeR, s)[0])}" cy="${kneeR[1]}" r="${f1(thW - 3)}"/>`);
+  if (lvl >= 6) lines += (R || d("abs") <= 0.1 ? `<path d="M${f1(cx - wh + 2)} ${yC + 6}H${f1(cx + wh - 2)}M${f1(cx - wh + 1)} ${yC + 13}H${f1(cx + wh - 1)}M${f1(cx - wh)} ${yC + 20}H${f1(cx + wh)}"/>` : "") + both(s => `<circle cx="${f1(side(kneeR, s)[0])}" cy="${kneeR[1]}" r="${f1(thW - 3)}"/>`);
   if (lvl >= 10) lines += `<path d="M80 16L80 6M74 16L76 9M86 16L84 9"/>` + both(s => `<path d="M${f1(side([S[0] - shR, S[1] - shR - 2], s)[0])} ${f1(S[1] - shR - 2)}Q${f1(side([S[0] + shR + 4, 0], s)[0])} ${f1(S[1] - shR)} ${f1(side([S[0] + shR + 3, 0], s)[0])} ${f1(S[1] + shR)}"/>`);
   if (lvl >= 15) lines += both(s => `<path d="M${f1(side([cx + ch - 2, yS + 4], s)[0])} ${yS + 4}L${f1(side([cx + ch + 26, 0], s)[0])} ${yS - 14}M${f1(side([cx + ch - 2, yS + 12], s)[0])} ${yS + 12}L${f1(side([cx + ch + 30, 0], s)[0])} ${yS}M${f1(side([cx + ch - 3, yS + 20], s)[0])} ${yS + 20}L${f1(side([cx + ch + 28, 0], s)[0])} ${yS + 14}"/>`);
   const halo = lvl >= 20 ? `<circle class="av-halo" cx="80" cy="31" r="27"/><circle class="av-halo" cx="80" cy="31" r="31" stroke-dasharray="2 5"/>` : "";
@@ -3150,50 +3419,61 @@ function avatarSVG(st, opts) {
     `M${cx - 3} ${yS + 4}v10h-5`, `M${cx + 3} ${yS + 4}v10h5`, `M${cx - 10} ${yW - 4}h-3v-6`, `M${cx + 10} ${yW - 4}h3v-6`,
     `M${cx - 14} ${yS + 26}l-4 4`, `M${cx + 14} ${yS + 26}l4 4`, `M${cx - 2} ${yP - 6}h4`, `M${cx} ${yC - 4}v6`
   ];
-  const nPerk = st.perks.length;
+  const nPerk = (st.perks || []).length;
   const traces = nPerk ? `<path class="av-trace" d="${TRACES.slice(0, Math.min(nPerk * 1, 12)).join("")}"/>` : "";
-  const heart = st.perks.includes("adrenaline") ? `<circle class="av-heart" cx="${cx + 9}" cy="${yS + 16}" r="2.4"/>` : "";
-  // --- cyberware
+  const heart = (st.perks || []).includes("adrenaline") ? `<circle class="av-heart" cx="${cx + 9}" cy="${yS + 16}" r="2.4"/>` : "";
+  // --- cyberware (version détaillée)
   const G = {};
+  const led = (x, y, r) => `<circle class="fill" cx="${f1(x)}" cy="${f1(y)}" r="${r || 1}"/>`;
   // implant neural
-  G.neural_civ = `<rect x="94" y="26" width="5" height="7" rx="1"/><circle cx="96.5" cy="29.5" r="1.2" class="fill"/>`;
-  G.neural_adren = `<rect x="94" y="25" width="5" height="9" rx="1"/><path d="M96.5 34Q99 46 88 56"/><rect x="85" y="52" width="6" height="8" rx="1.5" class="fillsoft"/>`;
-  G.neural_sync = `<path d="M63 17Q80 0 97 17M59 13Q80 -6 101 13"/><circle cx="80" cy="6" r="1.6" class="fill"/>`;
-  G.neural_ghost = `<polygon class="fillsoft" points="66,26 94,26 92,35 68,35"/><path d="M68 17L61 4M92 17L99 4"/><circle cx="61" cy="4" r="1.5" class="fill"/><circle cx="99" cy="4" r="1.5" class="fill"/>`;
+  G.neural_civ = `<rect x="94" y="25" width="6" height="9" rx="1.2"/><path d="M95.5 28h3M95.5 31h3" class="thin"/>${led(97, 36.5, 0.9)}`;
+  G.neural_adren = `<rect x="94" y="24" width="6" height="11" rx="1.2"/><path class="thin" d="M95.4 27.5h3.2M95.4 30h3.2"/><path d="M97 35Q100 46 88 56"/><path class="thin" d="M98.6 36.5Q101.5 46 90 57.5"/>`
+    + `<rect x="84.5" y="52" width="7" height="9" rx="1.6" class="fillsoft"/><path class="thin" d="M86 56.5h4"/>${led(88, 54, 0.9)}`;
+  G.neural_sync = `<path d="M63 17Q80 0 97 17M59 13Q80 -6 101 13"/><path class="thin" d="M67 15Q80 4 93 15"/>${led(80, 6, 1.7)}${led(66, 10.5, 0.9)}${led(94, 10.5, 0.9)}<path class="thin" d="M80 6V-1M77 0h6"/>`;
+  G.neural_ghost = `<polygon class="fillsoft" points="65,26 95,26 93,36 67,36"/><path class="thin" d="M69 31h7M84 31h7M80 26v10"/><path d="M68 17L61 4M92 17L99 4"/>${led(61, 4, 1.6)}${led(99, 4, 1.6)}<path class="thin" d="M64 9h-5M96 9h5"/>`;
   // exosquelette dorsal (vu de face : harnais et cadre)
-  const harness = `<path d="M${f1(cx - ch - 6)} ${yS}H${f1(cx + ch + 6)}M${f1(cx - ch + 5)} ${yS}L${cx + 9} ${yC + 4}M${f1(cx + ch - 5)} ${yS}L${cx - 9} ${yC + 4}"/><circle cx="${cx}" cy="${yS + 24}" r="3"/>`;
+  const harness = `<path d="M${f1(cx - ch - 6)} ${yS}H${f1(cx + ch + 6)}M${f1(cx - ch + 5)} ${yS}L${cx + 9} ${yC + 4}M${f1(cx + ch - 5)} ${yS}L${cx - 9} ${yC + 4}"/><circle cx="${cx}" cy="${yS + 24}" r="3.4"/>${led(cx, yS + 24, 1.2)}`
+    + both(s => `<rect class="fillsoft" x="${f1(X(cx + ch + 1, s) - 2.5)}" y="${yS - 3}" width="5" height="6" rx="1"/>`);
   G.dorsal_mk1 = harness;
-  G.dorsal_mk2 = harness + both(s => `<path d="M${f1(side([cx + ch + 4, 0], s)[0])} ${yS + 4}V${yC}"/><circle cx="${f1(side([cx + ch + 4, 0], s)[0])}" cy="${yS + 4}" r="2.2" class="fill"/><circle cx="${f1(side([cx + ch + 4, 0], s)[0])}" cy="${yC}" r="2.2" class="fill"/>`);
-  G.dorsal_aegis = `<polygon class="fillsoft" points="${pts([[cx - ch + 5, yS + 2], [cx + ch - 5, yS + 2], [cx + ch - 9, yC - 6], [cx, yC + 4], [cx - ch + 9, yC - 6]])}"/><polygon points="${pts([[cx, yS + 14], [cx + 7, yS + 18], [cx + 7, yS + 26], [cx, yS + 30], [cx - 7, yS + 26], [cx - 7, yS + 18]])}"/>` + both(s => { const p = side(S, s); return `<path d="M${f1(p[0] - s * shR)} ${f1(S[1] - shR + 1)}Q${f1(p[0] + s * (shR + 4))} ${f1(S[1] - 3)} ${f1(p[0] + s * (shR + 2))} ${f1(S[1] + shR + 2)}"/>`; });
+  G.dorsal_mk2 = harness + both(s => { const x = f1(X(cx + ch + 4, s)); return `<path d="M${x} ${yS + 4}V${yC}"/><path class="thin" d="M${f1(x - 2.4 * s)} ${yS + 10}V${yC - 6}"/>${led(x, yS + 4, 2.2)}${led(x, yC, 2.2)}<path class="thin" d="M${f1(x - 3)} ${yS + 22}h6M${f1(x - 3)} ${yS + 26}h6"/>`; });
+  G.dorsal_aegis = `<polygon class="fillsoft" points="${pts([[cx - ch + 5, yS + 2], [cx + ch - 5, yS + 2], [cx + ch - 9, yC - 6], [cx, yC + 4], [cx - ch + 9, yC - 6]])}"/><polygon points="${pts([[cx, yS + 14], [cx + 7, yS + 18], [cx + 7, yS + 26], [cx, yS + 30], [cx - 7, yS + 26], [cx - 7, yS + 18]])}"/>${led(cx, yS + 22, 2)}`
+    + `<path class="thin" d="M${f1(cx - ch + 9)} ${yS + 8}L${cx - 9} ${yS + 18}M${f1(cx + ch - 9)} ${yS + 8}L${cx + 9} ${yS + 18}M${cx} ${yS + 31}V${yC}"/>`
+    + both(s => { const p = side(S, s); return `<path d="M${f1(p[0] - s * shR)} ${f1(S[1] - shR + 1)}Q${f1(p[0] + s * (shR + 4))} ${f1(S[1] - 3)} ${f1(p[0] + s * (shR + 2))} ${f1(S[1] + shR + 2)}"/>`; });
   // module brachial
-  G.arms_mk0 = both(s => { const a = side(E, s), h = side(H, s); const m = [a[0] + (h[0] - a[0]) * 0.62, a[1] + (h[1] - a[1]) * 0.62], n = [a[0] + (h[0] - a[0]) * 0.86, a[1] + (h[1] - a[1]) * 0.86]; return `<polygon class="fillsoft" points="${quad(m, n, foreW + 1.5, foreW + 1.5)}"/>`; });
-  G.arms_hydra = both(s => { const a = side(S, s), e = side(E, s), h = side(H, s), o = s * (armW + 2.5); return `<path d="M${f1(a[0] + o)} ${f1(a[1] + 4)}L${f1(e[0] + o)} ${f1(e[1] - 3)}M${f1(e[0] + o * 0.9)} ${f1(e[1] + 4)}L${f1(h[0] + o * 0.8)} ${f1(h[1] - 4)}"/><circle cx="${f1(e[0])}" cy="${f1(e[1])}" r="3.4"/><circle cx="${f1(a[0] + o)}" cy="${f1(a[1] + 4)}" r="1.8" class="fill"/>`; });
-  G.arms_plasma = both(s => { const e = side(E, s), h = side(H, s); return `<polygon class="fillsoft" points="${quad(e, h, foreW + 1, foreW)}"/><path d="M${f1(e[0] - 4)} ${f1(e[1] + 6)}l8 4l-8 4l8 4l-8 4l8 4"/><circle cx="${f1(h[0])}" cy="${f1(h[1] + 3)}" r="4.6" class="fillsoft"/>`; });
+  G.arms_mk0 = both(s => { const a = side(E, s), h = side(H, s); const m = lerp(a, h, 0.6), n = lerp(a, h, 0.88); return `<polygon class="fillsoft" points="${quad(m, n, foreW + 1.6, foreW + 1.6)}"/><path class="thin" d="M${f1(m[0] - foreW)} ${f1(m[1] + 3)}h${f1(2 * foreW)}"/>${led(lerp(m, n, 0.6)[0], lerp(m, n, 0.6)[1], 0.9)}`; });
+  G.arms_hydra = both(s => { const a = side(S, s), e = side(E, s), h = side(H, s), o = s * (armW + 2.5); return `<path d="M${f1(a[0] + o)} ${f1(a[1] + 4)}L${f1(e[0] + o)} ${f1(e[1] - 3)}M${f1(e[0] + o * 0.9)} ${f1(e[1] + 4)}L${f1(h[0] + o * 0.8)} ${f1(h[1] - 4)}"/><path class="thin" d="M${f1(a[0] + o * 0.7)} ${f1(a[1] + 8)}L${f1(e[0] + o * 0.7)} ${f1(e[1] - 6)}"/><circle cx="${f1(e[0])}" cy="${f1(e[1])}" r="3.6"/>${led(e[0], e[1], 1.2)}${led(a[0] + o, a[1] + 4, 1.8)}${led(h[0] + o * 0.8, h[1] - 4, 1.2)}`; });
+  G.arms_plasma = both(s => { const e = side(E, s), h = side(H, s); return `<polygon class="fillsoft" points="${quad(e, h, foreW + 1.2, foreW)}"/><path d="M${f1(e[0] - 4)} ${f1(e[1] + 6)}l8 4l-8 4l8 4l-8 4l8 4"/><circle cx="${f1(h[0])}" cy="${f1(h[1] + 3)}" r="4.8" class="fillsoft"/><circle cx="${f1(h[0])}" cy="${f1(h[1] + 3)}" r="2.2"/>${led(h[0], h[1] + 3, 1)}`; });
   // noyau abdominal
-  G.core_belt = `<rect class="fillsoft" x="${f1(cx - wh - 1)}" y="${yW - 7}" width="${f1(2 * wh + 2)}" height="7" rx="1.5"/><rect x="${cx - 4}" y="${yW - 6}" width="8" height="5" rx="1"/>`;
-  G.core_gyro = `<circle cx="${cx}" cy="${yC + 9}" r="7.5"/><path d="M${cx - 7.5} ${yC + 9}H${cx + 7.5}M${cx} ${yC + 1.5}V${yC + 16.5}"/><circle cx="${cx}" cy="${yC + 9}" r="2.2" class="fill"/>`;
-  G.core_arc = `<circle class="fillsoft" cx="${cx}" cy="${yC + 9}" r="9"/><circle cx="${cx}" cy="${yC + 9}" r="5"/><circle cx="${cx}" cy="${yC + 9}" r="2.2" class="fill"/><path d="M${cx} ${yC - 3}V${yC - 7}M${cx - 11} ${yC + 15}l-3 2M${cx + 11} ${yC + 15}l3 2"/>`;
-  G.core_raid = `<polygon class="fillsoft" points="${[0, 1, 2, 3, 4, 5].map(i => { const a = Math.PI / 3 * i + Math.PI / 6; return (cx + 9.5 * Math.cos(a)).toFixed(1) + "," + (yC + 9 + 9.5 * Math.sin(a)).toFixed(1); }).join(" ")}"/><polygon points="${cx},${yC + 3.5} ${cx + 5},${yC + 12} ${cx - 5},${yC + 12}"/><circle cx="${cx}" cy="${yC + 9.5}" r="1.7" class="fill"/><path d="M${cx - 12.5} ${yC + 9}h-3M${cx + 12.5} ${yC + 9}h3M${cx} ${yC - 3}v-3"/>`;
+  G.core_belt = `<rect class="fillsoft" x="${f1(cx - wh - 1)}" y="${yW - 7}" width="${f1(2 * wh + 2)}" height="7" rx="1.5"/><rect x="${cx - 4.5}" y="${yW - 6.5}" width="9" height="6" rx="1"/>${led(cx, yW - 3.5, 1.1)}<path class="thin" d="M${f1(cx - wh + 2)} ${yW - 3.5}h${f1(wh - 7)}M${cx + 5.5} ${yW - 3.5}h${f1(wh - 7)}"/>`;
+  G.core_gyro = `<circle cx="${cx}" cy="${yC + 9}" r="7.8"/><ellipse class="thin" cx="${cx}" cy="${yC + 9}" rx="7.8" ry="2.8"/><ellipse class="thin" cx="${cx}" cy="${yC + 9}" rx="2.8" ry="7.8"/>${led(cx, yC + 9, 2.1)}`;
+  G.core_arc = `<circle class="fillsoft" cx="${cx}" cy="${yC + 9}" r="9.2"/><circle cx="${cx}" cy="${yC + 9}" r="5.4"/><circle class="thin" cx="${cx}" cy="${yC + 9}" r="7.4" stroke-dasharray="1.6 1.6"/>${led(cx, yC + 9, 2.4)}<path d="M${cx} ${yC - 3}V${yC - 7}M${cx - 11} ${yC + 15}l-3 2M${cx + 11} ${yC + 15}l3 2"/>`;
+  G.core_raid = `<polygon class="fillsoft" points="${[0, 1, 2, 3, 4, 5].map(i => { const a = Math.PI / 3 * i + Math.PI / 6; return (cx + 9.5 * Math.cos(a)).toFixed(1) + "," + (yC + 9 + 9.5 * Math.sin(a)).toFixed(1); }).join(" ")}"/><polygon points="${cx},${yC + 3.5} ${cx + 5},${yC + 12} ${cx - 5},${yC + 12}"/>${led(cx, yC + 9.5, 1.7)}<path d="M${cx - 12.5} ${yC + 9}h-3M${cx + 12.5} ${yC + 9}h3M${cx} ${yC - 3}v-3"/>`;
   // module jambier
-  G.legs_g0 = both(s => { const a = side(ankR, s); return `<polygon class="fillsoft" points="${pts([[a[0] - 8, 200], [a[0] + 8, 200], [a[0] + 9, 213], [a[0] - 9, 213]])}"/><path d="M${f1(a[0] - 5)} 216v3M${f1(a[0])} 216v4M${f1(a[0] + 5)} 216v3"/>`; });
-  G.legs_titan = both(s => { const h = side(hipR, s), k = side(kneeR, s), o = s * (thW + 2); return `<path d="M${f1(h[0] + o)} ${h[1] + 4}L${f1(k[0] + o * 0.8)} ${k[1] - 4}"/><circle cx="${f1(h[0] + o)}" cy="${h[1] + 4}" r="2" class="fill"/><circle cx="${f1(k[0])}" cy="${k[1]}" r="4.2"/>`; });
-  G.legs_quant = both(s => { const k = side(kneeR, s), a = side(ankR, s); return `<polygon class="fillsoft" points="${quad(k, a, shinW, shinW - 2)}"/><path d="M${f1(k[0] - 7)} ${k[1] + 10}h14M${f1(k[0] - 6.5)} ${k[1] + 19}h13M${f1(a[0] - 6)} ${a[1] - 6}h12"/><circle cx="${f1(k[0])}" cy="${k[1]}" r="4.6"/>`; });
+  G.legs_g0 = both(s => { const a = side(ankR, s); return `<polygon class="fillsoft" points="${pts([[a[0] - 8, 199], [a[0] + 8, 199], [a[0] + 9.5, 213], [a[0] - 9.5, 213]])}"/><path class="thin" d="M${f1(a[0] - 6)} 204h12M${f1(a[0] - 6.5)} 208h13"/><path d="M${f1(a[0] - 5)} 216v3M${f1(a[0])} 216v4M${f1(a[0] + 5)} 216v3"/>`; });
+  G.legs_titan = both(s => { const h = side(hipR, s), k = side(kneeR, s), o = s * (thW + 2); return `<path d="M${f1(h[0] + o)} ${h[1] + 4}L${f1(k[0] + o * 0.8)} ${k[1] - 4}"/><path class="thin" d="M${f1(h[0] + o * 0.75)} ${h[1] + 8}L${f1(k[0] + o * 0.6)} ${k[1] - 7}"/>${led(h[0] + o, h[1] + 4, 2)}<circle cx="${f1(k[0])}" cy="${k[1]}" r="4.4"/>${led(k[0], k[1], 1.3)}`; });
+  G.legs_quant = both(s => { const k = side(kneeR, s), a = side(ankR, s); return `<polygon class="fillsoft" points="${quad(k, a, shinW, shinW - 2)}"/><path d="M${f1(k[0] - 7)} ${k[1] + 10}h14M${f1(k[0] - 6.5)} ${k[1] + 19}h13M${f1(a[0] - 6)} ${a[1] - 6}h12"/><circle cx="${f1(k[0])}" cy="${k[1]}" r="4.6"/>${led(k[0], k[1], 1.4)}${led(k[0], k[1] + 14.5, 0.9)}`; });
   const gear = SLOT_KEYS.map(sl => eq[sl] && G[eq[sl]] ? `<g class="av-gear ${gearCls(sl)}${hl(sl)}">${G[eq[sl]]}</g>` : "").join("");
   // --- cadre de rang
   const W = 160, Hh = 246;
   const rankName = RANK_TIERS[tier].name;
   let frame = "";
+  const lg = tier === 5 ? " fr-legend" : "";
   const corner = (x, y, dx, dy, l) => `M${x} ${y + dy * l}V${y}H${x + dx * l}`;
   const corners = l => corner(3, 3, 1, 1, l) + corner(W - 3, 3, -1, 1, l) + corner(3, Hh - 3, 1, -1, l) + corner(W - 3, Hh - 3, -1, -1, l);
-  if (tier === 0) frame = `<path class="fr fr-dim" d="${corners(12)}"/>`;
-  if (tier === 1) frame = `<path class="fr" d="${corners(16)}"/>`;
-  if (tier === 2) frame = `<rect class="fr fr-thin" x="3" y="3" width="${W - 6}" height="${Hh - 6}"/><path class="fr" d="${corners(18)}"/><path class="fr" d="M3 ${Hh / 2 - 10}h5M3 ${Hh / 2}h8M3 ${Hh / 2 + 10}h5M${W - 3} ${Hh / 2 - 10}h-5M${W - 3} ${Hh / 2}h-8M${W - 3} ${Hh / 2 + 10}h-5"/>`;
-  if (tier === 3) frame = `<rect class="fr fr-thin" x="3" y="3" width="${W - 6}" height="${Hh - 6}"/><rect class="fr fr-run" x="7" y="7" width="${W - 14}" height="${Hh - 14}"/><path class="fr" d="${corners(20)}"/>`;
-  if (tier >= 4) {
-    const oct = c => pts([[c + 10, c], [W - c - 10, c], [W - c, c + 10], [W - c, Hh - c - 10], [W - c - 10, Hh - c], [c + 10, Hh - c], [c, Hh - c - 10], [c, c + 10]]);
-    frame = `<polygon class="fr fr-thick${tier === 5 ? " fr-legend" : ""}" points="${oct(3)}"/><polygon class="fr fr-thin${tier === 5 ? " fr-legend" : ""}" points="${oct(8)}"/>` +
-      [[14, 14], [W - 14, 14], [14, Hh - 14], [W - 14, Hh - 14]].map(p => `<circle class="fr-rivet${tier === 5 ? " fr-legend" : ""}" cx="${p[0]}" cy="${p[1]}" r="2"/>`).join("");
-  }
+  const rectP = c => `M${c} ${c}H${W - c}V${Hh - c}H${c}Z`;
+  const octP = c => `M${c + 10} ${c}H${W - c - 10}L${W - c} ${c + 10}V${Hh - c - 10}L${W - c - 10} ${Hh - c}H${c + 10}L${c} ${Hh - c - 10}V${c + 10}Z`;
+  const comet = (d, n) => Array.from({ length: n }, (_, i) => `<path class="fr-comet${lg}" pathLength="100" style="animation-delay:${-i * 3.2 / n}s" d="${d}"/>`).join("");
+  const reticle = `<g class="fr-ret${lg}"><circle class="spin" cx="80" cy="35" r="27" stroke-dasharray="3 6 18 6"/><circle class="spin rev" cx="80" cy="35" r="31" stroke-dasharray="1 4"/></g>`;
+  const sideBars = `M3 ${Hh / 2 - 12}h5M3 ${Hh / 2}h9M3 ${Hh / 2 + 12}h5M${W - 3} ${Hh / 2 - 12}h-5M${W - 3} ${Hh / 2}h-9M${W - 3} ${Hh / 2 + 12}h-5`;
+  const status = `<g class="fr-status${lg}"><circle cx="${W - 16}" cy="${Hh - 24}" r="1.6"/><text x="${W - 20}" y="${Hh - 22.6}">${tier >= 4 ? "SYNC" : "LIVE"}</text></g>`;
+  if (tier === 0) frame = `<path class="fr fr-dim" d="${corners(12)}"/>` + status;
+  if (tier === 1) frame = `<path class="fr" d="${corners(16)}"/><path class="fr-tick" d="M${W / 2 - 30} 3H${W / 2 + 30}M${W / 2 - 30} ${Hh - 3}H${W / 2 + 30}"/>` + status;
+  if (tier === 2) frame = `<path class="fr fr-thin" d="${rectP(3)}"/><path class="fr fr-glow" d="${corners(18)}"/><path class="fr" d="${sideBars}"/>${comet(rectP(3), 1)}` + status;
+  if (tier === 3) frame = reticle + `<path class="fr fr-thin" d="${rectP(3)}"/><path class="fr fr-run" d="${rectP(7)}"/><path class="fr fr-glow" d="${corners(20)}"/>${comet(rectP(3), 2)}` + status;
+  if (tier >= 4) frame = reticle + `<path class="fr fr-thick${lg}" d="${octP(3)}"/><path class="fr fr-thin${lg}" d="${octP(8)}"/>${comet(octP(3), tier === 5 ? 3 : 2)}`
+    + [[14, 14], [W - 14, 14], [14, Hh - 14], [W - 14, Hh - 14]].map(p => `<circle class="fr-rivet${lg}" cx="${p[0]}" cy="${p[1]}" r="2"/>`).join("") + status;
+  const sparks = tier === 5 ? `<g class="av-sparks">${[[52, 0], [66, 1.3], [94, 0.6], [108, 2], [80, 2.7], [60, 3.4], [100, 4.1]].map(([x, dl]) => `<circle cx="${x}" cy="214" r="1.1" style="animation-delay:${dl}s"/>`).join("")}</g>` : "";
+  const floor = `<g class="av-floor${lg}"><path class="beam" d="M54 222L68 40H92L106 222Z" fill="url(#${uid}b)"/><ellipse cx="80" cy="222" rx="36" ry="5"/><ellipse class="ring" cx="80" cy="222" rx="36" ry="5"/><ellipse class="ring r2" cx="80" cy="222" rx="36" ry="5"/></g>`;
   const plate = `<g class="fr-plate${tier === 5 ? " fr-legend" : ""}"><path d="M${W / 2 - 54} ${Hh - 3}L${W / 2 - 47} ${Hh - 15}H${W / 2 + 47}L${W / 2 + 54} ${Hh - 3}"/><text x="${W / 2}" y="${Hh - 6.5}">NIV ${lvl} · ${rankName.split(" ")[0]}</text></g>`;
   const grid = Array.from({ length: 9 }, (_, i) => `M${i * 20} 0V${Hh}`).join("") + Array.from({ length: 12 }, (_, i) => `M0 ${i * 20}H${W}`).join("");
   // emblèmes : série de semaines (gauche) et défis d'escouade réussis (droite)
@@ -3202,10 +3482,12 @@ function avatarSVG(st, opts) {
     + (wins ? `<g class="badge bw"><title>${wins} défi${wins > 1 ? "s" : ""} d'escouade réussi${wins > 1 ? "s" : ""}</title><polygon points="${pts([[W - 30, 12], [W - 18, 12], [W - 12, 22], [W - 18, 32], [W - 30, 32], [W - 36, 22]])}"/><text x="${W - 24}" y="25.5">${wins}</text></g>` : "");
   return `<svg class="avatar tier-${RANK_TIERS[tier].key}${opts.big ? " big" : ""}" viewBox="0 0 ${W} ${Hh}" role="img" aria-label="Châssis de l'opérateur, ${rankName}, niveau ${lvl}, ${SLOT_KEYS.filter(s => eq[s]).length} modules équipés sur 5">
     <defs><linearGradient id="${uid}g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" style="stop-color:var(--neon)" stop-opacity="0"/><stop offset="1" style="stop-color:var(--neon)" stop-opacity=".2"/></linearGradient>
+    <radialGradient id="${uid}m"><stop offset="0" style="stop-color:var(--neon)" stop-opacity=".42"/><stop offset=".55" style="stop-color:var(--neon)" stop-opacity=".16"/><stop offset="1" style="stop-color:var(--neon)" stop-opacity="0"/></radialGradient>
+    <linearGradient id="${uid}b" x1="0" x2="0" y1="0" y2="1"><stop offset="0" style="stop-color:${tier === 5 ? "var(--legend)" : "var(--neon)"}" stop-opacity="0"/><stop offset="1" style="stop-color:${tier === 5 ? "var(--legend)" : "var(--neon)"}" stop-opacity=".13"/></linearGradient>
     <clipPath id="${uid}c"><rect x="0" y="0" width="${W}" height="${Hh}"/></clipPath></defs>
     <path class="av-grid" d="${grid}"/>
-    ${halo}
-    <g transform="translate(0 4)">${body}<g class="av-lines">${lines}</g>${traces}${heart}${gear}</g>
+    ${floor}${halo}
+    <g transform="translate(0 4)"><g class="av-idle">${body}<g class="av-lines">${lines}</g>${traces}${heart}${gear}</g></g>${sparks}
     ${frame}${plate}${badges}
     <g clip-path="url(#${uid}c)"><rect class="scan" x="0" y="0" width="${W}" height="22" fill="url(#${uid}g)"/></g>
   </svg>`;
@@ -3285,23 +3567,45 @@ function tabFiche(b) {
    Icônes du cyberware et des aptitudes
    ===================================================================== */
 const GEAR_ICON = {
-  neural_civ: `<rect x="14" y="14" width="20" height="20" rx="2"/><rect class="f" x="20" y="20" width="8" height="8" rx="1"/><path d="M18 14v-5M24 14v-5M30 14v-5M18 34v5M24 34v5M30 34v5M14 18h-5M14 24h-5M14 30h-5M34 18h5M34 24h5M34 30h5"/>`,
-  neural_adren: `<rect x="14" y="14" width="20" height="20" rx="2"/><path d="M8 24h7l3-6 4 12 3-9 2 3h13M18 14v-5M30 14v-5M18 34v5M30 34v5"/>`,
-  neural_sync: `<circle cx="24" cy="24" r="4" class="f"/><circle cx="11" cy="13" r="3"/><circle cx="37" cy="13" r="3"/><circle cx="11" cy="35" r="3"/><circle cx="37" cy="35" r="3"/><path d="M14 15l7 6M34 15l-7 6M14 33l7-6M34 33l-7-6M24 8v12M24 28v12"/>`,
-  neural_ghost: `<path d="M12 12h24l4 10-4 16H12L8 22z"/><path class="f" d="M15 22h7l-2 4h-5zM33 22h-7l2 4h5z"/><path d="M19 33h10M24 6v6"/>`,
-  arms_mk0: `<path d="M13 22c0-4 3-7 7-7h8c4 0 7 3 7 7v11c0 3-2 5-5 5H18c-3 0-5-2-5-5z"/><path d="M18 15v8M23 15v8M28 15v8M13 27h22"/>`,
-  arms_hydra: `<rect x="9" y="12" width="12" height="24" rx="3"/><rect x="27" y="12" width="12" height="24" rx="3"/><path d="M15 6v6M33 6v6M15 36v6M33 36v6M21 20h6M21 28h6"/><path class="f" d="M12 26h6v6h-6zM30 26h6v6h-6z"/>`,
-  arms_plasma: `<path d="M14 40l6-24 8-6 6 4-4 10-6 16z"/><path d="M36 8l-4 6 5 1-4 7M40 22l-5 3 4 3"/><circle class="f" cx="25" cy="20" r="2.5"/>`,
-  core_belt: `<path d="M5 18h38v12H5z"/><rect x="18" y="15" width="12" height="18" rx="2"/><path class="f" d="M22 21h4v6h-4z"/><path d="M9 18v12M39 18v12"/>`,
-  core_gyro: `<circle cx="24" cy="24" r="14"/><ellipse cx="24" cy="24" rx="14" ry="5"/><ellipse cx="24" cy="24" rx="5" ry="14"/><circle class="f" cx="24" cy="24" r="3"/>`,
-  core_arc: `<circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="9"/><circle class="f" cx="24" cy="24" r="4"/><path d="M24 4v5M24 39v5M4 24h5M39 24h5M10 10l3.5 3.5M34.5 34.5L38 38M10 38l3.5-3.5M34.5 13.5L38 10"/>`,
-  core_raid: `<polygon points="24,6 39.6,15 39.6,33 24,42 8.4,33 8.4,15"/><polygon points="24,15 32,30 16,30"/><circle class="f" cx="24" cy="25" r="2.6"/>`,
-  dorsal_mk1: `<rect x="19" y="5" width="10" height="6" rx="2"/><rect x="19" y="14" width="10" height="6" rx="2"/><rect x="19" y="23" width="10" height="6" rx="2"/><rect x="19" y="32" width="10" height="6" rx="2"/><path d="M24 38v6M19 8h-6M29 8h6M19 17h-5M29 17h5"/>`,
-  dorsal_mk2: `<rect x="20" y="6" width="8" height="6" rx="2"/><rect x="20" y="15" width="8" height="6" rx="2"/><rect x="20" y="24" width="8" height="6" rx="2"/><rect x="20" y="33" width="8" height="6" rx="2"/><path d="M20 9H8l-2 6M28 9h12l2 6M20 18H11M28 18h9M20 27h-6M28 27h6"/><circle class="f" cx="6" cy="17" r="2"/><circle class="f" cx="42" cy="17" r="2"/>`,
-  dorsal_aegis: `<path d="M24 5l15 6v12c0 9-7 16-15 19-8-3-15-10-15-19V11z"/><path d="M24 5v37M9 18h30M11 28h26"/><path class="fs" d="M24 5l15 6v7H24z"/>`,
-  legs_g0: `<path d="M17 6h10v20l11 8v6H13V26z"/><path d="M13 40h25M9 44c3-2 6-2 9 0s6 2 9 0 6-2 9 0"/><path d="M17 16h10"/>`,
-  legs_titan: `<rect x="16" y="4" width="16" height="16" rx="3"/><rect x="19" y="20" width="10" height="12"/><path d="M14 32h20v6H14zM24 20v-6M12 42h24"/><path class="f" d="M21 23h6v6h-6z"/>`,
-  legs_quant: `<path d="M20 4h8v26l6 6v6H16v-6l4-6z"/><ellipse cx="24" cy="22" rx="17" ry="5"/><ellipse cx="24" cy="22" rx="17" ry="5" transform="rotate(60 24 22)"/><circle class="f" cx="24" cy="22" r="2.5"/>`
+  neural_civ: `<rect class="fs" x="14" y="14" width="20" height="20" rx="2"/><path d="M17 13h16a1 1 0 0 1 1 1v19a1 1 0 0 1-1 1H15a1 1 0 0 1-1-1V16z"/><rect class="f" x="20" y="20" width="8" height="8" rx="1"/>
+    <path d="M18 13V8.5M24 13V8.5M30 13V8.5M18 34v4.5M24 34v4.5M30 34v4.5M14 18H9.5M14 24H9.5M14 30H9.5M34 18h4.5M34 24h4.5M34 30h4.5"/>
+    <path class="t" d="M20 20l-2.5-2.5M28 28l2.5 2.5M28 20h3M20 28h-3"/><circle class="f" cx="31" cy="17" r="1.3"/>`,
+  neural_adren: `<rect class="fs" x="13" y="13" width="22" height="22" rx="2.5"/><rect x="13" y="13" width="22" height="22" rx="2.5"/>
+    <path d="M6 25h8l3-7 4.5 13 3.5-10 2.5 4H42"/><path d="M18 13V8M30 13V8M18 35v5M30 35v5"/>
+    <path class="t" d="M16 16h4M28 32h4"/><path class="f" d="M33 6l-4 6h3l-2 5 5-7h-3z"/><circle class="f" cx="16.5" cy="31.5" r="1.3"/>`,
+  neural_sync: `<circle class="t o" cx="24" cy="24" r="17" stroke-dasharray="2 3"/><circle class="fs" cx="24" cy="24" r="6"/><circle cx="24" cy="24" r="6"/><circle class="f" cx="24" cy="24" r="2.6"/>
+    <circle cx="10" cy="12" r="3"/><circle cx="38" cy="12" r="3"/><circle cx="10" cy="36" r="3"/><circle cx="38" cy="36" r="3"/><circle cx="24" cy="5.5" r="2.2"/><circle cx="24" cy="42.5" r="2.2"/>
+    <path d="M12.5 14l7 6M35.5 14l-7 6M12.5 34l7-6M35.5 34l-7-6M24 8v10M24 30v10"/><circle class="f" cx="10" cy="12" r="1"/><circle class="f" cx="38" cy="36" r="1"/>`,
+  neural_ghost: `<path class="fs" d="M12 11h24l5 11-5 17H12L7 22z"/><path d="M12 11h24l5 11-5 17H12L7 22z"/><path class="f" d="M13 21h9l-2 5h-6zM35 21h-9l2 5h6z"/>
+    <path d="M18 33h12M21 36.5h6M24 4v7M7 22h-4M41 22h4"/><path class="t" d="M12 16h24M10 28h4M34 28h4"/><circle class="f" cx="24" cy="4" r="1.6"/>`,
+  arms_mk0: `<path class="fs" d="M13 22c0-4 3-7 7-7h8c4 0 7 3 7 7v11c0 3-2 5-5 5H18c-3 0-5-2-5-5z"/><path d="M13 22c0-4 3-7 7-7h8c4 0 7 3 7 7v11c0 3-2 5-5 5H18c-3 0-5-2-5-5z"/>
+    <path d="M18 15v8M23 15v8M28 15v8M13 27h22M16 38v5h16v-5"/><path class="t" d="M17 31h6M17 34h4"/><circle class="f" cx="30" cy="32" r="1.6"/>`,
+  arms_hydra: `<rect class="fs" x="9" y="12" width="12" height="24" rx="3"/><rect class="fs" x="27" y="12" width="12" height="24" rx="3"/><rect x="9" y="12" width="12" height="24" rx="3"/><rect x="27" y="12" width="12" height="24" rx="3"/>
+    <path d="M15 5v7M33 5v7M15 36v7M33 36v7M21 19h6M21 29h6"/><path class="t" d="M12 17h6M30 17h6M12 21h6M30 21h6"/><path class="f" d="M12 26h6v6h-6zM30 26h6v6h-6z"/><circle cx="15" cy="5" r="1.6"/><circle cx="33" cy="5" r="1.6"/>`,
+  arms_plasma: `<path class="fs" d="M13 41l6-25 8-6 7 4-4 11-6 16z"/><path d="M13 41l6-25 8-6 7 4-4 11-6 16z"/><path class="t" d="M17 26l9 3M15.5 32l8.5 3M19 20l9 2"/>
+    <path d="M37 6l-4 6 5 1-4 7M42 21l-5 3 4 3"/><circle class="f" cx="26" cy="17" r="2.6"/><circle cx="26" cy="17" r="5"/>`,
+  core_belt: `<path class="fs" d="M4 18h40v12H4z"/><path d="M4 18h40v12H4z"/><rect x="18" y="14" width="12" height="20" rx="2"/><circle class="f" cx="24" cy="24" r="2.4"/>
+    <path d="M9 18v12M39 18v12"/><path class="t" d="M5 22h3M5 26h3M40 22h3M40 26h3M20 30h8M20 18h8"/><rect class="t" x="11" y="20" width="5" height="8" rx="1"/><rect class="t" x="32" y="20" width="5" height="8" rx="1"/>`,
+  core_gyro: `<circle class="fs" cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="15"/><ellipse cx="24" cy="24" rx="15" ry="5.5"/><ellipse cx="24" cy="24" rx="5.5" ry="15"/>
+    <ellipse class="t o" cx="24" cy="24" rx="15" ry="5.5" transform="rotate(45 24 24)"/><circle class="f" cx="24" cy="24" r="3.2"/><path class="t" d="M24 3v3M24 42v3M3 24h3M42 24h3"/>`,
+  core_arc: `<circle class="fs" cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="9.5"/><circle class="f" cx="24" cy="24" r="4.2"/>
+    <path d="M24 3.5v5M24 39.5v5M3.5 24h5M39.5 24h5"/><path class="t" d="M24 10.5v3M24 34.5v3M10.5 24h3M34.5 24h3M14.5 14.5l2 2M31.5 31.5l2 2M14.5 33.5l2-2M31.5 16.5l2-2"/><circle class="t o" cx="24" cy="24" r="12.7" stroke-dasharray="1.6 2.4"/>`,
+  core_raid: `<polygon class="fs" points="24,5 40.5,14.5 40.5,33.5 24,43 7.5,33.5 7.5,14.5"/><polygon points="24,5 40.5,14.5 40.5,33.5 24,43 7.5,33.5 7.5,14.5"/><polygon points="24,14 33,30.5 15,30.5"/>
+    <circle class="f" cx="24" cy="25" r="2.8"/><path class="t" d="M24 5v6M40.5 33.5l-5-3M7.5 33.5l5-3M12 17h4M32 17h4"/>`,
+  dorsal_mk1: `<rect class="fs" x="19" y="5" width="10" height="6" rx="2"/><rect class="fs" x="19" y="14" width="10" height="6" rx="2"/><rect class="fs" x="19" y="23" width="10" height="6" rx="2"/><rect class="fs" x="19" y="32" width="10" height="6" rx="2"/>
+    <rect x="19" y="5" width="10" height="6" rx="2"/><rect x="19" y="14" width="10" height="6" rx="2"/><rect x="19" y="23" width="10" height="6" rx="2"/><rect x="19" y="32" width="10" height="6" rx="2"/>
+    <path d="M24 38v6M19 8h-6l-2 3M29 8h6l2 3M19 17h-5M29 17h5"/><path class="t" d="M19 26h-3M29 26h3M24 11v3M24 20v3M24 29v3"/><circle class="f" cx="24" cy="8" r="1.2"/>`,
+  dorsal_mk2: `<rect class="fs" x="20" y="6" width="8" height="33" rx="2"/><rect x="20" y="6" width="8" height="6" rx="2"/><rect x="20" y="15" width="8" height="6" rx="2"/><rect x="20" y="24" width="8" height="6" rx="2"/><rect x="20" y="33" width="8" height="6" rx="2"/>
+    <path d="M20 9H8l-2 6M28 9h12l2 6M20 18H11M28 18h9M20 27h-6M28 27h6"/><path class="t" d="M8 9v18l6 0M40 9v18l-6 0"/>
+    <circle class="f" cx="6" cy="17" r="2"/><circle class="f" cx="42" cy="17" r="2"/><circle class="f" cx="24" cy="18" r="1.1"/>`,
+  dorsal_aegis: `<path class="fs" d="M24 4l16 6v13c0 9-7 17-16 20-9-3-16-11-16-20V10z"/><path d="M24 4l16 6v13c0 9-7 17-16 20-9-3-16-11-16-20V10z"/>
+    <path d="M24 4v39M8 18h32M10 29h28"/><path class="t" d="M14 11.5v5M34 11.5v5M15 22l4 4M33 22l-4 4"/><polygon class="f" points="24,20 28,23 28,27 24,30 20,27 20,23"/>`,
+  legs_g0: `<path class="fs" d="M17 5h10v20l11 8v6H13V25z"/><path d="M17 5h10v20l11 8v6H13V25z"/>
+    <path d="M13 39h25M17 15h10M17 20h10"/><path class="t" d="M27 29l6 4M20 31h3"/><path d="M15 44v2M21 43v3M27 43v3M33 44v2"/><circle class="f" cx="22" cy="10" r="1.3"/>`,
+  legs_titan: `<rect class="fs" x="16" y="4" width="16" height="16" rx="3"/><rect x="16" y="4" width="16" height="16" rx="3"/><rect x="19" y="20" width="10" height="13"/>
+    <path d="M13 33h22v6H13zM24 20v-5M11 43h26"/><path class="t" d="M19 8h10M19 11.5h10M21.5 23v7M26.5 23v7"/><circle cx="24" cy="15" r="2.6"/><circle class="f" cx="24" cy="15" r="1.1"/>`,
+  legs_quant: `<path class="fs" d="M20 4h8v26l6 6v6H16v-6l4-6z"/><path d="M20 4h8v26l6 6v6H16v-6l4-6z"/><ellipse cx="24" cy="22" rx="18" ry="5.5"/>
+    <ellipse class="t o" cx="24" cy="22" rx="18" ry="5.5" transform="rotate(60 24 22)"/><ellipse class="t o" cx="24" cy="22" rx="18" ry="5.5" transform="rotate(-60 24 22)"/><circle class="f" cx="24" cy="22" r="2.8"/><circle class="f" cx="6.5" cy="21" r="1.2"/>`
 };
 function gearIcon(id, size) {
   const g = GEAR_BY_ID[id];
@@ -3454,6 +3758,7 @@ function settingsHTML() {
     <div class="sec"><h3>OPÉRATEUR</h3>
       <div class="field-line"><label for="set-callsign">NOM DE CODE</label><input class="txt" id="set-callsign" maxlength="20" value="${esc(st.operator.callsign)}" autocomplete="off"></div>
       <p class="hint">Le poids de corps se règle dans Suivi → Corps, à chaque pesée.</p></div>
+    <div class="sec"><h3>PERSONNAGE</h3><div class="kind-pick" role="group" aria-label="Modèle du personnage">${AV_KINDS.map(k => `<button class="kind ${avKind(state) === k.id ? "on" : ""}" data-act="av-kind" data-k="${k.id}" aria-pressed="${avKind(state) === k.id}">${avatarSVG(state, { kind: k.id, noBadges: true, mini: true })}<span>${k.name.toUpperCase()}</span></button>`).join("")}</div></div>
     <div class="sec"><h3>APPARENCE</h3>
       <div class="chips-pick theme-picks">${[["auto", "AUTO"], ["dark", "SOMBRE"], ["light", "CLAIR"]].map(([k, l]) => `<button class="pick wide ${themePref() === k ? "on" : ""}" data-act="set-theme" data-n="${k}" aria-pressed="${themePref() === k}">${l}</button>`).join("")}</div>
       <div class="swatches" role="group" aria-label="Palette de couleurs">${ACCENTS.map(a => `<button class="swatch" data-act="set-accent" data-n="${a.id}" aria-pressed="${accentPref() === a.id}" style="--sw-d:${a.d};--sw-l:${a.l}" aria-label="Palette ${a.name.toLowerCase()}"><i></i><span>${a.name}</span></button>`).join("")}</div>
@@ -4421,6 +4726,19 @@ function exRegions(id) {
   const e = EX[id], w = {};
   e.muscles.forEach((m, i) => { for (const [re, r] of REG_RULES) if (re.test(m)) { w[r] = Math.max(w[r] || 0, i === 0 ? 1 : 0.5); break; } });
   return exRegionsCache[id] = w;
+}
+/* Développement (0 à 1) : séries cumulées par muscle, courbe qui sature ; chaleur (0 à 3) : séries des 14 derniers jours. */
+let devCache = null;
+function muscleDev() {
+  const sig = state.missions + ":" + (state.history[0] ? state.history[0].date : 0) + ":" + Math.floor(Date.now() / 3600000);
+  if (devCache && devCache.sig === sig) return devCache;
+  const all = muscleLoad(36500), rec = muscleLoad(14), dev = {}, heat = {};
+  Object.keys(REGIONS).forEach(r => {
+    dev[r] = 1 - Math.exp(-all[r] / 70);
+    const v = rec[r] / 2;
+    heat[r] = v <= 0 ? 0 : v < 3 ? 1 : v < 8 ? 2 : 3;
+  });
+  return (devCache = { sig, dev, heat, all, rec });
 }
 function muscleLoad(days) {
   const since = Date.now() - days * DAY, load = {};
@@ -5726,19 +6044,26 @@ function openChassisSheet() {
   const st = state, b = computeBonuses(st), tier = tierFor(st.level);
   const next = VISUAL_MILESTONES.find(m => m.lvl > st.level);
   const nextTier = RANK_TIERS[tier + 1];
-  const morph = [["power", "Épaules et bras"], ["armor", "Poitrine et dos"], ["propulsion", "Jambes"], ["core", "Taille et sangle"]].map(([k, l]) => {
-    const v = (st.stats[k] || 0) + (b.stat[k] || 0), pct = Math.round(Math.max(0, Math.min(1, (v - 10) / 70)) * 100);
-    return `<div class="stat"><div class="stat-head"><span class="stat-name">${l}</span><span class="stat-val">${pct} %<em>${STATS[k].short.toLowerCase()} ${fmt1(v)}</em></span></div><div class="stat-bar"><i style="width:${pct}%"></i></div></div>`;
+  const md = muscleDev();
+  const morph = Object.keys(REGIONS).sort((a, z) => md.dev[z] - md.dev[a]).map(r => {
+    const pct = Math.round(md.dev[r] * 100), h = md.heat[r];
+    return `<div class="dev-row"><span>${REGIONS[r]}${h ? `<i class="hd" hidden></i>` : ""}</span><i class="dev-bar"><b style="width:${pct}%"></b></i><em>${pct} %</em></div>`;
   }).join("");
+  const rookie = { stats: { power: 10, armor: 10, propulsion: 10, core: 10 }, level: 1, perks: [], gear: { equipped: { neural: null, dorsal: null, arms: null, core: null, legs: null } }, operator: { body: avKind(st) } };
   $("#sheet-in").innerHTML = `
     <div class="grip" aria-hidden="true"></div>
     <div class="sheet-top"><div><div class="eyebrow">FICHE DU CHÂSSIS · ${RANK_TIERS[tier].name}</div><h2>${esc(st.operator.callsign)}</h2></div>
       <button class="x-close" data-act="close-sheet" aria-label="Fermer">✕</button></div>
     <div class="gear-preview">${avatarSVG(st, { big: true })}</div>
+    <div class="sec"><h3>MODÈLE DU PERSONNAGE</h3><div class="kind-pick" role="group" aria-label="Modèle du personnage">${AV_KINDS.map(k => `<button class="kind ${avKind(state) === k.id ? "on" : ""}" data-act="av-kind" data-k="${k.id}" aria-pressed="${avKind(state) === k.id}">${avatarSVG(state, { kind: k.id, noBadges: true, mini: true })}<span>${k.name.toUpperCase()}</span></button>`).join("")}</div>
+      <p class="hint">Visible par votre escouade. La morphologie, le cyberware et les paliers visuels s'appliquent aux trois modèles.</p></div>
     <div class="sec"><h3>ÉVOLUTION VISUELLE</h3>
       <p>${next ? `Prochain palier au <b style="color:var(--neon)">niveau ${next.lvl}</b> : ${esc(next.text.toLowerCase())}.` : "Tous les paliers visuels sont débloqués."}${nextTier ? ` Le cadre change à chaque rang ; prochain rang : ${nextTier.name} (niveau ${nextTier.lvl}).` : ""}</p>
       <div class="ms">${VISUAL_MILESTONES.map(m => `<div class="ms-row ${st.level >= m.lvl ? "done" : ""}"><b>NIV ${m.lvl}</b><span>${esc(m.text)}</span></div>`).join("")}</div></div>
-    <div class="sec"><h3>MORPHOLOGIE</h3><p class="hint">La silhouette s'épaissit avec vos attributs : chaque série renforce la zone travaillée.</p><div class="stats" style="padding:0">${morph}</div></div>
+    <div class="sec"><h3>ÉVOLUTION DU CORPS</h3>
+      <div class="evo"><figure>${avatarSVG(rookie, { rawStats: true, noBadges: true, dev: {}, heat: {} })}<figcaption>AU DÉPART</figcaption></figure><span class="evo-arr" aria-hidden="true">›</span><figure>${avatarSVG(st, { noBadges: true })}<figcaption>AUJOURD'HUI</figcaption></figure></div>
+      <p class="hint">Chaque muscle se développe avec le volume de séries cumulé : pectoraux et dorsaux élargissent la cage thoracique, les épaules s'arrondissent, bras, cuisses et mollets prennent du volume, les abdos se dessinent.</p>
+      <div class="dev-list">${morph}</div></div>
     <div class="sec"><h3>MODULES ÉQUIPÉS</h3><div class="panel slot-list">
       ${SLOT_KEYS.map(sl => { const g = GEAR_BY_ID[st.gear.equipped[sl]]; return `<button class="slot-line slot-btn" ${g ? `data-act="gear-sheet" data-id="${g.id}"` : `data-act="tab" data-tab="arsenal"`}><span class="eyebrow">${SLOTS[sl]}</span><div>${g ? `<b>${esc(g.name)}</b><span class="fx rar ${g.rarity}">${g.rarity}</span>` : `<span class="empty">LIBRE · VOIR L'ARSENAL</span>`}</div></button>`; }).join("")}
     </div></div>
@@ -6100,6 +6425,26 @@ function weekStart(ts) {
   d.setDate(d.getDate() - day);
   return d.getTime();
 }
+/* Dernière séance partagée avec l'escouade (désactivable) : exercices, séries, répétitions et meilleure charge. */
+/* « m.XXXXXXXXXXXXXX.YYYYYYYYYYYYYY » : modèle, développement (0-z) et chaleur (0-3) de chaque muscle */
+function bodyCode() {
+  const md = muscleDev(), rs = Object.keys(REGIONS);
+  return avKind(state) + "." + rs.map(r => Math.round(md.dev[r] * 35).toString(36)).join("") + "." + rs.map(r => md.heat[r]).join("");
+}
+function parseBody(code) {
+  const [k, dv, ht] = String(code || "m").split("."), rs = Object.keys(REGIONS), dev = {}, heat = {};
+  rs.forEach((r, i) => { dev[r] = dv && dv[i] ? (parseInt(dv[i], 36) || 0) / 35 : 0; heat[r] = ht && ht[i] ? Math.min(3, +ht[i] || 0) : 0; });
+  return { kind: ["m", "f", "r"].includes(k) ? k : "m", dev, heat };
+}
+function lastCard() {
+  const h = state.history[0];
+  if (!h || state.shareLast === false) return null;
+  const ex = (Array.isArray(h.ex) ? h.ex : []).filter(x => EX[x.id]).slice(0, 24).map(x => {
+    const ss = Array.isArray(x.s) ? x.s : [];
+    return { i: x.id, n: ss.length, r: ss.reduce((a, q) => a + (+q[1] || 0), 0), k: ss.reduce((a, q) => Math.max(a, +q[0] || 0), 0) };
+  });
+  return { d: h.date, xp: Math.round(h.xp || 0), dur: Math.round(h.dur || 0), sets: h.sets || 0, ton: Math.round(h.ton || 0), name: String(h.prog || h.focus || "").slice(0, 40), ex };
+}
 function buildCard() {
   const ws = weekStart(), b = computeBonuses(state), stats = {}, gear = {};
   STAT_KEYS.forEach(k => { stats[k] = Math.round(statTotal(k, b) * 10) / 10; });
@@ -6112,7 +6457,7 @@ function buildCard() {
     ...(() => { const h = state.history.filter(x => x.date >= ws); const xs = {}; STAT_KEYS.forEach(k => { xs[k] = sumOf(h, x => x.xpStat && x.xpStat[k]); });
       const ms = monthStartOf(), hm = state.history.filter(x => x.date >= ms);
       return { monthStart: ms, monthTon: Math.round(sumOf(hm, x => x.ton)), monthReps: sumOf(hm, x => x.reps), monthCore: sumOf(hm, x => x.coreSec), monthMissions: hm.length, monthXp: sumOf(hm, x => x.xp),
-        ach: favFams(state).map(f => famTop(f).id), achN: badgesGot(state), raids: state.raidWins || 0,
+        ach: favFams(state).map(f => famTop(f).id), achN: badgesGot(state), raids: state.raidWins || 0, body: bodyCode(), last: lastCard(),
         weekTon: Math.round(sumOf(h, x => x.ton)), weekPush: sumOf(h, x => x.push), weekMissions: h.length, weekCore: sumOf(h, x => x.coreSec), weekRecs: sumOf(h, x => x.recs), weekXpStat: xs, streak: streakInfo().weeks, wins: state.squadWins || 0 }; })()
   };
 }
@@ -6128,7 +6473,10 @@ function cleanCard(d) {
     weekTon: num(d.weekTon, 0, 0), weekPush: num(d.weekPush, 0, 0), weekMissions: num(d.weekMissions, 0, 0), weekCore: num(d.weekCore, 0, 0), weekRecs: num(d.weekRecs, 0, 0),
     weekXpStat: Object.fromEntries(STAT_KEYS.map(k => [k, num(isObj(d.weekXpStat) ? d.weekXpStat[k] : 0, 0, 0)])), streak: num(d.streak, 0, 0), wins: num(d.wins, 0, 0),
     monthStart: num(d.monthStart, 0, 0), monthTon: num(d.monthTon, 0, 0), monthReps: num(d.monthReps, 0, 0), monthCore: num(d.monthCore, 0, 0), monthMissions: num(d.monthMissions, 0, 0), monthXp: num(d.monthXp, 0, 0),
-    ach: Array.isArray(d.ach) ? d.ach.filter(k => ACH_BY_ID[k]).slice(0, 3) : [], achN: num(d.achN, 0, 0), raids: num(d.raids, 0, 0)
+    ach: Array.isArray(d.ach) ? d.ach.filter(k => ACH_BY_ID[k]).slice(0, 3) : [], achN: num(d.achN, 0, 0), raids: num(d.raids, 0, 0),
+    body: typeof d.body === "string" ? d.body.slice(0, 40) : "m",
+    last: isObj(d.last) && num(d.last.d, 0, 0) ? { d: num(d.last.d, 0, 0), xp: num(d.last.xp, 0, 0), dur: num(d.last.dur, 0, 0), sets: num(d.last.sets, 0, 0), ton: num(d.last.ton, 0, 0),
+      name: String(d.last.name || "").slice(0, 40), ex: (Array.isArray(d.last.ex) ? d.last.ex : []).filter(x => isObj(x) && EX[x.i]).slice(0, 24).map(x => ({ i: x.i, n: Math.floor(num(x.n, 0, 0, 99)), r: Math.floor(num(x.r, 0, 0, 99999)), k: num(x.k, 0, 0, 1000) })) } : null
   };
 }
 function scheduleCards() {
@@ -6136,6 +6484,7 @@ function scheduleCards() {
   clearTimeout(squad.timer);
   squad.timer = setTimeout(() => pushCards(false), 2000);
 }
+const cardV1 = b => { const o = Object.assign({}, b); delete o.body; delete o.last; return o; };
 async function pushCards(force) {
   if (!STANDALONE || !fb.user || !fb.fs || !state.squads.length) return;
   const card = buildCard();
@@ -6144,7 +6493,14 @@ async function pushCards(force) {
   squad.lastSig = sig;
   const body = Object.assign({}, card, { updatedAt: Date.now() });
   for (const s of state.squads) {
-    try { await fb.fs.collection("squads").doc(s.code).collection("members").doc(fb.user.uid).set(body); } catch (e) { /* réessayé à la prochaine sauvegarde */ squad.lastSig = null; }
+    const ref = fb.fs.collection("squads").doc(s.code).collection("members").doc(fb.user.uid);
+    try { await ref.set(squad.oldRules ? cardV1(body) : body); }
+    catch (e) {
+      if (e && e.code === "permission-denied" && !squad.oldRules) {
+        try { await ref.set(cardV1(body)); squad.oldRules = true; continue; } catch (e2) {}
+      }
+      /* réessayé à la prochaine sauvegarde */ squad.lastSig = null;
+    }
   }
 }
 function closeSquadSub() {
@@ -6235,7 +6591,7 @@ function renderSquad() {
     ${codes.length < 10 ? `<button class="filt" data-act="squad-panel" data-panel="create">+ AJOUTER</button>` : ""}</div>` : "";
   const intro = !codes.length ? `<section class="sq-intro">
     <p class="lead" style="font-size:15px;line-height:1.6">Comparez vos progressions avec vos amis : créez une escouade et partagez son code, ou rejoignez celle d'un ami avec le sien.</p>
-    <p class="hint">Seul un résumé est partagé avec les membres : nom de code, niveau, XP, tonnage, missions, attributs et cyberware. Le détail de vos séances, vos charges et vos records restent privés.</p></section>` : "";
+    <p class="hint">Seul un résumé est partagé avec les membres : nom de code, personnage, niveau, XP, tonnage, missions, attributs, cyberware et votre dernière séance (désactivable). L'historique complet, vos notes et vos records restent privés.</p></section>` : "";
   const panel = showPanel ? `<section class="panel sq-panel">
     <div class="seg" role="tablist">
       <button role="tab" aria-selected="${mode === "create"}" class="${mode === "create" ? "on" : ""}" data-act="squad-panel" data-panel="create">CRÉER</button>
@@ -6289,11 +6645,35 @@ function renderSquad() {
       ${squad.loading ? `<div class="sq-row" style="cursor:default"><span class="pos">…</span><span class="who"><small>Chargement des autres membres…</small></span><span></span></div>` : ""}
     </div>
     ${list.length === 1 && !squad.loading ? `<p class="hint" style="margin-top:10px">Vous êtes seul pour l'instant. Touchez « Inviter des amis » pour leur envoyer le code.</p>` : ""}
+    ${squadFeedHTML(list)}
     <div class="danger-zone" style="margin-top:26px">
       <button class="btn btn-quiet hold" data-hold="squad-leave" data-ms="1000"><span class="stack">QUITTER CETTE ESCOUADE<small>APPUI LONG 1 S</small></span></button>
     </div>`;
   }
   return head + chips + intro + panel + board;
+}
+function memberAvatar(m) {
+  const pb = parseBody(m.body);
+  const fake = { stats: m.stats, level: m.level, perks: [], gear: { equipped: Object.assign({ neural: null, dorsal: null, arms: null, core: null, legs: null }, ...SLOT_KEYS.map(k => ({ [k]: m.gear[k] || null }))) }, operator: { body: pb.kind } };
+  return avatarSVG(fake, { rawStats: true, noBadges: true, dev: pb.dev, heat: pb.heat });
+}
+function lastSessHTML(L, compact) {
+  const dt = new Date(L.d), when = dt.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) + " · " + dt.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+  return `<div class="ls ${compact ? "c" : ""}">
+    <div class="ls-top"><span>${esc(when)}</span>${L.name ? `<b>${esc(L.name)}</b>` : ""}</div>
+    <div class="ls-kpi"><span><b>+${fmt(L.xp)}</b> XP</span><span><b>${L.sets}</b> séries</span>${L.dur ? `<span><b>${Math.max(1, Math.round(L.dur / 60000))}</b> min</span>` : ""}${L.ton ? `<span><b>${fmt(L.ton)}</b> kg</span>` : ""}</div>
+    ${L.ex.length ? `<ul class="ls-ex">${L.ex.map(x => { const e = EX[x.i]; const per = x.n ? Math.round(x.r / x.n) : 0;
+      return `<li><button class="link-ex" data-act="sheet-ex" data-id="${x.i}">${esc(e.name)}</button><b>${x.n} × ${e.type === "time" ? per + " s" : per}${x.k && e.type === "load" ? ` · ${fmt1(x.k)} kg` : x.k ? ` · +${fmt1(x.k)} kg` : ""}</b></li>`; }).join("")}</ul>` : ""}
+  </div>`;
+}
+function squadFeedHTML(list) {
+  const withLast = list.filter(m => m.last).sort((a, z) => z.last.d - a.last.d);
+  const me = list.find(m => m.me);
+  return `<section class="block sq-feed"><div class="prog-head"><span class="eyebrow">DERNIÈRES SÉANCES DE L'ESCOUADE</span></div>
+    ${withLast.length ? withLast.map((m, i) => `<details class="panel ls-card" ${i === 0 ? "open" : ""}><summary><span class="who"><b>${esc(m.callsign)}${m.me ? "<em>VOUS</em>" : ""}</b><small>${lastSeen(m.last.d)} · ${m.last.ex.length} exercice${m.last.ex.length > 1 ? "s" : ""} · +${fmt(m.last.xp)} XP</small></span><span class="go" aria-hidden="true">›</span></summary>${lastSessHTML(m.last, true)}</details>`).join("")
+      : `<p class="hint">Aucune séance partagée pour l'instant. Elles apparaissent ici après la prochaine mission de chacun.</p>`}
+    <label class="share-line"><input type="checkbox" id="share-last" ${state.shareLast === false ? "" : "checked"}><span>Partager ma dernière séance avec mes escouades (exercices, séries, répétitions et charges)</span></label>
+  </section>`;
 }
 function openMemberSheet(id) {
   const { list } = squadList();
@@ -6311,6 +6691,8 @@ function openMemberSheet(id) {
       <div><span>Tonnage cumulé</span><b>${fmt(m.tonnage)} kg</b></div>
     </div>
     <p class="hint">${lastSeen(m.lastMission).replace(/^./, c => c.toUpperCase())} · cette semaine : +${fmt(m.weekStart === weekStart() ? m.weekXp : 0)} XP</p>
+    <div class="gear-preview mem-av">${memberAvatar(m)}</div>
+    <div class="sec"><h3>DERNIÈRE SÉANCE</h3>${m.last ? lastSessHTML(m.last) : `<p class="hint">${m.me ? "Vous n'avez pas encore de séance partagée." : "Pas encore de séance partagée (mise à jour de l'application nécessaire chez ce membre, ou partage désactivé)."}</p>`}</div>
     <div class="sec"><h3>BADGES ÉPINGLÉS · ${fmt(m.achN || 0)} OBTENU${(m.achN || 0) > 1 ? "S" : ""}${m.raids ? ` · ${m.raids} RAID${m.raids > 1 ? "S" : ""}` : ""}</h3>${m.ach && m.ach.length ? achFavRow(m.ach, 46, true) : `<p class="hint">Aucun succès épinglé pour l'instant.</p>`}</div>
     <div class="sec"><h3>ATTRIBUTS</h3><div class="stats" style="padding:0">
       ${STAT_KEYS.map(k => `<div class="stat"><div class="stat-head"><span class="stat-name">${STATS[k].label}</span><span class="stat-val">${fmt1(m.stats[k])}</span></div>
@@ -6360,7 +6742,9 @@ async function squadJoin() {
   squad.busy = false;
 }
 async function joinWrite(code, name, created) {
-  await fb.fs.collection("squads").doc(code).collection("members").doc(fb.user.uid).set(Object.assign({}, buildCard(), { updatedAt: Date.now() }));
+  const jb = Object.assign({}, buildCard(), { updatedAt: Date.now() }), jref = fb.fs.collection("squads").doc(code).collection("members").doc(fb.user.uid);
+  try { await jref.set(squad.oldRules ? cardV1(jb) : jb); }
+  catch (e) { if (e && e.code === "permission-denied" && !squad.oldRules) { await jref.set(cardV1(jb)); squad.oldRules = true; } else throw e; }
   if (!state.squads.some(s => s.code === code)) state.squads.push({ code, name });
   ui.squadSel = code; squad.panel = null; squad.draftName = ""; squad.draftCode = ""; squad.msg = ""; squad.sort = "week";
   squad.lastSig = null;
@@ -6472,10 +6856,8 @@ function renderBriefing() {
   ${lo.length ? `<div class="ex-cards">${lo.map(id => exCardHTML(EX[id], b)).join("")}</div>` :
     `<div class="panel empty-lo"><div class="eyebrow">LOADOUT VIDE</div><p class="hint">Aucun exercice sélectionné pour cette mission.</p><button class="btn btn-ghost" data-act="go" data-to="catalog">OUVRIR LE CATALOGUE</button></div>`}
   <footer class="actionbar"><div class="actionbar-in">
-    ${ui.finishAt ? `<button class="btn btn-ghost" data-act="finish-cancel">ANNULER</button>
-    <button class="btn btn-neon fin-arm" id="finish-go" data-act="finish-now" style="--p:0"><span class="stack"><span>VALIDATION DANS <b id="finish-left">${FINISH_DELAY}</b> S</span><small>OU TOUCHER POUR VALIDER</small></span></button>`
-    : `<button class="btn btn-alert hold" data-hold="abort-mission" data-ms="800" aria-label="Abandonner la mission, appui long requis"><span class="stack">ABANDON<small>APPUI LONG</small></span></button>
-    <button class="btn btn-neon" data-act="finish-mission" ${t.sets ? "" : "disabled"}>TERMINER LA MISSION</button>`}
+    <button class="btn btn-alert hold" data-hold="abort-mission" data-ms="800" aria-label="Abandonner la mission, appui long requis"><span class="stack">ABANDON<small>APPUI LONG</small></span></button>
+    <button class="btn btn-neon hold fin-hold" data-hold="finish-mission" data-ms="3000" ${t.sets ? "" : "disabled"} aria-label="Terminer la mission, maintenir 3 secondes"><span class="stack">TERMINER LA MISSION<small>MAINTENIR 3 S</small></span></button>
   </div></footer>`;
 }
 function exCardHTML(e, b) {
@@ -6507,13 +6889,13 @@ function exCardHTML(e, b) {
         <span class="xp">+${fmt(s.xp)} XP</span>
         <button class="del ${armed ? "confirm" : ""}" data-act="del-set" data-id="${e.id}" data-i="${i}" aria-label="${armed ? "Confirmer la suppression" : "Supprimer la série"} ${i + 1}">${armed ? "SUPPR ?" : "✕"}</button></div>`;
     }).join("")}</div>` : ""}
-    <div class="entry">
+    <div class="entry ${time ? "t-entry" : ""}">
       <div class="field"><label for="kg-${e.id}">${kgLabel}</label>
         <div class="stepper"><button data-act="step" data-id="${e.id}" data-f="kg" data-d="-2.5" aria-label="Moins 2,5 kg">−</button><input id="kg-${e.id}" data-field="kg" data-id="${e.id}" inputmode="decimal" autocomplete="off" value="${fmt1(d.kg).replace(/\s/g, "")}"><button data-act="step" data-id="${e.id}" data-f="kg" data-d="2.5" aria-label="Plus 2,5 kg">+</button></div>
         ${e.type === "bw" ? `<div class="bw-note">+ PDC ${fmt1(bodyweight())} kg × ${e.bw}</div>` : ""}
         ${loadCap(e.id) ? `<div class="bw-note">Matériel ${PLACES[state.equip.active].toLowerCase()} : ${fmt1(loadCap(e.id))} kg max${loadKind(e.id) === "db" ? " par haltère" : ""}</div>` : ""}</div>
       ${loadKind(e.id) === "bb" ? `<div class="plates" id="pl-${e.id}">${plateHTML(d.kg)}</div>` : ""}
-      <div class="field"><label for="reps-${e.id}">${repLabel}</label>
+      <div class="field ${time ? "f-dur" : ""}"><label for="reps-${e.id}">${repLabel}</label>
         ${time ? `<div class="stepper ef-step"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="-5" aria-label="Moins 5 secondes">−5</button><button data-act="step" data-id="${e.id}" data-f="reps" data-d="-1" aria-label="Moins 1 seconde">−1</button><input id="reps-${e.id}" data-field="reps" data-id="${e.id}" inputmode="numeric" autocomplete="off" value="${Math.round(d.reps)}"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="1" aria-label="Plus 1 seconde">+1</button><button data-act="step" data-id="${e.id}" data-f="reps" data-d="5" aria-label="Plus 5 secondes">+5</button></div>`
           : `<div class="stepper"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="-1" aria-label="Moins">−</button><input id="reps-${e.id}" data-field="reps" data-id="${e.id}" inputmode="numeric" autocomplete="off" value="${Math.round(d.reps)}"><button data-act="step" data-id="${e.id}" data-f="reps" data-d="1" aria-label="Plus">+</button></div>`}</div>
       <div class="entry-go">
@@ -7191,6 +7573,12 @@ const actions = {
   "mission-sheet": el => openMissionSheet(+el.dataset.i),
   "journal-all": () => { ui.journalAll = true; render(); },
   "recs-all": () => { ui.recsAll = true; render(); },
+  "av-kind": el => {
+    state.operator.body = el.dataset.k; save(); render(); sfx("confirm");
+    const sc = $("#sheet-in").scrollTop;
+    if (ui.settingsOpen) $("#sheet-in").innerHTML = settingsHTML(); else openChassisSheet();
+    $("#sheet-in").scrollTop = sc;
+  },
   "set-theme": el => { setTheme(el.dataset.n); render(); if (ui.settingsOpen) { const sc = $("#sheet-in").scrollTop; $("#sheet-in").innerHTML = settingsHTML(); $("#sheet-in").scrollTop = sc; } toast(el.dataset.n === "auto" ? "Thème automatique : suit le réglage de l'appareil." : el.dataset.n === "light" ? "Thème clair activé." : "Thème sombre activé."); },
   "eq-dbcount": el => { curPlace().dbCount = el.dataset.n === "1" ? 1 : 2; equipChanged(); },
   "fav-open": () => openFavSheet(),
@@ -7321,6 +7709,7 @@ const actions = {
 };
 function keepNoteText() { const t = $("#note-text"); if (t && ui.report) ui.report.note.text = t.value.slice(0, 200); }
 const holdActions = {
+  "finish-mission": () => { finishMission(); if (ui.screen === "report") sfx("complete"); },
   "plan-del": () => planDelete(),
   "undo-mission": () => undoLastMission(),
   "squad-leave": () => squadLeave(),
@@ -7467,6 +7856,7 @@ document.addEventListener("drop", e => {
 });
 document.addEventListener("change", e => {
   const t = e.target;
+  if (t.id === "share-last") { state.shareLast = t.checked; save(); scheduleCards(); toast(t.checked ? "Dernière séance partagée avec l'escouade." : "Dernière séance retirée du partage."); return; }
   if (t.id === "pdf-input") { const f = t.files && t.files[0]; t.value = ""; if (f) planImportFile(f); return; }
   if (t.dataset && t.dataset.unk !== undefined && ui.planDraft) {
     const nm = $("#plan-name"); if (nm) ui.planDraft.name = nm.value;
