@@ -1796,7 +1796,7 @@ const EXERCISES = [
   ex("dragon_flag","Dragon flag","abdos","bw",1.8,{core:1},120,0,4,["Grand droit","Transverse","Grand dorsal"],"Allongé sur un banc, mains derrière la tête, corps gainé en planche levé à la verticale puis redescendu lentement.",0.6),
   /* ---- Ajouts : fessiers, gainage, haltères, étirements ---- */
   // PECTORAUX
-  ex("db_bench","Développé couché haltères","pecs","load",1.2,{power:1},90,16,10,["Grand pectoral","Triceps","Deltoïde antérieur"],"Allongé sur un banc, haltères au-dessus de la poitrine. Descente contrôlée coudes à 45° du corps, poussée jusqu'à bras tendus. Sans banc, il se fait au sol (floor press) avec une amplitude plus courte."),
+  ex("db_bench","Développé couché haltères","pecs","load",1.2,{power:1},90,16,10,["Grand pectoral","Triceps","Deltoïde antérieur"],"Allongé sur un banc, haltères au-dessus de la poitrine. Descente contrôlée coudes à 45° du corps, poussée jusqu'à bras tendus. Sans banc : voir « Développé au sol aux haltères »."),
   // ÉPAULES
   ex("upright_row","Rowing menton haltères","epaules","load",0.85,{power:0.7,armor:0.3},60,8,12,["Deltoïde moyen","Trapèzes"],"Haltères devant les cuisses, on tire les coudes vers le haut et l'extérieur jusqu'à hauteur d'épaules, haltères près du corps. On ne monte pas plus haut que les épaules et on s'arrête si l'épaule pince."),
   ex("y_raise","Élévations en Y","epaules","load",0.65,{power:0.6,armor:0.4},45,3,12,["Deltoïde antérieur","Trapèzes (portion basse)","Coiffe des rotateurs"],"Haltères très légères, bras presque tendus montés en diagonale au-dessus de la tête pour dessiner un Y, pouces vers le haut. Omoplates basses, sans cambrer le dos."),
@@ -1826,6 +1826,23 @@ const EXERCISES = [
   ex("wipers","Essuie-glaces","abdos","bw",1.1,{core:1},60,0,10,["Obliques","Grand droit","Fléchisseurs de hanche"],"Allongé, bras en croix, jambes à la verticale. On les descend d'un côté sans toucher le sol puis de l'autre, épaules plaquées. Version plus facile : genoux pliés. Répétitions totales.",0.3),
   ex("knee_elbow","Genou-coude en planche","abdos","bw",0.75,{core:1},45,0,16,["Grand droit","Obliques","Transverse"],"En planche bras tendus, on amène lentement un genou vers le coude du même côté en arrondissant légèrement le dos, puis on repose le pied. Répétitions totales.",0.35),
   ex("plank_side_taps","Planche side taps","abdos","bw",0.7,{core:0.9,propulsion:0.1},45,0,20,["Transverse","Obliques","Moyen fessier"],"En planche bras tendus, on écarte un pied sur le côté pour toucher le sol puis on le ramène, en alternance, bassin immobile. Répétitions totales.",0.3),
+  // programme appartement : variantes séparées
+  ex("floor_press_bb","Développé au sol à la barre","pecs","load",1.2,{power:1},105,40,10,["Grand pectoral","Triceps brachial","Deltoïde antérieur"],"Allongé sur le dos au sol, genoux fléchis, pieds à plat. La barre descend jusqu'à ce que l'arrière des bras touche le sol, courte pause, puis poussée jusqu'à bras tendus. Amplitude raccourcie : épaules ménagées, triceps très sollicités. Mise en place : la barre roule des cuisses jusqu'à la poitrine."),
+  ex("floor_press_db","Développé au sol aux haltères","pecs","load",1.15,{power:1},90,15,12,["Grand pectoral","Triceps brachial","Deltoïde antérieur"],"Allongé au sol, genoux fléchis, un haltère dans chaque main, paumes face à face. Descente jusqu'au contact des bras avec le sol, coudes à environ 45° du buste, puis poussée jusqu'à bras tendus."),
+  ex("floor_tri_db","Extension triceps au sol","bras","load",0.85,{power:1},60,7,12,["Triceps brachial"],"Allongé au sol, haltères bras tendus au-dessus de la poitrine, paumes face à face. Seuls les coudes plient pour amener les haltères vers les côtés de la tête, puis on tend les bras. Coudes serrés, épaules immobiles."),
+  ex("squat_speed","Squat explosif sans saut","jambes","load",1.1,{propulsion:1},90,5,5,["Quadriceps","Fessiers","Mollets"],"Descente contrôlée jusqu'aux cuisses parallèles au sol, puis remontée la plus rapide possible en finissant sur la pointe des pieds, sans décoller : l'explosivité d'un saut, sans le bruit. Haltères le long du corps, ou poids du corps (0 kg)."),
+  ex("bb_glute_bridge","Pont fessier à la barre","jambes","load",1.0,{propulsion:0.9,core:0.1},75,45,12,["Grand fessier","Ischio-jambiers"],"Allongé au sol, épaules au sol, genoux fléchis, barre en travers des hanches (serviette autour). On monte les hanches en serrant les fessiers jusqu'à l'alignement épaules-genoux, puis on redescend. Version une jambe : l'autre jambe reste tendue en l'air."),
+  ex("row_bb_supi","Rowing barre supination","dos","load",1.25,{armor:0.8,power:0.2},90,35,10,["Grand dorsal","Rhomboïdes","Biceps brachial","Trapèze moyen"],"Buste penché à environ 45°, dos plat, barre tenue paumes vers le haut. On tire la barre vers le bas du ventre en gardant les coudes près du corps : plus de grand dorsal et de biceps qu'en prise pronation."),
+  ex("pullover_db","Pull-over au sol","dos","load",0.9,{armor:0.7,power:0.3},60,15,12,["Grand dorsal","Grand pectoral","Grand rond","Triceps, chef long"],"Allongé sur le dos au sol, genoux fléchis, un haltère tenu à deux mains au-dessus de la poitrine, bras presque tendus. On le descend derrière la tête jusqu'à l'étirement sous les aisselles, puis on le ramène. Le sol limite l'amplitude et protège l'épaule."),
+  ex("oh_tri_two","Extension triceps au-dessus de la tête","bras","load",0.85,{power:1},60,12,12,["Triceps (longue portion)"],"Debout ou assis, un haltère tenu à deux mains au-dessus de la tête. Coudes serrés et pointés vers le plafond, on descend l'haltère derrière la tête puis on tend les bras."),
+  ex("db_swing","Swing à un haltère","jambes","load",1.1,{propulsion:0.7,core:0.2,armor:0.1},75,15,12,["Grand fessier","Ischio-jambiers","Érecteurs du rachis","Gainage"],"Haltère tenu à deux mains devant les cuisses. Charnière de hanche : l'haltère passe entre les jambes, puis une poussée explosive des hanches l'envoie à hauteur de poitrine, bras relâchés. On enchaîne sans le poser."),
+  ex("zercher","Squat Zercher","jambes","load",1.35,{propulsion:0.7,core:0.3},120,35,10,["Quadriceps","Fessiers","Gainage antérieur","Érecteurs du rachis"],"Barre calée dans le creux des coudes (serviette autour), bras serrés contre le ventre. Descente buste droit jusqu'aux cuisses parallèles, puis remontée. Se charge depuis le sol, sans support de barre."),
+  ex("sl_rdl","Soulevé de terre roumain une jambe","jambes","load",1.05,{propulsion:0.7,core:0.3},75,15,10,["Ischio-jambiers","Grand fessier","Stabilisateurs de hanche"],"Debout sur une jambe légèrement fléchie, haltère dans la main opposée. Le buste bascule en avant pendant que l'autre jambe part tendue vers l'arrière, dos plat ; on remonte en serrant la fesse. Répétitions par jambe."),
+  ex("slider_curl","Flexion des jambes au sol","jambes","bw",0.8,{propulsion:0.9,core:0.1},60,0,10,["Ischio-jambiers","Grand fessier"],"Allongé sur le dos, talons sur une serviette (sol lisse) ou en chaussettes. Hanches montées en pont, on fait glisser les talons loin de soi puis on les ramène lentement, sans laisser retomber le bassin. Version une jambe : l'autre reste tendue en l'air.",0.35),
+  ex("step_up_db","Montées sur chaise explosives","jambes","load",1.1,{propulsion:1},75,10,8,["Quadriceps","Fessiers"],"Chaise stable d'environ 45 cm, un haltère dans chaque main. Tout le pied sur la chaise, on monte le plus vite possible en poussant uniquement sur cette jambe, puis on redescend en 2 s sans claquer le pied. Répétitions par jambe."),
+  ex("sit_up_w","Relevé de buste lesté","abdos","load",0.7,{core:1},60,10,12,["Grand droit","Obliques"],"Allongé, genoux fléchis, pieds à plat, haltère tenu contre la poitrine. On enroule le haut du dos pour décoller les épaules en expirant, puis on redescend lentement. On ne tire pas sur la nuque."),
+  ex("reverse_lunge_db","Fentes arrière aux haltères","jambes","load",1.15,{propulsion:0.9,core:0.1},90,12,10,["Quadriceps","Grand fessier","Adducteurs"],"Un haltère dans chaque main, grand pas en arrière jusqu'à ce que le genou arrière frôle le sol (sans le cogner), puis remontée vive en poussant dans le pied avant. Toutes les répétitions d'un côté, puis de l'autre."),
+  ex("calf_sl_db","Mollets une jambe (haltère)","jambes","load",0.7,{propulsion:1},45,15,15,["Gastrocnémien","Soléaire"],"Sur une jambe, pointe du pied sur une marche ou un livre épais, haltère dans la main du même côté, l'autre main au mur. Talon sous la marche avec une pause d'une seconde, puis montée la plus haute possible. Répétitions par jambe."),
   // ÉTIREMENTS (durée, rangés dans le système travaillé)
   ex("st_fig4","Étirement en figure 4","jambes","time",0.4,{propulsion:0.6,core:0.4},15,0,30,["Grand fessier","Piriforme","Stabilisateurs de hanche"],"Allongé sur le dos, cheville posée sur le genou opposé (la forme d'un 4). On tire la cuisse d'appui vers la poitrine jusqu'à sentir l'étirement dans le fessier. Durée par côté, respiration lente."),
   ex("st_butterfly","Étirement papillon","jambes","time",0.4,{propulsion:0.8,core:0.2},15,0,30,["Adducteurs","Hanches"],"Assis, plantes des pieds collées, talons près du bassin, mains sur les pieds. Dos long, on laisse les genoux descendre et on se penche doucement vers l'avant en expirant."),
@@ -1865,6 +1882,12 @@ const EX_ALIAS = {
   cross_crunch: "cross crunch|cross body crunch", heel_taps: "side to side|heel touch|heel tap", bicycle_kicks: "bicycle kick|flutter kick", wipers: "wiper|windshield wiper",
   knee_elbow: "knee to elbow|knee elbow", plank_side_taps: "side tap|plank side tap", st_fig4: "figure 4 glute stretch|figure four stretch|figure 4 stretch|etirement stretch mobilite souplesse",
   st_butterfly: "butterfly stretch|etirement mobilite souplesse", st_child: "child pose with side reach|childs pose with side reach|child pose|childs pose|etirement stretch mobilite souplesse",
+  floor_press_bb: "floor press|barbell floor press", floor_press_db: "dumbbell floor press|db floor press", floor_tri_db: "floor skull crusher|dumbbell floor skull crusher|lying dumbbell tricep extension",
+  squat_speed: "speed squat", bb_glute_bridge: "barbell glute bridge", row_bb_supi: "underhand barbell row|reverse grip barbell row|yates row",
+  pullover_db: "dumbbell pullover|pullover", oh_tri_two: "two hand overhead tricep extension|dumbbell overhead tricep extension|two arm overhead extension",
+  db_swing: "dumbbell swing|kettlebell swing", zercher: "zercher squat", sl_rdl: "single leg rdl|single leg romanian deadlift|one leg rdl",
+  slider_curl: "slider leg curl|sliding leg curl|towel leg curl", step_up_db: "dumbbell step up|explosive step up", sit_up_w: "weighted sit up",
+  reverse_lunge_db: "dumbbell reverse lunge", calf_sl_db: "single leg dumbbell calf raise",
   st_twist: "seated glute twist|seated twist|etirement stretch mobilite souplesse", st_hipflexor: "kneeling hip flexor stretch|hip flexor stretch|etirement mobilite souplesse psoas"
 };
 const normTxt = t => String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
@@ -1941,12 +1964,15 @@ const EX_REQ = {
   chinup_close: [["pullbar"]], bw_curl: [["lowbar", "rings"]], step_up: [["step", "bench"]], dragon_flag: [["bench"]],
   db_bench: [["db"]], upright_row: [["db"]], y_raise: [["db"]], curl_db: [["db"]], oh_tri_one: [["db"]],
   goblet_squat: [["db"]], goblet_sumo: [["db"]], bstance_rdl: [["db"]], bw_hip_thrust: [["bench", "step"]], sl_hip_thrust: [["bench", "step"]],
-  clamshell: [["band"]]
+  clamshell: [["band"]],
+  floor_press_bb: [["bb"]], floor_press_db: [["db"]], floor_tri_db: [["db"]], bb_glute_bridge: [["bb"]], row_bb_supi: [["bb"]],
+  pullover_db: [["db"]], oh_tri_two: [["db"]], db_swing: [["db"]], zercher: [["bb"]], sl_rdl: [["db"]],
+  step_up_db: [["db"], ["step", "bench"]], sit_up_w: [["db"]], reverse_lunge_db: [["db"]], calf_sl_db: [["db"]]
 };
 const exReq = id => EX_REQ[id] || [];
 /* Exercices aux haltères qui demandent une paire ; ceux qui se font un bras à la fois avec une seule. */
-const EX_PAIR = new Set(["incline_db", "fly", "db_press", "arnold", "rdl", "db_bench"]);
-const EX_UNI = new Set(["row_db", "curl_hammer", "curl_incline", "lat_raise", "rear_fly", "shrug", "calf", "lunge", "bulgarian", "curl_db", "oh_tri_one", "y_raise", "bstance_rdl"]);
+const EX_PAIR = new Set(["incline_db", "fly", "db_press", "arnold", "rdl", "db_bench", "floor_press_db"]);
+const EX_UNI = new Set(["row_db", "curl_hammer", "curl_incline", "lat_raise", "rear_fly", "shrug", "calf", "lunge", "bulgarian", "curl_db", "oh_tri_one", "y_raise", "bstance_rdl", "floor_tri_db", "reverse_lunge_db"]);
 function defaultEquip() {
   return { active: "home", filter: false, places: {
     home: { items: [], maxDb: 0, maxBb: 0, dbCount: 2, barKg: 20 },
@@ -3871,6 +3897,12 @@ const F = ILL.FLOOR;
 const STAND = { a: 0, f: 0 };
 const IL = {
   press(o) { // développé allongé (plat, incliné, décliné), écarté
+    if (o.floor) { // au sol : le coude se pose au sol, bras en raccourci (coudes à 45°)
+      const hip = [146, F - 8], legs = { ik: [174, F - 2], bend: -1 };
+      const base = { hip, torso: -90, head: -94, leg: legs, leg2: legs };
+      return { props: [{ k: o.db ? "db" : "bar", j: "hand" }],
+        A: Object.assign({}, base, { arm: { a: 90, f: 180, s: [0.5, 1] } }), B: Object.assign({}, base, { arm: { a: 180, f: 180, s: [1, 1] } }) };
+    }
     const tor = o.incline ? -122 : o.decline ? -76 : -90;
     const hip = o.incline ? [150, 118] : [150, 114];
     const sh = ilAdd(hip, tor, ILL.T);
@@ -3969,8 +4001,8 @@ const IL = {
       B: Object.assign({}, base, { torso: 186, arm: { ik: [100, 110], bend: 1 } }) };
   },
   bentrow(o) {
-    const hip = [98, 102], tor = 122;
-    const sh = ilAdd(hip, tor, ILL.T), belly = ilAdd(hip, tor, 12);
+    const hip = [98, 102], tor = o.supi ? 128 : 122;
+    const sh = ilAdd(hip, tor, ILL.T), belly = ilAdd(hip, tor, o.supi ? 6 : 12);
     const legs = { ik: [114, F - 2], bend: -1 };
     const base = { hip, torso: tor, head: tor - 10, leg: legs, leg2: legs };
     return { props: [{ k: o.db ? "db" : "bar", j: "hand" }],
@@ -4012,6 +4044,10 @@ const IL = {
   deadlift(o) {
     const legs = { ik: [114, F - 2], bend: -1 };
     const pose = (hip, t) => ({ hip, torso: t, head: t < 150 ? t - 15 : t, leg: legs, leg2: o.bstance ? { ik: [99, F - 8], bend: -1 } : legs, foot2: o.bstance ? 45 : undefined, arm: { a: 0, f: 0 } });
+    if (o.single) { // une jambe : la jambe libre part tendue vers l'arrière
+      const one = (hip, t, l2, f2) => Object.assign(pose(hip, t), { leg2: l2, foot2: f2 });
+      return { props: [{ k: "db", j: "hand" }], A: one([98, 100], 100, { a: -78, f: -78 }, 12), B: one([112, 98], 180, { a: -4, f: -38 }, 50) };
+    }
     if (o.rdl) return { props: [{ k: o.db ? "db" : "bar", j: "hand" }], A: pose([96, 100], 104), B: pose([112, 98], 180) };
     return { props: [{ k: "bar", j: "hand" }], A: pose([92, 114], 118), B: pose([112, 98], 180) };
   },
@@ -4024,6 +4060,8 @@ const IL = {
     else { arm = { ik: [2, -3], rel: "sh", bend: 1 }; props.push({ k: "bar", j: "sh", dx: -3, dy: -3 }); }
     const pose = (hip, t, ank, armOverride) => ({ hip, torso: t, leg: ank ? { ik: ank, bend: -1 } : legs, leg2: ank ? { ik: ank, bend: -1 } : legs, arm: armOverride || arm });
     if (o.air) return { A: pose([92, 126], 140, null, { a: 92, f: 92 }), B: pose([113, 98], 178, null, { a: 70, f: 60 }) };
+    if (o.speed) { const hang = { a: 6, f: 4 }; return { props: [{ k: "db", j: "hand" }], A: Object.assign(pose([92, 126], 140, [116, F - 2], hang), { foot: 90, foot2: 90 }), B: Object.assign(pose([114, 91], 180, [116, F - 8], hang), { foot: 32, foot2: 32 }) }; }
+    if (o.zercher) { const z = { a: 22, f: 162 }; return { props: [{ k: "bar", j: "elb", dx: 1, dy: -2 }], A: pose([90, 126], 154, null, z), B: pose([113, 98], 178, null, z) }; }
     if (o.goblet) { const g = { ik: [12, 5], rel: "sh", bend: 1 }; return { props: [{ k: "db", j: "hand", dy: -3 }], A: pose([92, 126], 148, null, g), B: pose([113, 98], 178, null, g) }; }
     if (o.frog) return { A: pose([100, 130], 118, [122, F - 2], { ik: [-4, 37], rel: "sh", bend: 1 }), B: pose([124, 80], 178, [126, F - 22], { ik: [5, -40], rel: "sh", bend: -1 }) };
     if (o.jump) return { A: pose([92, 126], 140, [116, F - 2], { a: 30, f: 30 }), B: pose([113, 84], 180, [116, F - 15], { a: 172, f: 172 }) };
@@ -4038,7 +4076,7 @@ const IL = {
     const front = [148, F - 2];
     if (o.reverse) {
       const pose = (hip, back) => ({ hip, torso: 178, leg: { ik: front, bend: -1 }, leg2: { ik: back, bend: -1 }, arm: { a: 2, f: 2 } });
-      return { A: pose([146, 99], [144, F - 2]), B: pose([115, 124], [82, F - 2]) };
+      return { props: o.db ? [{ k: "db", j: "hand" }] : [], A: pose([146, 99], [144, F - 2]), B: pose([115, 124], [82, F - 2]) };
     }
     const back = o.bulgarian ? [74, 119] : [82, F - 2];
     const props = [];
@@ -4047,10 +4085,12 @@ const IL = {
     const pose = (hip) => ({ hip, torso: 178, leg: { ik: front, bend: -1 }, leg2: { ik: back, bend: -1 }, arm: { a: 2, f: 2 } });
     return { props, A: pose(o.bulgarian ? [112, 124] : [115, 124]), B: pose(o.bulgarian ? [114, 104] : [115, 102]) };
   },
-  stepup() {
-    return { props: [{ k: "box", x1: 128, x2: 172, y: 120 }],
-      A: { hip: [110, 104], torso: 172, leg: { ik: [146, 119], bend: -1 }, leg2: { ik: [96, F - 2], bend: -1 }, arm: { a: 10, f: 10 } },
-      B: { hip: [146, 68], torso: 180, leg: { ik: [146, 119], bend: -1 }, leg2: { ik: [136, 108], bend: 1 }, arm: { a: -6, f: -6 } } };
+  stepup(o) {
+    const props = [{ k: "box", x1: 128, x2: 172, y: 120 }];
+    if (o && o.db) props.push({ k: "db", j: "hand" });
+    return { props,
+      A: { hip: [110, 104], torso: 172, leg: { ik: [146, 119], bend: -1 }, leg2: { ik: [96, F - 2], bend: -1 }, arm: { a: o && o.db ? 4 : 10, f: o && o.db ? 4 : 10 } },
+      B: { hip: [146, 68], torso: 180, leg: { ik: [146, 119], bend: -1 }, leg2: { ik: [136, 108], bend: 1 }, arm: { a: o && o.db ? 2 : -6, f: o && o.db ? 2 : -6 } } };
   },
   pistol() {
     return {
@@ -4067,6 +4107,11 @@ const IL = {
     };
     const props = o.bridge ? [] : [{ k: "box", x1: 56, x2: 100, y: 122 }];
     if (!o.bridge && !o.bw && !o.single) props.push({ k: "bar", j: "hip", dx: 2, dy: -9 });
+    if (o.barb) props.push({ k: "bar", j: "hip", dx: 2, dy: -10 });
+    if (o.slide) { // talons qui glissent : hanches hautes, jambes qui s'allongent puis reviennent
+      const sp = (t, ft) => ({ anchor: { j: "sh", at: sh }, torso: t, head: t, leg: { ik: ft, bend: -1 }, leg2: { ik: ft, bend: -1 }, arm: { a: 100, f: 100 } });
+      return { props: [{ k: "pad", j: "ank", dx: 3, dy: 5 }], A: sp(-70, [150, F - 2]), B: sp(-80, [184, F - 2]) };
+    }
     if (o.march) return { props, A: pose(-70), B: pose(-70, true) };
     return o.bridge ? { props, A: pose(o.frog ? -94 : -97), B: pose(o.frog ? -64 : -70) } : { props, A: pose(-124), B: pose(-90) };
   },
@@ -4087,9 +4132,11 @@ const IL = {
     const pose = (phi) => ({ anchor: { j: "knee", at: knee }, torso: phi, head: phi, leg: { a: phi - 180, f: -90 }, foot: 0, arm: { a: phi - 60, f: phi - 50 } });
     return { props: [{ k: "pad", j: "ank", dx: 0, dy: -6 }], A: pose(180), B: pose(116) };
   },
-  calf() {
-    const pose = (y, foot) => ({ hip: [114, y], torso: 180, leg: STAND, leg2: STAND, foot, foot2: foot, arm: { a: 2, f: 2 } });
-    return { props: [{ k: "box", x1: 98, x2: 128, y: 141 }], A: pose(87, 76), B: pose(81, 128) };
+  calf(o) {
+    const pose = (y, foot) => ({ hip: [114, y], torso: 180, leg: STAND, leg2: o && o.single ? { a: -12, f: -70 } : STAND, foot, foot2: o && o.single ? 20 : foot, arm: { a: 2, f: 2 } });
+    const props = [{ k: "box", x1: 98, x2: 128, y: 141 }];
+    if (o && o.db) props.push({ k: "db", j: "hand" });
+    return { props, A: pose(87, 76), B: pose(81, 128) };
   },
   wallsit() {
     const pose = (y) => ({ hip: [94, y], torso: 180, leg: { a: 90, f: 0 }, leg2: { a: 90, f: 0 }, arm: { a: 30, f: 70 } });
@@ -4114,7 +4161,12 @@ const IL = {
     const base = { ground: true, torso: 180, leg: STAND, leg2: STAND };
     return { props, A: Object.assign({}, base, { arm: { a: 3, f: 6 } }), B: Object.assign({}, base, { arm: { a: 8, f: 152 } }) };
   },
-  skull() {
+  skull(o) {
+    if (o.floor) {
+      const hip = [146, F - 8], legs = { ik: [174, F - 2], bend: -1 };
+      const base = { hip, torso: -90, head: -94, leg: legs, leg2: legs };
+      return { props: [{ k: o.db ? "db" : "bar", j: "hand" }], A: Object.assign({}, base, { arm: { a: 194, f: 292 } }), B: Object.assign({}, base, { arm: { a: 186, f: 182 } }) };
+    }
     const hip = [150, 114], sh = ilAdd(hip, -90, ILL.T);
     const legs = { ik: [176, F - 2], bend: -1 };
     const base = { hip, torso: -90, leg: legs, leg2: legs };
@@ -4149,6 +4201,10 @@ const IL = {
     if (o.kicks) {
       const base = { hip, torso: -92, head: -98, arm: { a: 90, f: 90 } };
       return { A: Object.assign({ leg: { a: 140, f: 110 }, leg2: { a: 100, f: 100 } }, base), B: Object.assign({ leg: { a: 100, f: 100 }, leg2: { a: 140, f: 110 } }, base) };
+    }
+    if (o.weighted) { // relevé de buste, haltère serré contre la poitrine
+      const hold = { ik: [9, -6], rel: "sh", bend: 1 };
+      return { props: [{ k: "db", j: "hand" }], A: { hip, torso: -90, head: -94, leg: legs, leg2: legs, arm: hold }, B: { hip, torso: -124, head: -132, leg: legs, leg2: legs, arm: hold } };
     }
     if (o.cross) {
       const cl = { ik: [2, -3], rel: "knee", bend: 1 };
@@ -4227,6 +4283,17 @@ const IL = {
   ohtri() { // extension triceps unilatérale au-dessus de la tête
     const base = { ground: true, torso: 180, leg: STAND, leg2: { a: -5, f: -5 } };
     return { props: [{ k: "db", j: "hand" }], A: Object.assign({}, base, { arm: { a: 150, f: -60 } }), B: Object.assign({}, base, { arm: { a: 150, f: -192 } }) };
+  },
+  pullover() { // allongé au sol, haltère à deux mains de la poitrine jusque derrière la tête
+    const hip = [146, F - 8], legs = { ik: [174, F - 2], bend: -1 };
+    const base = { hip, torso: -90, head: -94, leg: legs, leg2: legs };
+    return { props: [{ k: "db", j: "hand" }], A: Object.assign({}, base, { arm: { a: 178, f: 184 } }), B: Object.assign({}, base, { arm: { a: 252, f: 258 } }) };
+  },
+  swing() { // charnière de hanche : l'haltère passe entre les jambes puis monte à hauteur de poitrine
+    const legs = { ik: [116, F - 2], bend: -1 };
+    return { props: [{ k: "db", j: "hand" }],
+      A: { hip: [94, 104], torso: 112, head: 98, leg: legs, leg2: legs, arm: { a: -28, f: -32 } },
+      B: { hip: [113, 98], torso: 182, head: 182, leg: legs, leg2: legs, arm: { a: 92, f: 94 } } };
   },
   fig4() { // étirement figure 4, allongé
     const sh = [70, F - 6];
@@ -4349,7 +4416,13 @@ const ILL_MAP = {
   donkey_kick: ["quad", {}], clamshell: ["clam", {}], side_tapout: ["tapout", {}],
   reverse_crunch: ["revcrunch", {}], cross_crunch: ["crunch", { cross: 1 }], heel_taps: ["heeltap", {}], bicycle_kicks: ["crunch", { kicks: 1 }],
   wipers: ["wipers", {}], knee_elbow: ["kneeplank", {}], plank_side_taps: ["planktop", {}],
-  st_fig4: ["fig4", {}], st_butterfly: ["butterfly", {}], st_child: ["child", {}], st_twist: ["stwist", {}], st_hipflexor: ["hipflex", {}]
+  st_fig4: ["fig4", {}], st_butterfly: ["butterfly", {}], st_child: ["child", {}], st_twist: ["stwist", {}], st_hipflexor: ["hipflex", {}],
+  floor_press_bb: ["press", { floor: 1 }], floor_press_db: ["press", { floor: 1, db: 1 }], floor_tri_db: ["skull", { floor: 1, db: 1 }],
+  squat_speed: ["squat", { speed: 1, plabel: "MONTÉE SUR LES POINTES · SANS DÉCOLLER" }], bb_glute_bridge: ["thrust", { bridge: 1, barb: 1 }],
+  row_bb_supi: ["bentrow", { supi: 1, plabel: "PAUMES VERS LE HAUT · BARRE VERS LE BAS DU VENTRE" }], pullover_db: ["pullover", {}],
+  oh_tri_two: ["ohtri", { plabel: "HALTÈRE TENU À DEUX MAINS" }], db_swing: ["swing", {}], zercher: ["squat", { zercher: 1 }],
+  sl_rdl: ["deadlift", { rdl: 1, db: 1, single: 1 }], slider_curl: ["thrust", { bridge: 1, slide: 1 }], step_up_db: ["stepup", { db: 1 }],
+  sit_up_w: ["crunch", { weighted: 1 }], reverse_lunge_db: ["lunge", { reverse: 1, db: 1 }], calf_sl_db: ["calf", { single: 1, db: 1 }]
 };
 /* Second point de vue quand le profil ne suffit pas à comprendre le mouvement */
 const ILL_ALT = {
